@@ -5,8 +5,8 @@
 :root {
 	--color-text: #fff;
 	--color-bg: #000;
-	--color-link: #ffffff80;
-	--color-link-hover: #f8c5dc;
+	--color-link: #FBCA8F;
+	--color-link-hover: #22388E;
 	--color-bg-slide: #171719;
 	font-size: 13px;
 }
@@ -270,8 +270,7 @@ a:focus-visible {
 }
 
 .slide__content {
-	background: var(--color-bg-slide);
-	background-image: url(../images/image04.png);
+	background-image: url("../images/image04.png");
 	grid-column-gap: 2rem;
 	grid-template: "img title""img text""img."/1fr 1fr;
 	grid-area: 1/1/-1/-1;
