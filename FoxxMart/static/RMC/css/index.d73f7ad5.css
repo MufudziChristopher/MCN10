@@ -26,13 +26,13 @@ body {
 
 .risk{
         opacity: 0.5;
-        width: 50%;
-        height: 20%;
+        width: 25%;
+        height: 10%;
 }
 .risk:hover{
         opacity: 1;
-        width: 50%;
-        height: 25%;
+        width: 25%;
+        height: 10%;
 }
 
 .js .loading:before,.js .loading:after {
@@ -126,9 +126,9 @@ a:focus-visible {
 
 .frame__title {
 	grid-area: title;
-	place-self: end;
-	align-items: start;
-	display: flex;
+	place-self: start;
+	align-items: end;
+	display: inline-flex;
 }
 
 .frame__title-main {
