@@ -52,10 +52,6 @@ INSTALLED_APPS = [
     'LOOP',
     'COURT',
     'RickJames',
-<<<<<<< HEAD
-=======
-    'FullscreenScroll',
->>>>>>> 0b230d7289fcbfbbb901ada63b41b539c82b86cf
 
     'django_browser_reload',
     'crispy_forms',

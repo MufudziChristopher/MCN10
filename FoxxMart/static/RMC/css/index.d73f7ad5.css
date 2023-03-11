@@ -24,6 +24,17 @@ body {
 	overflow: hidden;
 }
 
+.risk{
+        opacity: 0.5;
+        width: 50%;
+        height: 20%;
+}
+.risk:hover{
+        opacity: 1;
+        width: 50%;
+        height: 25%;
+}
+
 .js .loading:before,.js .loading:after {
 	content: "";
 	z-index: 1000;
@@ -155,6 +166,7 @@ a:focus-visible {
 	align-content: end;
 	place-items: start;
 	display: grid;
+	z-index: 1;
 }
 
 .frame__nav-button {
@@ -254,15 +266,17 @@ a:focus-visible {
 	background-position: 50%;
 	background-repeat: no-repeat;
 	background-size: cover;
+
 }
 
 .slide__content {
 	background: var(--color-bg-slide);
+	background-image: url(../images/image04.png);
 	grid-column-gap: 2rem;
 	grid-template: "img title""img text""img."/1fr 1fr;
 	grid-area: 1/1/-1/-1;
 	place-content: center;
-	padding: 1rem;
+	padding: 2rem;
 	display: grid;
 }
 
@@ -284,7 +298,6 @@ a:focus-visible {
 }
 
 .slide__content p {
-	max-width: 260px;
 	color: #ffffff80;
 	grid-area: text;
 	margin: 0;
