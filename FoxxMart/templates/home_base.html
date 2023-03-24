@@ -33,10 +33,10 @@
         <a class="link link--page  " href="#page-Gallery">Dept. Gallery Store</a>
       </div>
       <div class="pages-nav__item">
-        <a class="link link--page  " href="#page-The-Collective">The Collective</a>
+        <a class="link link--page  " href="#page-GENESIS">GENESIS</a>
       </div>
       <div class="pages-nav__item">
-        <a class="link link--page  " href="#page-The-Collective">The Collective</a>
+        <a class="link link--page  " href="#page-RMC">RMC</a>
       </div>
       <div class="pages-nav__item pages-nav__item--small">
         <a class="link link--page link--faded  " href="#page-tgy">The Golden Years</a>
@@ -108,12 +108,13 @@
       <div class="page" id="page-Maxim-Kids">
         <header class="bp-header cf">
           <h1 class="bp-header__title">Maxim Boxing Promotion</h1>
-          <p class="bp-header__desc">Welcome to the portfolio section dedicated to showcasing my work on the WordPress website development project for Maxim Kids. This section will provide an in-depth look at the updates and upgrades I have made to the website, as well as the processes and techniques used to ensure the success of the project. With my extensive experience as a freelance WordPress developer, I am confident in my ability to deliver high-quality results that meet the needs and expectations of my clients. This portfolio section serves as a testament to my skills and expertise, and I am proud to share it with you. This portfolio section highlights my work on the WordPress website development project for Maxim Kids, showcasing updates and upgrades made to the website. Get a glimpse of my expertise and quality results as a freelance WordPress developer. <a href="https://maximkids.org" target="_blank">Maxim Kids</a>
+          <p class="info">Non-profit organization that empowers underprivileged youth to reach their dreams in life through passion for sport <a href="https://maximkids.org" target="_blank">Maxim Kids</a>
           </p>
           <p class="info">
              </p>
         </header>
-        <img class="poster" src="{% static 'images/maximkids.png' %}" alt="img06" />
+        <a target="_blank" href="https://maximkids.org"><img class="poster" src="{% static 'images/maximkids.png' %}" alt="img06" /></a>
+
       </div>
       <div class="page" id="page-Hospitality-Pro-Recruitment">
         <header class="bp-header cf">
@@ -131,7 +132,7 @@
           <h1 class="bp-header__title">3rd Axis</h1>
           <p class="bp-header__desc">3D Printing Company based in Observatory, Cape Town <a href="{% url 'Axis:store' %}">3rd Axis</a>
           </p>
-          <p class="info">During the midst of the Covid 19 Lockdown. I was contacted by a team looking for a web developer to lead the development team of a 3D printing company start-up initiative. I used the Python Django Rest Framework to develop this website. An eccomerce platform with CRM to quickly and efficiently manage stock and orders with an elegeant, almost transparent front end. I tried to create a shopping experience free from noise that was quick and fast but also smooth ans soothing. The front end loading makes product filtering easy and the quick access to your cart allows you to keep an close eye on you total. This website is simple yet robust with new features on the way. </p>
+          <p class="info"></p>
         </header>
         <a href="{% url 'Axis:store' %}"><img class="poster" src="{% static 'images/III-light.gif' %}" alt="img06" /></a>
       </div>
@@ -140,7 +141,7 @@
           <h1 class="bp-header__title">The Collective</h1>
           <p class="bp-header__desc">An Online Store showcasing limited edition designer goods. <a href="{% url 'Collective:store' %}"> The Collective</a>
           </p>
-          <p class="info"> Addingthis eccomerce store to the collections allows users to brows multiple shops with one account.The stores are easy to set upand customise which brings your development costs way down. Its a store that gets straight down to the point, which is the products,or collection there of. Front end processing means you'll never have to wait for the page to load while viewing the products. </p>
+          <p class="info"></p>
         </header>
          <a href="{% url 'Collective:store' %}"> <img class="poster" src="{% static 'images/II-light.gif' %}" width="70" alt="img06" /></a>
       </div>
@@ -163,6 +164,17 @@
         </header>
         <a href="https://thegoldenyears.com" target="_blank"><img class="poster" src="{% static 'images/tgylogo.png' %}" width="500" alt="img06" /></a>
       </div>
+
+      <div class="page" id="page-GENESIS">
+        <header class="bp-header cf">
+          <h1 class="bp-header__title">GENESIS</h1>
+          <p class="bp-header__desc">New and Exciting Concept Store
+            <a href="#" target="_blank">Coming Soon!</a>
+          </p>
+          </iframe>
+        </header>
+        <!-- <a href="#" target="_blank"><img class="poster" src="{% static 'images/comingsoon.avif' %}" width="500" alt="img06" /></a> -->
+    </div>
       <div class="page" id="page-idaca">
         <header class="bp-header cf">
           <h1 class="bp-header__title">IDA Cooper and Associates</h1>
@@ -184,6 +196,18 @@
           <p class="info"></p>
         </header>
         <a target="_blank" href="{% url 'Projects:africanus' %}"><img class="poster" src="{% static 'africanus/africanuslogo.png' %}" width="500" alt="img06" /><a>
+      </div>
+
+      <div class="page" id="page-RMC">
+        <header class="bp-header cf">
+          <h1 class="bp-header__title">Risk Mitigation Consultants</h1>
+          <p class="bp-header__desc">
+            <a target="_blank" href="{% url 'RMC:home' %}">Risk Mitigation Consultants (Demo)</a>
+          </p>
+          <p class="info">Understanding the Threat. Reducing the Risk.<br>
+Risk Mitigation Consultants assess risk factors, analyse intelligence and implement safety and security measures for residential, retail, commercial and industrial assets. <a target="_blank" href="https://riskmitigation.co.za">Risk Mitigation Consultants (Live)</a></p>
+        </header>
+        <a target="_blank" href="{% url 'RMC:home' %}"><img class="poster" width=500 src="{% static 'RMC/images/favicon.jpg' %}" alt="img06" /></a>
       </div>
     </div>
     <!-- /pages-stack -->
