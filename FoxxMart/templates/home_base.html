@@ -29,6 +29,15 @@
       <div class="pages-nav__item">
         <a class="link link--page  " href="#page-The-Collective">The Collective</a>
       </div>
+      <div class="pages-nav__item">
+        <a class="link link--page  " href="#page-Gallery">Dept. Gallery Store</a>
+      </div>
+      <div class="pages-nav__item">
+        <a class="link link--page  " href="#page-The-Collective">The Collective</a>
+      </div>
+      <div class="pages-nav__item">
+        <a class="link link--page  " href="#page-The-Collective">The Collective</a>
+      </div>
       <div class="pages-nav__item pages-nav__item--small">
         <a class="link link--page link--faded  " href="#page-tgy">The Golden Years</a>
       </div>
@@ -135,14 +144,14 @@
         </header>
          <a href="{% url 'Collective:store' %}"> <img class="poster" src="{% static 'images/II-light.gif' %}" width="70" alt="img06" /></a>
       </div>
-      <div class="page" id="page-NXT-LVL-Tech">
+      <div class="page" id="page-Gallery">
         <header class="bp-header cf">
-          <h1 class="bp-header__title">VFS Canada</h1>
-          <p class="bp-header__desc">A Visa Facilitation Services Global application and tracking software for the VFS Canada, Benin - <a target="_blank" href="https://vfs-canada-online.df.r.appspot.com">VFS Canada</a>
+          <h1 class="bp-header__title">Dept.Gallery</h1>
+          <p class="bp-header__desc">Concept Store for vintage clothing and affiliate links - <a target="" href="{% url 'RickJames:store' %}"> Dept. Gallery</a>
           </p>
-          <p class="info">This website uses a custom user model that enables users to better access its tools. The website is used to apply, track and monitor the status of your visa application. This particular version was for demonstration purposes outlining the important flows along the user journey. </p>
+          <p class="info"></p>
         </header>
-         <a target="_blank" href="https://vfs-canada-online.df.r.appspot.com"><img class="poster" src="{% static 'images/vfscanada.png' %}" alt="img06" /></a>
+         <a target="_blank" href="{% url 'RickJames:store' %}"><img class="poster" src="{% static 'marz/images/logo.png' %}" alt="img06" /></a>
       </div>
       <div class="page" id="page-tgy">
         <header class="bp-header cf">

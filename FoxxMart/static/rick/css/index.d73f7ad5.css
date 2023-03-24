@@ -6,13 +6,13 @@
 
 :root {
 	font-size: 18px;
-	--color-text: #20221f;
-	--color-link: #000;
+	--color-text: #000;
+	--color-link: #cd0000;
 	--color-bg: #b9b3af;
 	--color-bg-preview: #131312;
 	--color-bg-overlay: #131312;
 	--color-text-preview: #00000;
-	--color-title-preview: #923538;
+	--color-title-preview: #000;
 	--page-padding: 1rem 2rem;
 	--preview-padding: 0 2rem 1rem;
 }
@@ -26,7 +26,8 @@ body {
 	font-weight: 300;
 	text-transform: uppercase;
 	color: var(--color-text);
-	background-color: var(--color-bg);
+    background-image: url("../../images/bg1.jpg");
+    background-size: cover;
 	font-family: acumin-pro, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -65,7 +66,7 @@ body {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: var(--color-bg);
+	background: #fff;
 }
 
 .js .loading::after {
@@ -306,8 +307,9 @@ main {
 }
 
 .content__overlay {
-	background: var(--color-bg-overlay);
-	position: fixed;
+    background-image: url("../../images/bg1.jpg");
+    background-size: contain;
+    position: fixed;
 	top: calc(50% - 75vmax);
 	left: calc(50% - 75vmax);
 	width: 150vmax;
@@ -424,6 +426,7 @@ main {
 	line-height: 1;
 	will-change: transform;
 	padding-top: 1vw;
+	opacity: 0.6;
 }
 
 .preview__item-subtitle {

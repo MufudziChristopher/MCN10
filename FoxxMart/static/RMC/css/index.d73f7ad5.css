@@ -166,7 +166,6 @@ a:focus-visible {
 	align-content: end;
 	place-items: start;
 	display: grid;
-	z-index: 1;
 }
 
 .frame__nav-button {
@@ -186,7 +185,7 @@ a:focus-visible {
 
 .frame__nav-button:before {
 	content: "";
-	width: 2.5rem;
+	width: 4.5rem;
 	height: 1px;
 	transform-origin: 100%;
 	background-color: currentColor;
