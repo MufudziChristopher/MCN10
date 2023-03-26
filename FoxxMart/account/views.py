@@ -5,6 +5,7 @@ from django.contrib import messages
 from .models import *
 from .models import *
 from Axis.models import *
+from GENESIS.models import *
 from Collective.models import *
 from Marz.models import *
 
@@ -21,6 +22,10 @@ def registration_view(request):
 			raw_password = form.cleaned_data.get('password1')
 			account = authenticate(email=email, password=raw_password)
 			AxisCustomer.objects.create(
+                    user=account,
+                    email=email,
+                )
+			GENESISCustomer.objects.create(
                     user=account,
                     email=email,
                 )

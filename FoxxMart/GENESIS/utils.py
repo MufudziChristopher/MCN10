@@ -53,7 +53,7 @@ def cartData(request):
     if request.user.is_authenticated:
         customer = request.user.genesiscustomer
         order, created = GENESISOrder.objects.get_or_create(customer=customer, status="Pending")
-        items = order.orderitem_set.all()
+        items = order.genesisorderitem_set.all()
         cartItems = order.get_cart_items
     else:
         print("Sent to cookie Cart")

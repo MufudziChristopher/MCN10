@@ -1,7 +1,7 @@
 {% extends 'genesis_base.html' %}
 {% load static %} {% block body %}
 {% for product in products %}
-<div class="grid__cell grid__cell-c{{list_random1 | random}}%{{forloop.counter}}-r{{list_random2 | random}}%{{forloop.counter}}">
+<div class="grid__cell grid__cell-c{{list_random1 | random}}-r{{list_random2 | random}}">
 	<div class="grid__cell-img">
 		<div class="grid__cell-img-inner" style="background-image:url({{product.imageURL1}})" data-item="item-{{forloop.counter}}"></div>
 	</div>
@@ -13,8 +13,12 @@
 	{% for product in products %}
 	<div class="content__item" id="item-{{forloop.counter}}"> <span class="content__item-number oh"><span class="oh__inner">{{forloop.counter}}</span></span>
 		<h2 class="content__item-heading oh"><span class="oh__inner">{{product.name1}}</span></h2>
-		<p class="content__item-text">{{product.description1}}</p> <span class="oh__inner">{{product.price}}</span> <a class="content__item-link oh">
-			<span class="oh__inner">View more</span></a>
+		<p class="content__item-text">{{product.description1}}</p>
+		<strong><span class="content__item-link oh">R{{product.price}}</span></strong>
+			<button   data-product={{product.id}} data-action="add" class="update-cart btn action--button-btn"><br>Add To Cart<br><br></button>
+			<br>
+			<br>
+			<a class="content__item-link oh"><span class="oh__inner">View more</span></a>
 		<nav class="slide-nav">
 			<div class="slide-nav__img slide-nav__img--prev" style="background-image:url({% static 'genesis/images/11.ba790930.jpg' %});"></div>
 			<div class="slide-nav__img slide-nav__img--next" style="background-image:url({% static 'genesis/images/12.c3a8d893.jpg' %});"></div>

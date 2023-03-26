@@ -91,7 +91,7 @@ def updateItem(request):
     productId = data['productId']
     action = data['action']
 
-    customer = request.user.GENESISCustomer
+    customer = request.user.genesiscustomer
     product = GENESISProduct.objects.get(id=productId)
     order, created = GENESISOrder.objects.get_or_create(customer=customer, status="Pending")
 

@@ -28,10 +28,12 @@ class GENESISCustomer(models.Model):
 
 
 class GENESISProduct(models.Model):
-    name1                = models.CharField(max_length=200, null=False)
+    name1               = models.CharField(max_length=200, null=False)
     description1        = models.TextField(max_length=2000, null=False)
     image1              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
     price               = models.DecimalField(max_digits=10, decimal_places=2, null=False)
+    stock               = models.IntegerField(null=False)
+
     def __str__(self):
         return self.name1
 
@@ -66,13 +68,13 @@ class GENESISOrder(models.Model):
 
     @property
     def get_cart_total(self):
-        orderitems = self.orderitem_set.all()
+        orderitems = self.genesisorderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
 
     @property
     def get_cart_items(self):
-        orderitems = self.orderitem_set.all()
+        orderitems = self.genesisorderitem_set.all()
         allitems = sum([item.quantity for item in orderitems])
         return allitems
 

@@ -1,4 +1,4 @@
-{% extends 'rick_base.html' %}
+{% extends 'cart_base.html' %}
 
 
 {% load static %}
@@ -38,7 +38,7 @@
 
                 <tr>
                     <td>
-                        <a href="{% url 'RickJames:product_details'  item.product.id %}"> <img class="img slider" src="{{ item.product.imageURL1 }}" width="200" height="200" /></a>
+                        <a href="{% url 'GENESIS:product_details'  item.product.id %}"> <img class="img slider" src="{{ item.product.imageURL1 }}" width="200" height="200" /></a>
                     </td>
 
                     <td>
@@ -87,7 +87,7 @@
                     <hr>
 
                 </div>
-                <p><button class="action--button-btn"><a href="{% url 'RickJames:store' %}" >Continue Shopping&nbsp;&nbsp;</a></button>&nbsp;{% if order.get_cart_total%}<button class="action--button-btn"><a href="{% url 'RickJames:checkout' %}">Proceed to Checkout &nbsp;&nbsp; </a></button>
+                <p><button class="action--button-btn"><a href="{% url 'GENESIS:store' %}" >Continue Shopping&nbsp;&nbsp;</a></button>&nbsp;{% if order.get_cart_total%}<button class="action--button-btn"><a href="{% url 'GENESIS:checkout' %}">Proceed to Checkout &nbsp;&nbsp; </a></button>
                     {% endif %}</p>
                 <hr>
 
