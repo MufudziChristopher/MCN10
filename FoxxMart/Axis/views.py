@@ -40,7 +40,6 @@ def store(request, category_slug=None):
     items = data['items']
     products = Product.objects.all()
     taglist = Tag.objects.annotate(total_products=Count('product'))
-
     context = {'cartItems': cartItems, 'items': items, 'order': order, 'products':products, 'shipping': False, 'taglist': taglist}
     return render(request, 'Axis/store.html', context)
 

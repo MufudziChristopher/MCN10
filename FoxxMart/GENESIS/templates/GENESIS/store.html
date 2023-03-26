@@ -1,0 +1,41 @@
+{% extends 'genesis_base.html' %}
+{% load static %} {% block body %}
+{% for product in products %}
+<div class="grid__cell grid__cell-c{{list_random1 | random}}%{{forloop.counter}}-r{{list_random2 | random}}%{{forloop.counter}}">
+	<div class="grid__cell-img">
+		<div class="grid__cell-img-inner" style="background-image:url({{product.imageURL1}})" data-item="item-{{forloop.counter}}"></div>
+	</div>
+</div>
+ {% endfor %}
+ {% endblock body %}
+ {% block inner %}
+<div class="content">
+	{% for product in products %}
+	<div class="content__item" id="item-{{forloop.counter}}"> <span class="content__item-number oh"><span class="oh__inner">{{forloop.counter}}</span></span>
+		<h2 class="content__item-heading oh"><span class="oh__inner">{{product.name1}}</span></h2>
+		<p class="content__item-text">{{product.description1}}</p> <span class="oh__inner">{{product.price}}</span> <a class="content__item-link oh">
+			<span class="oh__inner">View more</span></a>
+		<nav class="slide-nav">
+			<div class="slide-nav__img slide-nav__img--prev" style="background-image:url({% static 'genesis/images/11.ba790930.jpg' %});"></div>
+			<div class="slide-nav__img slide-nav__img--next" style="background-image:url({% static 'genesis/images/12.c3a8d893.jpg' %});"></div>
+		</nav>
+	</div>
+	{% endfor %}
+	<button class="back">
+		<svg viewBox="0 0 50 9">
+			<path d="m0 4.5 5-3m-5 3 5 3m45-3h-77" /> </svg>
+	</button>
+	<nav class="grid grid--mini">
+
+
+		{% for product in products %}
+		<div class="grid__cell grid__cell-c{{list_random2 | random}}-r{{list_random1 | random}}">
+			<div class="grid__cell-img">
+				<div class="grid__cell-img-inner" style="background-image:url({{product.imageURL1}})"></div>
+			</div>
+		</div>
+		{% endfor %}
+
+	</nav>
+ </div>
+  {% endblock inner %}
