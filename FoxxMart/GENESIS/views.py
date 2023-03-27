@@ -52,7 +52,7 @@ def product_details(request, pk):
     items = data['items']
     category = None
 
-    product = Product.objects.get(id=pk)
+    product = GENESISProduct.objects.get(id=pk)
     category = None
     context = {'cartItems': cartItems, 'product':product,'category' : category , 'shipping': False,}
     return render(request, 'GENESIS/product.html', context)

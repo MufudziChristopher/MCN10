@@ -47,8 +47,8 @@
 <hr>
         <p class="content--">
           <button class="btn action--button-btn"><a href="{% url 'Axis:store' %}" >Continue Shopping</a></button>
+          {% if product.stock >= 1  %}
 
-{% if product.stock >= 1  %}
           <button   data-product={{product.id}} data-action="add" class="update-cart btn action--button-btn"><a href="{% url 'Axis:cart' %}">Add to Cart</a></button></p>
 
 

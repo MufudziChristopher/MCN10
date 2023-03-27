@@ -1,0 +1,193 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 15px;
+}
+
+body {
+	margin: 0;
+	--color-text: #000;
+	--color-bg: #161b1b;
+	--color-link: #000;
+	--color-link-hover: #cd0000;
+	color: var(--color-text);
+	background: var(--color-bg) url(../../images/bg1.jpg);
+  background-size: cover;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+a:focus {
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	background: transparent;
+}
+
+a:focus-visible {
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.frame {
+	padding: 1.5rem 2rem 10vh;
+	text-align: center;
+	position: relative;
+}
+
+.frame__title {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.frame__links {
+	margin: 0.5rem 0 2rem;
+}
+
+.frame__links a:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.content {
+	flex: 1;
+	display: grid;
+	place-items: center;
+}
+
+.trail {
+	position: relative;
+	display: grid;
+	place-items: center;
+}
+
+.no-js .trail {
+	width: 250px;
+	height: 375px;
+	background-size: cover;
+}
+
+.trail__img {
+	max-height: 65vh;
+	position: relative;
+	will-change: transform;
+	grid-area: 1 / 1 / 2 / 2;
+}
+
+@media screen and (min-width: 53em) {
+	main {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	.frame {
+		padding: 1.5rem 2rem 0;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		grid-template-areas: 'title links sponsor';
+		grid-gap: 3vw;
+		justify-content: space-between;
+		text-align: left;
+	}
+	.frame__links {
+		margin: 0;
+	}
+}
+
+
+/* Blueprint header */
+.bp-header {
+    width: 90%;
+    max-width: 69em;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bp-header h1 {
+    font-size: 2.125em;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0 0 .6em 0;
+}
+
+.bp-header h1 > span {
+    font-size: 50%;
+    display: block;
+    color: #000;
+}
+
+.bp-header > span {
+    font-weight: 700;
+    font-size: 1.85em;
+    color: #000;
+    position: relative;
+    z-index: 100;
+    display: block;
+    letter-spacing: .5em;
+    text-transform: uppercase;
+    text-indent: 30px;
+}
+
+.bp-header > span span:after {
+    font-size: 50%;
+    font-size: 75%;
+    position: relative;
+    top: -8px;
+    left: -12px;
+    width: 30px;
+    height: 30px;
+}
+
+.bp-header > span span:hover:before {
+    content: attr(data-content);
+    font-size: 110%;
+    font-weight: 700;
+    line-height: 1.2;
+    position: absolute;
+    left: auto;
+    margin-left: 4px;
+    text-align: left;
+    text-indent: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #000;
+}
+
+.bp-header nav {
+    text-align: center;
+    margin: 0 0;
+}
+
+.bp-header nav a {
+    position: relative;
+    display: inline-block;
+    width: 4.5em;
+    height: 2em;
+    margin: 0 0em;
+    text-align: left;
+    border-radius: 50%;
+}
+
+.bp-header nav a > span {
+    display: none;
+}
