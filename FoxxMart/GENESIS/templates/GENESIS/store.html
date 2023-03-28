@@ -1,7 +1,7 @@
 {% extends 'genesis_base.html' %}
 {% load static %} {% block body %}
 {% for product in products %}
-<div class="grid__cell grid__cell-c{{list_random1 | random}}-r{{list_random2 | random}}">
+<div class="grid__cell grid__cell-c{{forloop.counter}}-r{{list_random2 | random}}">
 	<div class="grid__cell-img">
 		<div class="grid__cell-img-inner" style="background-image:url({{product.imageURL1}})" data-item="item-{{forloop.counter}}"></div>
 	</div>

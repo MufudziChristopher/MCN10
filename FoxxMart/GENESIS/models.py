@@ -29,8 +29,23 @@ class GENESISCustomer(models.Model):
 
 class GENESISProduct(models.Model):
     name1               = models.CharField(max_length=200, null=False)
-    description1        = models.TextField(max_length=2000, null=False)
+    short_desc          = models.CharField(max_length=500, null=True)
+    description1        = models.TextField(max_length=2000, null=True)
+    description2        = models.TextField(max_length=2000, null=True)
+    description3        = models.TextField(max_length=2000, null=True)
+    description4        = models.TextField(max_length=2000, null=True)
+    description5        = models.TextField(max_length=2000, null=True)
+    description6        = models.TextField(max_length=2000, null=True)
+    description7        = models.TextField(max_length=2000, null=True)
+    description8        = models.TextField(max_length=2000, null=True)
     image1              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image2              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image3              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image4              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image5              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image6              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image7              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
+    image8              = models.ImageField(upload_to='GENESIS_product/', blank=True, null=False)
     price               = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     stock               = models.IntegerField(null=False)
 
@@ -41,6 +56,62 @@ class GENESISProduct(models.Model):
     def imageURL1(self):
         try:
             url = self.image1.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL2(self):
+        try:
+            url = self.image2.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL3(self):
+        try:
+            url = self.image3.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL4(self):
+        try:
+            url = self.image4.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL5(self):
+        try:
+            url = self.image5.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL6(self):
+        try:
+            url = self.image6.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL7(self):
+        try:
+            url = self.image7.url
+        except:
+            url = ''
+        return url
+
+    @property
+    def imageURL8(self):
+        try:
+            url = self.image8.url
         except:
             url = ''
         return url

@@ -3,13 +3,59 @@
 
 {% load static %}
 {% block title %}{{product.name}}{% endblock %}
-{% block body %}
-<div class="frame">
-  <h1 class="frame__title">{{product.name1}}</h1>
-  <nav class="frame__links">    <a href="{% url 'GENESIS:store' %}">Continue Shopping</a><a href="{% url 'GENESIS:cart' %}" data-product={{product.id}} data-action="add">Add to Cart</a>
-  </nav>
-</div>
-<div class="content">
-  <div class="trail" style="background-image:url({{product.imageURL1}});"></div>
-</div>
-{% endblock %}
+{% block landing %}
+
+    <h1 class="intro__title">{{product.name1}}</h1>
+    <span class="intro__info">R{{product.price}}</span>
+    <span class="intro__info">Scroll & hover</span>
+{% endblock landing %}
+
+{% block content %}
+  <div class="content">
+    <p class="content__title">{{product.description1}}</p>
+
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="1"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description2}}</p>
+    <div class="double" style="background-image:url({{product.imageURL2}})" data-effect="2"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description3}}</p>
+    <div class="double" style="background-image:url({{product.imageURL3}})" data-effect="3"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description4}}</p>
+    <div class="double" style="background-image:url({{product.imageURL4}})" data-effect="4"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description5}}</p>
+    <div class="double" style="background-image:url({{product.imageURL5}})" data-effect="5"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description6}}</p>
+    <div class="double" style="background-image:url({{product.imageURL6}})" data-effect="6"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description1}}</p>
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="7"></div>
+  </div>
+  <div class="content">
+    <p class="content__title">{{product.description1}}</p>
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="8"></div>
+  </div>
+  <div class="content">
+    <h2 class="content__title">IX</h2>
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="9"></div>
+  </div>
+  <div class="content">
+    <h2 class="content__title">X</h2>
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="10"></div>
+  </div>
+  <div class="content">
+    <h2 class="content__title">XI</h2>
+    <div class="double" style="background-image:url({{product.imageURL1}})" data-effect="11"></div>
+  </div>
+  <!-- SVG Filter effect -->
+  <p class="credit">Images generated with Midjourney.</p>
+{% endblock content%}
