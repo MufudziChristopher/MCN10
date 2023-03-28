@@ -1153,6 +1153,7 @@ ul.icons li a:hover {
 }
 
 .action--button-btn {
+    border: none;
     background: transparent;
     border-radius: 2px;
     -webkit-transition: background 0.2s;

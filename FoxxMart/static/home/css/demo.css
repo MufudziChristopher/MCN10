@@ -41,10 +41,9 @@ body {
 	color: #000000;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-position: top left, center center, bottom center;
     background-image: url("../images/bg1.jpg");
     background-size: cover;
-	background-attachment: fixed, fixed, fixed;
+	background-attachment: fixed;
 	overflow-y: scroll;
 }
 

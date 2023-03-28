@@ -8,7 +8,7 @@
 
 body {
 	--color-text: #000;
-	--color-bg: #f7f5ee;
+	--color-bg: #fff;
 	--color-link: #000;
 	--color-link-hover: #000;
 	-webkit-font-smoothing: antialiased;
@@ -257,6 +257,8 @@ a:focus-visible {
 
 .content__item-link {
 	cursor: pointer;
+	font-weight: 800;
+	font-size: 2.5em;
 }
 
 .slide-nav {
