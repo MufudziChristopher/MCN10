@@ -4,6 +4,7 @@
     max-width: 69em;
     margin: 0 auto;
     text-align: center;
+    z-index: auto;
 }
 
 .bp-header h1 {
@@ -93,4 +94,15 @@
     .bp-header h1 {
         font-size: 1.8em;
     }
+}
+
+ion-icon {
+  color: #000;
+}
+ion-icon:hover {
+  color: #cd0000;
+}
+
+ion-icon {
+  --ionicon-stroke-width: 8px;
 }

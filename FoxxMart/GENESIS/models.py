@@ -28,7 +28,7 @@ class GENESISCustomer(models.Model):
 
 
 class GENESISProduct(models.Model):
-    name1               = models.CharField(max_length=200, null=False)
+    name               = models.CharField(max_length=200, null=False)
     short_desc          = models.CharField(max_length=500, null=True)
     description1        = models.TextField(max_length=2000, null=True)
     description2        = models.TextField(max_length=2000, null=True)
@@ -50,7 +50,7 @@ class GENESISProduct(models.Model):
     stock               = models.IntegerField(null=False)
 
     def __str__(self):
-        return self.name1
+        return self.name
 
     @property
     def imageURL1(self):

@@ -12,4 +12,4 @@ class OrderFilter(django_filters.FilterSet):
 class ProductFilter(django_filters.FilterSet):
 	class Meta:
 		model = GENESISProduct
-		fields = ['name1']
+		fields = ['name']

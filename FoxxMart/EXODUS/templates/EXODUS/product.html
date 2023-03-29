@@ -1,0 +1,77 @@
+{% extends 'product_base.html' %}
+
+
+{% load static %}
+{% block title %}{{product.name}}{% endblock %}
+
+{% block nav %}{% include 'exodus_navbar.html' %}{% endblock %}
+
+{% block body %}
+
+<div class="content">
+  <h2 class="content__title" data-scroll="" data-scroll-speed="2" data-scroll-position="top">{{product.name}}</h2>
+  <p class="content__text" data-scroll="" data-scroll-speed="1" data-scroll-position="top">{{product.price}}</p>
+
+
+  <div class="gallery">
+    <a data-product={{product.id}} data-action="add">
+        <span class="action__text--invisible">Add to cart</span>
+    </a>
+    <figure data-scroll="" data-scroll-speed="1" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL1}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.short_desc}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="2.5" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL2}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description1}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="4" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL3}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description2}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="1" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL4}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description3}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="2.5" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL5}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description4}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="4" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL6}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description5}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="1" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL7}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description6}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="2.5" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL8}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description7}}</p>
+      </figcaption>
+    </figure>
+    <figure data-scroll="" data-scroll-speed="4" class="gallery__item">
+      <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL1}})"></div></div>
+      <figcaption class="gallery__item-caption">
+        <p class="gallery__item-title" data-splitting="">{{product.description8}}</p>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+{% endblock %}

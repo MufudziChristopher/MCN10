@@ -36,7 +36,7 @@
         <a class="link link--page  " href="#page-GENESIS">GENESIS</a>
       </div>
       <div class="pages-nav__item">
-        <a class="link link--page  " href="#page-RMC">RMC</a>
+        <a class="link link--page  " href="#page-EXODUS">EXODUS</a>
       </div>
       <div class="pages-nav__item pages-nav__item--small">
         <a class="link link--page link--faded  " href="#page-tgy">The Golden Years</a>
@@ -173,6 +173,15 @@
           </p>
           </iframe>
         </header>
+      </div>
+         <div class="page" id="page-EXODUS">
+                <header class="bp-header cf">
+                  <h1 class="bp-header__title">EXODUS</h1>
+                  <p class="bp-header__desc">New and Exciting Concept Store
+                    <a href="{% url 'EXODUS:store' %}" target="_blank">Coming Soon!</a>
+                  </p>
+                  </iframe>
+                </header>
         <!-- <a href="#" target="_blank"><img class="poster" src="{% static 'images/comingsoon.avif' %}" width="500" alt="img06" /></a> -->
     </div>
       <div class="page" id="page-idaca">
@@ -198,17 +207,7 @@
         <a target="_blank" href="{% url 'Projects:africanus' %}"><img class="poster" src="{% static 'africanus/africanuslogo.png' %}" width="500" alt="img06" /><a>
       </div>
 
-      <div class="page" id="page-RMC">
-        <header class="bp-header cf">
-          <h1 class="bp-header__title">Risk Mitigation Consultants</h1>
-          <p class="bp-header__desc">
-            <a target="_blank" href="{% url 'RMC:home' %}">Risk Mitigation Consultants (Demo)</a>
-          </p>
-          <p class="info">Understanding the Threat. Reducing the Risk.<br>
-Risk Mitigation Consultants assess risk factors, analyse intelligence and implement safety and security measures for residential, retail, commercial and industrial assets. <a target="_blank" href="https://riskmitigation.co.za">Risk Mitigation Consultants (Live)</a></p>
-        </header>
-        <a target="_blank" href="{% url 'RMC:home' %}"><img class="poster" width=500 src="{% static 'RMC/images/favicon.jpg' %}" alt="img06" /></a>
-      </div>
+
     </div>
     <!-- /pages-stack -->
     <button class="menu-button">

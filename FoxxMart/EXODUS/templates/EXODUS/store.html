@@ -1,0 +1,30 @@
+{% extends 'exodus_base.html' %}
+{% load static %}
+
+ {% block grid %}
+{% for product in products %}
+<a href="#preview-{{forloop.counter}}" class="grid__item pos-{{forloop.counter}}" data-title="{{product.name}}">
+		<div class="grid__item-img" style="background-image:url({{product.imageURL1}})"></div>
+</a>
+ {% endfor %}
+ {% endblock %}
+
+
+ {% block preview %}
+	{% for product in products %}
+	<div class="preview__item" id="preview-1">
+		<button class="preview__item-back unbutton"><span>Back</span></button>
+			<div class="preview__item-imgwrap">
+					<div class="preview__item-img" style="background-image:url({{product.imageURL1}})"></div>
+			</div>
+			<h2 data-splitting="" class="preview__item-title">{{product.name}}</h2>
+			<div class="preview__item-content">
+					<div class="preview__item-meta"><span>{{product.short_desc}}</span><span>{{product.price}}</span></div>
+					<p class="preview__item-description">{{product.description1}}</p>
+					<a href="{% url 'EXODUS:cart' %}" data-product={{product.id}} data-action="add"><button class="preview__item-info unbutton">+ Add To Cart </button> </a>
+					<a href="{% url 'EXODUS:product_details' product.id %}"><button class="preview__item-button">View More</button> </a>
+			</div>
+	</div>
+	{% endfor %}
+
+  {% endblock %}

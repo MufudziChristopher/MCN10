@@ -1,0 +1,66 @@
+{% load static %}
+
+		<header class="bp-header ">
+				<br>
+				<span>
+					<div class="main">
+						<h1 class="frame__title oh" style="color:#000">GENESIS</h1>
+
+					</div>
+
+				</span>
+				{% if user.is_authenticated %}
+				<h6>Logged in as: {{user.username}}</h6>
+				{% endif %}
+				<hr>
+				<nav>
+
+					<a href="{% url 'home:home' %}" title="Online Portfolio">
+							<ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon><br>Home
+					</a>
+					<a href="{% url 'GENESIS:store' %}" title="Online Store">
+							<ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon><br>Store
+					</a>						{% if user.is_authenticated %}
+						{% if cartItems %}
+						<a href="{% url 'GENESIS:cart' %}" title="Cart" data-info="">
+								<ion-icon src="{% static 'ion-icons/cart-sharp.svg' %}" class="cart__icon" size="large"></ion-icon><br>Cart
+						</a>
+						{% else %}
+						<a href="{% url 'GENESIS:cart' %}" title="Cart" data-info="">
+								<ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+						</a>
+						{% endif %}
+						<a href="{% url 'account:profile' %}" title="My  Profile">
+								<ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br>Profile
+						</a>
+						<a href="{% url 'account:logout' %}" title="Log Out">
+								<ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon>Logout
+						</a>
+						{% else %}
+						<a href="{% url 'account:login' %}" title="Cart" data-info="">
+								<ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+						</a>
+						<a href="{% url 'account:register' %}" title="Create Account">
+								<ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>Register
+						</a>
+						<a href="{% url 'account:login' %}" title="Log in">
+								<ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Log in
+						</a>
+						{% endif %}
+						<a href="{% url 'GENESIS:contact' %}" title="Contact">
+								<ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
+						</a>
+						<a href="{% url 'GENESIS:about' %}" title="About Us">
+								<ion-icon src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon><br>About
+						</a>
+						{% if user.is_axisStaff or user.is_superuser %}
+						<a href="{% url 'GENESIS:dashboard' %}" target="_blank" title="Management Studio">
+								<ion-icon src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon><br>Studio
+						</a>
+						{% endif %}
+						<hr>
+				</nav>
+		</header>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>

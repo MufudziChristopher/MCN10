@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EXODUS</title>
+    <meta name="description" content="A grid layout with content preview and a magnetic effect.">
+    <meta name="keywords" content="gsap, 3d, grid, thumbnails, content, preview, front end, css, javascript">
+    <meta name="author" content="Mufudzi Christopher & Codrops">
+    <link rel="icon shortcut" href="favicon.61719396.ico">
+    <link rel="stylesheet" href="https://use.typekit.net/gyf5muf.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'exodus/css/index.320bd6f3.css' %}">
+    <script>
+        ! function() {
+            document.documentElement.className = "js";
+            var e, t;
+            (t = document.createElement("style")).innerHTML = "root: { --tmp-var: bold; }", document.head.appendChild(t), e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), t.parentNode.removeChild(t), e || alert("Please view this demo in a modern browser that supports CSS Variables.")
+        }();
+
+    </script>
+</head>
+
+<body class="loading">
+    <main>
+      {% include 'exodus_navbar.html' %}
+
+        <div class="message">Please view this demo on a desktop to see the effect.</div>
+        <div class="frame">
+            <div class="frame__title-wrap">
+                <h1 class="frame__title"></h1>
+            </div>
+            <div class="frame__links"></div>
+        </div>
+        <div class="content">
+            <h2 class="content__title"> <span class="content__title-line content__title-line--1" data-splitting="">Online/</span> <span class="content__title-line content__title-line--2" data-splitting="">Store</span> </h2>
+            <div class="grid">
+              {% block grid %}{% endblock grid %}
+
+
+              </div>
+            <div class="preview">
+              {% block preview %}{% endblock preview %}
+
+
+            </div>
+        </div>
+    </main>
+    <div class="cursor"> <svg class="cursor__svg" width="80" height="80">
+            <circle vector-effect="non-scaling-stroke" class="cursor__svg-circle" cx="40" cy="40" r="20" />
+        </svg> <span class="cursor__text"></span> </div>
+    <script src="{% static 'exodus/js/index.cad48f07.js' %}"></script>
+</body>
+
+</html>

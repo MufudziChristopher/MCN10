@@ -29,6 +29,10 @@ def registration_view(request):
                     user=account,
                     email=email,
                 )
+			EXODUSCustomer.objects.create(
+                    user=account,
+                    email=email,
+                )
 			CollectiveCustomer.objects.create(
                     user=account,
                     email=email,

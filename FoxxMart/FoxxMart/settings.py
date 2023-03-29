@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'LOOP',
     'COURT',
     'GENESIS',
+    'EXODUS',
     'RickJames',
 
     'django_browser_reload',
