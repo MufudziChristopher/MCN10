@@ -24,15 +24,16 @@ a:hover {
 	color: #cd0000;
 }
 
-/* .main,
+ .main,
 .container > header {
+	float: right:
 	width: 100%;
-	margin: 0 auto;
-	padding: 2em;
+	margin-left: 10px;
+	padding: 1em;
 }
 
 .main {
-	max-width: 82.667em;
+	max-width: 20.667em;
 	min-height: 40em;
 }
 
@@ -57,62 +58,6 @@ a:hover {
 	padding: 0 0 0.6em 0.1em;
 } */
 
-/* Header Style */
-.codrops-top {
-	background: transparent;
-	text-transform: uppercase;
-	position: relative;
-	width: 130%  ;
-	font-size: 0.7em;
-	line-height: 1.2;
-}
-
-.codrops-top a {
-	padding: 0em;
-	letter-spacing: 0.1em;
-	color: #000;
-	display: inline-block;
-}
-
-.codrops-top a:hover {
-	background: #cd0000;
-}
-
-.codrops-top span.right {
-	float: right;
-}
-
-.codrops-top span.right a {
-	float: left;
-	display: block;
-}
-
-.codrops-icon:before {
-	font-family: 'codropsicons';
-	margin: 0 0px;
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-}
-.codrops-icon-drop:before {
-	content: "\e001";
-}
-.codrops-icon-prev:before {
-	content: "\e004";
-}
-.codrops-icon-archive:before {
-	content: "\e002";
-}
-.codrops-icon-next:before {
-	content: "\e000";
-}
-.codrops-icon-about:before {
-	content: "\e003";
-}
 
 @media screen and (max-width: 25em) {
 	.codrops-icon span {

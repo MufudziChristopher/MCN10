@@ -1,107 +1,114 @@
 {% load static %}
 
 
-				<!-- <span>
-					<div class="main">
-						<h1 class="">GENESIS</h1>
-					</div>
-				</span> -->
+		<nav id="menu" class="nav ">
+			<header class="navigator">
 
-				<!-- {% if user.is_authenticated %}
-				<h6>Logged in as: {{user.username}}</h6>
-				{% endif %} -->
-		<nav id="menu" class="nav">
-			<ul>
+							<span>
+								<p><img id="GENESIS_spinner" src="{% static 'images/III-light.gif' %}" height="100" /> rdAxis</p>
+							</span>
+
+							{% if user.is_authenticated %}
+							<h6>Logged in as: {{user.username}}</h6>
+							{% endif %}
+							{% if cart.hasItems %}
+							<h6>Items in cart: {{cart.count}}</h6>
+							<h6>Total: {{cart.total}}</h6>
+							{% endif %}
+						</header>
+			<ul class="hide">
 				<li>
 						<a href="{% url 'GENESIS:store' %}" title="Online Portfolio">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Store</span>
-						</a>
+										<ion-icon class="icon"  aria-hidden="true" src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon>
+									<br><br>
+								</a>
 				</li>
 
 				{% if user.is_authenticated %}
 					{% if cartItems %}
 				<li>
 						<a href="{% url 'GENESIS:cart' %}" title="Cart">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Cart</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>
+									<br><br>
+
+													</a>
 				</li>
 				{% else %}
-				<li>
+				<li>									Store
+
 						<a href="{% url 'GENESIS:cart' %}" title="Cart">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Cart</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				{% endif %}
 				<li>
 						<a href="{% url 'account:profile' %}" title="Protfile">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Profile</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br><br>
+
+														</a>
 				</li>
 				<li>
 						<a href="{% url 'account:logout' %}" title="Logout">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Logout</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				{% else %}
 				<li>
 						<a href="{% url 'account:login' %}" title="Login">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Login</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				<li>
 						<a href="{% url 'account:register' %}" title="Register">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Register</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				<li>
 						<a href="{% url 'account:login' %}" title="Login">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Login</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				{% endif %}
 				<li>
 						<a href="{% url 'GENESIS:contact' %}" title="Contact">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Contact</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon><br><br>
+
+														</a>
 				</li>
 				<li>
 						<a href="{% url 'GENESIS:about' %}" title="About">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>About</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon><br><br>
+
+														</a>
 				</li>
 				{% if user.is_superuser %}
 
 				<li>
 						<a href="{% url 'GENESIS:dashboard' %}" title="Dashboard">
-							<span class="icon">
-									<ion-icon aria-hidden="true" src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon>									</span>
-							<span>Dashboard</span>
-						</a>
+
+									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon><br><br>
+
+													</a>
 				</li>
 				{% endif %}
+
 			</ul>
+
 		</nav>
-</div>
 
 
 		<link rel="stylesheet" type="text/css" href="{% static 'css/navbar-component.css' %}">

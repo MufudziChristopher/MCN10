@@ -23,8 +23,9 @@
 </head>
 
 <body class="loading">
+  {% include 'exodus_navbar.html' %}
+
     <main>
-      {% include 'exodus_navbar.html' %}
 
         <div class="message">Please view this demo on a desktop to see the effect.</div>
         <div class="frame">
@@ -34,7 +35,8 @@
             <div class="frame__links"></div>
         </div>
         <div class="content">
-            <h2 class="content__title"> <span class="content__title-line content__title-line--1" data-splitting="">Online/</span> <span class="content__title-line content__title-line--2" data-splitting="">Store</span> </h2>
+            <h2 class="content__title"> <span class="content__title-line content__title-line--1" data-splitting="">
+            </span> </h2>
             <div class="grid">
               {% block grid %}{% endblock grid %}
 

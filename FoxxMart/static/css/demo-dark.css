@@ -1053,6 +1053,18 @@ textarea.input100 {
     background-color: transparent;
 }
 
+.carton {
+    font-size: 1em;
+    position: fixed;
+    top: 0;
+    right: 10;
+    height: 100%;
+    padding: 0 1.195em;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    background-color: transparent;
+}
 
 .no-touch .cart:focus,
 .no-touch .cart:hover {
