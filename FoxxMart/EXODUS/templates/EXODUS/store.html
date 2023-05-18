@@ -12,7 +12,7 @@
 
  {% block preview %}
 	{% for product in products %}
-	<div class="preview__item" id="preview-1">
+	<div class="preview__item" id="preview-{{forloop.counter}}">
 		<button class="preview__item-back unbutton"><span>Back</span></button>
 			<div class="preview__item-imgwrap">
 					<div class="preview__item-img" style="background-image:url({{product.imageURL1}})"></div>

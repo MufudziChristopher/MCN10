@@ -28,16 +28,28 @@ class AxisCustomer(models.Model):
 
 
 class Product(models.Model):
-    name                = models.CharField(max_length=200, null=False)
-    description1        = models.TextField(max_length=2000, null=False)
-    price               = models.DecimalField(max_digits=10, decimal_places=2, null=False)
-    image1              = models.ImageField(upload_to='main_product/', blank=True, null=False)
-    image2              = models.ImageField(upload_to='main_product/', blank=True, null=False)
-    image3              = models.ImageField(upload_to='main_product/', blank=True, null=False)
-    image4              = models.ImageField(upload_to='main_product/', blank=True, null=False)
+    name               = models.CharField(max_length=200, null=False)
+    short_desc          = models.CharField(max_length=500, null=True)
+    description1        = models.TextField(max_length=2000, null=True)
+    description2        = models.TextField(max_length=2000, null=True)
+    description3        = models.TextField(max_length=2000, null=True)
+    description4        = models.TextField(max_length=2000, null=True)
+    description5        = models.TextField(max_length=2000, null=True)
+    description6        = models.TextField(max_length=2000, null=True)
+    description7        = models.TextField(max_length=2000, null=True)
+    description8        = models.TextField(max_length=2000, null=True)
+    image1              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image2              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image3              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image4              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image5              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image6              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image7              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
+    image8              = models.ImageField(upload_to='EXODUS_product/', blank=True, null=False)
     price               = models.DecimalField(max_digits=10, decimal_places=2, null=False)
     stock               = models.IntegerField(null=False)
-    tags                = TaggableManager()
+    tags = TaggableManager()
+
     def __str__(self):
         return self.name
 

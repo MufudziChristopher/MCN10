@@ -344,9 +344,9 @@ a:focus,a:hover {
 	grid-area: preview-title;
 	font-family: dystopian,sans-serif;
 	font-size: 12vw;
-	font-size: clamp(1.5rem,12vw,20vh);
+	font-size: clamp(1.5rem,12vw,10vh);
 	margin: 0;
-	grid-column-start: 1;
+	grid-column-start: 0;
 	align-self: center;
 	padding-left: 1rem;
 	position: relative;

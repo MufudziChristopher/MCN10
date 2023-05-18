@@ -1,0 +1,144 @@
+{% load static %}
+
+
+				<span>
+					<div class="main">
+						<h1 class="frame__title oh">GENESIS</h1>
+					</div>
+				</span>
+
+				{% if user.is_authenticated %}
+				<h6>Logged in as: {{user.username}}</h6>
+				{% endif %}
+				<hr>
+
+		<nav id="menu" class="nav">
+			<ul>
+				<li>
+						<a href="{% url 'GENESIS:store' %}" title="Online Portfolio">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Store</span>
+						</a>
+				</li>
+				{% if user.is_authenticated %}
+					{% if cartItems %}
+				<li>
+						<a href="{% url 'GENESIS:cart' %}" title="Cart">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Cart</span>
+						</a>
+				</li>
+				{% else %}
+				<li>
+						<a href="{% url 'GENESIS:cart' %}" title="Cart">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Cart</span>
+						</a>
+				</li>
+				{% endif %}
+				<li>
+						<a href="{% url 'account:profile' %}" title="Protfile">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Profile</span>
+						</a>
+				</li>
+				<li>
+						<a href="{% url 'account:logout' %}" title="Logout">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/logout-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Logout</span>
+						</a>
+				</li>
+				{% else %}
+				<li>
+						<a href="{% url 'account:login' %}" title="Login">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/login-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Login</span>
+						</a>
+				</li>
+				<li>
+						<a href="{% url 'account:register' %}" title="Register">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/add-person-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Register</span>
+						</a>
+				</li>
+				<li>
+						<a href="{% url 'account:login' %}" title="Login">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/login-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Login</span>
+						</a>
+				</li>
+				{% endif %}
+				<li>
+						<a href="{% url 'GENESIS:contact' %}" title="Contact">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Contact</span>
+						</a>
+				</li>
+				<li>
+						<a href="{% url 'GENESIS:about' %}" title="About">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>About</span>
+						</a>
+				</li>
+				{% if user.is_superuser %}
+
+				<li>
+						<a href="{% url 'GENESIS:dashboard' %}" title="Dashboard">
+							<span class="icon">
+									<ion-icon aria-hidden="true" src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon>									</span>
+							<span>Dashboard</span>
+						</a>
+				</li>
+				{% endif %}
+			</ul>
+		</nav>
+
+
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/navbar-component.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/navbar-default.css' %}">
+
+  <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+	<script>
+		//  The function to change the class
+		var changeClass = function (r,className1,className2) {
+			var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+			if( regex.test(r.className) ) {
+				r.className = r.className.replace(regex,' '+className2+' ');
+				}
+				else{
+				r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+				}
+				return r.className;
+		};
+
+		//  Creating our button in JS for smaller screens
+		var menuElements = document.getElementById('menu');
+		menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+		//  Toggle the class on click to show / hide the menu
+		document.getElementById('menutoggle').onclick = function() {
+			changeClass(this, 'navtoogle active', 'navtoogle');
+		}
+
+		// http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
+		document.onclick = function(e) {
+			var mobileButton = document.getElementById('menutoggle'),
+				buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
+
+			if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
+				changeClass(mobileButton, 'navtoogle active', 'navtoogle');
+			}
+		}
+	</script>
