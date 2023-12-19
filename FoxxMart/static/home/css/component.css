@@ -153,8 +153,11 @@ html.js,
 	width: 100%;
 	height: 100vh;
 	pointer-events: auto;
-    background-image: url("../images/bg1.jpg");
-    background-size: cover;
+	background-image: url("../images/bg2.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #fff;
 	box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -165,8 +168,11 @@ html.js,
 	width: 100%;
 	height: 100vh;
 	pointer-events: auto;
-    background-image: url("../images/bg1.jpg");
-    background-size: cover;
+    background-image: url("../images/bg2.jpg");
+    background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: #fff;
 	box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
 }
 

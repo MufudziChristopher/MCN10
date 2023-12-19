@@ -1,147 +1,77 @@
 {% load static %}
+        <header class="bp-header ">
+
+            <br>
+
+            <span>
+
+                <div class="main">
+                    <a><img id="axis_spinner" src="{% static 'images/III-light.gif' %}" height="60" /></a> rdAxis<br><br>
+                </div>
 
 
-		<nav id="menu" class="nav ">
-			<header class="navigator">
+            </span>
+    <hr>        <br>
 
-							<span >
-								<p><img id="axis_spinner" src="{% static 'images/III-light.gif' %}" height="60" /> rdAxis</p>
-							</span>
+            <nav>
+                <a href="{% url 'home:home' %}" title="Online Portfolio">
+                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="small"></ion-icon><br>Home
+                </a>
 
-							{% if user.is_authenticated %}
-							<h6>Logged in as: {{user.username}}</h6>
-							{% endif %}
-							{% if cart.hasItems %}
-							<h6>Items in cart: {{cart.count}}</h6>
-							<h6>Total: {{cart.total}}</h6>
-							{% endif %}
-						</header>
-			<ul >
-				<li>
-						<a href="{% url 'Axis:store' %}" title="Online Portfolio">
-										<ion-icon class="icon"  aria-hidden="true" src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon>
-									<br><br>						</a>
-				</li>
+                <a href="{% url 'Axis:store' %}" title="Online Store">
+                    <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon><br>Shop
+                </a>
 
-				{% if user.is_authenticated %}
-					{% if cartItems %}
-				<li>
-						<a href="{% url 'Axis:cart' %}" title="Cart">
+                {% if user.is_authenticated %}
+                {% if cartItems %}
 
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>
-									<br><br>
+                <a href="{% url 'Axis:cart' %}" title="Cart" data-info="">
+                    <ion-icon src="{% static 'ion-icons/cart-sharp.svg' %}" class="cart__icon" size="large"></ion-icon><br>Cart
+                    <span class="cart__count">{{cartItems}}</span>
+                </a>
 
-													</a>
-				</li>
-				{% else %}
-				<li>
-						<a href="{% url 'Axis:cart' %}" title="Cart">
+                {% else %}
 
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br><br>
-
-													</a>
-				</li>
-				{% endif %}
-				<li>
-						<a href="{% url 'account:profile' %}" title="Protfile">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br><br>
-
-														</a>
-				</li>
-				<li>
-						<a href="{% url 'account:logout' %}" title="Logout">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon><br><br>
-
-													</a>
-				</li>
-				{% else %}
-				<li>
-						<a href="{% url 'account:login' %}" title="Login">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br><br>
-													</a>
-				</li>
-				<li>
-						<a href="{% url 'account:register' %}" title="Register">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon><br><br>
-
-													</a>
-				</li>
-				<li>
-						<a href="{% url 'account:login' %}" title="Login">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br><br>
-
-													</a>
-				</li>
-				{% endif %}
-				<li>
-						<a href="{% url 'Axis:contact' %}" title="Contact">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon><br><br>
-
-														</a>
-				</li>
-				<li>
-						<a href="{% url 'Axis:about' %}" title="About">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon><br><br>
-
-														</a>
-				</li>
-				{% if user.is_superuser %}
-
-				<li>
-						<a href="{% url 'Axis:dashboard' %}" title="Dashboard">
-
-									<ion-icon class="icon" aria-hidden="true" src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon><br><br>
-
-													</a>
-				</li>
-				{% endif %}
-
-			</ul>
-
-		</nav>
+                <a href="{% url 'Axis:cart' %}" title="Cart" data-info="">
+                    <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+                </a>
+                {% endif %}
+                <a href="{% url 'account:profile' %}" title="My  Profile">
+                    <ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>Profile
+                </a>
+                <a href="{% url 'account:logout' %}" title="Log Out">
+                    <ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon>Logout
+                </a>
+                {% else %}
 
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css/navbar-component.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'css/navbar-default.css' %}">
-
-  <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
-	<script>
-		//  The function to change the class
-		var changeClass = function (r,className1,className2) {
-			var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
-			if( regex.test(r.className) ) {
-				r.className = r.className.replace(regex,' '+className2+' ');
-				}
-				else{
-				r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
-				}
-				return r.className;
-		};
-
-		//  Creating our button in JS for smaller screens
-		var menuElements = document.getElementById('menu');
-		menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
-
-		//  Toggle the class on click to show / hide the menu
-		document.getElementById('menutoggle').onclick = function() {
-			changeClass(this, 'navtoogle active', 'navtoogle');
-		}
-
-		// http://tympanus.net/codrops/2013/05/08/responsive-retina-ready-menu/comment-page-2/#comment-438918
-		document.onclick = function(e) {
-			var mobileButton = document.getElementById('menutoggle'),
-				buttonStyle =  mobileButton.currentStyle ? mobileButton.currentStyle.display : getComputedStyle(mobileButton, null).display;
-
-			if(buttonStyle === 'block' && e.target !== mobileButton && new RegExp(' ' + 'active' + ' ').test(' ' + mobileButton.className + ' ')) {
-				changeClass(mobileButton, 'navtoogle active', 'navtoogle');
-			}
-		}
-	</script>
+                <a href="{% url 'account:login' %}" title="Cart" data-info="">
+                    <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+                </a>
+                <a href="{% url 'account:register' %}" title="Create Account">
+                    <ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>Register
+                </a>
+                <a href="{% url 'account:login' %}" title="Log in">
+                    <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Log in
+                </a>
+                {% endif %}
+                <a href="{% url 'Axis:contact' %}" title="Contact">
+                    <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
+                </a>
+                <a href="{% url 'Axis:about' %}" title="About Us">
+                    <ion-icon src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>About
+                </a>
+                {% if user.is_Staff or user.is_superuser %}
+                <a href="{% url 'Axis:dashboard' %}" target="_blank" title="Management Studio">
+                    <ion-icon src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon>Studio
+                </a>
+                            {% endif %}
+                <!-- <a onclick="lightMode()">
+                    <ion-icon size="small" title="Light Mode" name="sunny-outline"></ion-icon><br>Light
+                </a> -->
+                {% if user.is_authenticated %}
+                <h6>Logged in as: {{user.username}}</h6>
+                {% endif %}
+                <hr>
+								<br>
+								</nav>

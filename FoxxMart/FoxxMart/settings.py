@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'Projects',
     'Marz',
     'RMC',
+    'RMC2',
+    'RMC3',
     'FRGTN',
     'TONYNE',
     'LOOP',
