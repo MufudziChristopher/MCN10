@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'EXODUS',
     'RickJames',
 
-    'django_browser_reload',
     'crispy_forms',
     'widget_tweaks',
     'taggit',
@@ -162,9 +161,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media" )
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'django10.foxx@gmail.com'
-EMAIL_HOST_PASSWORD = 'KingFisher1995!'
