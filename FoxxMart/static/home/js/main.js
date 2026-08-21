@@ -217,7 +217,28 @@
 	}
 
 	init();
-	
+
+	// Keep every project page in a consistent title, description, links sequence.
+	Array.prototype.forEach.call(document.querySelectorAll('.page:not(#page-home)'), function(page) {
+		var header = page.querySelector('.bp-header');
+		if (!header || header.querySelector('.project-links')) return;
+
+		var links = Array.prototype.slice.call(header.querySelectorAll('a[href]'));
+		if (!links.length) return;
+
+		var linksGroup = document.createElement('div');
+		linksGroup.className = 'project-links';
+		links.forEach(function(link) {
+			linksGroup.appendChild(link);
+		});
+
+		Array.prototype.forEach.call(header.querySelectorAll('.bp-header__desc, .info'), function(block) {
+			if (!block.textContent.trim()) block.remove();
+		});
+
+		header.appendChild(linksGroup);
+	});
+
 	//changes to a page such as id="page-manuals" without opening the menu and preserving menu transition functionality
 	window.openPageNoTransition = function(id){
 

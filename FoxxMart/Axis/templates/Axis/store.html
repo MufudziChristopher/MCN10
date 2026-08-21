@@ -9,18 +9,12 @@
 {% block body %}
 <!-- Bottom bar with filter and cart info -->
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left " id="cbp-spmenu-s1">
-<br>
-<br>
-<br>
-<br>
 <button class="action filter__item filter__item--selected" data-filter="*">All</button>
 
 
 
 {% for tag in taglist %}
-<br>
-<br>
-<button class="action filter__item " data-filter=".{{tag}}">
+<button class="action filter__item " data-filter=".{{tag.slug}}">
     <span class="action__text"> {{tag}}({{tag.total_products}})</span>
 </button>
 {% endfor %}
@@ -45,10 +39,12 @@
     <section class="buttonset">
         <button id="showLeftPush" class="carter">
 
-          <ion-icon src="{% static 'ion-icons/filter-outline.svg' %}" class="cart__icon"></ion-icon><br>Filter
+          <ion-icon src="{% static 'ion-icons/filter-outline.svg' %}" class="cart__icon"></ion-icon>
+          <span class="store-control__label">Filter</span>
         </button>
         <button id="showRightPush" class="cart">
-            <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" class="cart__icon"></ion-icon><br>Quick Cart
+            <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" class="cart__icon"></ion-icon>
+            <span class="store-control__label">Quick Cart</span>
             <span class="cart__count">{{cartItems}}</span>
         </button>
 
@@ -59,29 +55,36 @@
     <br><br>
     <br><br>
     <br><br>
-    <table style="text-align: center">
-        <tbody>
-
-            {% for item in items %}
-
-            <tr>
-                <td>
-                    <ion-icon data-product={{item.product.id}} data-action="cancel" class="chg-quantity update-cart" title="Remove from Cart" size="large" src="{% static 'ion-icons/close-circle-outline.svg' %}"></ion-icon>
-                </td>
-                <td>
-                    <a href="{% url 'Axis:product_details'  item.product.id %}"> <img class="img slider" src="{{ item.product.imageURL1 }}" width="200" height="200" /></a>
-                </td>
-
-
-                <td>
-                    <p> {{item.price}}</p>
-                </td>
-            </tr>
-
-            {% endfor %}
-
-        </tbody>
-    </table>
+    <div class="quick-cart__actions quick-cart__actions--top" aria-label="Quick cart actions">
+        <hr class="quick-cart__divider">
+        {% if order.get_cart_total %}
+            {% if user.is_authenticated %}
+            <a class="action--button-btn quick-cart__action" href="{% url 'Axis:cart' %}">Go to Cart</a>
+            <a class="action--button-btn quick-cart__action" href="{% url 'Axis:checkout' %}">Proceed to Checkout</a>
+            {% else %}
+            <a class="action--button-btn quick-cart__action" href="{% url 'account:login' %}">Go to Cart</a>
+            <a class="action--button-btn quick-cart__action" href="{% url 'account:login' %}">Proceed to Checkout</a>
+            {% endif %}
+        {% endif %}
+        <hr class="quick-cart__divider">
+    </div>
+    <ul class="store-quick-cart__items">
+        {% for item in items %}
+        <li class="store-quick-cart__item">
+            <button class="store-quick-cart__remove update-cart" type="button" data-product="{{ item.product.id }}" data-action="cancel" aria-label="Remove {{ item.product.name }} from cart">
+                <ion-icon src="{% static 'ion-icons/close-circle-outline.svg' %}" aria-hidden="true"></ion-icon>
+            </button>
+            <a href="{% url 'Axis:product_details' item.product.id %}" aria-label="View {{ item.product.name }}">
+                <img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}">
+            </a>
+            <div class="store-quick-cart__details">
+                <span class="store-quick-cart__name">{{ item.product.name }}</span>
+                <span>Quantity: {{ item.quantity }}</span>
+                <span>R {{ item.price|floatformat:2 }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 
     <div class="row justify-content-center">
         <div>
@@ -91,11 +94,11 @@
             <hr>
             <p>{% if order.get_cart_total %}
                 {% if user.is_authenticated %}
-                <a href="{% url 'Axis:cart' %}"><button class="action--button-btn" >Go to Cart </button></a>
-                <a href="{% url 'Axis:checkout' %}"><button class="action--button-btn" >Proceed to Checkout</button></a>
+                <a class="action--button-btn quick-cart__action" href="{% url 'Axis:cart' %}">Go to Cart</a>
+                <a class="action--button-btn quick-cart__action" href="{% url 'Axis:checkout' %}">Proceed to Checkout</a>
                 {% else %}
-                <a href="{% url 'account:login' %}"> <button class="action--button-btn" >Go to Cart</button> </a>
-                <a href="{% url 'account:login' %}"> <button class="action--button-btn" >Proceed to Checkout</button></a>
+                <a class="action--button-btn quick-cart__action" href="{% url 'account:login' %}">Go to Cart</a>
+                <a class="action--button-btn quick-cart__action" href="{% url 'account:login' %}">Proceed to Checkout</a>
                 {% endif %}
 
                 {% endif %}
@@ -121,7 +124,7 @@
 
             {% for product in products %}
             {% if product.tags %}
-            <div class="grid__item{% for tag in product.tags.all %} {{tag.name}}{% endfor %} product">
+            <div class="grid__item{% for tag in product.tags.all %} {{tag.slug}}{% endfor %} product">
                 {% endif %}
                 <div class="slider product__image">
                     <div class="slider__item"><a href="{% url 'Axis:product_details'  product.id %}"><img src="{{product.imageURL1}}" /></a></div>
@@ -136,6 +139,10 @@
 
                     {% if product.imageURL4 %}
                     <div class="slider__item"><a href="{% url 'Axis:product_details'  product.id %}"><img src="{{product.imageURL4}}" /></a></div>
+                    {% endif %}
+
+                    {% if product.imageURL5 %}
+                    <div class="slider__item"><a href="{% url 'Axis:product_details'  product.id %}"><img src="{{product.imageURL5}}" /></a></div>
                     {% endif %}
                 </div>
                 <br>

@@ -3454,3 +3454,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 		left: 190px;
 	}
 }
+
+/* Keep login validation messages easy to read on phone-sized screens. */
+@media screen and (max-width: 40em) {
+	.login-error {
+		font-size: 1.25rem;
+		line-height: 1.4;
+	}
+}

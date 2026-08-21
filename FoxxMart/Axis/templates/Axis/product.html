@@ -6,11 +6,61 @@
 
 {% block nav %}{% include 'axis_navbar.html' %}{% endblock %}
 
-{% block body %}
+{% block quick_cart %}
+<a class="product-store-link" href="{% url 'Axis:store' %}">
+  <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" aria-hidden="true"></ion-icon>
+  <span>Continue Shopping</span>
+</a>
+<details class="product-quick-cart">
+  <summary>
+    <span class="product-quick-cart__icon-wrap">
+      <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" aria-hidden="true"></ion-icon>
+      <span class="product-quick-cart__count">{{ cartItems }}</span>
+    </span>
+    <span class="product-quick-cart__label">Quick Cart</span>
+  </summary>
+  {% if items %}
+      <ul>
+        {% for item in items %}
+      <li class="product-quick-cart__item">
+        <button class="product-quick-cart__remove update-cart" type="button" data-product="{{ item.product.id }}" data-action="cancel" aria-label="Remove {{ item.product.name }} from cart">
+          <ion-icon src="{% static 'ion-icons/close-circle-outline.svg' %}" aria-hidden="true"></ion-icon>
+        </button>
+        <a href="{% url 'Axis:product_details' item.product.id %}" aria-label="View {{ item.product.name }}">
+          <img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}">
+        </a>
+        <span>{{ item.product.name }} × {{ item.quantity }} — R {{ item.price|floatformat:2 }}</span>
+      </li>
+        {% endfor %}
+    </ul>
+    <p class="product-quick-cart__total"><strong>Total: R {{ order.get_cart_total|floatformat:2 }}</strong></p>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+  {% if order.get_cart_total %}
+    <hr class="product-quick-cart__divider">
+    {% if user.is_authenticated %}
+    <a class="action--button-btn quick-cart__action product-quick-cart__action" href="{% url 'Axis:cart' %}">Go to Cart</a>
+    <a class="action--button-btn quick-cart__action product-quick-cart__action" href="{% url 'Axis:checkout' %}">Proceed to Checkout</a>
+    {% else %}
+    <a class="action--button-btn quick-cart__action product-quick-cart__action" href="{% url 'account:login' %}">Go to Cart</a>
+    <a class="action--button-btn quick-cart__action product-quick-cart__action" href="{% url 'account:login' %}">Proceed to Checkout</a>
+    {% endif %}
+    <hr class="product-quick-cart__divider">
+  {% endif %}
+</details>
+{% endblock %}
 
+{% block body %}
 <div class="content">
   <h2 class="content__title" data-scroll="" data-scroll-speed="2" data-scroll-position="top">{{product.name}}</h2>
   <p class="content__text" data-scroll="" data-scroll-speed="1" data-scroll-position="top">{{product.description1}}</p>
+  <p class="product-detail__price">R {{ product.price|floatformat:2 }}</p>
+  {% if product.stock >= 1 %}
+  <button data-product="{{ product.id }}" data-action="add" class="product-detail__add-to-cart update-cart">Add to Cart</button>
+  {% else %}
+  <p class="product-detail__stock">Out of stock</p>
+  {% endif %}
   <div class="gallery">
     <figure data-scroll="" data-scroll-speed="1" class="gallery__item">
       <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL1}})"></div></div>
@@ -68,5 +118,14 @@
     </figure>
   </div>
 </div>
+
+<script>
+  document.addEventListener('click', function (event) {
+    var quickCart = document.querySelector('.product-quick-cart');
+    if (quickCart && quickCart.open && !quickCart.contains(event.target)) {
+      quickCart.removeAttribute('open');
+    }
+  });
+</script>
 
 {% endblock %}

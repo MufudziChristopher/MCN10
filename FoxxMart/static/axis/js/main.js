@@ -83,16 +83,31 @@
     function initFlickity() {
         sliders.forEach(function (slider) {
             var flkty = new Flickity(slider, {
-                prevNextButtons: false,
+                prevNextButtons: true,
                 wrapAround: true,
                 cellAlign: 'left',
                 contain: true,
+                autoPlay: 3500,
+                pauseAutoPlayOnHover: true,
                 resize: false
             });
+
+            addCarouselIcon(flkty.prevButton, 'chevron-back-outline.svg');
+            addCarouselIcon(flkty.nextButton, 'chevron-forward-outline.svg');
 
             // store flickity instances
             flkties.push(flkty);
         });
+    }
+
+    function addCarouselIcon(button, icon) {
+        if (!button || !button.element) return;
+
+        var ionIcon = document.createElement('ion-icon');
+        ionIcon.className = 'product-carousel__arrow-icon';
+        ionIcon.setAttribute('src', '/static/ion-icons/' + icon);
+        ionIcon.setAttribute('aria-hidden', 'true');
+        button.element.appendChild(ionIcon);
     }
 
     function initIsotope() {

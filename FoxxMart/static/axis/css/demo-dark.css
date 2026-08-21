@@ -684,6 +684,37 @@ ul.icons li a:hover {
     opacity:1;
 }
 
+@media screen and (max-width: 60em) {
+    .barr {
+        height: 15vh;
+        min-height: 5.5rem;
+        z-index: 2000;
+        isolation: isolate;
+        background-image: url("../images/bg1.jpg");
+        background-position: top left;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
+    }
+
+    .barr::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background-image: url("../images/bg1.jpg");
+        background-position: top left;
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+
+    .view {
+        padding-top: 15vh;
+    }
+}
+
 .bear {
     position: fixed;
     opacity: 1;
@@ -2336,4 +2367,68 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 	.cbp-spmenu-push-toright {
 		left: 190px;
 	}
+}
+
+/* Mobile off-canvas panels must be fully hidden until their controls open them. */
+@media screen and (max-width: 60em) {
+    .cbp-spmenu-vertical {
+        width: min(88vw, 22rem);
+        z-index: 2100;
+    }
+
+    .cbp-spmenu-left { left: -100vw; }
+    .cbp-spmenu-right { right: -100vw; }
+    .cbp-spmenu-left.cbp-spmenu-open { left: 0; }
+    .cbp-spmenu-right.cbp-spmenu-open { right: 0; }
+
+    /* Place the filter list beneath the fixed Filter / Quick Cart controls. */
+    #cbp-spmenu-s1 {
+        top: 15vh;
+        height: calc(100vh - 15vh);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        overflow-y: auto;
+    }
+
+    /* Keep Quick Cart tappable after its panel opens, so the same control
+       can close the panel again. */
+    body.cbp-spmenu-push-toleft .barr { z-index: 2201; }
+    body.cbp-spmenu-push-toright .barr { z-index: 2201; }
+
+    #cbp-spmenu-s1 .filter__item {
+        display: block;
+        flex: 0 0 auto;
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    .collapsible-menu__toggle { z-index: 2001; }
+}
+
+@media screen and (min-width: 60.0625em) {
+    /* Match the desktop Filter panel to the fixed top control bar. */
+    #cbp-spmenu-s1 {
+        top: 10vh;
+        height: 90vh;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        overflow-y: auto;
+    }
+
+    #cbp-spmenu-s1 .filter__item {
+        display: block;
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        margin: 0;
+    }
 }

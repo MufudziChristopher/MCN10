@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'widget_tweaks',
     'taggit',
+    'django_browser_reload',
 
 ]
 
@@ -75,6 +76,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 
 
 ]
@@ -158,5 +160,4 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media" )
-
 

@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Image Stack Intro Animation | Demo 2 | Codrops</title>
+		<title>{% block title %}3rd Axis{% endblock %}</title>
 		<meta name="description" content="Some ideas for intro animations where an image stack moves to become a grid.">
 		<meta name="keywords" content="css, javascript, gsap, animation, uidesign, inspiration, web design">
 		<meta name="author" content="Codrops">
@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="https://use.typekit.net/lty4rfv.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/base.98fd6c19.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo2.06b37b5f.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=56">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=8">
 		<script>document.documentElement.className = "js";
 
 var supportsCssVars = function supportsCssVars() {
@@ -23,19 +25,26 @@ var supportsCssVars = function supportsCssVars() {
 
 supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+		<script>
+			var user = '{{ request.user }}';
+			var csrftoken = document.cookie.split('; ').find(function (cookie) { return cookie.indexOf('csrftoken=') === 0; });
+			csrftoken = csrftoken ? decodeURIComponent(csrftoken.split('=').slice(1).join('=')) : null;
+			var cartCookie = document.cookie.split('; ').find(function (cookie) { return cookie.indexOf('cart=') === 0; });
+			var cart = cartCookie ? JSON.parse(decodeURIComponent(cartCookie.split('=').slice(1).join('='))) : {};
+		</script>
 	</head>
 
-	<body class="loading noscroll">
+	<body class="loading noscroll product-page">
+		{% block nav %}{% endblock %}
+		{% block quick_cart %}{% endblock %}
 
 		<main data-scroll-container="">
 
 			<div class="frame">
-				<h1 class="frame__title"></h1>
 				<div class="frame__demos">
 					<a href="#" class="frame__demo"></a>
 					<a href="#" class="frame__demo frame__demo--current"></a>
 				</div>
-        {% block nav %}{% endblock %}
 
 				<div class="frame__links">
 
@@ -48,5 +57,9 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 			<circle class="cursor__inner" cx="15" cy="15" r="7.5"></circle>
 		</svg>
 		<script src="{% static 'js/demo2.44794d1a.js' %}"></script>
+		<script src="{% static 'axis/js/cart.js' %}"></script>
+		<script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
+		<script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+		<script nomodule src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
 	</body>
 </html>

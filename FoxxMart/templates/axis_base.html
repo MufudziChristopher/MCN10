@@ -28,12 +28,13 @@
     <!-- Flaticon icons -->
 
     <!-- General demo styles & header -->
-    <link id="axis_stylesheet" rel="stylesheet" type="text/css" href="{% static 'axis/css/demo-dark.css' %}" />
-    <link id="axis_stylesheet" rel="stylesheet" type="text/css" href="{% static 'axis/css/component.css' %}" />
+    <link id="axis_stylesheet" rel="stylesheet" type="text/css" href="{% static 'axis/css/demo-dark.css' %}?v=11" />
+    <link id="axis_stylesheet" rel="stylesheet" type="text/css" href="{% static 'axis/css/component.css' %}?v=2" />
     <link id="axis_stylesheet" rel="stylesheet" type="text/css" href="{% static 'axis/css/normalize.css' %}" />
 
     <!-- Flickity gallery styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'axis/css/flickity.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=56" />
 
 
     <script src="{% static 'axis/js/modernizr.custom.js' %}"></script>
@@ -123,8 +124,9 @@
     <script src="{% static 'axis/js/compare_main.js' %}"></script>
     <script src="{% static 'axis/js/mlpushmenu.js' %}"></script>
     <script src="{% static 'axis/js/classie.js' %}"></script>
-    <script src="{% static 'axis/js/main.js' %}"></script>
-    <script src="{% static 'axis/js/cart.js' %}"></script>
+    <script src="{% static 'axis/js/main.js' %}?v=4"></script>
+    <script src="{% static 'axis/js/cart.js' %}?v=4"></script>
+    <script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
     <script>
         $("#post-form").submit(function(e) {
             e.preventDefault();
@@ -221,18 +223,38 @@
           disableOther('showRight');
       };
 
+      function closePushMenus() {
+          classie.remove(showLeftPush, 'active');
+          classie.remove(showRightPush, 'active');
+          classie.remove(body, 'cbp-spmenu-push-toright');
+          classie.remove(body, 'cbp-spmenu-push-toleft');
+          classie.remove(menuLeft, 'cbp-spmenu-open');
+          classie.remove(menuRight, 'cbp-spmenu-open');
+      }
+
+      menuLeft.addEventListener('click', function(event) {
+          if (event.target.closest('.filter__item')) {
+              closePushMenus();
+          }
+      });
 
       showLeftPush.onclick = function() {
-          classie.toggle(this, 'active');
-          classie.toggle(body, 'cbp-spmenu-push-toright');
-          classie.toggle(menuLeft, 'cbp-spmenu-open');
-          disableOther('showLeftPush');
+          var opening = !classie.has(menuLeft, 'cbp-spmenu-open');
+          closePushMenus();
+          if (opening) {
+              classie.add(this, 'active');
+              classie.add(body, 'cbp-spmenu-push-toright');
+              classie.add(menuLeft, 'cbp-spmenu-open');
+          }
       };
       showRightPush.onclick = function() {
-          classie.toggle(this, 'active');
-          classie.toggle(body, 'cbp-spmenu-push-toleft');
-          classie.toggle(menuRight, 'cbp-spmenu-open');
-          disableOther('showRightPush');
+          var opening = !classie.has(menuRight, 'cbp-spmenu-open');
+          closePushMenus();
+          if (opening) {
+              classie.add(this, 'active');
+              classie.add(body, 'cbp-spmenu-push-toleft');
+              classie.add(menuRight, 'cbp-spmenu-open');
+          }
       };
 
       function disableOther(button) {

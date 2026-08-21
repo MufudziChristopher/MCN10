@@ -79,6 +79,13 @@ class Product(models.Model):
             url = ''
         return url
 
+    def imageURL5(self):
+        try:
+            url = self.image5.url
+        except:
+            url = ''
+        return url
+
 class Order(models.Model):
     STATUS = (
         ('Pending', 'Pending'),

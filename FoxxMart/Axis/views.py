@@ -4,6 +4,7 @@ from django.http import JsonResponse, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from decimal import Decimal
 from django.conf import settings
+from django.db.models import Count
 from taggit.models import Tag
 
 import json
@@ -39,7 +40,11 @@ def store(request, category_slug=None):
     order = data['order']
     items = data['items']
     products = Product.objects.all()
-    taglist = Tag.objects.annotate(total_products=Count('product'))
+    taglist = (
+        Tag.objects.filter(product__isnull=False)
+        .annotate(total_products=Count('product'))
+        .order_by('name')
+    )
     context = {'cartItems': cartItems, 'items': items, 'order': order, 'products':products, 'shipping': False, 'taglist': taglist}
     return render(request, 'Axis/store.html', context)
 
@@ -64,7 +69,14 @@ def product_details(request, pk):
 
     product = Product.objects.get(id=pk)
     category = None
-    context = {'cartItems': cartItems, 'product':product,'category' : category , 'shipping': False,}
+    context = {
+        'cartItems': cartItems,
+        'items': items,
+        'order': order,
+        'product': product,
+        'category': category,
+        'shipping': False,
+    }
     return render(request, 'Axis/product.html', context)
 
 
@@ -88,7 +100,19 @@ def updateItem(request):
 
     orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
 
-    if action == 'add':
+    if action == 'set':
+        try:
+            quantity = max(0, int(data.get('quantity', 0)))
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'Quantity must be a whole number.'}, status=400)
+
+        # Stock excludes the units already reserved in this pending order.
+        available_quantity = product.stock + orderItem.quantity
+        quantity = min(quantity, available_quantity)
+        product.stock += orderItem.quantity - quantity
+        orderItem.quantity = quantity
+
+    elif action == 'add':
         if  product.stock >= 1:
             product.stock = (product.stock - 1)
             orderItem.quantity = (orderItem.quantity + 1)
@@ -115,7 +139,7 @@ def updateItem(request):
     if orderItem.quantity <= 0:
         orderItem.delete()
 
-    return JsonResponse('Item was added', safe=False)
+    return JsonResponse({'quantity': orderItem.quantity}, safe=False)
 
 def contact(request):
     data = cartData(request)

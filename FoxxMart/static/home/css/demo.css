@@ -62,11 +62,82 @@ a:hover {
 
 .bp-header {
 	padding: 6em 10vw 2em;
+	text-align: center;
+}
+
+/* A lightly etched pane keeps the landing copy legible over the artwork. */
+.landing-glass {
+	display: inline-block;
+	max-width: min(44rem, 100%);
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+.landing-glass > .bp-header__present,
+.landing-glass > .bp-header__title,
+.landing-glass > .bp-header__desc {
+	display: table;
+	max-width: 100%;
+	margin: 0 auto 0.7rem;
+	padding: 0.45rem 0.8rem;
+	border: none;
+	border-radius: 18px 25px 20px 28px;
+	background:
+		radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.12), transparent 45%),
+		rgba(255, 255, 255, 0.025);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.42),
+		inset 0 0 14px rgba(255, 255, 255, 0.025),
+		0 10px 28px rgba(0, 0, 0, 0.1);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	animation: gooey-settle 7s ease-in-out infinite;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.landing-glass > .bp-header__desc {
+	margin-bottom: 0;
+}
+
+@keyframes gooey-settle {
+	0%, 100% { border-radius: 18px 25px 20px 28px; }
+	50% { border-radius: 26px 18px 28px 20px; }
+}
+
+#page-home .pages-nav__item--social .link--social {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.4rem;
+	min-height: 2.4rem;
+	margin: 0.75rem 0.2rem 0;
+	border-radius: 18px 25px 20px 28px;
+	background:
+		radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.12), transparent 45%),
+		rgba(255, 255, 255, 0.025);
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.42),
+		inset 0 0 14px rgba(255, 255, 255, 0.025),
+		0 10px 28px rgba(0, 0, 0, 0.1);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+	animation: gooey-settle 7s ease-in-out infinite;
+}
+
+@media screen and (min-width: 60.0625em) {
+	.bp-header:hover .landing-glass > *,
+	.bp-header:hover .pages-nav__item--social .link--social {
+		background: transparent;
+		box-shadow: none;
+		-webkit-backdrop-filter: none;
+		backdrop-filter: none;
+	}
 }
 
 .bp-header__title {
 	font-size: 2.125em;
-	font-weight: 700;
+	font-weight: 500;
 	line-height: 2.3;
 	margin: 0;
 	letter-spacing: 2px;
@@ -204,6 +275,14 @@ a:hover {
 @media screen and (max-width: 40em) {
 	.bp-header {
 		padding: 50px 20px 1em;
+	}
+	.landing-glass {
+		max-width: 100%;
+	}
+	.landing-glass > .bp-header__present,
+	.landing-glass > .bp-header__title,
+	.landing-glass > .bp-header__desc {
+		padding: 0.4rem 0.65rem;
 	}
 	.bp-header__title {
 		font-size: 1.8em;

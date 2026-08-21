@@ -137,3 +137,34 @@
 		left: 190px;
 	}
 }
+
+/* Keep the off-canvas store panels completely outside narrow viewports.  The
+ * desktop offset was narrower than the panel itself, leaving a visible strip
+ * of filter links over product cards on phones. */
+@media screen and (max-width: 60em) {
+	.cbp-spmenu-vertical {
+		width: min(88vw, 22rem);
+		z-index: 2100;
+	}
+
+	.cbp-spmenu-left {
+		left: -100vw;
+	}
+
+	.cbp-spmenu-right {
+		right: -100vw;
+	}
+
+	.cbp-spmenu-left.cbp-spmenu-open {
+		left: 0;
+	}
+
+	.cbp-spmenu-right.cbp-spmenu-open {
+		right: 0;
+	}
+
+	/* The centred store-menu control must sit above the fixed filter/cart bar. */
+	.collapsible-menu__toggle {
+		z-index: 2001;
+	}
+}

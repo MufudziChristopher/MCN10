@@ -1,0 +1,728 @@
+.collapsible-menu {
+	position: sticky;
+	top: 0;
+	z-index: 1100;
+}
+
+.collapsible-menu__content {
+	overflow: hidden;
+	max-height: 40rem;
+	opacity: 1;
+	transform: translateY(0);
+	transition: max-height 0.35s ease, opacity 0.2s ease, transform 0.35s ease;
+}
+
+.collapsible-menu__toggle {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	/* Axis places fixed filter/cart controls above its page header. Keep the
+	 * reusable trigger above those controls while leaving opened panels higher. */
+	z-index: 2001;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.4rem;
+	width: 5.5rem;
+	height: 4.5rem;
+	padding: 1rem 0.35rem 0.25rem;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	outline: none;
+	cursor: pointer;
+	transform: translateX(-50%);
+}
+
+.collapsible-menu__toggle:focus,
+.collapsible-menu__toggle:focus-visible {
+	outline: none;
+}
+
+.collapsible-menu__toggle img {
+	width: 2.5rem;
+	height: 2.5rem;
+	max-width: 100%;
+	max-height: 2.5rem;
+	object-fit: contain;
+}
+
+.collapsible-menu__toggle-label {
+	font: inherit;
+	font-size: 0.75rem;
+	line-height: 1;
+	color: #000;
+}
+
+/* Mark the destination currently being viewed in every Axis navigation menu. */
+.collapsible-menu nav a[aria-current='page'] {
+	text-decoration: underline;
+	text-decoration-thickness: 0.14rem;
+	text-underline-offset: 0.45rem;
+}
+
+/* Keep the cart quantity in the same top-right badge position in every menu. */
+.collapsible-menu nav a[title='Cart'] {
+	position: relative;
+}
+
+.collapsible-menu nav a[title='Cart'] .cart__count {
+	position: absolute;
+	top: 0.35rem;
+	right: 0.35rem;
+	display: grid;
+	width: 1.2rem;
+	height: 1.2rem;
+	margin: 0;
+	place-items: center;
+	border-radius: 50%;
+	background: #000;
+	color: #fff;
+	font-size: 0.75rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.collapsible-menu nav .menu-icon--large {
+	width: 2rem;
+	height: 2rem;
+	font-size: 2rem;
+}
+
+/* Give the expanded navigation icons a little room above them. */
+body:has(.barr) .collapsible-menu__content nav {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.collapsible-menu.is-collapsed .collapsible-menu__content {
+	max-height: 0;
+	opacity: 0;
+	transform: translateY(-1rem);
+	pointer-events: none;
+	visibility: hidden;
+}
+
+/* A child cannot rise above its parent's stacking layer. This lets the
+ * collapsed trigger remain usable above Axis's fixed controls. */
+.collapsible-menu.is-collapsed {
+	z-index: 2001;
+}
+
+.collapsible-menu.is-collapsed .collapsible-menu__toggle {
+	display: inline-flex;
+}
+
+/* The Axis trigger is placed beside the header, not inside it. */
+.has-collapsed-menu .collapsible-menu__toggle {
+	display: inline-flex;
+}
+
+/* The trigger sits outside Axis's header. Keep it visible above an opened
+ * panel as well, so the same control can always collapse that panel. */
+[data-collapsible-menu-toggle][aria-expanded='true'] {
+	display: inline-flex;
+	z-index: 2202;
+}
+
+/* The Axis storefront keeps its centered Menu control visible so visitors can
+ * both open and re-collapse the navigation. */
+body:has(.barr) .collapsible-menu__toggle {
+	display: inline-flex;
+	height: 5.5rem;
+}
+
+/* Keep the fixed Filter and Quick Cart controls fully visible. The legacy
+ * styles clip the right-hand control and add unequal horizontal padding. */
+body:has(.barr) .barr {
+	left: 0;
+	right: 0;
+	width: auto;
+	height: 5.5rem;
+	min-height: 5.5rem;
+	box-sizing: border-box;
+	padding: 0;
+	overflow: visible;
+	background: rgba(255, 255, 255, 0.18);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+body:has(.barr) #showLeftPush,
+body:has(.barr) #showRightPush {
+	min-width: 7rem;
+	height: 5.5rem;
+	box-sizing: border-box;
+	padding: 1rem 0.75rem 0.25rem;
+	white-space: nowrap;
+	overflow: visible;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.4rem;
+	line-height: 1;
+}
+
+body:has(.barr) #showLeftPush .cart__icon,
+body:has(.barr) #showRightPush .cart__icon {
+	display: block;
+	width: 2.5rem;
+	height: 2.5rem;
+	font-size: 2.5rem;
+}
+
+body:has(.barr) .store-control__label {
+	line-height: 1;
+}
+
+/* A closed off-canvas Filter drawer must not leave invisible buttons active
+ * along the edge of the viewport. */
+#cbp-spmenu-s1:not(.cbp-spmenu-open) {
+	pointer-events: none;
+	visibility: hidden;
+}
+
+#cbp-spmenu-s1.cbp-spmenu-open {
+	pointer-events: auto;
+	visibility: visible;
+}
+
+/* Open off-canvas drawers use the same rounded glass surface. */
+#cbp-spmenu-s1.cbp-spmenu-open,
+#cbp-spmenu-s2.cbp-spmenu-open {
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+#cbp-spmenu-s1.cbp-spmenu-open {
+	border-radius: 0 1rem 1rem 0;
+}
+
+#cbp-spmenu-s2.cbp-spmenu-open {
+	border-radius: 1rem 0 0 1rem;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	-webkit-overflow-scrolling: touch;
+	z-index: 2200;
+}
+
+#cbp-spmenu-s2 .quick-cart__action {
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	pointer-events: auto;
+	padding: 0.65rem 0.85rem;
+	text-decoration: none;
+}
+
+.store-quick-cart__items {
+	margin: 0;
+	padding: 0.75rem;
+	list-style: none;
+}
+
+.store-quick-cart__item {
+	display: grid;
+	grid-template-columns: auto 3.5rem minmax(0, 1fr);
+	align-items: center;
+	gap: 0.65rem;
+	margin: 0.65rem 0;
+}
+
+.store-quick-cart__item a,
+.store-quick-cart__item img {
+	display: block;
+	padding: 0;
+	border: 0;
+	background: transparent;
+}
+
+.store-quick-cart__item img {
+	width: 3.5rem;
+	height: 3.5rem;
+	object-fit: cover;
+}
+
+.store-quick-cart__remove {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.6rem;
+	height: 1.6rem;
+	padding: 0;
+	border: 0 !important;
+	background: transparent !important;
+	box-shadow: none;
+	cursor: pointer;
+}
+
+.store-quick-cart__remove ion-icon {
+	width: 1.6rem;
+	height: 1.6rem;
+}
+
+.store-quick-cart__details {
+	display: grid;
+	gap: 0.15rem;
+	min-width: 0;
+}
+
+.store-quick-cart__name {
+	font-weight: 700;
+}
+
+.store-quick-cart__description {
+	font-size: 0.85rem;
+}
+
+.quick-cart__actions--top {
+	display: none;
+	margin: 0;
+	padding: 0.5rem 1rem 1rem;
+	text-align: center;
+}
+
+.quick-cart__divider {
+	margin: 0.5rem 0;
+}
+
+#cbp-spmenu-s2.quick-cart--scrollable .quick-cart__actions--top {
+	display: block;
+}
+
+/* Keep the Axis storefront menu transparent without changing navigation on
+ * the other portfolio pages. */
+body:has(.barr) .collapsible-menu:not(.is-collapsed),
+body:has(.barr) .collapsible-menu__content {
+	background: transparent;
+}
+
+body:has(.barr) .collapsible-menu:not(.is-collapsed) {
+	background: rgba(255, 255, 255, 0.18);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	border-radius: 1rem;
+	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
+}
+
+/* Begin products directly below the fixed Filter / Menu / Quick Cart bar. */
+body:has(.barr) .view {
+	padding-top: 5.5rem;
+}
+
+/* The cart has the same fixed menu control but no storefront control bar. */
+.axis-cart-page {
+	padding-top: 5.5rem;
+}
+
+/* A full-width glass strip keeps the cart page's floating Menu control legible. */
+body:has(.axis-cart-page)::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5.5rem;
+	z-index: 2000;
+	pointer-events: none;
+	background: rgba(255, 255, 255, 0.18);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+body:has(.axis-cart-page) .collapsible-menu {
+	top: 5.5rem;
+	z-index: 2001;
+}
+
+body:has(.axis-cart-page) .collapsible-menu__toggle {
+	display: inline-flex;
+	z-index: 2002;
+}
+
+body:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed) {
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	border-radius: 1rem;
+	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
+}
+
+/* The checkout uses the same floating navigation treatment as the cart. */
+.axis-checkout-page {
+	/* Clear the fixed Menu GIF and retain a deliberate gap before checkout. */
+	padding-top: 8.5rem;
+}
+
+/* Keep the fixed Menu GIF legible even while the navigation panel is open. */
+body:has(.axis-checkout-page)::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5.5rem;
+	z-index: 2000;
+	pointer-events: none;
+	background: rgba(255, 255, 255, 0.18);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+body:has(.axis-checkout-page) .collapsible-menu {
+	/* The opened panel begins under, rather than over, the Menu GIF. */
+	top: 5.5rem;
+	z-index: 2001;
+}
+
+body:has(.axis-checkout-page) .collapsible-menu__toggle {
+	display: inline-flex;
+	z-index: 2002;
+}
+
+body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
+	padding: 0.75rem 1rem;
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	border-radius: 1rem;
+	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
+}
+
+/* Cart actions reserve the centre of the glass strip for the Menu control. */
+.axis-cart-page__actions {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 5.5rem;
+	z-index: 2001;
+	pointer-events: none;
+}
+
+.axis-cart-page__action {
+	position: absolute;
+	top: 0;
+	width: calc(50% - 3rem);
+	height: 100%;
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 1rem;
+	color: #000;
+	font-weight: 400;
+	line-height: 1.1;
+	text-decoration: none;
+	pointer-events: auto;
+	transition: background-color 0.2s ease;
+}
+
+.axis-cart-page__action:hover,
+.axis-cart-page__action:focus-visible {
+	background: #fff;
+}
+
+.axis-cart-page__action--continue {
+	left: 0;
+	justify-content: flex-start;
+}
+
+.axis-cart-page__action--checkout {
+	right: 0;
+	justify-content: flex-end;
+	text-align: right;
+}
+
+/* Keep the cart table description row visible while its items scroll. */
+.axis-cart-table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.axis-cart-table thead {
+	position: sticky;
+	top: 5.5rem;
+	z-index: 100;
+}
+
+.axis-cart-table thead th {
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+.axis-cart-table thead th:first-child {
+	border-radius: 1rem 0 0 1rem;
+}
+
+.axis-cart-table thead th:last-child {
+	border-radius: 0 1rem 1rem 0;
+}
+
+.cart-quantity-input {
+	width: 4.25rem;
+	padding: 0.4rem;
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	border-radius: 0.5rem;
+	background: rgba(255, 255, 255, 0.6);
+	text-align: center;
+}
+
+.cart-quantity-warning {
+	display: block;
+	margin-top: 0.35rem;
+	color: #cd0000;
+	font-size: 0.8rem;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 60em) {
+	body:has(.barr) .barr {
+		height: max(15vh, 5.5rem);
+		background-image: none;
+	}
+
+	.axis-cart-table thead {
+		top: max(15vh, 5.5rem);
+	}
+
+	.axis-cart-page__actions {
+		height: max(15vh, 5.5rem);
+	}
+
+	.axis-cart-page__action {
+		width: calc(50% - 3rem);
+		padding-right: 0.5rem;
+		padding-left: 0.5rem;
+		font-size: 0.8rem;
+	}
+
+	.axis-checkout-page {
+		padding-top: calc(max(15vh, 5.5rem) + 3rem);
+	}
+
+	body:has(.axis-checkout-page)::before {
+		height: max(15vh, 5.5rem);
+	}
+
+	body:has(.axis-checkout-page) .collapsible-menu {
+		top: max(15vh, 5.5rem);
+	}
+
+	body:has(.axis-checkout-page) .collapsible-menu__toggle {
+		height: max(15vh, 5.5rem);
+	}
+
+	body:has(.barr) .barr::before {
+		content: none;
+		background-image: none;
+	}
+
+	body:has(.barr) .view {
+		/* Give the first product row breathing room beneath the mobile controls. */
+		padding-top: calc(max(15vh, 5.5rem) + 3rem);
+	}
+
+	body:has(.barr) .collapsible-menu__toggle,
+	body:has(.barr) #showLeftPush,
+	body:has(.barr) #showRightPush {
+		height: max(15vh, 5.5rem);
+	}
+
+	/* Axis storefront navigation sits below the fixed Filter / Quick Cart bar. */
+	body:has(.barr) .collapsible-menu {
+		top: 15vh;
+	}
+
+	/* This sits outside the expandable header in Axis, so it remains available
+	 * to close an already-open menu. */
+	.collapsible-menu__toggle {
+		display: inline-flex;
+	}
+
+	body:has(.barr) .collapsible-menu:not(.is-collapsed) {
+		width: 100%;
+		max-width: none;
+	}
+
+	/* Keep every icon inside the expanded navigation compact on small screens. */
+	body:has(.barr) .collapsible-menu nav ion-icon {
+		width: 1.1rem;
+		height: 1.1rem;
+	}
+
+	body:has(.barr) #showLeftPush,
+	body:has(.barr) #showRightPush {
+		min-width: 6.75rem;
+		padding-right: 0.5rem;
+		padding-left: 0.5rem;
+	}
+
+	#cbp-spmenu-s1 {
+		top: 15vh;
+		height: calc(100vh - 15vh);
+		padding: 1rem;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: stretch;
+		gap: 0.75rem;
+		overflow-y: auto;
+	}
+
+	#cbp-spmenu-s1 .filter__item {
+		display: block;
+		flex: 0 0 auto;
+		width: 100%;
+		height: auto;
+		min-height: 0;
+		margin: 0;
+		text-align: left;
+	}
+
+	/* Keep product actions clearly available on touch devices. */
+	.grid__item .action--buy,
+	.grid__item .action--compare-add {
+		background: #fff !important;
+		opacity: 1 !important;
+	}
+
+	/* Give the open Quick Cart roughly 2 cm more clearance from page content. */
+	body.cbp-spmenu-push-toleft {
+		left: -22.5rem;
+	}
+
+	body.cbp-spmenu-push-toleft .collapsible-menu__toggle {
+		z-index: 2203 !important;
+	}
+
+	/* Codrops-style mirrored push: left Filter moves the page right by the
+	 * exact distance that right Quick Cart moves it left. */
+	body.cbp-spmenu-push-toright {
+		left: 22.5rem !important;
+	}
+
+	/* Fixed controls stay anchored while the Filter panel overlays the page. */
+	body.cbp-spmenu-push-toright .barr {
+		left: 0 !important;
+		right: 0 !important;
+	}
+
+	body.cbp-spmenu-push-toright #showRightPush {
+		left: auto !important;
+		right: 0 !important;
+	}
+
+	body.cbp-spmenu-push-toright .collapsible-menu__toggle {
+		left: 50% !important;
+		transform: translateX(-50%) !important;
+	}
+
+	/* The body push performs the movement; avoid adding a second view offset. */
+	body.cbp-spmenu-push-toright .view {
+		position: relative;
+		left: 0;
+	}
+}
+
+/* Axis's legacy stylesheet ends inside a narrow-screen media rule. Keep the
+ * desktop Filter layout here, after that stylesheet, so it can apply. */
+@media screen and (min-width: 60.0625em) {
+	body:has(.barr) .collapsible-menu {
+		top: 5.5rem;
+	}
+
+	#cbp-spmenu-s1 {
+		top: 5.5rem;
+		height: calc(100vh - 5.5rem);
+		padding: 1rem;
+		display: flex !important;
+		flex-direction: column !important;
+		align-items: stretch;
+		gap: 0.75rem;
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+
+	#cbp-spmenu-s1::-webkit-scrollbar {
+		display: none;
+	}
+
+	#cbp-spmenu-s1 .filter__item {
+		display: block;
+		flex: 0 0 auto;
+		width: 100%;
+		height: auto;
+		min-height: 0;
+		margin: 0;
+		text-align: left;
+	}
+}
+
+/* Quick Cart must remain the topmost hit target while its off-canvas panel is
+ * open, allowing the same button to close it on every viewport. */
+body.cbp-spmenu-push-toleft .barr {
+	z-index: 2201 !important;
+}
+
+body.cbp-spmenu-push-toleft #showRightPush {
+	position: fixed;
+	z-index: 2202 !important;
+	pointer-events: auto !important;
+}
+
+/* A product image carousel shows one complete image per card at every
+ * breakpoint. The previous fixed-width cells exposed a sliver of the next
+ * desktop image. */
+.slider.product__image {
+	width: 100%;
+	overflow: hidden;
+}
+
+.slider.product__image .slider__item {
+	box-sizing: border-box;
+	width: 100% !important;
+}
+
+.slider.product__image .slider__item img {
+	display: block;
+	width: 100%;
+}
+
+/* Compact, high-contrast controls for each product image carousel. */
+.slider.product__image .flickity-prev-next-button {
+	width: 2rem;
+	height: 2rem;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.slider.product__image .flickity-prev-next-button svg {
+	display: none;
+}
+
+.slider.product__image .product-carousel__arrow-icon {
+	width: 1rem;
+	height: 1rem;
+	color: #000;
+	font-size: 1rem;
+}
+
+.slider.product__image .flickity-prev-next-button:hover {
+	background: transparent;
+}
+
+.slider.product__image .flickity-prev-next-button:disabled {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.collapsible-menu__content {
+		transition: none;
+	}
+}

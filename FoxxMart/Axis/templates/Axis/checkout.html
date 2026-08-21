@@ -5,15 +5,19 @@
 
 {% block body %}
 <!-- Bottom bar with filter and cart info -->
-<div class="view">
+<div class="view axis-checkout-page">
 
     <!-- Grid -->
 
     <section class="grid grid--loader">
+        <hr>
         <h3 class="billing-heading mb-4 action--text">Order Summary</h3>
         <p class="billing-heading mb-4 action--text">Number of Items : <strong>{{ order.get_cart_items}}</strong></p>
+        <hr>
         <p class="billing-heading mb-4 action--text">Grand Total : <strong>R{{ order.get_cart_total|floatformat:2}}</strong></p>
+        <hr>
         <span> {% for item in items %} <a href="{% url 'Axis:product_details' item.product.id %}"><img src={{item.product.imageURL1}} class="slider" style="width:100px; height:120px" /></a> X {{item.quantity}}&nbsp;{% endfor %}</span>
+        <hr>
         <div style="padding:auto; " id="form-wrapper">
             <form id="form" >
                 <div id="user-informaton">
