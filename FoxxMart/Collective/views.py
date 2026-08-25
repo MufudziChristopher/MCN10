@@ -14,6 +14,7 @@ from .models import *
 from .forms import *
 from .utils import cookieCart, cartData, guestOrder
 from .filters import *
+from account.access import store_access_required
 
 # Create your views here.
 def about(request):
@@ -28,12 +29,21 @@ def store(request, category_slug=None):
     items = data['items']
 
     category = None
-    products = CollectiveProduct.objects.all()
+    products = CollectiveProduct.objects.prefetch_related('variants').all()
     categorylist = CollectiveCategory.objects.annotate(total_products=Count('collectiveproduct'))
-    context = {'cartItems': cartItems, 'products':products , 'category_list' : categorylist ,'category' : category , 'shipping': False}
+    context = {
+        'cartItems': cartItems,
+        'items': items,
+        'order': order,
+        'products': products,
+        'category_list': categorylist,
+        'category': category,
+        'shipping': False,
+    }
 
     return render(request, 'Collective/store.html', context)
 
+@store_access_required('collective')
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -46,6 +56,7 @@ def cart(request):
 
 
 
+@store_access_required('collective')
 def checkout(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -79,14 +90,32 @@ def updateItem(request):
     data = json.loads(request.body)
     productId = data['productId']
     action = data['action']
+    size = (data.get('size') or '').strip().upper()
+    allowed_sizes = {'S', 'M', 'L', 'XL', 'XXL'}
+
+    if size and size not in allowed_sizes:
+        return JsonResponse({'error': 'Please select a valid size.'}, status=400)
+    if action == 'add' and size not in allowed_sizes:
+        return JsonResponse({'error': 'Please select a size before adding this item.'}, status=400)
 
     customer = request.user.collectivecustomer
     product = CollectiveProduct.objects.get(id=productId)
     order, created = CollectiveOrder.objects.get_or_create(customer=customer, status="Pending")
 
-    orderItem, created = CollectiveOrderItem.objects.get_or_create(order=order, product=product)
+    orderItem, created = CollectiveOrderItem.objects.get_or_create(order=order, product=product, size=size)
 
-    if action == 'add':
+    if action == 'set':
+        try:
+            quantity = max(0, int(data.get('quantity', 0)))
+        except (TypeError, ValueError):
+            return JsonResponse({'error': 'Quantity must be a whole number.'}, status=400)
+
+        available_quantity = product.stock + orderItem.quantity
+        quantity = min(quantity, available_quantity)
+        product.stock += orderItem.quantity - quantity
+        orderItem.quantity = quantity
+
+    elif action == 'add':
         if  product.stock >= 1:
             product.stock = (product.stock - 1)
             orderItem.quantity = (orderItem.quantity + 1)
@@ -100,6 +129,10 @@ def updateItem(request):
         print("Stock: ",product.stock)
         orderItem.quantity = (orderItem.quantity - 1)
 
+    elif action == 'cancel':
+        product.stock += orderItem.quantity
+        orderItem.quantity = 0
+
     product.save()
 
     orderItem.save()
@@ -109,15 +142,13 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
+@store_access_required('collective')
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = ColletiveOrder.objects.get_or_create(customer=customer, status="Pending")
-    else:
-        customer, order = guestOrder(request, data)
+    customer = request.user.collectivecustomer
+    order, created = CollectiveOrder.objects.get_or_create(customer=customer, status="Pending")
 
     total = float(data['form']['total'])
     order.transaction_id = transaction_id

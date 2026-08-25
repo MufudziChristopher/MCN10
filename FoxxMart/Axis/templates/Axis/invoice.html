@@ -1,0 +1,10 @@
+{% extends 'axis_base.html' %}
+{% load local_pricing %}
+{% block body %}
+<main class="axis-checkout-page grid">
+  <h2>Test Invoice</h2><hr>
+  <p>Invoice: {{ order.transaction_id }}</p><p>Date: {{ order.date_ordered }}</p><p>Status: {{ order.status }}</p><hr>
+  {% for item in items %}<p>{{ item.product.name }} × {{ item.quantity }} — {% local_price item.get_total %}</p>{% endfor %}
+  <hr><h3>Total: {% local_price order.get_cart_total %}</h3>
+</main>
+{% endblock %}

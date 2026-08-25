@@ -6,16 +6,13 @@
 {% block body %}
 
 
-<div class="view">
-
-    <!-- Grid -->
-
-    <section class="grid grid--loader">
+<section class="account-login-page">
 
     <h2>Login</h2>
 <br>
     <form class="login100-form validate-form" method="POST" novalidate>
       {% csrf_token %}
+	  <input type="hidden" name="next" value="{{ request.GET.next }}">
       {% if messages %}
       {% for message in messages %}
       <div class="alert alert-warning alert-dismissable" role="alert">
@@ -67,7 +64,7 @@
           Create new account
           <ion-icon size="large" src="{% static 'ion-icons/return-up-forward-outline.svg' %}"></ion-icon>        </a>
       </div>
+      <p>Google sign-in will be available once the mall's Google OAuth credentials are configured.</p>
     </form>
 </section>
-</div>
 {% endblock %}

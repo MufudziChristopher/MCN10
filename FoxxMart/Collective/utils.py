@@ -29,6 +29,7 @@ def cookieCart(request):
                     'price':product.price,
                     'imageURL1':product.imageURL1,
                 },
+                'size': cart[i].get('size', ''),
                 'quantity':cart[i]["quantity"],
                 'get_total':total
             }
@@ -49,7 +50,9 @@ def cartData(request):
         customer = request.user.collectivecustomer
         print(customer)
         order, created = CollectiveOrder.objects.get_or_create(customer=customer, status="Pending")
-        items = order.collectiveorderitem_set.all()
+        # Catalog reseeds can retire a product while preserving order history.
+        # Only live products belong in an active shopping cart.
+        items = order.collectiveorderitem_set.filter(product__isnull=False).select_related('product')
         cartItems = order.get_cart_items
 
     else:
@@ -88,6 +91,7 @@ def guestOrder(request, data):
         orderItem = CollectiveOrderItem.objects.create(
             product=product,
             order=order,
+            size=item.get('size', ''),
             quantity=item['quantity'],
         )
 

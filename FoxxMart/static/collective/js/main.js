@@ -11,6 +11,9 @@
 ;(function(window) {
 
 	'use strict';
+	// Cart, checkout, and informational pages share the base template but do not
+	// contain the storefront slider/detail pair.
+	if( !document.querySelector('.slider') || !document.querySelector('.content') ) return;
 
 	var bodyEl = document.body, 
 		docElem = window.document.documentElement,
@@ -51,11 +54,15 @@
 		contentEl = document.querySelector('.content'),
 		// close content control
 		closeContentCtrl = contentEl.querySelector('button.button--close'),
+		detailNextCtrl = contentEl.querySelector('.button--detail-next'),
+		detailPrevCtrl = contentEl.querySelector('.button--detail-prev'),
 		// index of current item
 		current = 0,
 		// check if an item is "open"
 		isOpen = false,
 		isFirefox = typeof InstallTrigger !== 'undefined',
+		touchStart = null,
+		swipeNavigated = false,
 		// scale body when zooming into the items, if not Firefox (the performance in Firefox is not very good)
 		bodyScale = isFirefox ? false : 3;
 
@@ -77,6 +84,27 @@
 
 	function init() {
 		initEvents();
+		openRequestedProduct();
+	}
+
+	// Links from the cart arrive directly at the matching product's detail view.
+	function openRequestedProduct() {
+		var productId = new URLSearchParams(window.location.search).get('product');
+		if( !productId ) return;
+
+		var requestedIndex = items.findIndex(function(item) {
+			return item.getAttribute('data-product-id') === productId;
+		});
+		if( requestedIndex === -1 ) return;
+
+		current = requestedIndex;
+		items.forEach(function(item, index) {
+			classie.remove(item, 'slide--current');
+			dynamics.css(item, { opacity: index === current ? 1 : 0, visibility: index === current ? 'visible' : 'hidden' });
+		});
+		classie.add(items[current], 'slide--current');
+
+		window.setTimeout(function() { openItem(items[current]); }, 50);
 	}
 
 	// event binding
@@ -86,12 +114,89 @@
 			openItem(items[current]);
 		});
 
+		// The product image itself is the detail control.
+		items.forEach(function(item) {
+			var productImage = item.querySelector('.zoomer');
+			productImage.addEventListener('click', function() {
+				if( swipeNavigated ) {
+					swipeNavigated = false;
+					return;
+				}
+				if (item === items[current]) openItem(item);
+			});
+		});
+
 		// close content
 		closeContentCtrl.addEventListener('click', closeContent);
+		detailNextCtrl.addEventListener('click', function() { navigateDetail('right'); });
+		detailPrevCtrl.addEventListener('click', function() { navigateDetail('left'); });
+		contentEl.addEventListener('click', function(ev) {
+			if( ev.target === contentEl && isOpen ) closeContent();
+		});
+
+		// Alternate product views replace the featured image without leaving the detail view.
+		[].slice.call(contentEl.querySelectorAll('.collective-detail-thumbnail')).forEach(function(thumbnail) {
+			thumbnail.addEventListener('click', function(ev) {
+				ev.stopPropagation();
+				var contentItem = thumbnail.closest('.content__item');
+				var featuredImage = contentItem.querySelector('.collective-featured-image');
+				var newSource = thumbnail.getAttribute('data-full-image');
+				if( !newSource || featuredImage.getAttribute('src') === newSource ) return;
+
+				contentItem.querySelectorAll('.collective-detail-thumbnail').forEach(function(button) {
+					classie.remove(button, 'is-selected');
+					button.setAttribute('aria-pressed', 'false');
+				});
+				classie.add(thumbnail, 'is-selected');
+				thumbnail.setAttribute('aria-pressed', 'true');
+				classie.add(featuredImage, 'is-swapping');
+				window.setTimeout(function() {
+					featuredImage.onload = function() { classie.remove(featuredImage, 'is-swapping'); };
+					featuredImage.src = newSource;
+					if( featuredImage.complete ) classie.remove(featuredImage, 'is-swapping');
+				}, 160);
+			});
+		});
 
 		// navigation
 		navRightCtrl.addEventListener('click', function() { navigate('right'); });
 		navLeftCtrl.addEventListener('click', function() { navigate('left'); });
+
+		// Desktop-only stage navigation. Keep the product artwork and explicit
+		// controls interactive; clicks on the remaining left/right stage advance
+		// through the collapsed storefront only.
+		sliderEl.addEventListener('click', function(ev) {
+			if( isOpen || window.matchMedia('(max-width: 50em)').matches ) return;
+			if( ev.target.closest('button, a, summary, .zoomer') ) return;
+
+			navigate(ev.clientX < window.innerWidth / 2 ? 'left' : 'right');
+		});
+
+		// Touch navigation is deliberately restricted to the mobile, collapsed stage.
+		// A mostly-horizontal movement must exceed the threshold before it changes product.
+		sliderEl.addEventListener('touchstart', function(ev) {
+			if( isOpen || !window.matchMedia('(max-width: 50em)').matches ) return;
+			if( ev.target.closest('button, a, summary') ) return;
+			var touch = ev.changedTouches[0];
+			touchStart = { x: touch.clientX, y: touch.clientY };
+		}, { passive: true });
+
+		sliderEl.addEventListener('touchend', function(ev) {
+			if( !touchStart || isOpen || !window.matchMedia('(max-width: 50em)').matches ) {
+				touchStart = null;
+				return;
+			}
+			var touch = ev.changedTouches[0],
+				deltaX = touch.clientX - touchStart.x,
+				deltaY = touch.clientY - touchStart.y;
+			touchStart = null;
+
+			if( Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY) ) return;
+			swipeNavigated = true;
+			navigate(deltaX < 0 ? 'right' : 'left');
+		}, { passive: true });
+
+		sliderEl.addEventListener('touchcancel', function() { touchStart = null; }, { passive: true });
 
 		// window resize
 		window.addEventListener('resize', throttle(function(ev) {
@@ -108,7 +213,12 @@
 
 		// keyboard navigation events
 		document.addEventListener( 'keydown', function( ev ) {
-			if( isOpen ) return; 
+			if( isOpen ) {
+				if( ev.key === 'Escape' ) closeContent();
+				if( ev.keyCode === 37 ) navigateDetail('left');
+				if( ev.keyCode === 39 ) navigateDetail('right');
+				return;
+			}
 			var keyCode = ev.keyCode || ev.which;
 			switch (keyCode) {
 				case 37:
@@ -119,6 +229,41 @@
 					break;
 			}
 		} );
+	}
+
+	// Changes product while the detail layer stays open.
+	function navigateDetail(dir) {
+		if( !isOpen || itemsTotal < 2 ) return;
+
+		var oldIndex = current,
+			oldItem = items[oldIndex],
+			oldContentItem = contentEl.querySelector('.content__item--current'),
+			oldZoomer = oldItem.querySelector('.zoomer');
+
+		current = dir === 'right' ? (current + 1) % itemsTotal : (current - 1 + itemsTotal) % itemsTotal;
+
+		var nextItem = items[current],
+			nextContentItem = document.getElementById(nextItem.getAttribute('data-content')),
+			nextZoomer = nextItem.querySelector('.zoomer');
+
+		classie.remove(oldContentItem, 'content__item--current');
+		classie.remove(oldContentItem, 'content__item--reset');
+		classie.remove(oldZoomer, 'zoomer--active');
+		classie.remove(oldZoomer, 'zoomer--notrans');
+		oldZoomer.style.WebkitTransform = 'translate3d(0,0,0) scale3d(1,1,1)';
+		oldZoomer.style.transform = 'translate3d(0,0,0) scale3d(1,1,1)';
+
+		items.forEach(function(item) { classie.remove(item, 'slide--current'); });
+		classie.add(nextItem, 'slide--current');
+		dynamics.css(oldItem, { opacity: 0, visibility: 'hidden' });
+		dynamics.css(nextItem, { opacity: 1, visibility: 'visible' });
+
+		classie.add(nextContentItem, 'content__item--current');
+		classie.add(nextContentItem, 'content__item--reset');
+		classie.add(nextZoomer, 'zoomer--active');
+		classie.add(nextZoomer, 'zoomer--notrans');
+		nextZoomer.style.WebkitTransform = 'translate3d(0,0,0) scale3d(1,1,1)';
+		nextZoomer.style.transform = 'translate3d(0,0,0) scale3d(1,1,1)';
 	}
 
 	// opens one item
@@ -151,6 +296,7 @@
 			}
 			// no scrolling
 			classie.add(bodyEl, 'noscroll');
+			classie.add(bodyEl, 'collective-product-details-open');
 			classie.add(contentEl, 'content--open');
 			var contentItem = document.getElementById(item.getAttribute('data-content'))
 			classie.add(contentItem, 'content__item--current');
@@ -172,6 +318,7 @@
 		classie.remove(contentEl, 'content--open');
 		classie.remove(contentItem, 'content__item--current');
 		classie.remove(bodyEl, 'noscroll');
+		classie.remove(bodyEl, 'collective-product-details-open');
 				
 		if( bodyScale ) {
 			// reset fix for safari (allowing fixed children to keep position)

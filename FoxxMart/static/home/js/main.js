@@ -44,7 +44,7 @@
 		// the navigation wrapper
 		nav = document.querySelector('.pages-nav'),
 		// the menu nav items
-		navItems = [].slice.call(nav.querySelectorAll('.link--page')),
+		navItems = [].slice.call(nav.querySelectorAll('.link--page:not([data-external-page])')),
 		// check if menu is open
 		isMenuOpen = false;
 

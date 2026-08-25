@@ -2,6 +2,7 @@
 
 
 {% load static %}
+{% load local_pricing %}
 {% block nav %}{% include 'genesis_navbar.html' %}{% endblock %}
 
 
@@ -49,7 +50,7 @@
                         <p class="action--text">{{item.product.name}}</p>
                     </td>
                     <td>
-                        <p class="action--text">R{{item.product.price|floatformat:2}}</p>
+                        <p class="action--text">{% local_price item.product.price %}</p>
                     </td>
 
                     <td>
@@ -65,7 +66,7 @@
                         <ion-icon data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart" size="large" src="{% static 'ion-icons/chevron-down-circle-outline.svg' %}"></ion-icon>
                     </td>
                     <td>
-                        <p class="action--text" ><strong >R{{item.get_total}}</strong><p>
+                        <p class="action--text" ><strong >{% local_price item.get_total %}</strong><p>
                           </td>
 
                 </tr><!-- END TR-->
@@ -86,7 +87,7 @@
                     </p>
                     <p>
                         <span><strong>
-                                <h1>Grand Total: R {{order.get_cart_total|floatformat:2}}</h1>
+                                <h1>Grand Total: {% local_price order.get_cart_total %}</h1>
                             </strong></span>
                     </p>
                     <br>

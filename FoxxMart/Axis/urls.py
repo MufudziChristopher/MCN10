@@ -1,6 +1,7 @@
 from django.urls import path
 
 from . import views
+from . import api
 
 app_name = "Axis"
 
@@ -16,8 +17,15 @@ urlpatterns = [
 	path('checkout/', views.checkout, name="checkout"),
     path('about/', views.about, name="about"),
 	path('update_item/', views.updateItem, name="update_item"),
-	path('process_order/', views.processOrder, name="process_order"),
+    path('checkout/complete-test/', views.complete_test_checkout, name='complete_test_checkout'),
+    path('invoice/<int:pk>/', views.invoice, name='invoice'),
 	path('contact/', views.contact, name="contact"),
+
+    # Version 1 storefront API
+    path('api/v1/products/', api.products, name='api_products'),
+    path('api/v1/products/<int:product_id>/', api.product_detail, name='api_product_detail'),
+    path('api/v1/cart/', api.cart, name='api_cart'),
+    path('api/v1/cart/items/', api.cart_items, name='api_cart_items'),
 
 
     #------------ (CRM - URLS) ------------

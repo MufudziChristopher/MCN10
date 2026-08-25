@@ -9,12 +9,12 @@
 		<meta name="description" content="Some ideas for intro animations where an image stack moves to become a grid.">
 		<meta name="keywords" content="css, javascript, gsap, animation, uidesign, inspiration, web design">
 		<meta name="author" content="Codrops">
-		<link rel="shortcut icon" href="favicon.26242483.ico">
+		<link rel="shortcut icon" href="{% static 'images/brand.png' %}">
 		<link rel="stylesheet" href="https://use.typekit.net/lty4rfv.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/base.98fd6c19.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo2.06b37b5f.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=56">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=8">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=58">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=11">
 		<script>document.documentElement.className = "js";
 
 var supportsCssVars = function supportsCssVars() {
@@ -58,6 +58,8 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 		</svg>
 		<script src="{% static 'js/demo2.44794d1a.js' %}"></script>
 		<script src="{% static 'axis/js/cart.js' %}"></script>
+		<span hidden>{% csrf_token %}</span>
+		<script src="{% static 'axis/js/locale.js' %}?v=3"></script>
 		<script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
 		<script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>

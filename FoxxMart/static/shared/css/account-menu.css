@@ -1,0 +1,200 @@
+.account-menu {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: none;
+  min-height: 5.25rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  isolation: isolate;
+  text-align: center;
+  transform: none;
+}
+
+/* Same single, always-visible glass strip used by the Collective title. */
+.account-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 5.25rem;
+  pointer-events: none;
+  background: rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.account-menu__toggle {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  min-height: 5.25rem;
+  margin: 0;
+  padding: .75rem 1rem;
+  border: 0;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+}
+
+.account-menu__brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  font: 400 1.3rem/1 sans-serif;
+  letter-spacing: .18em;
+  white-space: nowrap;
+}
+
+.account-menu__brand img {
+  display: block;
+  width: 2.7rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.account-menu nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .75rem 1.7rem;
+  max-height: 20rem;
+  min-height: 3.4rem;
+  box-sizing: border-box;
+  width: min(92%, 56rem);
+  margin: 0 auto;
+  overflow: hidden;
+  padding: .8rem 1rem;
+  opacity: 1;
+  transition: max-height .25s ease, opacity .2s ease, margin .25s ease;
+}
+
+.account-menu:not(.is-collapsed) nav {
+  width: min(92%, 56rem);
+  max-width: none;
+  padding: .8rem 1rem;
+  border: 0;
+  border-radius: 0 0 1rem 1rem;
+  background: rgba(255, 255, 255, .22);
+  box-shadow: 0 .35rem .8rem rgba(0, 0, 0, .12);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  flex-wrap: nowrap;
+}
+
+.account-menu.is-collapsed nav {
+  max-height: 0;
+  min-height: 0;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.account-menu nav a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  width: auto;
+  height: auto;
+  min-width: 3.5rem;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  color: #111;
+  font-size: .76rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.account-menu nav a:hover { color: #cd0000; }
+.account-menu nav a[aria-current='page'] { border-bottom: 1px solid currentColor; }
+.account-menu nav ion-icon { font-size: 1.5rem; }
+
+/* The sticky header occupies document flow; expanded navigation therefore
+   pushes account content down without an overlay offset. */
+.container > .view { padding-top: 5.5rem; }
+
+/* The login is a self-contained screen: centre the whole form in both axes,
+   rather than inheriting the storefront's top-aligned grid layout. */
+.container > .view:has(.account-login-page) {
+  display: flex;
+  min-height: 100svh;
+  padding-top: 0;
+}
+
+.container > .view:has(.account-login-page) > .grid {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+}
+
+.account-login-page {
+  box-sizing: border-box;
+  width: min(100%, 32rem);
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.account-login-page form {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container > .view:has(.account-registration-page) {
+  display: flex;
+  min-height: 100svh;
+  padding-top: 0;
+}
+
+.container > .view:has(.account-registration-page) > .grid {
+  display: flex;
+  flex: 1;
+  align-items: safe center;
+  justify-content: center;
+  min-height: 100svh;
+}
+
+.account-registration-page {
+  box-sizing: border-box;
+  width: min(100%, 32rem);
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.account-registration-page form { margin-right: auto; margin-left: auto; }
+
+@media (max-width: 460px) {
+  .account-menu { min-height: 4.75rem; margin-bottom: 1rem; }
+  .account-menu::before { height: 4.75rem; }
+  .account-menu__toggle { min-height: 4.75rem; padding: .5rem; }
+  .account-menu nav { width: 100%; max-height: 20rem; min-height: 3.1rem; gap: .1rem; flex-wrap: wrap; border-radius: 0; }
+  .account-menu__brand { font-size: 1.1rem; }
+  .account-menu__brand img { width: 2.35rem; height: 1.75rem; }
+  .container > .view:not(:has(.account-login-page, .account-registration-page)) { padding-top: 5rem; }
+}

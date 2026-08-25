@@ -18,6 +18,7 @@
     <link id="africa_stylesheet" rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'more/css/component.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/account-menu.css' %}?v=14" />
     <script src="{% static 'more/js/modernizr-custom.js' %}"></script>
         <script src="{% static 'js/cart.js' %}"></script>
 
@@ -27,28 +28,45 @@
     <!-- Main container -->
     <div class="container">
         <!-- Blueprint header -->
-        <header class="bp-header ">
-          <hr style="color:black">
-<br>
-            <nav>
-                <a href="{% url 'home:home' %}" title="Online Portfolio">
-                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon><br>Home
+        <header class="bp-header account-menu is-collapsed" data-account-menu>
+            <button class="account-menu__toggle" type="button" aria-controls="account-navigation" aria-expanded="false">
+              <span class="account-menu__brand" aria-label="FoxxMart">
+                <span>F O</span><img src="{% static 'axis/static_root/images/XX-light.gif' %}" alt="XX"><span>M A R T</span>
+              </span>
+            </button>
+            <nav id="account-navigation" aria-label="Account navigation">
+                <a href="{% url 'home:home' %}" title="Home">
+                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon>Home
                 </a>
-                <a href="{% url 'Axis:contact' %}" title="Contact">
-                  <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon><br>Contact
+                <a href="{% url 'home:contact' %}" title="Contact">
+                  <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
                 </a>
 
-                <a href="{% url 'account:register' %}" title="Create Account">
-                  <ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon><br>Register
+                <a href="{% url 'account:register' %}" title="Create Account"{% if request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}>
+                  <ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>Register
                 </a>
-                <a href="{% url 'account:login' %}" title="Log in">
-                  <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Login
+                <a href="{% url 'account:login' %}" title="Log in"{% if request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}>
+                  <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon>Login
                 </a>
 
             </nav>
-            <hr style="color:black">
-
         </header>
+
+        <script>
+          (function () {
+            var menu = document.querySelector('[data-account-menu]');
+            if (!menu) return;
+            var toggle = menu.querySelector('.account-menu__toggle');
+            var setOpen = function (open) {
+              menu.classList.toggle('is-collapsed', !open);
+              toggle.setAttribute('aria-expanded', String(open));
+            };
+            toggle.addEventListener('click', function () { setOpen(menu.classList.contains('is-collapsed')); });
+            document.addEventListener('keydown', function (event) {
+              if (event.key === 'Escape') setOpen(false);
+            });
+          }());
+        </script>
 
 <div class="view">
 
@@ -65,8 +83,9 @@
     <script src="{% static 'more/js/main.js' %}"></script>
     <script>
         (function() {
-            var menuEl = document.getElementById('ml-menu'),
-                mlmenu = new MLMenu(menuEl, {
+            var menuEl = document.getElementById('ml-menu');
+            if (!menuEl) return;
+            var mlmenu = new MLMenu(menuEl, {
                     // breadcrumbsCtrl : true, // show breadcrumbs
                     // initialBreadcrumb : 'all', // initial breadcrumb text
                     backCtrl: false, // show back button
@@ -176,7 +195,8 @@
 
         function swapImageDark() {
             console.log("Dark Image Ran")
-            document.getElementById('africa_spinner').src = "{% static 'images/africa-dark.png' }"
+            var spinner = document.getElementById('africa_spinner');
+            if (spinner) spinner.src = "{% static 'images/africa-dark.png' }";
             localStorage.setItem('africa_spinner', "{% static 'images/africa-dark.png' %}")
 
         }
@@ -196,7 +216,8 @@
 
         function swapImageLight() {
             console.log("Light Image Ran")
-            document.getElementById('africa_spinner').src = "{% static 'images/africa-light.png' %}"
+            var spinner = document.getElementById('africa_spinner');
+            if (spinner) spinner.src = "{% static 'images/africa-light.png' %}";
             localStorage.setItem('africa_spinner', "{% static 'images/africa-light.png' %}")
         }
     </script>

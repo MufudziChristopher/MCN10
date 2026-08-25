@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title>FoxxMart | Mall Front</title>
+  <link rel="shortcut icon" href="{% static 'images/brand.png' %}">
+  <link rel="stylesheet" href="{% static 'shared/css/account-menu.css' %}?v=14">
+  <link rel="stylesheet" href="{% static 'home/css/mall.css' %}?v=13">
+</head>
+<body class="mall-front">
+  <header class="account-menu is-collapsed" data-account-menu>
+    <button class="account-menu__toggle" type="button" aria-controls="mall-navigation" aria-expanded="false">
+      <span class="account-menu__brand" aria-label="FoxxMart">
+        <span>F O</span><img src="{% static 'axis/static_root/images/XX-light.gif' %}" alt="XX"><span>M A R T</span>
+      </span>
+    </button>
+    <nav id="mall-navigation" aria-label="Mall navigation">
+      <a href="{% url 'home:home' %}" title="Home"><ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon>Home</a>
+      <a href="{% url 'home:contact' %}" title="Contact"><ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact</a>
+      {% if request.user.is_authenticated %}
+      <a href="{% url 'account:profile' %}" title="Account"><ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>Account</a>
+      <a href="{% url 'account:logout' %}" title="Logout"><ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon>Logout</a>
+      {% else %}
+      <a href="{% url 'account:register' %}" title="Register"><ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>Register</a>
+      <a href="{% url 'account:login' %}" title="Login"><ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon>Login</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="mall-stage">
+    <canvas class="mall-stage__particles" aria-hidden="true"></canvas>
+    <section class="mall-intro" aria-labelledby="mall-title">
+      <p>Mufudzi Christopher Presents</p>
+      <h1 id="mall-title">FOXX MART</h1>
+      <span>Drag the stream, or enter a store</span>
+      <strong>Foxx Mart, Shop Smart!</strong>
+    </section>
+    <div class="mall-stream" data-mall-stream>
+      <div class="mall-stream__line" data-mall-line>
+        {% for store in stores %}
+        <div class="mall-store-card" style="--accent: {{ store.accent }}; --image: url('{{ media_url }}{{ store.image }}')">
+          <a class="mall-card" href="{% url store.url_name %}">
+            <span class="mall-card__scan" aria-hidden="true"></span>
+            {% if store.cart_count %}<span class="mall-card__cart-count" aria-label="{{ store.cart_count }} items in {{ store.name }} cart">{{ store.cart_count }}</span>{% endif %}
+            <span class="mall-card__top">FOXXMART / {{ forloop.counter|stringformat:'02d' }}</span>
+            <span class="mall-card__body">
+              <strong>{{ store.name }}</strong>
+              <small>{{ store.tagline }}</small>
+            </span>
+          </a>
+          <a class="mall-store-card__link" href="{% url store.url_name %}">Enter {{ store.name }} <span aria-hidden="true">↗</span></a>
+        </div>
+        {% endfor %}
+        {% for store in stores %}
+        <div class="mall-store-card" aria-hidden="true" style="--accent: {{ store.accent }}; --image: url('{{ media_url }}{{ store.image }}')">
+          <a class="mall-card" href="{% url store.url_name %}" tabindex="-1">
+            <span class="mall-card__scan" aria-hidden="true"></span>
+            {% if store.cart_count %}<span class="mall-card__cart-count">{{ store.cart_count }}</span>{% endif %}
+            <span class="mall-card__top">FOXXMART / {{ forloop.counter|stringformat:'02d' }}</span>
+            <span class="mall-card__body"><strong>{{ store.name }}</strong><small>{{ store.tagline }}</small></span>
+          </a>
+          <a class="mall-store-card__link" href="{% url store.url_name %}" tabindex="-1">Enter {{ store.name }} <span aria-hidden="true">↗</span></a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+  <script src="{% static 'home/js/mall.js' %}?v=4"></script>
+  <script>
+    (function () {
+      var menu = document.querySelector('[data-account-menu]');
+      if (!menu) return;
+      var toggle = menu.querySelector('.account-menu__toggle');
+      var setOpen = function (open) {
+        menu.classList.toggle('is-collapsed', !open);
+        toggle.setAttribute('aria-expanded', String(open));
+      };
+      toggle.addEventListener('click', function () { setOpen(menu.classList.contains('is-collapsed')); });
+      document.addEventListener('keydown', function (event) { if (event.key === 'Escape') setOpen(false); });
+    }());
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

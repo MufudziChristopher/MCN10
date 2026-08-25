@@ -6,8 +6,7 @@
 {% block body %}
 
 
-<div class="view">
-  <section class="grid">
+<section class="account-registration-page">
 
 <h2>Register</h2>
 {% if storefront %}
@@ -44,9 +43,15 @@
       </div>
       <br>
       <div >
-        <ion-icon size="small" name="person-outline"></ion-icon><br>Full Name<br>
-      <input type="text"  style="border-radius: 5px; padding: 5px" name="username" placeholder="Full Name: " maxlength="30"  required id="id_username">
+        <ion-icon size="small" name="person-outline"></ion-icon><br>First Name<br>
+      <input type="text"  style="border-radius: 5px; padding: 5px" name="first_name" placeholder="First name" maxlength="30" required id="id_first_name">
     </div>
+        <br>
+
+      <div>
+        <ion-icon size="small" name="person-outline"></ion-icon><br>Last Name<br>
+        <input type="text" style="border-radius: 5px; padding: 5px" name="last_name" placeholder="Last name" maxlength="30" required id="id_last_name">
+      </div>
         <br>
 
         <div>
@@ -55,6 +60,20 @@
       <input type="text" style="border-radius: 5px; padding: 5px" name="phone" maxlength="200" required id="id_phone" placeholder="Phone Number:">
     </div>
           <br>
+
+    <fieldset>
+      <legend>Choose your mall access</legend>
+      {% for value, label in form.access_package.field.choices %}
+      <label><input type="radio" name="access_package" value="{{ value }}"{% if value == 'single' %} checked{% endif %}> {{ label }}</label><br>
+      {% endfor %}
+    </fieldset>
+    <div id="store-choices">
+      <p>For multi-store access, choose your stores:</p>
+      {% for value, label in form.stores.field.choices %}
+      <label><input type="checkbox" name="stores" value="{{ value }}"> {{ label }}</label><br>
+      {% endfor %}
+    </div>
+    <br>
 
     <div>
 <ion-icon size="small" name="lock-open-outline"></ion-icon><br>Password<br>
@@ -74,8 +93,18 @@
 
 </form>
 
+<script>
+  (function () {
+    var choices = document.getElementById('store-choices');
+    var update = function () {
+      choices.hidden = document.querySelector('input[name="access_package"]:checked').value !== 'multi';
+    };
+    document.querySelectorAll('input[name="access_package"]').forEach(function (input) { input.addEventListener('change', update); });
+    update();
+  }());
+</script>
 
-  </section>
-</div><br>
+
+</section>
 
 {% endblock %}

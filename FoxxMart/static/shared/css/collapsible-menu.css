@@ -146,8 +146,8 @@ body:has(.barr) .barr {
 	padding: 0;
 	overflow: visible;
 	background: rgba(255, 255, 255, 0.18);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 }
 
 body:has(.barr) #showLeftPush,
@@ -194,8 +194,8 @@ body:has(.barr) .store-control__label {
 #cbp-spmenu-s1.cbp-spmenu-open,
 #cbp-spmenu-s2.cbp-spmenu-open {
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 }
 
 #cbp-spmenu-s1.cbp-spmenu-open {
@@ -203,7 +203,7 @@ body:has(.barr) .store-control__label {
 }
 
 #cbp-spmenu-s2.cbp-spmenu-open {
-	border-radius: 1rem 0 0 1rem;
+	border-radius: 1.25rem 0 0 1.25rem;
 	overflow-y: auto;
 	overscroll-behavior: contain;
 	-webkit-overflow-scrolling: touch;
@@ -303,8 +303,8 @@ body:has(.barr) .collapsible-menu__content {
 
 body:has(.barr) .collapsible-menu:not(.is-collapsed) {
 	background: rgba(255, 255, 255, 0.18);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 	border-radius: 1rem;
 	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
 }
@@ -317,6 +317,7 @@ body:has(.barr) .view {
 /* The cart has the same fixed menu control but no storefront control bar. */
 .axis-cart-page {
 	padding-top: 5.5rem;
+	padding-bottom: 8rem;
 }
 
 /* A full-width glass strip keeps the cart page's floating Menu control legible. */
@@ -330,8 +331,8 @@ body:has(.axis-cart-page)::before {
 	z-index: 2000;
 	pointer-events: none;
 	background: rgba(255, 255, 255, 0.18);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 }
 
 body:has(.axis-cart-page) .collapsible-menu {
@@ -346,8 +347,8 @@ body:has(.axis-cart-page) .collapsible-menu__toggle {
 
 body:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed) {
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 	border-radius: 1rem;
 	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
 }
@@ -369,8 +370,8 @@ body:has(.axis-checkout-page)::before {
 	z-index: 2000;
 	pointer-events: none;
 	background: rgba(255, 255, 255, 0.18);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 }
 
 body:has(.axis-checkout-page) .collapsible-menu {
@@ -387,8 +388,8 @@ body:has(.axis-checkout-page) .collapsible-menu__toggle {
 body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	padding: 0.75rem 1rem;
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 	border-radius: 1rem;
 	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
 }
@@ -443,6 +444,49 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	border-spacing: 0;
 }
 
+.axis-cart-page .axis-cart-table,
+.axis-cart-page .axis-cart-table tr,
+.axis-cart-page .axis-cart-table td {
+	background: transparent;
+	border: 0;
+}
+
+.axis-cart-page .axis-cart-table td { padding-top: 2px; padding-bottom: 2px; }
+
+.axis-cart-product-link { display: inline-block; background: transparent; border: 0; }
+
+.axis-cart-product-image {
+	display: block;
+	width: 96px;
+	height: 144px;
+	object-fit: contain;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.axis-cart-summary {
+	box-sizing: border-box;
+	width: min(100%, 30rem);
+	margin: 0 auto;
+	padding: 0 1rem;
+	text-align: center;
+}
+
+.axis-cart-summary h3 { margin: 0.5rem 0; font-weight: 400; }
+.axis-cart-summary p { margin: 0.5rem 0; }
+.axis-cart-summary__actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.7rem;
+	margin: 0.75rem 0;
+}
+.axis-cart-summary__actions a { color: #000; font-weight: 400; text-decoration: none; }
+.axis-cart-summary__actions a:hover,
+.axis-cart-summary__actions a:focus-visible { color: #cd0000; }
+
 .axis-cart-table thead {
 	position: sticky;
 	top: 5.5rem;
@@ -451,8 +495,8 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 
 .axis-cart-table thead th {
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(8px);
-	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
 }
 
 .axis-cart-table thead th:first-child {
@@ -482,7 +526,8 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 
 @media screen and (max-width: 60em) {
 	body:has(.barr) .barr {
-		height: max(15vh, 5.5rem);
+		/* Keep the closed mobile glass bar compact while preserving touch targets. */
+		height: max(8vh, 4.25rem);
 		background-image: none;
 	}
 
@@ -500,6 +545,9 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 		padding-left: 0.5rem;
 		font-size: 0.8rem;
 	}
+
+	.axis-cart-product-image { width: 100%; max-width: 6rem; height: auto; margin: 0 auto; }
+	.axis-cart-summary__actions { flex-wrap: wrap; }
 
 	.axis-checkout-page {
 		padding-top: calc(max(15vh, 5.5rem) + 3rem);
@@ -524,18 +572,18 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 
 	body:has(.barr) .view {
 		/* Give the first product row breathing room beneath the mobile controls. */
-		padding-top: calc(max(15vh, 5.5rem) + 3rem);
+		padding-top: calc(max(8vh, 4.25rem) + 2rem);
 	}
 
 	body:has(.barr) .collapsible-menu__toggle,
 	body:has(.barr) #showLeftPush,
 	body:has(.barr) #showRightPush {
-		height: max(15vh, 5.5rem);
+		height: max(8vh, 4.25rem);
 	}
 
 	/* Axis storefront navigation sits below the fixed Filter / Quick Cart bar. */
 	body:has(.barr) .collapsible-menu {
-		top: 15vh;
+		top: max(8vh, 4.25rem);
 	}
 
 	/* This sits outside the expandable header in Axis, so it remains available
@@ -563,8 +611,8 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	}
 
 	#cbp-spmenu-s1 {
-		top: 15vh;
-		height: calc(100vh - 15vh);
+		top: max(8vh, 4.25rem);
+		height: calc(100vh - max(8vh, 4.25rem));
 		padding: 1rem;
 		display: flex !important;
 		flex-direction: column !important;

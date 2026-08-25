@@ -2,6 +2,7 @@
 
 
 {% load static %}
+{% load local_pricing %}
 
 {% block body %}
 <!-- Bottom bar with filter and cart info -->
@@ -12,7 +13,7 @@
     <section class="grid grid--loader">
         <h3 class="billing-heading mb-4 action--text">Order Summary</h3>
         <p class="billing-heading mb-4 action--text">Number of Items : <strong>{{ order.get_cart_items}}</strong></p>
-        <p class="billing-heading mb-4 action--text">Grand Total : <strong>R{{ order.get_cart_total|floatformat:2}}</strong></p>
+        <p class="billing-heading mb-4 action--text">Grand Total : <strong>{% local_price order.get_cart_total %}</strong></p>
         <span> {% for item in items %} <a href="{% url 'Axis:product_details' item.product.id %}"><img src={{item.product.imageURL1}} class="slider" style="width:100px; height:120px" /></a> X {{item.quantity}}&nbsp;{% endfor %}</span>
         <div style="padding:auto; " id="form-wrapper">
             <form id="form" >

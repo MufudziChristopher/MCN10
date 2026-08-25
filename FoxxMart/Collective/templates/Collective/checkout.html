@@ -5,17 +5,31 @@
 
 {% block body %}
 
-<div class="view">
+<div class="view collective-checkout-page">
 
     <!-- Grid -->
 
     <section class="grid grid--loader">
-        <h3 class="billing-heading mb-4 action--text">Order Summary</h3>
-        <p class="billing-heading mb-4 action--text">Number of Items : <strong>{{ order.get_cart_items}}</strong></p>
-        <p class="billing-heading mb-4 action--text">Grand Total : <strong>R{{ order.get_cart_total|floatformat:2}}</strong></p>
-        <span> {% for item in items %} <img src={{ item.product.imageURL1}} class="slider" style="width:100px; height:120px" /> X {{item.quantity}}&nbsp;{% endfor %}</span>
-        <div style="padding-left:30%; padding-right:30%; " id="form-wrapper">
+        <hr>
+        <section class="collective-checkout-summary">
+            <h3 class="billing-heading mb-4 action--text">Order Summary</h3>
+            <p class="billing-heading mb-4 action--text">Number of Items: <strong>{{ order.get_cart_items }}</strong></p>
+            <hr>
+            <p class="billing-heading mb-4 action--text">Grand Total: <strong>R{{ order.get_cart_total|floatformat:2 }}</strong></p>
+            <hr>
+            <div class="collective-checkout-items">
+                {% for item in items %}
+                <div class="collective-checkout-item">
+                    <img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}">
+                    <span>{{ item.product.name }} · Qty {{ item.quantity }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <hr>
+        <div id="form-wrapper">
             <form id="form">
+                {% csrf_token %}
                 <div id="user-informaton">
                     <hr>
                     <p>Customer Information:</p>
@@ -28,7 +42,7 @@
                     </div>
                 <div class="form-field">
                         {% if user.is_authenticated and not user.phone%} 
-                         <input style="border-radius: 5px; padding: 10px; " required class="form-control" type="text" name="phone" placeholder="Phone Number ..." "  >
+                         <input style="border-radius: 5px; padding: 10px;" required class="form-control" type="text" name="phone" placeholder="Phone Number ...">
                         {% elif user.is_authenticated and user.phone %} 
                         <input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="text" name="phone" placeholder="{{ user.phone }}" value="{{ user.phone }}" readonly > 
                         {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="text" name="phone" placeholder="Phone Number..">{% endif %}
@@ -73,7 +87,7 @@
             <div class="box-element hidden" id="payment-info">
 
                 <br>
-                <div style="padding-right: 30%;padding-left: 30%">
+                <div class="collective-payment-panel">
                     <hr>
                     <p>Billing Details:</p>
                     <hr>
@@ -83,9 +97,14 @@
 
             </div>
             <br>
+            <hr>
 
-            <p class="action--text"><a href="{% url 'Collective:cart' %}" class="btn action--button-btn">Return to Cart</a>
-                <a href="{% url 'Collective:store' %}" class="btn action--button-btn">Continue Shopping</a></p>
+            <nav class="collective-cart-summary__actions" aria-label="Checkout actions">
+                <a href="{% url 'Collective:cart' %}">Return to Cart</a>
+                <span aria-hidden="true">|</span>
+                <a href="{% url 'Collective:store' %}">Continue Shopping</a>
+            </nav>
+            <hr>
         </div>
     </section>
 </div>
@@ -93,7 +112,7 @@
 <script src="https://www.paypal.com/sdk/js?client-id=AWTSBLTVTYkqnxwKZvM8PEFfIp0z-RpJaw1_6Bj_LWht6CCM8Umq4j0WOc5Ue3_VKDkMsmedjNaT7O7-&currency=USD"></script>
 
 <script>
-    var total = '{{order.get_cart_total}}'
+    var total = '{{ order.get_cart_total }}'
     // Render the PayPal button into #paypal-button-container
     paypal.Buttons({
 
@@ -137,7 +156,7 @@
     console.log('Shipping total:', total)
 
     if (shipping == 'False') {
-        document.getElementById('shipping-information').innerHTML = ''
+        document.getElementById('shipping-info').innerHTML = ''
     }
 
 
@@ -203,12 +222,12 @@
         console.log('User Form Data', userFormData)
         console.log('Shipping Information', shippingInfo)
 
-        var url = '/IIIrdCollective/process_order/'
+        var url = "{% url 'Collective:process_order' %}"
         fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': csrftoken,
+                    'X-CSRFToken': csrf_token,
                 },
                 body: JSON.stringify({
                     'form': userFormData,
@@ -226,7 +245,7 @@
                 console.log('Success:', data);
                 alert('Transaction completed');
 
-                document.cookie = 'cart=' + JSON.stringify(cart) + ";domain;path=/"
+                document.cookie = 'cart=' + JSON.stringify(cart) + ";path=/"
 
                 window.location.href = "{% url 'Collective:store' %}"
             })

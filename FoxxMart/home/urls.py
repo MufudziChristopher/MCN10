@@ -8,6 +8,7 @@ app_name = "home"
 urlpatterns = [
     #Leave as empty string for base url
 	path('', views.home, name="home"),
+	path('mall/', views.mall, name="mall"),
 	path('contact/', views.contact, name="contact"),
 	path('profile/', views.profile, name="profile"),
     ]

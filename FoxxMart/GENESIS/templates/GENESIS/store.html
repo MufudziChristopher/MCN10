@@ -8,13 +8,14 @@
 </div>
  {% endfor %}
  {% endblock body %}
- {% block inner %}
+{% block inner %}
+{% load local_pricing %}
 <div class="content">
 	{% for product in products %}
 	<div class="content__item" id="item-{{forloop.counter}}"> <span class="content__item-number oh"><span class="oh__inner"></span></span>
-		<h2 class="content__item-heading oh"><span class="oh__inner">{{product.name1}}</span></h2>
+		<h2 class="content__item-heading oh"><span class="oh__inner">{{product.name}}</span></h2>
 		<p class="content__item-text">{{product.description1}}</p>
-		<span class="content__item-link oh">R{{product.price}}</span><br><hr>
+		<span class="content__item-link oh">{% local_price product.price %}</span><br><hr>
 			<a  href="{% url 'GENESIS:cart' %}" data-product={{product.id}} data-action="add" class="content__item-link update-cart btn action--button-btn"><ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon>Add To Cart</a>
 			<br>
 			<a href="{% url 'GENESIS:product_details'  product.id %}" class="content__item-link oh"><span class="oh__inner"><ion-icon src="{% static 'ion-icons/eye-outline.svg' %}" size="large"></ion-icon>View more</span></a>

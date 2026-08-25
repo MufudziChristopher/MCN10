@@ -14,6 +14,7 @@ from .models import *
 from .forms import *
 from .utils import cookieCart, cartData, guestOrder
 from .filters import *
+from account.access import store_access_required
 
 # Create your views here.
 def about(request):
@@ -30,10 +31,11 @@ def store(request, category_slug=None):
     list_random2 = range(2,4)
 
     products = GENESISProduct.objects.all()
-    context = {'cartItems': cartItems, 'products':products , 'shipping': False, 'list_random1':list_random1, 'list_random2':list_random2}
+    context = {'cartItems': cartItems, 'order': order, 'items': items, 'products': products, 'shipping': False, 'list_random1': list_random1, 'list_random2': list_random2}
 
     return render(request, 'GENESIS/store.html', context)
 
+@store_access_required('genesis')
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -57,6 +59,7 @@ def product_details(request, pk):
     context = {'cartItems': cartItems, 'product':product,'category' : category , 'shipping': False,}
     return render(request, 'GENESIS/product.html', context)
 
+@store_access_required('genesis')
 def checkout(request):
     data = cartData(request)
     cartItems = data['cartItems']

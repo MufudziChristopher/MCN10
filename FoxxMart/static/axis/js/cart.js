@@ -17,7 +17,7 @@ for (i = 0; i < updateBtns.length; i++) {
 
 function updateUserOrder(productId, action, quantity){
   console.log('User is authenticated, sending data...')
-    var url = '/3rdAxis/update_item/'
+    var url = '/3rdAxis/api/v1/cart/items/'
 
     fetch(url, {
       method:'POST',

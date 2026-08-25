@@ -1,0 +1,38 @@
+:root { color-scheme: dark; font-family: Arial, sans-serif; background: #050505; }
+* { box-sizing: border-box; }
+body { margin: 0; background: url('../../images/bg1.jpg') center / cover fixed; color: #f7f7f7; overflow: hidden; }
+.mall-front .account-menu__toggle,
+.mall-front .account-menu__brand,
+.mall-front .account-menu nav a,
+.mall-front .account-menu nav ion-icon { color: #000; }
+.mall-front .account-menu nav a:hover,
+.mall-front .account-menu nav a:focus-visible { color: #000; }
+.mall-stage { position: relative; display: grid; min-height: 100svh; place-items: center; overflow: hidden; }
+.mall-stage__particles { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .48; pointer-events: none; }
+.mall-intro { position: absolute; top: 18%; z-index: 1; width: 100%; text-align: center; pointer-events: none; }
+.mall-intro { color: #000; }
+.mall-intro p, .mall-intro span { margin: 0; color: rgba(0,0,0,.68); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; }
+.mall-intro h1 { margin: .5rem 0; font-size: clamp(2rem, 6vw, 4.8rem); font-weight: 400; letter-spacing: -.05em; }
+.mall-intro strong { display: block; margin-top: 1.5rem; color: #000; font-size: .75rem; font-weight: 400; letter-spacing: .16em; text-transform: uppercase; }
+.mall-stream { position: absolute; top: 50%; width: 100%; cursor: grab; touch-action: pan-y; user-select: none; transform: translateY(-50%); }
+.mall-stream.is-dragging { cursor: grabbing; }
+.mall-stream__line { display: flex; gap: 3rem; width: max-content; padding: 1rem 3rem; will-change: transform; animation: mall-scroll 42s linear infinite; }
+.mall-stream:hover .mall-stream__line, .mall-stream.is-dragging .mall-stream__line { animation-play-state: paused; }
+@keyframes mall-scroll { from { transform: translateX(-48%); } to { transform: translateX(0); } }
+.mall-store-card { display: grid; flex: 0 0 25rem; gap: .7rem; }
+.mall-card { position: relative; display: flex; width: 100%; height: 15.5rem; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 1.25rem; border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent); border-radius: .9rem; background: linear-gradient(120deg, rgba(0,0,0,.64), rgba(0,0,0,.05)), var(--image) center / cover; box-shadow: 0 1rem 3rem rgba(0,0,0,.55), inset 0 0 4rem rgba(0,0,0,.3); color: white; text-decoration: none; transition: transform .3s ease, border-color .3s ease, filter .3s ease; }
+.mall-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 32%, color-mix(in srgb, var(--accent) 42%, transparent) 50%, transparent 68%); transform: translateX(-120%); transition: transform .5s ease; }
+.mall-card:hover, .mall-card:focus-visible { transform: translateY(-.65rem) scale(1.025); border-color: var(--accent); filter: saturate(1.2); outline: none; }
+.mall-card:hover::after, .mall-card:focus-visible::after { transform: translateX(120%); }
+.mall-card > span { position: relative; z-index: 1; }
+.mall-card__top { color: rgba(255,255,255,.7); font-size: .65rem; letter-spacing: .16em; }
+.mall-card__cart-count { position: absolute !important; top: .75rem; right: .75rem; display: grid; width: 1.8rem; height: 1.8rem; place-items: center; border: 1px solid var(--accent); border-radius: 50%; background: rgba(0,0,0,.72); color: #fff; font-size: .72rem; font-weight: 600; line-height: 1; }
+.mall-card__body { display: grid; gap: .3rem; }
+.mall-card__body strong { font-size: 2.1rem; font-weight: 400; letter-spacing: -.06em; }
+.mall-card__body small { color: var(--accent); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.mall-store-card__link { color: #fff; font-size: .72rem; letter-spacing: .12em; text-align: center; text-decoration: none; text-transform: uppercase; }
+.mall-store-card__link:hover, .mall-store-card__link:focus-visible { color: var(--accent); outline: none; }
+.mall-card__scan { position: absolute !important; top: 0; bottom: 0; left: 0; width: .2rem; background: var(--accent); box-shadow: 0 0 1.2rem var(--accent); animation: mall-scan 3.6s ease-in-out infinite; }
+@keyframes mall-scan { 0%, 100% { left: 0; opacity: .4; } 50% { left: calc(100% - .2rem); opacity: 1; } }
+@media (max-width: 40rem) { .mall-intro { top: 20%; } .mall-stream { top: 50%; } .mall-stream__line { gap: 1rem; padding: 1rem; } .mall-store-card { flex-basis: 18rem; } .mall-card { height: 12rem; padding: 1rem; } .mall-card__body strong { font-size: 1.7rem; } }
+@media (prefers-reduced-motion: reduce) { .mall-stream__line, .mall-card__scan { animation: none; } }

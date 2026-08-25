@@ -2,6 +2,7 @@
 
 
 {% load static %}
+{% load local_pricing %}
 {% block title %}{{product.name}}{% endblock %}
 
 {% block nav %}{% include 'genesis_navbar.html' %}{% endblock %}
@@ -10,7 +11,7 @@
 
 <div class="content">
   <h2 class="content__title" data-scroll="" data-scroll-speed="2" data-scroll-position="top">{{product.name}}</h2>
-  <p class="content__text" data-scroll="" data-scroll-speed="1" data-scroll-position="top">{{product.price}}</p>
+  <p class="content__text" data-scroll="" data-scroll-speed="1" data-scroll-position="top">{% local_price product.price %}</p>
   <div class="gallery">
     <figure data-scroll="" data-scroll-speed="1" class="gallery__item">
       <div class="gallery__item-img"><div class="gallery__item-imginner" style="background-image: url({{product.imageURL1}})"></div></div>

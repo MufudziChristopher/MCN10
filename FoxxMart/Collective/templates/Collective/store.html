@@ -6,24 +6,44 @@
 {% block body %}
 
 
-<!-- Bottom bar with filter and cart info -->
-<div class="bar" style="height: 70px;  opacity: 0.2">
+<details class="collective-quick-cart">
+    <summary>
+        <span class="collective-quick-cart__icon"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon><span class="collective-quick-cart__count">{{ cartItems }}</span></span>
+        <span class="collective-quick-cart__label">Quick Cart</span>
+    </summary>
+    {% if items %}
+    <ul class="collective-quick-cart__items">
+        {% for item in items %}
+        <li class="collective-quick-cart__item">
+            <button class="collective-quick-cart__remove update-cart" type="button" data-product="{{ item.product.id }}" data-size="{{ item.size }}" data-action="cancel" aria-label="Remove {{ item.product.name }} from cart"><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon></button>
+            <img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}">
+            <span>{{ item.product.name }}<small>{% if item.size %}Size: {{ item.size }} · {% endif %}Qty: {{ item.quantity }} · R {{ item.get_total|floatformat:2 }}</small></span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total: R {{ order.get_cart_total|floatformat:2 }}</strong></p>
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+    <div class="collective-quick-cart__actions">
+        {% if user.is_authenticated %}
+        <a href="{% url 'Collective:cart' %}">Go to Cart</a>
+        {% if order.get_cart_total %}<span aria-hidden="true">|</span><a href="{% url 'Collective:checkout' %}">Checkout</a>{% endif %}
+        {% else %}
+        <a href="{% url 'account:login' %}?next={% url 'Collective:cart' %}">Log in to view cart</a>
+        {% endif %}
+    </div>
+</details>
 
-<a href="{% url 'Collective:cart' %}" class="">  <button class="cart"> <ion-icon size="medium" name="cart-outline"></ion-icon>
-      <span class="text-hidden">Shopping cart</span>
-      <span class="cart__count">{{cartItems}}</span>
-  </button></a>
-</div>
 
-
-<section class="slider">
+<section class="slider collective-storefront">
     {% for product in products %}
 
-    <div {% if forloop.first %} class="slide slide--current" {% else %} class="slide" {% endif %}data-content="content-{{ forloop.counter }}">
+    <div {% if forloop.first %} class="slide slide--current" {% else %} class="slide" {% endif %} data-content="content-{{ forloop.counter }}" data-product-id="{{ product.id }}">
 
         <div class="slide__mover">
             <div class="zoomer flex-center">
-                <img class="zoomer__image" style="width: 20%" src="{{product.imageURL1}}" alt="{{product.name}}" />
+                <img class="zoomer__image" data-product-image="{{ product.id }}" style="width: 20%" src="{{product.imageURL1}}" alt="{{product.name}}" />
                 <div class="preview">
                     <img src="{{product.imageURL2}}" alt="{{product.name}}" />
                     <div class="zoomer__area zoomer__area--size-2"></div>
@@ -44,32 +64,50 @@
     <br>
     <br>
 <!-- /slider-->
-<section class="content")>
+<section class="content">
 
-    <!-- Bottom bar with filter and cart info -->
-<div class="bar" style="height: 70px;  background-color: transparent">
-
-<a href="{% url 'Collective:cart' %}" class="">  <button class="cart"> <ion-icon size="medium" name="cart-outline"></ion-icon>
-      <span class="text-hidden">Shopping cart</span>
-      <span class="cart__count">{{cartItems}}</span>
-  </button></a>
-</div>
     {% for product in products %}
 
     <div class="content__item" id="content-{{ forloop.counter }}">
-        <div class="product__image">
-            <div class="slider__item"><img class="content__item-img rounded" src="{{product.imageURL2}}" onclick="Power_trip1()" alt="{{product.name}}" /></div>
-            <div class="slider__item"><img class="content__item-img rounded" src="{{product.imageURL3}}" onclick="Power_trip2()"  alt="{{product.name}}" /></div>
-            {% if product.imageURL3 %}
-            <div class="slider__item"><img class="content__item-img rounded" src="{{product.imageURL4}}" onclick="Power_trip3()"  alt="{{product.name}}" /></div>
-            {% endif %}
+        <div class="collective-detail-gallery">
+            <div class="collective-detail-thumbnails" aria-label="Product images">
+                <button type="button" class="collective-detail-thumbnail is-selected" data-full-image="{{ product.imageURL1 }}" aria-label="Show primary image of {{ product.name }}" aria-pressed="true"><img src="{{ product.imageURL1 }}" alt=""></button>
+                {% if product.imageURL2 %}
+                <button type="button" class="collective-detail-thumbnail" data-full-image="{{ product.imageURL2 }}" aria-label="Show alternate image of {{ product.name }}" aria-pressed="false"><img src="{{ product.imageURL2 }}" alt=""></button>
+                {% endif %}
+                {% if product.imageURL3 %}
+                <button type="button" class="collective-detail-thumbnail" data-full-image="{{ product.imageURL3 }}" aria-label="Show alternate image of {{ product.name }}" aria-pressed="false"><img src="{{ product.imageURL3 }}" alt=""></button>
+                {% endif %}
+                {% if product.imageURL4 %}
+                <button type="button" class="collective-detail-thumbnail" data-full-image="{{ product.imageURL4 }}" aria-label="Show alternate image of {{ product.name }}" aria-pressed="false"><img src="{{ product.imageURL4 }}" alt=""></button>
+                {% endif %}
+            </div>
+            <img class="content__item-img rounded collective-featured-image" data-product-image="{{ product.id }}" src="{{product.imageURL1}}" alt="{{product.name}}" />
         </div>
-            <div id="img-container">
-                <div id="lens"></div>
-        <img id="featured" class="content__item-img rounded" src="{{product.imageURL1}}" alt="{{product.name}}" />
-    </div>
         <div class="content__item-inner">
             <h2>{{product.name}}</h2>
+            {% if product.variants.all %}
+            <div class="collective-colors" aria-label="Choose a colour for {{ product.name }}">
+              <span>Colour:</span>
+              {% for variant in product.variants.all %}
+              <button type="button" class="collective-color-option{% if forloop.first %} is-selected{% endif %}" data-product-id="{{ product.id }}" data-image="{{ variant.image.url }}">{{ variant.color }}</button>
+              {% endfor %}
+            </div>
+            {% endif %}
+            <div class="collective-sizes" aria-label="Choose a size for {{ product.name }}">
+              <span>Size:</span>
+              <button type="button" class="collective-size-option" data-size="S" aria-pressed="false">S</button>
+              <button type="button" class="collective-size-option" data-size="M" aria-pressed="false">M</button>
+              <button type="button" class="collective-size-option" data-size="L" aria-pressed="false">L</button>
+              <button type="button" class="collective-size-option" data-size="XL" aria-pressed="false">XL</button>
+              <button type="button" class="collective-size-option" data-size="XXL" aria-pressed="false">XXL</button>
+            </div>
+            <p class="collective-stock" aria-live="polite">{{ product.stock }} in stock</p>
+            {% if product.stock >= 1 %}
+            <button type="button" data-product="{{ product.id }}" data-action="add" class="action--button-btn update-cart" disabled>Add to Cart</button>
+            {% else %}
+            <p style="color: #cd0000;">Out of Stock</p>
+            {% endif %}
             <h3>R {{product.price}}</h3>
             <p>{{product.description}}</p>
 <hr>
@@ -94,16 +132,6 @@
 
 
 <hr> -->
-<!-- <div>
-  {% if product.stock >= 1  %}
-            <button   data-product={{product.id}} data-action="add" class=" action--button-btn"><br><a href="{% url 'Collective:cart' %}">Add to Cart</a><br></button></p>
-
-
-  {% else %}
-            <label style="color: #cd0000;">Out of Stock</label>
-  {% endif %} -->
-<p>COMING SOON!<p>
-
 <hr>
 
         </div>
@@ -112,6 +140,10 @@
 
 
     <button class="button button--close"><ion-icon size="large" name="close-circle-outline"></ion-icon><span class="text-hidden">Close content</span></button>
+    <nav class="content__nav" aria-label="Product navigation">
+        <button class="button button--detail-prev" type="button" aria-label="Previous product"><ion-icon size="large" name="arrow-back-circle-outline"></ion-icon></button>
+        <button class="button button--detail-next" type="button" aria-label="Next product"><ion-icon size="large" name="arrow-forward-circle-outline"></ion-icon></button>
+    </nav>
 </section>
 
 

@@ -2,6 +2,7 @@
 
 
 {% load static %}
+{% load local_pricing %}
 
 
 
@@ -80,7 +81,7 @@
             <div class="store-quick-cart__details">
                 <span class="store-quick-cart__name">{{ item.product.name }}</span>
                 <span>Quantity: {{ item.quantity }}</span>
-                <span>R {{ item.price|floatformat:2 }}</span>
+                <span>{% local_price item.price %}</span>
             </div>
         </li>
         {% endfor %}
@@ -89,7 +90,7 @@
     <div class="row justify-content-center">
         <div>
             <span style="text-align: center">
-                <h2> R {{order.get_cart_total|floatformat:2}}</h2>
+                <h2>{% local_price order.get_cart_total %}</h2>
             </span>
             <hr>
             <p>{% if order.get_cart_total %}
@@ -155,7 +156,7 @@
                     <span class=" product__title meta__title">{{product.name}}</span>
                     <a href="{% url 'Axis:product_details'  product.id %}"><img class="product__image extra" src="{{product.imageURL1}}" alt="{{product.name}}" /></a>
                     <span class="product__alcohol extra highlight">{{product.description1}}</span>
-                    <span class="product__price  meta__price">R {{product.price|floatformat:2}}</span>
+                    <span class="product__price  meta__price">{% local_price product.price %}</span>
                 </div>
                 <label class="action action--button action--compare-add">
                     <input class="check-hidden" type="checkbox" />

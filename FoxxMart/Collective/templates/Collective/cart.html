@@ -5,42 +5,24 @@
 
 
 {% block body %}
-<div class="view">
+<div class="view collective-cart-page">
+    <nav class="collective-cart-page__actions" aria-label="Cart actions">
+        <a class="collective-cart-page__action" href="{% url 'Collective:store' %}">Continue Shopping</a>
+        <a class="collective-cart-page__action" href="{% url 'Collective:checkout' %}">Checkout</a>
+    </nav>
 
     <!-- Grid -->
 
     <section class="grid grid--loader">
         <table class="">
-            <thead>
-                <tr class="text-center">
-                    <th>
-                        <h4 class="action--text">&nbsp;</h4>
-                    </th>
-                    <th>
-                        <h4 class="action--text">Item</h4>
-                    </th>
-                    <th>
-                        <h4 class="action--text">Price</h4>
-                    </th>
-                    <th>
-                        <h4 class="action--text">Quantity</h4>
-                    </th>
-                    <th>
-                        <h4 class="action--text">Update</h4>
-                    </th>
-                    <th>
-                        <h4 class="action--text">Total</h4>
-                    </th>
-                </tr>
-            </thead>
             <tbody>
                 {% for item in items%}
 
                 <tr>
                     <td>
-                                                <p> {{item.product.size}} | {{item.product.color}} </p>
-
-                        <img class="img slider" src="{{ item.product.imageURL1 }}" style="width: 200px; height: 300px" />
+                        <a class="collective-cart-product-link" href="{% url 'Collective:store' %}?product={{ item.product.id }}" aria-label="View {{ item.product.name }} details">
+                            <img class="collective-cart-product-image" src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}" />
+                        </a>
                     </td>
 
                     <td>
@@ -51,12 +33,7 @@
                     </td>
 
                     <td>
-                        <strong class="action--text">{{item.quantity}}</strong>
-                    </td>
-                    <td>
-                        <ion-icon data-product={{item.product.id}} data-action="add" class="chg-quantity update-cart" size="large" name="chevron-up-circle-outline"></ion-icon>
-                        <hr>
-                        <ion-icon data-product={{item.product.id}} data-action="remove" class="chg-quantity update-cart" size="large" name="chevron-down-circle-outline"></ion-icon>
+                        <input class="collective-cart-quantity" type="number" min="0" max="{{ item.product.stock|add:item.quantity }}" value="{{ item.quantity }}" data-product="{{ item.product.id }}" data-size="{{ item.size }}" aria-label="Quantity for {{ item.product.name }}">
                     </td>
                     <td>
                         <h4><strong class="action--text">{{item.get_total}}</strong></h4>
@@ -69,7 +46,7 @@
         </table>
     </section>
 </div>
-<div style="padding-left: 68%; padding-right: 11%">
+<div class="collective-cart-page collective-cart-summary">
         <div class="row justify-content-end">
             <div class=" cart-wrap ftco-animate">
                 <div class="cart-total mb-3">
@@ -88,8 +65,12 @@
                     <hr>
 
                 </div>
-                <p><a href="{% url 'Collective:store' %}"  style="padding:10px" class="btn action--button-btn">Continue Shopping&nbsp;&nbsp;</a>&nbsp;{% if order.get_cart_total%}<a style="padding:10px"  href="{% url 'Collective:checkout' %}" class="btn action--button-btn">Proceed to Checkout &nbsp;&nbsp; </a>
-                    {% endif %}</p>
             </div>
+        </div>
+        <nav class="collective-cart-summary__actions" aria-label="Cart actions">
+            <a href="{% url 'Collective:store' %}">Continue Shopping</a>
+            <span aria-hidden="true">|</span>
+            <a href="{% url 'Collective:checkout' %}">Continue to checkout</a>
+        </nav>
 </div>
     {% endblock %}

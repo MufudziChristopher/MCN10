@@ -37,6 +37,8 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractBaseUser):
 	email 					= models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username 				= models.CharField(max_length=30, verbose_name="Full Name")
+	first_name				= models.CharField(max_length=30, blank=True)
+	last_name				= models.CharField(max_length=30, blank=True)
 	date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
 	last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
 	is_admin				= models.BooleanField(default=False)
@@ -63,3 +65,21 @@ class Account(AbstractBaseUser):
 	# Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
 	def has_module_perms(self, app_label):
 		return True
+
+
+class StoreAccess(models.Model):
+	class Package(models.TextChoices):
+		SINGLE = 'single', 'Single store'
+		MULTI = 'multi', 'Multi-store'
+		FULL = 'full', 'Full mall access'
+
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='store_accesses')
+	store_slug = models.CharField(max_length=40)
+	package = models.CharField(max_length=10, choices=Package.choices)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		constraints = [models.UniqueConstraint(fields=('user', 'store_slug'), name='unique_user_store_access')]
+
+	def __str__(self):
+		return f'{self.user.email} — {self.store_slug}'

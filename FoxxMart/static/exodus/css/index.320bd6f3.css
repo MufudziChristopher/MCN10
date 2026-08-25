@@ -279,7 +279,7 @@ a:focus,a:hover {
 .content__title-line {
 	display: block;
 	position: relative;
-	overflow: scroll;
+	overflow: hidden;
 	line-height: 1;
 }
 
@@ -320,7 +320,7 @@ a:focus,a:hover {
 
 .js .preview__item:not(.preview__item--open) {
 	position: absolute;
-	overflow: scroll;
+	overflow: hidden;
 	height: 0;
 	opacity: 0;
 }
@@ -350,7 +350,7 @@ a:focus,a:hover {
 	align-self: center;
 	padding-left: 1rem;
 	position: relative;
-	overflow: scroll;
+	overflow: hidden;
 	pointer-events: none;
 }
 
@@ -358,7 +358,7 @@ a:focus,a:hover {
 	width: 100px;
 	height: 150px;
 	border-radius: 10px;
-	overflow: scroll;
+	overflow: hidden;
 	grid-area: preview-img;
 	transform-origin: 50% 100%;
 }
@@ -372,8 +372,8 @@ a:focus,a:hover {
 
 .preview__item-content {
 	grid-area: preview-content;
-	max-width: calc(1100px - 80vh);
-	min-height: 440px;
+	max-width: none;
+	min-height: 0;
 	line-height: 1.3;
 }
 
@@ -420,7 +420,7 @@ a:focus,a:hover {
 
 @media screen and (min-width:53em) {
 	body,html,main {
-		overflow: scroll;
+		overflow: hidden;
 	}
 
 	.message {
@@ -482,9 +482,9 @@ a:focus,a:hover {
 
 	.preview__item {
 		height: 100%;
-		width: 80vw;
-		grid-template-columns: 47% 53%;
-		grid-template-rows: minmax(max(5rem,18vh),1fr) auto auto 1fr;
+		width: min(94vw,1400px);
+		grid-template-columns: 42% 58%;
+		grid-template-rows: 0 auto auto minmax(0,1fr);
 		grid-template-areas: "... ..." "preview-back ..." "preview-title preview-title" "preview-img preview-content";
 	}
 
@@ -509,7 +509,7 @@ a:focus,a:hover {
 	}
 
 	.preview__item-content {
-		padding: 0 0 0 4rem;
+		padding: 0 0 0 2rem;
 	}
 }
 
@@ -590,7 +590,7 @@ a:focus,a:hover {
 @supports (display:grid) {
 	.splitting.cells {
 		position: relative;
-		overflow: scroll;
+		overflow: hidden;
 		background-size: cover;
 		visibility: hidden;
 	}
@@ -609,7 +609,7 @@ a:focus,a:hover {
 	.splitting .cell {
 		background: inherit;
 		position: relative;
-		overflow: scroll;
+		overflow: hidden;
 	}
 
 	.splitting .cell-inner {

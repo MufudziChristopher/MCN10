@@ -7,15 +7,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Collective</title>
+    <title>The Collective | {{ request.resolver_match.url_name|title }}</title>
     <meta name="description" content="An online collection for Clint Josephs designer goods" />
     <meta name="keywords" content="Tupac, Biggie, shirts t-shirts, online sale, online shopping, order, delivery, custom" />
     <meta name="author" content="Mufudzi Christopher" />
-    <link rel="shortcut icon" href="{% static 'collective/images/II-dark.gif' %}">
+    <link rel="icon" type="image/svg+xml" href="{% static 'collective/images/mc-favicon.svg' %}?v=1">
+    <link rel="shortcut icon" type="image/svg+xml" href="{% static 'collective/images/mc-favicon.svg' %}?v=1">
     <!-- Feather Icons -->
     <link rel="stylesheet" type="text/css" href="{% static 'collective/css/style.css' %}">
     <!-- General demo styles & header -->
-    <link rel="stylesheet" type="text/css" href="{% static 'collective/css/demo.css' %}" />
+    <link id="collective_stylesheet" rel="stylesheet" type="text/css" href="{% static 'collective/css/demo.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'collective/css/quick-cart.css' %}?v=51" />
+    <link rel="stylesheet" type="text/css" href="{% static 'collective/css/menu.css' %}?v=7" />
     <!-- Component styles -->
 
     <script src="{% static 'collective/js/modernizr.custom.js' %}"></script>
@@ -59,15 +62,12 @@
         //Return null if not found
         return null;
     }
-    console.log('Cart: ', cart)
-
-
-    var cart = JSON.parse(getCookie('cart'))
+    var cart = JSON.parse(getCookie('cart') || '{}')
 
     if (cart == undefined) {
         cart = {}
         console.log('Cart Created!', cart)
-        document.cookie = 'cart=' + JSON.stringify(cart) + ";domain;path=/"
+        document.cookie = 'cart=' + JSON.stringify(cart) + ";path=/"
     }
     console.log('Cart: ', cart)
 
@@ -77,22 +77,17 @@
     <!-- Main container -->
     <div class="container">
         <!-- Blueprint header -->
-        <header class="bp-header ">
+        <header class="bp-header collective-menu is-collapsed" data-collective-menu>
 
-          <span>
-            <div class="">
-                <p>T H E  C O <img src="{% static 'images/II-light.gif' %}" height="30" /> E C T I V E</p>
-
-            </div>
-
-          </span>
+          <button class="collective-menu__toggle" type="button" aria-controls="collective-navigation" aria-expanded="false">
+            <span>T H E C O</span><img id="collective_spinner" src="{% static 'collective/images/II-light.gif' %}" alt="" height="30" /><span>E C T I V E</span>
+          </button>
           {% if user.is_authenticated %}
           <h6>Logged in as: {{user.username}}</h6>
           {% endif %}
-          <hr>
-            <nav>
+            <nav id="collective-navigation">
 
-                <a href="{% url 'home:home' %}" title="Online Portfolio">
+                <a href="{% url 'home:mall' %}" title="FoxxMart Mall">
                   <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon><br>Home
                 </a>
                 <a href="{% url 'Collective:store' %}" title="Online Store">
@@ -105,7 +100,7 @@
                   <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
                 </a>
                 <a href="{% url 'Collective:about' %}" title="About Us">
-                  <ion-icon src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>Studio
+                  <ion-icon src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>About Us
                 </a>
                 {% if user.is_axisStaff or user.is_superuser %}
                 <a href="{% url 'Collective:dashboard' %}" target="_blank" title="Management Studio">
@@ -125,8 +120,6 @@
                     <ion-icon title="Light Mode" size="small" name="sunny-outline"></ion-icon>
                 </a> -->
             </nav>
-            <hr style="color:black">
-
         </header>
 
                 {% if messages %}
@@ -159,9 +152,59 @@
     </div>
     <script src="{% static 'collective/js/classie.js' %}"></script>
     <script src="{% static 'collective/js/dynamics.min.js' %}"></script>
-    <script src="{% static 'collective/js/main.js' %}"></script>
-    <script src="{% static 'collective/js/collectivecart.js' %}"></script>
-    <script src="{% static 'collective/js/collectivedisplay.js' %}"></script>
+    <script src="{% static 'collective/js/main.js' %}?v=8"></script>
+    <script src="{% static 'collective/js/collectivecart.js' %}?v=3"></script>
+    <script>
+      (function () {
+        var menu = document.querySelector('[data-collective-menu]');
+        var toggle = menu && menu.querySelector('.collective-menu__toggle');
+        if (!menu || !toggle) return;
+        var setMenuOffset = function () {
+          document.body.style.setProperty('--collective-menu-height', menu.getBoundingClientRect().height + 'px');
+        };
+        toggle.addEventListener('click', function () {
+          var collapsed = menu.classList.toggle('is-collapsed');
+          toggle.setAttribute('aria-expanded', String(!collapsed));
+          if (!collapsed && window.matchMedia('(max-width: 40em)').matches) {
+            document.querySelectorAll('.collective-quick-cart[open]').forEach(function (quickCart) {
+              quickCart.removeAttribute('open');
+            });
+          }
+          window.requestAnimationFrame(setMenuOffset);
+          window.setTimeout(setMenuOffset, 320);
+        });
+
+        document.querySelectorAll('.collective-quick-cart').forEach(function (quickCart) {
+          quickCart.addEventListener('toggle', function () {
+            if (quickCart.open && window.matchMedia('(max-width: 40em)').matches) {
+              menu.classList.add('is-collapsed');
+              toggle.setAttribute('aria-expanded', 'false');
+              window.requestAnimationFrame(setMenuOffset);
+            }
+          });
+        });
+        document.addEventListener('click', function (event) {
+          document.querySelectorAll('.collective-quick-cart[open]').forEach(function (quickCart) {
+            if (!quickCart.contains(event.target)) quickCart.removeAttribute('open');
+          });
+        });
+        window.addEventListener('resize', setMenuOffset);
+        setMenuOffset();
+      }());
+    </script>
+    <script>
+      document.querySelectorAll('.collective-color-option').forEach(function (button) {
+        button.addEventListener('click', function () {
+          var productId = button.dataset.productId;
+          document.querySelectorAll('[data-product-image="' + productId + '"]').forEach(function (image) {
+            image.src = button.dataset.image;
+          });
+          button.parentElement.querySelectorAll('.collective-color-option').forEach(function (option) {
+            option.classList.toggle('is-selected', option === button);
+          });
+        });
+      });
+    </script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>

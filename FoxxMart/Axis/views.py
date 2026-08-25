@@ -1,25 +1,27 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, HttpResponse
 
 from django.contrib.auth import authenticate, login, logout
-from decimal import Decimal
 from django.conf import settings
+from django.db import transaction
 from django.db.models import Count
 from taggit.models import Tag
 
 import json
-import datetime
+import uuid
 
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.http import require_POST
 
 
 from .models import *
 from .forms import *
-from .utils import cookieCart, cartData, guestOrder
+from .utils import cartData
 from .models import *
 from .filters import *
+from account.access import store_access_required
 
 # Create your views here.
 def about(request):
@@ -50,6 +52,7 @@ def store(request, category_slug=None):
 
 
 
+@store_access_required('axis')
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -69,17 +72,37 @@ def product_details(request, pk):
 
     product = Product.objects.get(id=pk)
     category = None
+    product_images = [
+        product.imageURL1,
+        product.imageURL2(),
+        product.imageURL3(),
+        product.imageURL4(),
+        product.imageURL5(),
+    ]
+    view_descriptions = (
+        ('Front three-quarter view', f'{product.name} shown as a complete system from the primary working angle.'),
+        ('Side profile', f'A clear side view of the {product.name} chassis, working envelope and form factor.'),
+        ('Rear three-quarter view', f'A rear perspective showing the {product.name} housing and service-side design.'),
+        ('Detail view', f'A closer look at the precision components and material details of the {product.name}.'),
+        ('Hero view', f'The {product.name} in a full product view for comparing its overall silhouette.'),
+    )
+    gallery_items = [
+        {'url': image, 'title': view_descriptions[index][0], 'description': view_descriptions[index][1]}
+        for index, image in enumerate(product_images) if image
+    ]
     context = {
         'cartItems': cartItems,
         'items': items,
         'order': order,
         'product': product,
+        'gallery_items': gallery_items,
         'category': category,
         'shipping': False,
     }
     return render(request, 'Axis/product.html', context)
 
 
+@store_access_required('axis')
 def checkout(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -166,41 +189,47 @@ def contact(request):
         return redirect('Axis:store')
     return render(request, 'Axis/contact.html', context)
 
-def processOrder(request):
-    transaction_id = datetime.datetime.now().timestamp()
-    data = json.loads(request.body)
+@require_POST
+@store_access_required('axis')
+def complete_test_checkout(request):
+    """Server-side test checkout; no totals or payment state are accepted from the browser."""
+    customer = request.user.axiscustomer
+    required_shipping = ('country', 'address1', 'suburb', 'city', 'province', 'postal_code')
+    if any(not request.POST.get(field, '').strip() for field in required_shipping):
+        messages.error(request, 'Please complete all required shipping fields.')
+        return redirect('Axis:checkout')
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, status="Pending")
-    else:
-        customer, order = guestOrder(request, data)
-
-    total = Decimal(data['form']['total'])
-    order.transaction_id = transaction_id
-    print("Order total:::::::: ", total)
-
-    if total == order.get_cart_total:
-        print("Order total is correct")
-        order.status = "Payment Confirmed, Processing Order"
-        order.save()
-
-    else:
-        print("Order total is incorrect")
-
-    if order.shipping == True:
-        shippingAddress, created = ShippingAddress.objects.create(
-        country=data['shipping']['country'],
-        address1=data['shipping']['address1'],
-        address2=data['shipping']['address2'],
-        city=data['shipping']['city'],
-        province=data['shipping']['province'],
-        postal_code=data['shipping']['postal_code'],
+    # Lock the pending order so two rapid submissions cannot complete it twice.
+    with transaction.atomic():
+        order = get_object_or_404(
+            Order.objects.select_for_update(), customer=customer, status='Pending'
         )
-        customer.shippingAddress = shippingAddress
+        if not order.orderitem_set.filter(product__isnull=False).exists():
+            messages.error(request, 'Your cart is empty.')
+            return redirect('Axis:cart')
 
-# Add code to send email to Store Owner
-    return JsonResponse('Payment submitted..', safe=False)
+        shipping_address = ShippingAddress.objects.create(
+            country=request.POST['country'].strip(),
+            address1=request.POST['address1'].strip(),
+            address2=request.POST.get('address2', '').strip(),
+            suburb=request.POST['suburb'].strip(),
+            city=request.POST['city'].strip(),
+            province=request.POST['province'].strip(),
+            postal_code=request.POST['postal_code'].strip(),
+        )
+        customer.shippingAddress = shipping_address
+        customer.save(update_fields=['shippingAddress'])
+        order.transaction_id = f'TEST-{uuid.uuid4().hex[:12].upper()}'
+        order.status = 'Payment Confirmed, Processing Order'
+        order.save(update_fields=['transaction_id', 'status'])
+    messages.success(request, 'Test payment recorded. Your invoice is ready.')
+    return redirect('Axis:invoice', pk=order.pk)
+
+
+@store_access_required('axis')
+def invoice(request, pk):
+    order = get_object_or_404(Order, pk=pk, customer=request.user.axiscustomer)
+    return render(request, 'Axis/invoice.html', {'order': order, 'items': order.orderitem_set.select_related('product')})
 
 
 

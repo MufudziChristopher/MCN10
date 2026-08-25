@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.db.models import Count
 from django.conf import settings
+from decimal import Decimal
 
 # Create your models here.
 class CollectiveCustomer(models.Model):
@@ -62,6 +63,20 @@ class CollectiveProduct(models.Model):
         return url
 
 
+class CollectiveProductVariant(models.Model):
+    product = models.ForeignKey(CollectiveProduct, on_delete=models.CASCADE, related_name='variants')
+    color = models.CharField(max_length=40)
+    image = models.ImageField(upload_to='collective_product/')
+    stock = models.IntegerField(default=0)
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=('product', 'color'), name='unique_collective_product_color')]
+        ordering = ('color',)
+
+    def __str__(self):
+        return f'{self.product.name} — {self.color}'
+
+
 class CollectiveOrder(models.Model):
     STATUS = (
         ('Pending', 'Pending'),
@@ -83,21 +98,26 @@ class CollectiveOrder(models.Model):
         return collectiveshipping
 
     @property
+    def shipping(self):
+        return self.collectiveshipping
+
+    @property
     def get_cart_total(self):
-        orderitems = self.collectiveorderitem_set.all()
-        total = sum([item.get_total for item in orderitems])
+        orderitems = self.collectiveorderitem_set.filter(product__isnull=False)
+        total = sum((item.get_total for item in orderitems), Decimal('0.00'))
         return total
 
     @property
     def get_cart_items(self):
-        orderitems = self.collectiveorderitem_set.all()
-        total = sum([item.quantity for item in orderitems])
+        orderitems = self.collectiveorderitem_set.filter(product__isnull=False)
+        total = sum((item.quantity or 0 for item in orderitems), 0)
         return total
 
 
 class CollectiveOrderItem(models.Model):
     product = models.ForeignKey(CollectiveProduct, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(CollectiveOrder, on_delete=models.SET_NULL, blank=True, null=True)
+    size = models.CharField(max_length=10, blank=True, default='')
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -106,8 +126,9 @@ class CollectiveOrderItem(models.Model):
 
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
-        return total
+        if not self.product:
+            return Decimal('0.00')
+        return self.product.price * (self.quantity or 0)
 
 class CollectiveShippingAddress(models.Model):
     customer        = models.ForeignKey(CollectiveCustomer, on_delete=models.SET_NULL, blank=True, null=True)

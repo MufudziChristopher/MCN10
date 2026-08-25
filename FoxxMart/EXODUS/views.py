@@ -14,6 +14,7 @@ from .models import *
 from .forms import *
 from .utils import cookieCart, cartData, guestOrder
 from .filters import *
+from account.access import store_access_required
 
 # Create your views here.
 def about(request):
@@ -34,6 +35,7 @@ def store(request, category_slug=None):
 
     return render(request, 'EXODUS/store.html', context)
 
+@store_access_required('exodus')
 def cart(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -57,6 +59,7 @@ def product_details(request, pk):
     context = {'cartItems': cartItems, 'product':product,'category' : category , 'shipping': False,}
     return render(request, 'EXODUS/product.html', context)
 
+@store_access_required('exodus')
 def checkout(request):
     data = cartData(request)
     cartItems = data['cartItems']

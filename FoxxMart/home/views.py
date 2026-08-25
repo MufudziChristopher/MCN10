@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
+from Axis.models import Order as AxisOrder
+from Collective.models import CollectiveOrder
+from EXODUS.models import EXODUSOrder
+from GENESIS.models import GENESISOrder
 
 # Create your views here.
 # Create your views here.
@@ -6,6 +11,59 @@ def home(request):
 
     context = {}
     return render(request, 'home/index.html', context)
+
+
+def mall(request):
+    """FoxxMart's mall front: a directory of the stores available today."""
+    stores = [
+        {
+            'name': '3rd Axis',
+            'tagline': 'Additive manufacturing',
+            'url_name': 'Axis:store',
+            'image': 'Axis_product/form-32xpng__1354x0_q85_subsampling-2png.png',
+            'accent': '#ff6500',
+            'customer_attr': 'axiscustomer',
+            'order_model': AxisOrder,
+        },
+        {
+            'name': 'The Collective',
+            'tagline': 'Limited-edition apparel',
+            'url_name': 'Collective:store',
+            'image': 'collective_product/TWHoodie_WDN3gOu.jpg',
+            'accent': '#cd0000',
+            'customer_attr': 'collectivecustomer',
+            'order_model': CollectiveOrder,
+        },
+        {
+            'name': 'Genesis',
+            'tagline': 'Robotic arm systems',
+            'url_name': 'GENESIS:store',
+            'image': 'GENESIS_product/85ca4b13fd05b8e959f0668ffdca96cf.jpg',
+            'accent': '#63e6be',
+            'customer_attr': 'genesiscustomer',
+            'order_model': GENESISOrder,
+        },
+        {
+            'name': 'Exodus',
+            'tagline': 'Objects for the next chapter',
+            'url_name': 'EXODUS:store',
+            'image': 'EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png',
+            'accent': '#a78bfa',
+            'customer_attr': 'exoduscustomer',
+            'order_model': EXODUSOrder,
+        },
+    ]
+
+    for store in stores:
+        cart_count = 0
+        if request.user.is_authenticated:
+            customer = getattr(request.user, store['customer_attr'], None)
+            if customer:
+                order = store['order_model'].objects.filter(customer=customer, status='Pending').order_by('-id').first()
+                cart_count = order.get_cart_items if order else 0
+        store['cart_count'] = cart_count
+
+    return render(request, 'home/mall.html', {'stores': stores, 'media_url': settings.MEDIA_URL})
 
 def contact(request):
     if request.method == 'POST':
