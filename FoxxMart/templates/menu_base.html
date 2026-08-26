@@ -35,8 +35,11 @@
               </span>
             </button>
             <nav id="account-navigation" aria-label="Account navigation">
-                <a href="{% url 'home:home' %}" title="Home">
-                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon>Home
+                <a href="{% url 'home:home' %}" title="Portfolio">
+                  <ion-icon name="apps-outline" size="large"></ion-icon>Portfolio
+                </a>
+                <a href="{% url 'home:mall' %}" title="FoxxMart Mall">
+                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon>FoxxMart
                 </a>
                 <a href="{% url 'home:contact' %}" title="Contact">
                   <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact

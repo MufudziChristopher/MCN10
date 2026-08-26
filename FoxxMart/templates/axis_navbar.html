@@ -9,8 +9,11 @@
             <div class="collapsible-menu__content" id="axis-store-menu">
 
             <nav>
+                <a href="{% url 'home:home' %}" title="Portfolio">
+                  <ion-icon name="apps-outline" size="small"></ion-icon><br>Portfolio
+                </a>
                 <a href="{% url 'home:mall' %}" title="FoxxMart Mall"{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %} aria-current="page"{% endif %}>
-                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="small"></ion-icon><br>Home
+                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="small"></ion-icon><br>FoxxMart
                 </a>
 
                 <a href="{% url 'Axis:store' %}" title="Online Store"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} aria-current="page"{% endif %}>

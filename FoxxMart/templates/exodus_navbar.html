@@ -5,7 +5,8 @@
       <span class="exodus-menu__brand"><img src="{% static 'images/III-light.gif' %}" alt="" aria-hidden="true">EXODUS</span>
     </summary>
     <nav aria-label="Exodus navigation">
-      <a href="{% url 'home:mall' %}"><ion-icon name="home-outline" aria-hidden="true"></ion-icon><span>Home</span></a>
+      <a href="{% url 'home:home' %}"><ion-icon name="apps-outline" aria-hidden="true"></ion-icon><span>Portfolio</span></a>
+      <a href="{% url 'home:mall' %}"><ion-icon name="home-outline" aria-hidden="true"></ion-icon><span>FoxxMart</span></a>
       <a href="{% url 'EXODUS:store' %}"{% if request.resolver_match.url_name == 'store' %} aria-current="page"{% endif %}><ion-icon name="storefront-outline" aria-hidden="true"></ion-icon><span>Store</span></a>
       <a href="{% url 'EXODUS:cart' %}"{% if request.resolver_match.url_name == 'cart' %} aria-current="page"{% endif %}><span class="exodus-menu__cart"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon><b>{{ cartItems|default:0 }}</b></span><span>Cart</span></a>
       <a href="{% url 'EXODUS:contact' %}"{% if request.resolver_match.url_name == 'contact' %} aria-current="page"{% endif %}><ion-icon name="mail-outline" aria-hidden="true"></ion-icon><span>Contact</span></a>
