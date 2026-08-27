@@ -116,6 +116,46 @@
 	font-size: 1.45rem;
 }
 
+/* The Theme control shares the product-detail menu's icon-over-label layout. */
+.product-page .axis-theme-toggle {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+	width: 4.5rem;
+	height: auto;
+	min-height: 4.25rem;
+	padding: 0;
+	line-height: 1;
+}
+
+.product-page .axis-theme-toggle > br { display: none; }
+
+body.axis-theme--light.product-page .bp-header,
+body.axis-theme--light.product-page .bp-header nav a,
+body.axis-theme--light.product-page .axis-theme-toggle { color: #000; }
+
+body.axis-theme--dark.product-page::before,
+body.axis-theme--dark.product-page .bp-header nav,
+body.axis-theme--dark.product-page .product-quick-cart[open] {
+	background: rgba(18, 18, 18, 0.56);
+}
+
+body.axis-theme--dark.product-page .bp-header,
+body.axis-theme--dark.product-page .bp-header nav a,
+body.axis-theme--dark.product-page .axis-theme-toggle,
+body.axis-theme--dark.product-page .product-store-link,
+body.axis-theme--dark.product-page .product-quick-cart,
+body.axis-theme--dark.product-page .product-quick-cart a {
+	color: #fff;
+}
+
+body.axis-theme--dark.product-page .bp-header hr,
+body.axis-theme--dark.product-page .product-quick-cart hr {
+	border-color: #fff;
+}
+
 /* Keep the Axis product-detail experience centred from the product summary
  * through to every gallery caption and image. */
 .product-page main .content {
@@ -128,6 +168,25 @@
 .product-page main .content__text {
 	margin-right: auto;
 	margin-left: auto;
+}
+
+/* Product details use the same restrained sans-serif product typography as
+ * the storefront cards, rather than the larger editorial demo typeface. */
+.product-page .content__title,
+.product-page .content__text,
+.product-page .product-detail__price,
+.product-page .product-detail__stock {
+	font-family: Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.45;
+}
+
+.product-page .content__title {
+	max-width: 32rem;
+	margin-top: 0;
+	margin-bottom: .65rem;
+	line-height: 1.25;
 }
 
 .product-page .product-detail__add-to-cart {
@@ -162,7 +221,7 @@
 
 .product-page .bp-header nav a[title='Cart'] .cart__count {
 	position: absolute;
-	top: 0.35rem;
+	top: 0.15rem;
 	right: 0.35rem;
 	display: grid;
 	width: 1.2rem;
@@ -220,8 +279,8 @@
 
 .product-page .product-detail__price,
 .product-page .product-detail__stock {
-	font-size: 1.35rem;
-	font-weight: 700;
+	font-size: 1rem;
+	font-weight: 400;
 }
 
 .product-page .product-detail-image {
@@ -319,15 +378,15 @@
 	align-items: center;
 	gap: 0.15rem;
 	color: #000;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	line-height: 1;
 	text-align: center;
 	text-decoration: none;
 }
 
 .product-page .product-store-link ion-icon {
-	width: 2.25rem;
-	height: 2.25rem;
+	width: 2rem;
+	height: 2rem;
 }
 
 .product-page .product-store-link:hover,
@@ -381,6 +440,16 @@
 	line-height: 1;
 }
 
+body.axis-theme--light.product-page .product-quick-cart__count {
+	background: #000;
+	color: #fff;
+}
+
+body.axis-theme--dark.product-page .product-quick-cart__count {
+	background: #fff;
+	color: #000;
+}
+
 .product-page .product-quick-cart ul {
 	margin: 0.75rem 0;
 	padding: 0;
@@ -394,6 +463,22 @@
 	align-items: center;
 	gap: 0.5rem;
 	margin: 0.5rem 0;
+}
+
+.product-page .product-quick-cart__divider {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.product-page .product-quick-cart__divider hr {
+	margin: 0;
+	border: 0;
+	border-top: 1px solid #000;
+}
+
+body.axis-theme--dark.product-page .product-quick-cart__divider hr {
+	border-color: #fff;
 }
 
 .product-page .product-quick-cart__item img {

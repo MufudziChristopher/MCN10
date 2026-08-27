@@ -67,6 +67,308 @@
   object-fit: contain;
 }
 
+.account-theme-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .25rem;
+  min-width: 3.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: .76rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.account-theme-toggle ion-icon { width: 1.5rem; height: 1.5rem; }
+.account-theme-toggle__light { display: none; }
+
+/* Match the storefront's theme switch with a short top-and-bottom shutter
+   transition, so account pages do not flash between their two backgrounds. */
+.account-theme-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  pointer-events: none;
+}
+.account-theme-transition__shutter {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50.5%;
+  background: #121212;
+  transform: scaleY(0);
+  transition: transform .27s cubic-bezier(.76, 0, .24, 1);
+  will-change: transform;
+}
+.account-theme-transition__shutter:first-child { top: 0; transform-origin: center top; }
+.account-theme-transition__shutter:last-child { bottom: 0; transform-origin: center bottom; }
+.account-theme-transition--covering .account-theme-transition__shutter { transform: scaleY(1); }
+
+body.axis-theme--light {
+  min-height: 100vh;
+  background: #f4f4f4 url('../../axis/static_root/images/bg1.jpg') center / cover fixed;
+  color: #111;
+}
+
+body.axis-theme--dark {
+  min-height: 100vh;
+  background: #121212 url('../../axis/static_root/images/bg001.jpg') center / cover fixed;
+  color: #fff;
+}
+
+body.axis-theme--dark .account-menu::before,
+body.axis-theme--dark .account-menu:not(.is-collapsed) nav {
+  background: rgba(18, 18, 18, .56);
+}
+
+body.axis-theme--dark .account-menu__toggle,
+body.axis-theme--dark .account-menu nav a,
+body.axis-theme--dark .account-theme-toggle,
+body.axis-theme--dark .view,
+body.axis-theme--dark .view h1,
+body.axis-theme--dark .view h2,
+body.axis-theme--dark .view h3,
+body.axis-theme--dark .view h4,
+body.axis-theme--dark .view h5,
+body.axis-theme--dark .view p,
+body.axis-theme--dark .view td,
+body.axis-theme--dark .view th {
+  color: #fff;
+}
+
+body.axis-theme--dark .account-theme-toggle__dark { display: none; }
+body.axis-theme--dark .account-theme-toggle__light { display: block; }
+
+/* Ionicons need explicit palette variables because their SVGs do not inherit
+   text colour consistently across the account pages. */
+body.axis-theme--light .account-menu ion-icon,
+body.axis-theme--light .account-quick-cart ion-icon,
+body.axis-theme--light .account-edit-card ion-icon {
+  --ion-color-base: #000 !important;
+  --ion-color-contrast: #000 !important;
+  color: #000 !important;
+}
+
+body.axis-theme--dark .account-menu ion-icon,
+body.axis-theme--dark .account-quick-cart ion-icon,
+body.axis-theme--dark .account-edit-card ion-icon,
+body.axis-theme--dark #main .icons ion-icon {
+  --ion-color-base: #fff !important;
+  --ion-color-contrast: #fff !important;
+  color: #fff !important;
+}
+
+/* Locally served SVG icons retain their own fill, so invert those hosts in
+   dark mode as well. This keeps the profile cart visible. */
+body.axis-theme--dark .account-menu ion-icon[src],
+body.axis-theme--dark .account-quick-cart ion-icon[src] {
+  filter: invert(1);
+}
+
+body.axis-theme--light .account-menu ion-icon[src],
+body.axis-theme--light .account-quick-cart ion-icon[src] {
+  filter: none;
+}
+
+/* Let the selected background and theme extend through the full account page. */
+body.axis-theme--light .container,
+body.axis-theme--light .container > .view,
+body.axis-theme--light .container > .view > .grid,
+body.axis-theme--dark .container,
+body.axis-theme--dark .container > .view,
+body.axis-theme--dark .container > .view > .grid {
+  background: transparent !important;
+}
+
+.account-edit-page {
+  display: grid;
+  min-height: calc(100svh - 7rem);
+  padding: 2rem 1rem 3rem;
+  place-items: center;
+}
+
+.account-edit-card {
+  width: min(100%, 34rem);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, .45);
+  box-shadow: 0 .7rem 2rem rgba(0, 0, 0, .14);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+body.axis-theme--dark .account-edit-card {
+  border-color: rgba(255, 255, 255, .35);
+  background: rgba(18, 18, 18, .56);
+  color: #fff;
+}
+
+.account-edit-card header { text-align: center; }
+.account-edit-card__icon ion-icon { width: 3rem; height: 3rem; font-size: 3rem; }
+.account-edit-card__eyebrow { margin: .5rem 0; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.account-edit-card h1 { margin: 0; font-size: clamp(1.75rem, 6vw, 2.4rem); }
+.account-edit-card header > p:last-child { margin: .75rem 0 1.75rem; line-height: 1.5; }
+.account-edit-card__field { margin: 1.1rem 0; text-align: left; }
+.account-edit-card__field label { display: block; margin-bottom: .4rem; font-weight: 700; }
+.account-edit-card__field input {
+  width: 100%;
+  padding: .8rem .9rem;
+  border: 1px solid rgba(0, 0, 0, .45);
+  border-radius: .6rem;
+  background: rgba(255, 255, 255, .85);
+  color: #111;
+  font: inherit;
+}
+
+body.axis-theme--dark .account-edit-card__field input { border-color: rgba(255, 255, 255, .55); background: rgba(255, 255, 255, .12); color: #fff; }
+.account-edit-card__field input:focus { border-color: currentColor !important; box-shadow: 0 0 0 3px rgba(127, 127, 127, .25); }
+.account-edit-card__field small { display: block; margin-top: .35rem; }
+.account-edit-card__error, .account-edit-card__errors { margin: .4rem 0 0; color: #b00020; font-weight: 700; }
+body.axis-theme--dark .account-edit-card__error, body.axis-theme--dark .account-edit-card__errors { color: #ff9aa9; }
+.account-edit-card__actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.75rem; }
+.account-edit-card__actions a, .account-edit-card__actions button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-height: 2.75rem; padding: .65rem 1rem; border: 1px solid currentColor; border-radius: .6rem; background: transparent; color: inherit; font: inherit; text-decoration: none; cursor: pointer; }
+.account-edit-card__actions button { border-color: #000; background: #000; color: #fff; }
+body.axis-theme--dark .account-edit-card__actions button { border-color: #fff; background: #fff; color: #000; }
+.account-edit-card__actions ion-icon { width: 1.2rem; height: 1.2rem; }
+
+/* Password recovery follows the same focused, glass-card treatment as profile
+   editing, with a short explanation and one clear next action. */
+.account-auth-page {
+  display: grid;
+  min-height: calc(100svh - 7rem);
+  padding: 2rem 1rem 3rem;
+  place-items: center;
+}
+
+.account-auth-card {
+  width: min(100%, 31rem);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, .45);
+  box-shadow: 0 .7rem 2rem rgba(0, 0, 0, .14);
+  color: #111;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.account-auth-card header { text-align: center; }
+.account-auth-card__icon ion-icon { width: 3rem; height: 3rem; font-size: 3rem; }
+.account-auth-card__eyebrow { margin: .5rem 0; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.account-auth-card h1 { margin: 0; font-size: clamp(1.75rem, 6vw, 2.4rem); }
+.account-auth-card header > p:last-child { margin: .75rem 0 1.75rem; line-height: 1.5; }
+.account-auth-card__field { margin: 1.1rem 0; text-align: left; }
+.account-auth-card__field label { display: block; margin-bottom: .4rem; font-weight: 700; }
+.account-auth-card__field input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: .8rem .9rem;
+  border: 1px solid rgba(0, 0, 0, .45);
+  border-radius: .6rem;
+  background: rgba(255, 255, 255, .85);
+  color: #111;
+  font: inherit;
+}
+.account-auth-card__field input:focus { border-color: currentColor; outline: 0; box-shadow: 0 0 0 3px rgba(127, 127, 127, .25); }
+.account-auth-card__field small { display: block; margin-top: .35rem; line-height: 1.35; }
+.account-auth-card__error, .account-auth-card__errors { margin: .4rem 0 0; color: #b00020; font-weight: 700; }
+.account-auth-card__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.9rem;
+  margin-top: .75rem;
+  padding: .7rem 1rem;
+  border: 1px solid #000;
+  border-radius: .6rem;
+  background: #000;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.account-auth-card__primary ion-icon { width: 1.2rem; height: 1.2rem; }
+.account-auth-card__footer { margin: 1.25rem 0 0; text-align: center; }
+.account-auth-card__footer a { color: inherit; font-weight: 700; }
+.account-auth-card__notice { display: flex; align-items: flex-start; gap: .65rem; margin: 1.25rem 0; padding: .85rem; border: 1px solid currentColor; border-radius: .65rem; }
+.account-auth-card__notice ion-icon { flex: 0 0 auto; width: 1.35rem; height: 1.35rem; }
+.account-auth-card__notice p { margin: 0; line-height: 1.45; }
+
+body.axis-theme--dark .account-auth-card {
+  border-color: rgba(255, 255, 255, .35);
+  background: rgba(18, 18, 18, .56);
+  color: #fff;
+}
+body.axis-theme--dark .account-auth-card__field input { border-color: rgba(255, 255, 255, .55); background: rgba(255, 255, 255, .12); color: #fff; }
+body.axis-theme--dark .account-auth-card__error,
+body.axis-theme--dark .account-auth-card__errors { color: #ff9aa9; }
+body.axis-theme--dark .account-auth-card__primary { border-color: #fff; background: #fff; color: #000; }
+
+.account-quick-cart {
+  position: fixed;
+  top: .8rem;
+  right: 1rem;
+  z-index: 2202;
+  color: #111;
+}
+
+.account-quick-cart summary {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  list-style: none;
+  cursor: pointer;
+  font-size: .76rem;
+}
+
+.account-quick-cart summary::-webkit-details-marker { display: none; }
+.account-quick-cart summary ion-icon { width: 2rem; height: 2rem; }
+.account-quick-cart__panel {
+  position: absolute;
+  top: calc(100% + .65rem);
+  right: 0;
+  width: min(22rem, calc(100vw - 1.5rem));
+  max-height: min(70svh, 34rem);
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, .3);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .55);
+  box-shadow: 0 .65rem 1.8rem rgba(0, 0, 0, .18);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.account-quick-cart__panel h2 { margin: 0 0 .75rem; font-size: 1.1rem; }
+.account-quick-cart__panel ul { margin: 0; padding: 0; list-style: none; }
+.account-quick-cart__panel li:not(.account-quick-cart__divider) { display: grid; grid-template-columns: auto 3.25rem minmax(0, 1fr); gap: .75rem; align-items: center; padding: .65rem 0; text-align: left; }
+.account-quick-cart__panel li:not(.account-quick-cart__divider) img { width: 3.25rem; height: 3.25rem; object-fit: contain; }
+.account-quick-cart__panel li:not(.account-quick-cart__divider) span { min-width: 0; overflow-wrap: anywhere; }
+.account-quick-cart__panel li:not(.account-quick-cart__divider) small { display: block; margin-top: .2rem; }
+.account-quick-cart__divider { display: block; margin: 0; padding: 0; border: 0; }
+.account-quick-cart__divider hr { height: 0; margin: 0; border: 0; border-top: 1px solid #000; }
+.account-quick-cart__total { display: flex; justify-content: space-between; margin: .85rem 0; padding-top: .75rem; border-top: 1px solid currentColor; }
+.account-quick-cart__panel li form { margin: 0; }
+.account-quick-cart__panel li button { display: inline-grid; width: 2rem; height: 2rem; padding: 0; place-items: center; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.account-quick-cart__panel li button ion-icon { width: 1.6rem; height: 1.6rem; }
+.account-quick-cart__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+.account-quick-cart__actions a { display: block; padding: .65rem .5rem; border: 1px solid currentColor; border-radius: .55rem; color: inherit; text-align: center; text-decoration: none; }
+
+body.axis-theme--dark .account-quick-cart { color: #fff; }
+body.axis-theme--dark .account-quick-cart__panel { border-color: rgba(255, 255, 255, .35); background: rgba(18, 18, 18, .56); }
+body.axis-theme--dark .account-quick-cart__divider hr { border-color: #fff; }
+
 .account-menu nav {
   position: relative;
   z-index: 1;
@@ -96,7 +398,7 @@
   box-shadow: 0 .35rem .8rem rgba(0, 0, 0, .12);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .account-menu.is-collapsed nav {
@@ -131,6 +433,62 @@
 .account-menu nav a:hover { color: #cd0000; }
 .account-menu nav a[aria-current='page'] { border-bottom: 1px solid currentColor; }
 .account-menu nav ion-icon { font-size: 1.5rem; }
+.account-menu__icon { display: block; width: 2rem; height: 2rem; }
+body.axis-theme--dark .account-menu__icon { filter: invert(1); }
+
+.account-menu__cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* The legacy Blueprint stylesheet hides direct spans in navigation links.
+   The cart icon is deliberately wrapped to hold its count badge, so restore
+   that wrapper inside the account menu. */
+.account-menu nav a > .account-menu__cart-icon {
+  display: inline-flex;
+}
+
+.account-menu__cart-icon ion-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  font-size: 2rem;
+}
+
+.account-menu__cart-icon b {
+  position: absolute;
+  top: -.45rem;
+  right: -.65rem;
+  display: grid;
+  place-items: center;
+  min-width: 1.1rem;
+  height: 1.1rem;
+  padding: 0 .15rem;
+  border-radius: 999px;
+  background: #000;
+  color: #fff;
+  font-size: .65rem;
+  line-height: 1;
+}
+
+body.axis-theme--dark .account-menu__cart-icon b {
+  background: #fff;
+  color: #000;
+}
+
+.account-profile-email {
+  margin: .55rem 0 0;
+  color: inherit;
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+}
 
 /* The sticky header occupies document flow; expanded navigation therefore
    pushes account content down without an overlay offset. */
@@ -190,11 +548,25 @@
 .account-registration-page form { margin-right: auto; margin-left: auto; }
 
 @media (max-width: 460px) {
-  .account-menu { min-height: 4.75rem; margin-bottom: 1rem; }
+  .account-menu { width: 100vw; min-height: 4.75rem; margin: 0; }
   .account-menu::before { height: 4.75rem; }
   .account-menu__toggle { min-height: 4.75rem; padding: .5rem; }
-  .account-menu nav { width: 100%; max-height: 20rem; min-height: 3.1rem; gap: .1rem; flex-wrap: wrap; border-radius: 0; }
+  .account-menu nav,
+  .account-menu:not(.is-collapsed) nav { width: 100vw; margin: 0; padding-right: 0; padding-left: 0; border-radius: 0; }
+  .account-menu nav { max-height: 20rem; min-height: 3.1rem; gap: .1rem; flex-wrap: wrap; }
   .account-menu__brand { font-size: 1.1rem; }
   .account-menu__brand img { width: 2.35rem; height: 1.75rem; }
+  /* The legacy profile layout reserves 4em above its avatar on phones. */
+  #main { padding-top: 1.25rem; }
+  .account-edit-page { min-height: calc(100svh - 5rem); padding: 1rem .75rem 2rem; }
+  .account-edit-card { border-radius: 1rem; }
+  .account-auth-page { min-height: calc(100svh - 5rem); padding: 1rem .75rem 2rem; }
+  .account-auth-card { border-radius: 1rem; }
+  .account-quick-cart { top: .55rem; right: .75rem; }
+  .account-quick-cart summary > span:last-child { display: none; }
   .container > .view:not(:has(.account-login-page, .account-registration-page)) { padding-top: 5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .account-theme-transition { display: none; }
 }

@@ -19,7 +19,7 @@
     </button>
     <nav id="mall-navigation" aria-label="Mall navigation">
       <a href="{% url 'home:home' %}" title="Portfolio"><ion-icon name="apps-outline" size="large"></ion-icon>Portfolio</a>
-      <a href="{% url 'home:mall' %}" title="FoxxMart Mall"><ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon>FoxxMart</a>
+      <a href="{% url 'home:mall' %}" title="FoxxMart Mall"><ion-icon name="grid-outline" size="large"></ion-icon>FoxxMart</a>
       <a href="{% url 'home:contact' %}" title="Contact"><ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact</a>
       {% if request.user.is_authenticated %}
       <a href="{% url 'account:profile' %}" title="Account"><ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>Account</a>
@@ -46,7 +46,7 @@
           <a class="mall-card" href="{% url store.url_name %}">
             <span class="mall-card__scan" aria-hidden="true"></span>
             {% if store.cart_count %}<span class="mall-card__cart-count" aria-label="{{ store.cart_count }} items in {{ store.name }} cart">{{ store.cart_count }}</span>{% endif %}
-            <span class="mall-card__top">FOXXMART / {{ forloop.counter|stringformat:'02d' }}</span>
+            <span class="mall-card__top">FOXX MART / {{ forloop.counter|stringformat:'02d' }}</span>
             <span class="mall-card__body">
               <strong>{{ store.name }}</strong>
               <small>{{ store.tagline }}</small>
@@ -60,7 +60,7 @@
           <a class="mall-card" href="{% url store.url_name %}" tabindex="-1">
             <span class="mall-card__scan" aria-hidden="true"></span>
             {% if store.cart_count %}<span class="mall-card__cart-count">{{ store.cart_count }}</span>{% endif %}
-            <span class="mall-card__top">FOXXMART / {{ forloop.counter|stringformat:'02d' }}</span>
+            <span class="mall-card__top">FOXX MART / {{ forloop.counter|stringformat:'02d' }}</span>
             <span class="mall-card__body"><strong>{{ store.name }}</strong><small>{{ store.tagline }}</small></span>
           </a>
           <a class="mall-store-card__link" href="{% url store.url_name %}" tabindex="-1">Enter {{ store.name }} <span aria-hidden="true">↗</span></a>

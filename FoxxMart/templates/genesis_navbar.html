@@ -3,13 +3,13 @@
   <summary aria-label="Open Genesis menu"><span class="genesis-menu__brand">GENESIS</span><ion-icon name="menu-outline" aria-hidden="true"></ion-icon></summary>
   <nav class="genesis-menu__panel" aria-label="Genesis navigation">
     <a href="{% url 'home:home' %}"><ion-icon name="apps-outline" aria-hidden="true"></ion-icon><span>Portfolio</span></a>
-    <a href="{% url 'home:mall' %}"><ion-icon name="home-outline" aria-hidden="true"></ion-icon><span>FoxxMart</span></a>
+    <a href="{% url 'home:mall' %}"><ion-icon name="grid-outline" aria-hidden="true"></ion-icon><span>FoxxMart</span></a>
     <a href="{% url 'GENESIS:store' %}"{% if request.resolver_match.url_name == 'store' %} class="is-current" aria-current="page"{% endif %}><ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" aria-hidden="true"></ion-icon><span>Store</span></a>
     <a href="{% url 'GENESIS:cart' %}"{% if request.resolver_match.url_name == 'cart' %} class="is-current" aria-current="page"{% endif %}><span class="genesis-menu__cart-icon"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon><b>{{ cartItems|default:0 }}</b></span><span>Cart</span></a>
     <a href="{% url 'GENESIS:contact' %}"{% if request.resolver_match.url_name == 'contact' %} class="is-current" aria-current="page"{% endif %}><ion-icon name="mail-outline" aria-hidden="true"></ion-icon><span>Contact</span></a>
     <a href="{% url 'GENESIS:about' %}"{% if request.resolver_match.url_name == 'about' %} class="is-current" aria-current="page"{% endif %}><ion-icon name="information-circle-outline" aria-hidden="true"></ion-icon><span>About</span></a>
     {% if user.is_authenticated %}
-    <a href="{% url 'account:profile' %}"><ion-icon name="person-outline" aria-hidden="true"></ion-icon><span>Profile</span></a>
+    <a href="{% url 'account:profile' %}?store=genesis"><ion-icon name="person-outline" aria-hidden="true"></ion-icon><span>Profile</span></a>
     <a href="{% url 'account:logout' %}"><ion-icon name="log-out-outline" aria-hidden="true"></ion-icon><span>Logout</span></a>
     {% else %}
     <a href="{% url 'account:login' %}?next={{ request.path|urlencode }}"><ion-icon name="log-in-outline" aria-hidden="true"></ion-icon><span>Login</span></a>

@@ -12,7 +12,7 @@
 	<meta name="author" content="Mufudzi Christopher">
 	<link rel="icon shortcut" href="{% static 'court/images/favicon.jpeg' %}">
 	<link rel="stylesheet" href="https://use.typekit.net/lgy2swt.css">
-	<link rel="stylesheet" type="text/css" href="{% static 'court/css/index.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'court/css/index.css' %}?v=1">
 	<script>
 	document.documentElement.className = "js";
 	var supportsCssVars = function() {
@@ -24,6 +24,10 @@
 </head>
 
 <body class="demo-4 loading">
+	<header class="yoga-site-nav">
+		<a href="#top" class="yoga-site-nav__brand">Courtney Lee Yoga</a>
+		<a href="#booking" class="yoga-site-nav__booking">Book a class</a>
+	</header>
 	<main>
 		<!-- <div class="frame">
 			<div class="frame__title">
@@ -38,13 +42,17 @@
 				<h3 class="frame__demos-title">Effects</h3> <a class="frame__demos-item" href="index.html">01 <a class="frame__demos-item" href="index2.html">02</a> <a class="frame__demos-item" href="index3.html">03</a> <span class="frame__demos-item">04</span> <a class="frame__demos-item" href="index5.html">05</a> </a>
 			</nav>
 		</div> -->
-		<section class="section section--intro">
+		<section class="section section--intro" id="top">
+			<div class="yoga-hero-overlay" aria-hidden="true"></div>
+			<div class="yoga-hero-content">
 			<h2 class="section__title">CourtneyLee's <br> YogaClasses</h2>
 			<p class="section__text">Connect with your body, mind, and spirit. Create a sacred space where you can let go of distractions and tune into your own needs. Experience the profound healing benefits of a mindful practice.</p>
+			<a class="yoga-hero-content__cta" href="#booking">Reserve your place</a>
 			<p class="section__text section__text--alt"> <span>Discover</span>
 				<svg class="section__arrow" width="22" height="22" viewBox="0 0 24 24">
 					<path vector-effect="non-scaling-stroke" d="M18.25 15.5a.75.75 0 0 0 .75-.75v-9a.75.75 0 0 0-.75-.75h-9a.75.75 0 0 0 0 1.5h7.19L6.22 16.72a.75.75 0 1 0 1.06 1.06L17.5 7.56v7.19c0 .414.336.75.75.75z" />
-				</svg> <span>Scroll</span> </p>
+			</svg> <span>Scroll</span> </p>
+			</div>
 		</section>
 		<section class="section section--columns">
 			<div class="columns">
@@ -206,6 +214,31 @@
 				</div>
 			</div>
 			<p>Based on the effect seen on <a href="https://www.margotpriolet.com/">margotpriolet.com</a></p>
+		</section>
+		<section class="yoga-booking" id="booking" aria-labelledby="booking-title">
+			<div class="yoga-booking__intro">
+				<p class="yoga-booking__eyebrow">Weekly outdoor and studio sessions</p>
+				<h2 id="booking-title">Book your practice.</h2>
+				<p>Choose a class, select its matching day, and reserve your place. We’ll keep your booking in the class register.</p>
+				<ul class="yoga-booking__schedule">
+					{% for yoga_class in classes %}
+					<li><strong>{{ yoga_class.get_weekday_display }}</strong><span>{{ yoga_class.start_time|time:'H:i' }}–{{ yoga_class.end_time|time:'H:i' }} · {{ yoga_class.location }}</span></li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="yoga-booking__panel">
+				{% if messages %}
+					{% for message in messages %}<p class="yoga-booking__message">{{ message }}</p>{% endfor %}
+				{% endif %}
+				<form method="post" class="yoga-booking__form" novalidate>
+					{% csrf_token %}
+					{{ booking_form.non_field_errors }}
+					{% for field in booking_form %}
+						<label for="{{ field.id_for_label }}">{{ field.label }}{{ field }}{% for error in field.errors %}<span class="yoga-booking__error">{{ error }}</span>{% endfor %}</label>
+					{% endfor %}
+					<button type="submit">Confirm booking</button>
+				</form>
+			</div>
 		</section>
 	</main>
 	<script type="module" src="{% static 'court/js/index4.6de50968.js' %}"></script>

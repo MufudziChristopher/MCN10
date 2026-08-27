@@ -65,7 +65,10 @@
         // isotope instance
         iso,
         // filter ctrls
-        filterCtrls = [].slice.call(document.querySelectorAll('.cbp-spmenu-left > button')),
+        filterCtrls = [].slice.call(document.querySelectorAll('#cbp-spmenu-s1 .filter__item')),
+        filterSearchInput = document.querySelector('#filter-search-input'),
+        filterSearchEmpty = document.querySelector('.filter-search__empty'),
+        filterSearchClear = document.querySelector('.filter-search__clear'),
         // cart
         cart = document.querySelector('.cart'),
         cartItems = cart.querySelector('.cart__count');
@@ -135,6 +138,38 @@
                 iso.layout();
             });
         });
+
+        if (filterSearchInput && filterSearchEmpty) {
+            function searchFilters() {
+                var query = filterSearchInput.value.trim().toLowerCase(),
+                    matches = 0;
+
+                filterCtrls.forEach(function (filterCtrl) {
+                    var isAllOption = filterCtrl.getAttribute('data-filter') === '*',
+                        isMatch = isAllOption || filterCtrl.textContent.toLowerCase().indexOf(query) !== -1;
+
+                    filterCtrl.hidden = !isMatch;
+                    if (!isAllOption && isMatch) {
+                        matches++;
+                    }
+                });
+
+                filterSearchEmpty.hidden = matches !== 0 || query === '';
+                if (filterSearchClear) {
+                    filterSearchClear.hidden = query === '';
+                }
+            }
+
+            filterSearchInput.addEventListener('input', searchFilters);
+
+            if (filterSearchClear) {
+                filterSearchClear.addEventListener('click', function () {
+                    filterSearchInput.value = '';
+                    searchFilters();
+                    filterSearchInput.focus();
+                });
+            }
+        }
 
         // window resize / recalculate sizes for both flickity and isotope/masonry layouts
         window.addEventListener('resize', throttle(function (ev) {

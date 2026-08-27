@@ -10,64 +10,66 @@
 
             <nav>
                 <a href="{% url 'home:home' %}" title="Portfolio">
-                  <ion-icon name="apps-outline" size="small"></ion-icon><br>Portfolio
+                  <ion-icon name="apps-outline" size="large"></ion-icon><br>Portfolio
                 </a>
                 <a href="{% url 'home:mall' %}" title="FoxxMart Mall"{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %} aria-current="page"{% endif %}>
-                  <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="small"></ion-icon><br>FoxxMart
+                  <ion-icon name="grid-outline" size="large"></ion-icon><br>FoxxMart
                 </a>
 
                 <a href="{% url 'Axis:store' %}" title="Online Store"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon><br>Shop
+                    <ion-icon name="storefront-outline" size="large"></ion-icon><br>Shop
                 </a>
 
                 {% if user.is_authenticated %}
                 {% if cartItems %}
 
                 <a href="{% url 'Axis:cart' %}" title="Cart" data-info=""{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/cart-sharp.svg' %}" class="cart__icon" size="large"></ion-icon><br>Cart
+                    <ion-icon name="cart" class="cart__icon" size="large"></ion-icon><br>Cart
                     <span class="cart__count">{{cartItems}}</span>
                 </a>
 
                 {% else %}
 
                 <a href="{% url 'Axis:cart' %}" title="Cart" data-info=""{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+                    <ion-icon name="cart-outline" size="large"></ion-icon><br>Cart
                 </a>
                 {% endif %}
-                <a href="{% url 'account:profile' %}" title="My  Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon>
-                    <strong>{% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.username }}{% endif %}</strong>
+                <a href="{% url 'account:profile' %}?store=axis" title="My  Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}>
+                    <ion-icon name="person-outline" size="large"></ion-icon>
+                    <strong>Profile</strong>
                 </a>
                 <a href="{% url 'account:logout' %}" title="Log Out">
-                    <ion-icon class="menu-icon--large" src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon>Logout
+                    <ion-icon class="menu-icon--large" name="log-out-outline" size="large"></ion-icon>Logout
                 </a>
                 {% else %}
 
 
                 <a href="{% url 'account:login' %}" title="Cart" data-info=""{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" size="large"></ion-icon><br>Cart
+                    <ion-icon name="cart-outline" size="large"></ion-icon><br>Cart
                 </a>
                 <a href="{% url 'account:register' %}?store=axis" title="Create Account"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon>Register
+                    <ion-icon name="person-add-outline" size="large"></ion-icon>Register
                 </a>
                 <a href="{% url 'account:login' %}" title="Log in"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Log in
+                    <ion-icon name="log-in-outline" size="large"></ion-icon><br>Log in
                 </a>
                 {% endif %}
                 <a href="{% url 'Axis:contact' %}" title="Contact"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'contact' %} aria-current="page"{% endif %}>
-                    <ion-icon class="menu-icon--large" src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
+                    <ion-icon class="menu-icon--large" name="mail-outline" size="large"></ion-icon>Contact
                 </a>
                 <a href="{% url 'Axis:about' %}" title="About Us"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'about' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/information-circle-outline.svg' %}" size="large"></ion-icon>About
+                    <ion-icon name="information-circle-outline" size="large"></ion-icon>About
                 </a>
                 {% if user.is_Staff or user.is_superuser %}
                 <a href="{% url 'Axis:dashboard' %}" target="_blank" title="Management Studio"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'dashboard' %} aria-current="page"{% endif %}>
-                    <ion-icon src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon>Studio
+                    <ion-icon name="options-outline" size="large"></ion-icon>Studio
                 </a>
-                            {% endif %}
-                <!-- <a onclick="lightMode()">
-                    <ion-icon size="small" title="Light Mode" name="sunny-outline"></ion-icon><br>Light
-                </a> -->
+                {% endif %}
+				<button class="axis-theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
+					<ion-icon class="axis-theme-toggle__dark" name="toggle" aria-hidden="true"></ion-icon>
+					<ion-icon class="axis-theme-toggle__light" name="toggle-outline" aria-hidden="true"></ion-icon>
+					<br><span>Theme</span>
+				</button>
 								</nav>
             </div>
         </header>

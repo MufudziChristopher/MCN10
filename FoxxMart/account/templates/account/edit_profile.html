@@ -5,38 +5,35 @@
 {% block body %}
 
 
-<!-- Main -->
-<div class="view">
-
-    <!-- Grid -->
-
-    <section class="grid" id="main">
+<main class="account-edit-page">
+    <section class="account-edit-card" aria-labelledby="edit-profile-title">
         <header>
-            <span class="avatar"><img {% if request.user.customer.profile_pic %} src="{{request.user.customer.profile_pic.url}}" {% else %} src="{% static 'images/dummy.jpg' %}" {% endif %} alt="" /></span>
-
-<form method="post">{% csrf_token %}
-            <input placeholder="Update Username: " id="id_username" value={{user.username}}> </input>
-            <input placeholder="Update Email.." id="id_email" value={{user.email}}></input>
-<br>
-<br>
-            <ul class="icons">
-                <li><a title="Save" type="submit" >
-                        <ion-icon name="save-outline" type="submit" size="large">Save</ion-icon>
-                    </a></li>
-            </ul>
-
-                    </form>
-
+            <span class="account-edit-card__icon"><ion-icon name="person-circle-outline" aria-hidden="true"></ion-icon></span>
+            <p class="account-edit-card__eyebrow">{{ account_storefront.menu_label }} account</p>
+            <h1 id="edit-profile-title">Edit profile</h1>
+            <p>Keep your account details current so your orders and store access remain connected to you.</p>
         </header>
-        <br>
+
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% if account_form.non_field_errors %}
+            <div class="account-edit-card__errors" role="alert">{{ account_form.non_field_errors }}</div>
+            {% endif %}
+            {% for field in account_form %}
+            <div class="account-edit-card__field">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+                {% for error in field.errors %}<p class="account-edit-card__error">{{ error }}</p>{% endfor %}
+            </div>
+            {% endfor %}
+            <div class="account-edit-card__actions">
+                <a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}">Cancel</a>
+                <button type="submit"><ion-icon name="save-outline" aria-hidden="true"></ion-icon>Save changes</button>
+            </div>
+        </form>
     </section>
-
-
-</div>
-<script type="text/javascript">
-    console.log("You have reached the Profile page")
-
-</script>
+</main>
 
 
 {% endblock %}

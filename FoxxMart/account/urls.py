@@ -13,4 +13,5 @@ urlpatterns = [
 	path('logout/', views.logout_view, name="logout"),
 	path('login/', views.login_view, name="login"),
 	path('region/', views.set_region, name="set_region"),
+	path('cart/remove/', views.remove_cart_item, name='remove_cart_item'),
     ]

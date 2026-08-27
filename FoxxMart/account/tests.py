@@ -9,7 +9,7 @@ from unittest.mock import patch
 
 from Axis.models import AxisCustomer, Order, OrderItem, Product
 from Collective.models import CollectiveCustomer
-from EXODUS.models import EXODUSCustomer
+from EXODUS.models import EXODUSCustomer, EXODUSOrder
 from GENESIS.models import GENESISCustomer
 from account.models import Account, StoreAccess
 
@@ -65,6 +65,97 @@ class RegistrationViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Please correct the errors below and try again.')
         self.assertContains(response, 'This field is required')
+
+
+class AccountProfileTests(TestCase):
+    def test_password_reset_uses_the_account_menu_and_quick_cart(self):
+        response = self.client.get(reverse('reset_password') + '?store=axis')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Forgot your password?')
+        self.assertContains(response, 'Quick Cart')
+        self.assertContains(response, 'Send reset link')
+
+    def test_profile_creates_the_missing_axis_customer_for_a_legacy_account(self):
+        account = Account.objects.create_user(
+            email='legacy-account@example.com', username='Legacy Account', password='SafePass123!'
+        )
+        self.client.force_login(account)
+
+        response = self.client.get(reverse('account:profile'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(AxisCustomer.objects.filter(user=account).exists())
+        self.assertContains(response, 'Profile')
+        self.assertContains(response, 'Logout')
+        self.assertNotContains(response, '>Register<', html=False)
+        self.assertNotContains(response, '>Login<', html=False)
+
+    def test_profile_menu_shows_the_pending_cart_count_for_its_store(self):
+        account = Account.objects.create_user(
+            email='profile-cart@example.com', username='Profile Cart', password='SafePass123!'
+        )
+        customer = AxisCustomer.objects.create(user=account, email=account.email)
+        order = Order.objects.create(customer=customer, status='Pending')
+        product = Product.objects.create(name='Profile cart product', price='10.00', stock=2)
+        OrderItem.objects.create(order=order, product=product, quantity=2)
+        self.client.force_login(account)
+
+        response = self.client.get(reverse('account:profile') + '?store=axis')
+
+        self.assertContains(response, 'name="cart"', html=False)
+        self.assertContains(response, '<b>2</b>', html=False)
+        self.assertContains(response, 'Quick Cart')
+        self.assertContains(response, 'Profile cart product')
+
+    def test_edit_profile_saves_and_returns_to_the_same_storefront(self):
+        account = Account.objects.create_user(
+            email='edit-profile@example.com', username='Before Edit', password='SafePass123!'
+        )
+        self.client.force_login(account)
+
+        response = self.client.post(
+            reverse('account:edit') + '?store=axis',
+            {'email': 'updated-profile@example.com', 'username': 'Updated Profile'},
+        )
+
+        self.assertRedirects(response, reverse('account:profile') + '?store=axis')
+        account.refresh_from_db()
+        self.assertEqual(account.email, 'updated-profile@example.com')
+        self.assertEqual(account.username, 'Updated Profile')
+
+    def test_quick_cart_remove_restores_stock_and_keeps_the_storefront(self):
+        account = Account.objects.create_user(
+            email='remove-profile-cart@example.com', username='Remove Cart', password='SafePass123!'
+        )
+        customer = AxisCustomer.objects.create(user=account, email=account.email)
+        product = Product.objects.create(name='Removable profile item', price='12.00', stock=0)
+        order = Order.objects.create(customer=customer, status='Pending')
+        item = OrderItem.objects.create(order=order, product=product, quantity=2)
+        self.client.force_login(account)
+
+        response = self.client.post(
+            reverse('account:remove_cart_item'), {'store': 'axis', 'item_id': item.id}
+        )
+
+        self.assertRedirects(response, reverse('account:profile') + '?store=axis')
+        self.assertFalse(OrderItem.objects.filter(pk=item.id).exists())
+        product.refresh_from_db()
+        self.assertEqual(product.stock, 2)
+
+    def test_profile_shows_only_orders_for_the_selected_storefront(self):
+        account = Account.objects.create_user(
+            email='store-profile@example.com', username='Store Profile', password='SafePass123!'
+        )
+        axis_customer = AxisCustomer.objects.create(user=account, email=account.email)
+        EXODUSOrder.objects.create(customer=EXODUSCustomer.objects.create(user=account, email='exodus-store-profile@example.com'))
+        axis_order = Order.objects.create(customer=axis_customer, transaction_id='AXIS-ONLY')
+        self.client.force_login(account)
+
+        response = self.client.get(reverse('account:profile') + '?store=exodus')
+
+        self.assertContains(response, 'EXODUS Order History')
+        self.assertNotContains(response, axis_order.transaction_id)
 
 
 @override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend')

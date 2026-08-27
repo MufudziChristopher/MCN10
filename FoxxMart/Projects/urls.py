@@ -14,6 +14,8 @@ urlpatterns = [
 	path('AfricanUs/About', views.about, name="about"),
 	path('AfricanUs/Services', views.services, name="services"),
 	path('AfricanUs/Contact', views.contact, name="contact"),
+	path('TranscendCopy/', views.transcendcopy, name="transcendcopy"),
+	path('JayCast/', views.jay_cast, name="jay_cast"),
 
 
 ]

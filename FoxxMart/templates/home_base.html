@@ -30,6 +30,9 @@
       <a class="link link--page" data-external-page href="{% url 'home:mall' %}">FoxxMart Mall</a>
     </div>
     <div class="pages-nav__item">
+      <a class="link link--page" href="#page-Foxx-Mart">Foxx Mart</a>
+    </div>
+    <div class="pages-nav__item">
       <a class="link link--page " href="#page-3rd-Axis">3rd Axis</a>
     </div>
     <div class="pages-nav__item">
@@ -53,6 +56,18 @@
     </div>
     <div class="pages-nav__item">
       <a class="link link--page " href="#page-EXODUS">EXODUS</a>
+    </div>
+    <div class="pages-nav__item pages-nav__item--small">
+      <a class="link link--page" href="#page-africanus">AfricanUs</a>
+    </div>
+    <div class="pages-nav__item pages-nav__item--small">
+      <a class="link link--page" href="#page-idaca">IDACA</a>
+    </div>
+    <div class="pages-nav__item pages-nav__item--small">
+      <a class="link link--page" href="#page-Transcend-Copy">Transcend Copy</a>
+    </div>
+    <div class="pages-nav__item pages-nav__item--small">
+      <a class="link link--page" href="#page-Jay-Cast">Jay Cast</a>
     </div>
     <div class="pages-nav__item pages-nav__item--small">
       <a class="link link--page " href="#page-RMC">Risk Mitigation Consultants</a>
@@ -179,6 +194,30 @@
         <p class="info"></p>
       </header>
       <a href="{% url 'Axis:store' %}"><img class="poster" src="{% static 'images/III-light.gif' %}" alt="img06" /></a>
+    </div>
+    <div class="page" id="page-Foxx-Mart">
+      <header class="bp-header cf">
+        <h1 class="bp-header__title">FOXX MART</h1>
+        <p class="bp-header__desc">A curated collection of independent storefronts and specialist product experiences.</p>
+        <p class="info">Explore the Foxx Mart mall to discover the stores, compare their offerings and shop across the collection.</p>
+      </header>
+      <a href="{% url 'home:mall' %}"><img class="poster" src="{% static 'axis/static_root/images/XX-light.gif' %}" alt="Foxx Mart" /></a>
+    </div>
+    <div class="page" id="page-Transcend-Copy">
+      <header class="bp-header cf">
+        <h1 class="bp-header__title">Transcend Copy</h1>
+        <p class="bp-header__desc">A personal portfolio and services site with immersive editorial sections and smooth in-page navigation.</p>
+        <p class="info">The original project is preserved as a Django-served experience, including its complete visual assets and interactions.</p>
+      </header>
+      <a href="{% url 'Projects:transcendcopy' %}"><img class="poster" src="{% static 'transcendcopy/images/hero-bg.png' %}" alt="Transcend Copy project" /></a>
+    </div>
+    <div class="page" id="page-Jay-Cast">
+      <header class="bp-header cf">
+        <h1 class="bp-header__title">Jay Cast</h1>
+        <p class="bp-header__desc">An image-led storytelling project presented as an immersive, responsive gallery.</p>
+        <p class="info">This project has been migrated from its standalone static site into the Django portfolio.</p>
+      </header>
+      <a href="{% url 'Projects:jay_cast' %}"><img class="poster" src="{% static 'jay-cast/images/thumbs/01.jpg' %}" alt="Jay Cast project" /></a>
     </div>
     <div class="page" id="page-The-Collective">
       <header class="bp-header cf">

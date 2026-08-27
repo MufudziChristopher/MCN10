@@ -2,7 +2,7 @@ import json
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.conf import settings
@@ -11,19 +11,9 @@ from django.views.decorators.http import require_POST
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 from account.models import StoreAccess
 from django.contrib import messages
-from Axis.models import AxisCustomer
-from EXODUS.models import EXODUSCustomer
-from GENESIS.models import GENESISCustomer
-from Collective.models import CollectiveCustomer
 from .cart_lifecycle import clear_guest_cart, merge_guest_cart, storefront_from_request
-
-
-STOREFRONTS = {
-	'axis': {'slug': 'axis', 'name': '3rd Axis Storefront', 'url_name': 'Axis:store'},
-	'exodus': {'slug': 'exodus', 'name': 'EXODUS Storefront', 'url_name': 'EXODUS:store'},
-	'genesis': {'slug': 'genesis', 'name': 'GENESIS Storefront', 'url_name': 'GENESIS:store'},
-	'collective': {'slug': 'collective', 'name': 'The Collective Storefront', 'url_name': 'Collective:store'},
-}
+from .customer_profiles import get_store_customer
+from .storefronts import STOREFRONTS, get_profile_storefront
 
 
 def reverse_geocode_country(latitude, longitude):
@@ -77,6 +67,47 @@ def get_storefront(request):
 	store_slug = request.POST.get('store') or request.GET.get('store')
 	return STOREFRONTS.get(store_slug)
 
+
+def get_account_cart_context(orders, storefront):
+	"""Build a small storefront-specific cart summary for account pages."""
+	items = []
+	for order in orders.filter(status='Pending'):
+		items.extend(
+			getattr(order, storefront['order_items_accessor']).select_related('product').filter(product__isnull=False)
+		)
+	return {
+		'account_cart_items': sum(item.quantity or 0 for item in items),
+		'account_quick_cart_items': items,
+		'account_cart_total': sum((item.get_total for item in items), 0),
+		'account_show_quick_cart': True,
+	}
+
+
+@require_POST
+def remove_cart_item(request):
+	"""Remove one pending-cart line item owned by the signed-in shopper."""
+	if not request.user.is_authenticated:
+		return redirect('account:login')
+
+	storefront = STOREFRONTS.get(request.POST.get('store'))
+	if not storefront:
+		return redirect('account:profile')
+	customer = get_store_customer(request.user, storefront['customer_model'])
+	item = get_object_or_404(
+		storefront['order_item_model'].objects.select_related('order', 'product'),
+		pk=request.POST.get('item_id'),
+	)
+	if item.order.customer_id != customer.id or item.order.status != 'Pending':
+		messages.error(request, 'That cart item is no longer available.')
+	else:
+		if item.product_id:
+			item.product.stock += item.quantity or 0
+			item.product.save(update_fields=['stock'])
+		item.delete()
+		messages.success(request, 'Item removed from your cart.')
+	return redirect(f"{reverse('account:profile')}?store={storefront['slug']}")
+
+
 def registration_view(request):
 	storefront = get_storefront(request)
 	storefront_url = reverse(storefront['url_name']) if storefront else None
@@ -105,15 +136,9 @@ def registration_view(request):
 			else:
 				selected_stores = [storefront['slug']] if storefront else []
 
-			customer_models = {
-				'axis': AxisCustomer,
-				'genesis': GENESISCustomer,
-				'exodus': EXODUSCustomer,
-				'collective': CollectiveCustomer,
-			}
 			for store_slug in selected_stores:
 				StoreAccess.objects.get_or_create(user=account, store_slug=store_slug, defaults={'package': package})
-				customer_models[store_slug].objects.get_or_create(user=account, defaults={'email': email})
+				STOREFRONTS[store_slug]['customer_model'].objects.get_or_create(user=account, defaults={'email': email})
 
 			login(request, account)
 			merge_guest_cart(request, account, storefront['slug'] if storefront else storefront_from_request(request))
@@ -161,17 +186,23 @@ def account_edit(request):
 	if not request.user.is_authenticated:
 		return redirect("account:login")
 
-	context = {}
+	storefront = get_profile_storefront(request)
+	if request.method == 'POST':
+		form = AccountUpdateForm(request.POST, instance=request.user)
+		if form.is_valid():
+			form.save()
+			messages.success(request, 'Your profile has been updated.')
+			return redirect(f"{reverse('account:profile')}?store={storefront['slug']}")
+	else:
+		form = AccountUpdateForm(instance=request.user)
 
-	form = AccountUpdateForm(request.POST, instance=request.user)
-	if form.is_valid():
-		form.save()
-		print("Form Saved")
-		return render(request, 'account/profile.html', context)
-
-
-	context['account_form'] = form
-	print(context)
+	customer = get_store_customer(request.user, storefront['customer_model'])
+	orders = getattr(customer, storefront['orders_accessor']).all()
+	context = {
+		'account_form': form,
+		'account_storefront': storefront,
+	}
+	context.update(get_account_cart_context(orders, storefront))
 	return render(request, 'account/edit_profile.html', context)
 
 def account_view(request):
@@ -179,14 +210,19 @@ def account_view(request):
 	if not request.user.is_authenticated:
 		return redirect("account:login")
 
-	context = {}
-	orders = request.user.customer.order_set.all()
-	print("ORDERS::: ", orders)
+	storefront = get_profile_storefront(request)
+	customer = get_store_customer(request.user, storefront['customer_model'])
+	orders = getattr(customer, storefront['orders_accessor']).all()
 	form = AccountUpdateForm(
 			initial= {
 				"email": request.user.email,
 				"username": request.user.username,
 			}
 		)
-	context = {'orders': orders, 'account_form': form }
+	context = {
+		'orders': orders,
+		'account_form': form,
+		'account_storefront': storefront,
+	}
+	context.update(get_account_cart_context(orders, storefront))
 	return render(request, 'account/profile.html', context)

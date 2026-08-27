@@ -13,8 +13,8 @@
 		<link rel="stylesheet" href="https://use.typekit.net/lty4rfv.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/base.98fd6c19.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo2.06b37b5f.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=58">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=11">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=136">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=15">
 		<script>document.documentElement.className = "js";
 
 var supportsCssVars = function supportsCssVars() {
@@ -34,7 +34,7 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 		</script>
 	</head>
 
-	<body class="loading noscroll product-page">
+	<body class="loading noscroll product-page axis-theme--dark">
 		{% block nav %}{% endblock %}
 		{% block quick_cart %}{% endblock %}
 
@@ -63,5 +63,48 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 		<script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
 		<script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+		<script>
+			(function () {
+				var key = 'axis-color-mode';
+				function transitionToTheme(mode) {
+					var overlay = document.querySelector('.axis-theme-transition');
+					if (!overlay || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+						applyTheme(mode);
+						return;
+					}
+					if (overlay.classList.contains('axis-theme-transition--covering')) return;
+					overlay.classList.add('axis-theme-transition--covering');
+					window.setTimeout(function () {
+						applyTheme(mode);
+						overlay.classList.remove('axis-theme-transition--covering');
+					}, 270);
+				}
+				function applyTheme(mode) {
+					document.body.classList.toggle('axis-theme--light', mode === 'light');
+					document.body.classList.toggle('axis-theme--dark', mode !== 'light');
+					var toggle = document.querySelector('.axis-theme-toggle');
+					if (toggle) {
+						var isLight = mode === 'light';
+						toggle.setAttribute('aria-pressed', String(isLight));
+						toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+					}
+					var menuGif = document.querySelector('.collapsible-menu__toggle img');
+					if (menuGif) menuGif.src = mode === 'light' ? "{% static 'images/III-light.gif' %}" : "{% static 'images/III-dark.gif' %}";
+				}
+				var themeTransition = document.createElement('div');
+				themeTransition.className = 'axis-theme-transition';
+				themeTransition.setAttribute('aria-hidden', 'true');
+				themeTransition.innerHTML = '<div class="axis-theme-transition__shutter"></div><div class="axis-theme-transition__shutter"></div>';
+				document.body.appendChild(themeTransition);
+				applyTheme(localStorage.getItem(key) || 'dark');
+				document.addEventListener('click', function (event) {
+					var toggle = event.target.closest('.axis-theme-toggle');
+					if (!toggle) return;
+					var nextMode = document.body.classList.contains('axis-theme--light') ? 'dark' : 'light';
+					localStorage.setItem(key, nextMode);
+					transitionToTheme(nextMode);
+				});
+			}());
+		</script>
 	</body>
 </html>

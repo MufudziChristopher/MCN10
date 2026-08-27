@@ -51,10 +51,12 @@
 
 .collapsible-menu__toggle-label {
 	font: inherit;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	line-height: 1;
-	color: #000;
 }
+
+body.axis-theme--light .collapsible-menu__toggle-label { color: #000; }
+body.axis-theme--dark .collapsible-menu__toggle-label { color: #fff; }
 
 /* Mark the destination currently being viewed in every Axis navigation menu. */
 .collapsible-menu nav a[aria-current='page'] {
@@ -70,7 +72,7 @@
 
 .collapsible-menu nav a[title='Cart'] .cart__count {
 	position: absolute;
-	top: 0.35rem;
+	top: 0.15rem;
 	right: 0.35rem;
 	display: grid;
 	width: 1.2rem;
@@ -85,10 +87,230 @@
 	line-height: 1;
 }
 
+body.axis-theme--light .collapsible-menu nav a[title='Cart'] .cart__count {
+	background: #000;
+	color: #fff;
+}
+
+body.axis-theme--dark .collapsible-menu nav a[title='Cart'] .cart__count {
+	background: #fff;
+	color: #000;
+}
+
+body.axis-theme--light #showRightPush .cart__count {
+	background: #000;
+	color: #fff;
+}
+
+body.axis-theme--dark #showRightPush .cart__count {
+	background: #fff;
+	color: #000;
+}
+
+body.axis-theme--light #cbp-spmenu-s2 hr {
+	border-color: #000;
+}
+
+body.axis-theme--dark #cbp-spmenu-s2 hr {
+	border-color: #fff;
+}
+
+
 .collapsible-menu nav .menu-icon--large {
 	width: 2rem;
 	height: 2rem;
 	font-size: 2rem;
+}
+
+.axis-theme-toggle {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.35rem;
+	width: 4.5em;
+	height: 4.5em;
+	min-height: 4.5em;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	text-align: center;
+	vertical-align: top;
+	line-height: 1;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.axis-theme-toggle ion-icon { font-size: 2rem; }
+.axis-theme-toggle > br { display: none; }
+
+/* A pair of shutters briefly closes before changing the page background.
+ * This avoids exposing an abrupt image swap when the colour mode changes. */
+.axis-theme-transition {
+	position: fixed;
+	inset: 0;
+	z-index: 5000;
+	pointer-events: none;
+}
+
+.axis-theme-transition__shutter {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 50.5%;
+	background: #121212;
+	transform: scaleY(0);
+	transition: transform 0.27s cubic-bezier(0.76, 0, 0.24, 1);
+	will-change: transform;
+}
+
+.axis-theme-transition__shutter:first-child {
+	top: 0;
+	transform-origin: center top;
+}
+
+.axis-theme-transition__shutter:last-child {
+	bottom: 0;
+	transform-origin: center bottom;
+}
+
+.axis-theme-transition--covering .axis-theme-transition__shutter {
+	transform: scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.axis-theme-transition { display: none; }
+}
+
+/* Keep menu interaction neutral in both themes; browsers otherwise add a
+ * blue tap/focus colour that does not belong to the Axis palette. */
+.collapsible-menu nav a,
+.collapsible-menu nav button {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.collapsible-menu nav a:focus,
+.collapsible-menu nav a:focus-visible,
+.axis-theme-toggle:focus,
+.axis-theme-toggle:focus-visible {
+	outline: none;
+	box-shadow: none;
+}
+
+/* Ionicons use currentColor, so their stroke colour follows the selected
+ * storefront theme instead of remaining white in light mode. */
+body.axis-theme--light ion-icon { color: #000 !important; }
+body.axis-theme--dark ion-icon { color: #fff !important; }
+
+.axis-theme-toggle__light,
+body.axis-theme--light .axis-theme-toggle__dark {
+	display: none;
+}
+
+body.axis-theme--light .axis-theme-toggle__light {
+	display: block;
+}
+
+body.axis-theme--light {
+	background: #f8f8f8 url('/static/axis/images/bg1.jpg') center / cover fixed;
+	color: #000;
+}
+
+body.axis-theme--dark {
+	background: #151515 url('/static/axis/static_root/images/bg001.jpg') center / cover fixed;
+	color: #f8f8f8;
+}
+
+body.axis-theme--light .grid__item .product__price { color: #000; }
+body.axis-theme--dark .grid__item .product__price { color: #fff; }
+
+/* Product-card action icons intentionally contrast with the theme palette. */
+body.axis-theme--light .grid__item .action--compare-add ion-icon,
+body.axis-theme--light .grid__item .action--compare-buy ion-icon {
+	color: #fff !important;
+}
+
+body.axis-theme--dark .grid__item .action--compare-add ion-icon,
+body.axis-theme--dark .grid__item .action--compare-buy ion-icon {
+	--ion-color-base: #fff !important;
+	--ion-color-contrast: #fff !important;
+	color: #fff !important;
+}
+
+body.axis-theme--dark .axis-about,
+body.axis-theme--dark .axis-about h1,
+body.axis-theme--dark .axis-about h2,
+body.axis-theme--dark .axis-about p,
+body.axis-theme--dark .axis-about__cta {
+	color: #f8f8f8;
+}
+
+body.axis-theme--dark .axis-about__principles,
+body.axis-theme--dark .axis-about__principles article {
+	border-color: rgba(248, 248, 248, 0.8);
+}
+
+/* Store controls follow the selected theme too: the controls and both
+ * off-canvas panels use a matching, high-contrast glass treatment. */
+body.axis-theme--light:has(.barr) .barr {
+	background: rgba(255, 255, 255, 0.62);
+	color: #000;
+}
+
+body.axis-theme--light:has(.barr) #showLeftPush,
+body.axis-theme--light:has(.barr) #showRightPush,
+body.axis-theme--light #cbp-spmenu-s1,
+body.axis-theme--light #cbp-spmenu-s2 {
+	color: #000;
+}
+
+body.axis-theme--light #cbp-spmenu-s1.cbp-spmenu-open {
+	background: rgba(255, 255, 255, 0.9);
+}
+
+body.axis-theme--light #cbp-spmenu-s2.cbp-spmenu-open {
+	background: rgba(255, 255, 255, 0.68);
+}
+
+body.axis-theme--dark:has(.barr) .barr {
+	background: rgba(18, 18, 18, 0.72);
+	color: #fff;
+}
+
+body.axis-theme--dark:has(.barr) #showLeftPush,
+body.axis-theme--dark:has(.barr) #showRightPush,
+body.axis-theme--dark #cbp-spmenu-s1,
+body.axis-theme--dark #cbp-spmenu-s2,
+body.axis-theme--dark #cbp-spmenu-s1 .filter__item,
+body.axis-theme--dark #cbp-spmenu-s1 .filter-search__clear,
+body.axis-theme--dark #cbp-spmenu-s2 .quick-cart__action,
+body.axis-theme--dark #cbp-spmenu-s2 .store-quick-cart__remove {
+	color: #fff;
+}
+
+body.axis-theme--dark #cbp-spmenu-s1.cbp-spmenu-open {
+	background: rgba(18, 18, 18, 0.9);
+}
+
+body.axis-theme--dark #cbp-spmenu-s2.cbp-spmenu-open {
+	background: rgba(18, 18, 18, 0.76);
+}
+
+body.axis-theme--dark #cbp-spmenu-s1 .filter-search__input {
+	border-color: rgba(255, 255, 255, 0.55);
+	background: rgba(255, 255, 255, 0.12);
+	color: #fff;
+}
+
+body.axis-theme--dark #cbp-spmenu-s1 .filter-search__input::placeholder {
+	color: rgba(255, 255, 255, 0.72);
+}
+
+body.axis-theme--dark #cbp-spmenu-s1 .filter-search__input:focus {
+	border-color: #fff;
 }
 
 /* Give the expanded navigation icons a little room above them. */
@@ -97,12 +319,165 @@ body:has(.barr) .collapsible-menu__content nav {
 	padding-bottom: 1rem;
 }
 
+body:has(.barr) .collapsible-menu__content nav a {
+	text-align: center;
+}
+
+@media screen and (max-width: 59.688em) {
+	.collapsible-menu__content nav {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
+		gap: 0.75rem 0.35rem;
+	}
+
+	.collapsible-menu__content nav a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		width: auto;
+		height: auto;
+		min-height: 4.5rem;
+		margin: 0;
+		gap: 0.35rem;
+		text-align: center;
+	}
+
+	.axis-theme-toggle {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 0.35rem;
+		align-self: stretch;
+		justify-self: stretch;
+		width: auto;
+		height: auto;
+		min-width: 0;
+		min-height: 4.5rem;
+	}
+
+	.axis-theme-toggle > br { display: none; }
+
+	.collapsible-menu__content nav a > ion-icon {
+		display: block;
+		flex: 0 0 auto;
+	}
+
+	.collapsible-menu__content nav a > br {
+		display: none;
+	}
+
+	.collapsible-menu__content nav a > strong {
+		font: inherit;
+	}
+}
+
 .collapsible-menu.is-collapsed .collapsible-menu__content {
 	max-height: 0;
 	opacity: 0;
 	transform: translateY(-1rem);
 	pointer-events: none;
 	visibility: hidden;
+}
+
+.axis-about { max-width: 74rem; margin: 0 auto; padding: clamp(5rem, 9vw, 6.5rem) clamp(1.25rem, 5vw, 4rem) 4rem; color: #000; }
+.collapsible-menu:has(+ .axis-about) { z-index: 2100; }
+body:has(.axis-about) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content {
+	/* Meet the fixed top glass strip without a visible gap. */
+	margin-top: 4.75rem;
+	padding: 1rem clamp(1rem, 4vw, 3rem) 1.75rem;
+	border: 0;
+	border-radius: 0 0 1rem 1rem;
+	background: rgba(255, 255, 255, 0.2);
+	box-shadow: none;
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+body:has(.axis-about)::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4.75rem;
+	z-index: 2000;
+	pointer-events: none;
+	background: rgba(255, 255, 255, 0.08);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+}
+
+/* In dark mode the fixed strip and its expanded menu form one glass surface. */
+body.axis-theme--dark:has(.axis-about)::before {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+body.axis-theme--dark:has(.axis-about) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+body.axis-theme--dark .collapsible-menu nav a,
+body.axis-theme--dark .axis-theme-toggle,
+body.axis-theme--dark .collapsible-menu nav {
+	color: #fff;
+}
+
+/* Explicitly drive both named Ionicons and locally served SVG hosts in the
+ * dark menu palette. SVG files carry their own fill, hence the filter. */
+body.axis-theme--dark .collapsible-menu ion-icon {
+	--ion-color-base: #fff !important;
+	--ion-color-contrast: #fff !important;
+	color: #fff !important;
+}
+
+body.axis-theme--dark .collapsible-menu ion-icon[src] {
+	filter: invert(1);
+}
+
+/* Filter and Quick Cart are fixed controls outside the collapsible header,
+ * so include them explicitly in the dark menu palette. */
+body.axis-theme--dark:has(.barr) .barr,
+body.axis-theme--dark:has(.barr) #showLeftPush,
+body.axis-theme--dark:has(.barr) #showRightPush {
+	color: #fff !important;
+}
+
+body.axis-theme--dark:has(.barr) .barr ion-icon {
+	--ion-color-base: #fff !important;
+	--ion-color-contrast: #fff !important;
+	color: #fff !important;
+}
+
+body.axis-theme--dark:has(.barr) .barr ion-icon[src] {
+	filter: invert(1);
+}
+.axis-about__hero { max-width: 48rem; padding-bottom: clamp(2.5rem, 7vw, 5rem); }
+.axis-about__eyebrow { margin: 0 0 .7rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.axis-about h1 { max-width: 11ch; margin: 0; font-size: clamp(2.8rem, 8vw, 6.25rem); line-height: .95; letter-spacing: -.055em; }
+.axis-about__intro { max-width: 39rem; margin: 1.75rem 0 0; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.6; }
+.axis-about__principles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #000; border-bottom: 1px solid #000; }
+.axis-about__principles article { min-height: 16rem; padding: 1.5rem; border-right: 1px solid #000; }
+.axis-about__principles article:last-child { border-right: 0; }
+.axis-about__principles ion-icon { font-size: 2rem; }
+.axis-about__principles h2 { margin: 3.5rem 0 .7rem; font-size: 1.35rem; }
+.axis-about__principles p, .axis-about__closing p { margin: 0; line-height: 1.55; }
+.axis-about__closing { display: flex; align-items: end; justify-content: space-between; gap: 2rem; padding: clamp(2.5rem, 7vw, 5rem) 0 1rem; }
+.axis-about__closing h2 { margin: 0 0 .75rem; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -.04em; }
+.axis-about__closing p:not(.axis-about__eyebrow) { max-width: 32rem; }
+.axis-about__cta { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.5rem; padding-bottom: .25rem; border-bottom: 1px solid currentColor; color: #000; font-weight: 700; text-decoration: none; }
+.axis-about__cta ion-icon { font-size: 1.15rem; }
+.axis-about__signature { width: min(12rem, 32vw); height: auto; object-fit: contain; }
+
+@media screen and (max-width: 59.688em) {
+	.axis-about { padding-top: max(calc(15vh + .75rem), calc(5.5rem + env(safe-area-inset-top))); padding-bottom: 2.5rem; }
+	.axis-about__principles { grid-template-columns: 1fr; }
+	.axis-about__principles article { min-height: auto; border-right: 0; border-bottom: 1px solid #000; }
+	.axis-about__principles article:last-child { border-bottom: 0; }
+	.axis-about__principles h2 { margin-top: 1.5rem; }
+	.axis-about__closing { align-items: flex-start; flex-direction: column; }
+	.axis-about__signature { width: 9rem; }
 }
 
 /* A child cannot rise above its parent's stacking layer. This lets the
@@ -190,8 +565,524 @@ body:has(.barr) .store-control__label {
 	visibility: visible;
 }
 
-/* Open off-canvas drawers use the same rounded glass surface. */
-#cbp-spmenu-s1.cbp-spmenu-open,
+.filter-search {
+	position: relative;
+	flex: 0 0 auto;
+	align-self: stretch;
+	width: auto;
+	box-sizing: border-box;
+	margin: 0 0.5rem;
+}
+
+.filter-search__label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+#cbp-spmenu-s1 .filter-search__input {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	padding: 0.7rem 2.6rem 0.7rem 0.85rem;
+	border: 1px solid rgba(0, 0, 0, 0.35);
+	border-radius: 0;
+	background: rgba(255, 255, 255, 0.82);
+	color: #000;
+	font: inherit;
+}
+
+#cbp-spmenu-s1 .filter-search__input:focus {
+	outline: none;
+	border-color: #000;
+	box-shadow: none;
+}
+
+.filter-search__clear {
+	position: absolute;
+	top: 50%;
+	right: 0.45rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.8rem;
+	height: 1.8rem;
+	padding: 0;
+	transform: translateY(-50%);
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #000;
+	cursor: pointer;
+}
+
+.filter-search__clear ion-icon {
+	width: 1.45rem;
+	height: 1.45rem;
+	font-size: 1.45rem;
+}
+
+/* The compact basket remains a selection tray. Product actions belong in the
+ * full-screen comparison overlay, where there is room for each product. */
+.compare .compare__item .product__image {
+	display: block !important;
+	width: min(100%, 12rem);
+	height: 10rem;
+	margin: 0 auto;
+	object-fit: contain;
+	transition: transform 0.2s ease;
+}
+
+.compare .compare__item a:hover .product__image,
+.compare .compare__item a:focus-visible .product__image {
+	transform: scale(1.06);
+}
+
+.compare__add-to-cart {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.2rem;
+	margin: 1rem auto 0;
+	padding: 0.55rem 0.75rem;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	color: #000;
+	font: inherit;
+	font-size: 0.8rem;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.compare__add-to-cart:hover,
+.compare__add-to-cart:focus-visible {
+	text-decoration: underline;
+}
+
+.compare__add-to-cart ion-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 1.5rem;
+}
+
+.view--compare + .compare .compare__remove {
+	background: transparent;
+}
+
+body.axis-theme--light .view--compare + .compare,
+body.axis-theme--light .view--compare + .compare .compare__item,
+body.axis-theme--light .view--compare + .compare .compare__effect {
+	background: rgba(255, 255, 255, 0.28) !important;
+	color: #000;
+}
+
+body.axis-theme--light .view--compare + .compare .compare__effect *,
+body.axis-theme--light .view--compare + .compare .compare__remove,
+body.axis-theme--light .view--compare + .compare .compare__remove ion-icon {
+	color: #000 !important;
+}
+
+body.axis-theme--dark .view--compare + .compare,
+body.axis-theme--dark .view--compare + .compare .compare__item,
+body.axis-theme--dark .view--compare + .compare .compare__effect {
+	background: rgba(0, 0, 0, 0.28) !important;
+	color: #fff;
+}
+
+body.axis-theme--dark .view--compare + .compare .compare__effect *,
+body.axis-theme--dark .view--compare + .compare .compare__remove,
+body.axis-theme--dark .view--compare + .compare .compare__remove ion-icon {
+	color: #fff !important;
+}
+
+.compare__remove {
+	position: absolute;
+	z-index: 2;
+	top: 0.55rem;
+	right: 0.55rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.82);
+	color: #000;
+	cursor: pointer;
+}
+
+.compare__item {
+	position: relative;
+}
+
+.compare__remove ion-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	font-size: 1.5rem;
+}
+
+.compare__grand-total {
+	position: fixed;
+	z-index: 2300;
+	bottom: max(1rem, env(safe-area-inset-bottom));
+	left: max(1rem, env(safe-area-inset-left));
+	width: fit-content;
+	margin: 0;
+	padding: 0.85rem 1rem;
+	border: 0;
+	border-radius: 1rem;
+	background: rgba(255, 255, 255, 0.45);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	color: #000;
+	font-size: 1rem;
+	font-weight: 700;
+	text-align: right;
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+.compare__collapse {
+	display: none;
+}
+
+body:has(.view--compare) .compare__grand-total--viewport {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+}
+
+.bar:has(.compare-basket--active) {
+	background: rgba(255, 255, 255, 0.22);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+}
+
+.compare-basket--active .product-icon {
+	box-sizing: border-box;
+	width: 6rem;
+	margin-bottom: 0;
+	margin-right: 0.75rem;
+	padding-top: 0.3rem;
+	padding-bottom: 0.35rem;
+}
+
+.compare-basket--active {
+	box-sizing: border-box;
+	padding-right: 7rem;
+}
+
+.compare-basket--active .product-icon img.product__image {
+	display: block !important;
+	max-width: 5.25rem;
+	height: 4.25rem;
+	object-fit: contain;
+}
+
+.compare-basket__price {
+	display: block;
+	margin-top: 0.2rem;
+	color: #000;
+	font-size: 0.7rem;
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+}
+
+body.axis-theme--light .compare-basket--active,
+body.axis-theme--light .compare-basket--active .compare-basket__price {
+	color: #000;
+}
+
+body.axis-theme--dark .compare-basket--active,
+body.axis-theme--dark .compare-basket--active .compare-basket__price,
+body.axis-theme--dark .compare-basket__clear {
+	color: #fff;
+}
+
+.compare-basket .action--remove {
+	top: 0.15rem;
+	right: 0.15rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.4rem;
+	height: 1.4rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #000;
+	cursor: pointer;
+}
+
+.compare-basket .action--remove ion-icon {
+	width: 1.2rem;
+	height: 1.2rem;
+	font-size: 1.2rem;
+}
+
+body.axis-theme--dark .compare-basket .action--remove {
+	background: transparent;
+	color: #fff;
+}
+
+.action--compare-add.compare-limit-reached::after {
+	content: attr(data-tooltip);
+	position: absolute;
+	z-index: 2300;
+	top: calc(100% + 0.5rem);
+	left: 0;
+	width: min(16rem, 75vw);
+	padding: 0.55rem 0.65rem;
+	border: 1px solid #000;
+	background: rgba(255, 255, 255, 0.94);
+	color: #000;
+	font-size: 0.75rem;
+	line-height: 1.3;
+	text-align: left;
+	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+}
+
+/* Selected product cards are visibly grouped without obscuring their content. */
+.grid__item.product--selected {
+	border: 0;
+	background: rgba(255, 255, 255, 0.2);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+}
+
+/* Keep the comparison state and cart action available after selection, rather
+ * than hiding them again when the product card is no longer hovered. */
+.grid__item.product--selected .action--compare-add,
+.grid__item.product--selected .action--compare-buy {
+	opacity: 1 !important;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+/* Keep the compact basket focused on controls. */
+.compare-basket--active .action--compare {
+	pointer-events: auto;
+	cursor: pointer;
+}
+
+.compare-basket__clear {
+	position: absolute;
+	top: 50%;
+	left: 0.5rem;
+	right: auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.2rem;
+	opacity: 0;
+	pointer-events: none;
+	padding: 0.35rem;
+	border: 0;
+	background: transparent;
+	color: #000;
+	font: inherit;
+	font-size: 0.75rem;
+	cursor: pointer;
+	transform: translateY(-50%);
+}
+
+body.axis-theme--dark .compare-basket .action--compare ion-icon {
+	--ion-color-base: #fff !important;
+	--ion-color-contrast: #fff !important;
+	color: #fff !important;
+}
+
+.compare-basket--active .compare-basket__clear {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.compare-basket__clear ion-icon {
+	width: 1.65rem;
+	height: 1.65rem;
+	font-size: 1.65rem;
+}
+
+/* The comparison view scales from one to twenty products as a scrollable
+ * glass grid rather than compressing every product into a single row. */
+.view--compare + .compare {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	grid-auto-rows: minmax(24rem, auto);
+	overflow-y: auto;
+	padding: 3.5rem 1rem 1rem;
+	background: rgba(255, 255, 255, 0.16);
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+}
+
+.view--compare + .compare .compare__item,
+.view--compare + .compare .compare__item:nth-child(odd),
+.view--compare + .compare .compare__item:nth-child(even) {
+	width: auto;
+	height: auto;
+	min-height: 24rem;
+	padding: 1.5rem 1rem;
+	background: rgba(255, 255, 255, 0.28);
+	background-image: none;
+	-webkit-backdrop-filter: blur(8px);
+	backdrop-filter: blur(8px);
+	transform: none;
+}
+
+.view--compare + .compare .compare__effect {
+	height: auto;
+	min-height: 100%;
+	transform: none;
+}
+
+@media screen and (max-width: 59.688em) {
+	.view--compare + .compare {
+		grid-template-columns: 1fr;
+		grid-auto-rows: auto;
+		padding-top: 3rem;
+	}
+}
+
+@media screen and (max-width: 59.688em) {
+	.compare__collapse {
+		position: fixed;
+		/* Sit below the mobile filter / quick-cart controls. */
+		top: max(calc(15vh + 0.5rem), calc(5.5rem + env(safe-area-inset-top)));
+		right: max(0.5rem, env(safe-area-inset-right));
+		z-index: 2400;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3rem;
+		min-height: 2.75rem;
+		padding: 0.5rem 0.75rem;
+		border: 0;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.66);
+		color: #000;
+		font: inherit;
+		opacity: 0;
+		pointer-events: none;
+		visibility: hidden;
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+	}
+
+	.compare__collapse ion-icon {
+		font-size: 1.25rem;
+	}
+
+	body:has(.view--compare) .compare__collapse {
+		opacity: 1;
+		pointer-events: auto;
+		visibility: visible;
+	}
+
+	.compare-basket--active {
+		padding-right: 6rem;
+	}
+
+	.compare__grand-total {
+		left: auto;
+		right: max(1rem, env(safe-area-inset-right));
+	}
+
+	.view--compare + .compare {
+		/* The mobile store controls occupy 15vh at the top of the viewport. */
+		padding-top: max(calc(15vh + 1rem), calc(5.5rem + env(safe-area-inset-top)));
+		padding-bottom: max(1rem, env(safe-area-inset-bottom));
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.view--compare + .compare .action--close {
+		position: fixed;
+		top: max(0.5rem, env(safe-area-inset-top));
+		right: max(0.5rem, env(safe-area-inset-right));
+		z-index: 2301;
+		min-width: 2.75rem;
+		min-height: 2.75rem;
+		padding: 0.5rem;
+		border: 0;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.82);
+		-webkit-backdrop-filter: blur(6px);
+		backdrop-filter: blur(6px);
+	}
+
+	.compare .compare__item .product__image {
+		width: 9rem;
+		height: 9rem;
+		margin: 0 auto;
+		float: none;
+	}
+
+	.view--compare + .compare .compare__effect {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.view--compare + .compare .compare__effect > a {
+		order: 1;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.view--compare + .compare .compare__effect .product__title {
+		order: 2;
+	}
+
+	.view--compare + .compare .compare__effect .product__alcohol {
+		order: 3;
+	}
+
+	.view--compare + .compare .compare__effect .product__price {
+		order: 4;
+	}
+
+	.view--compare + .compare .compare__effect .compare__add-to-cart {
+		order: 5;
+		margin-top: 0.4rem;
+	}
+
+	.view--compare + .compare .compare__item {
+		border-bottom: 1px solid #000;
+	}
+
+	.grid__item .slider.product__image .slider__item img {
+		height: 14rem;
+	}
+}
+
+.filter-options {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.75rem;
+}
+
+.filter-search__empty {
+	margin: 0;
+	color: #000;
+}
+
+/* Keep the Quick Cart's rounded glass surface. The Filter drawer retains its
+ * solid storefront background so its controls stay crisp and legible. */
 #cbp-spmenu-s2.cbp-spmenu-open {
 	background: rgba(255, 255, 255, 0.22);
 	-webkit-backdrop-filter: blur(4px);
@@ -219,6 +1110,16 @@ body:has(.barr) .store-control__label {
 	text-decoration: none;
 }
 
+/* The expanded Quick Cart links stay visually stable on hover. */
+#cbp-spmenu-s2 .quick-cart__action:hover,
+#cbp-spmenu-s2 .quick-cart__action:focus-visible {
+	padding: 0.65rem 0.85rem;
+	background: transparent;
+	color: inherit;
+	opacity: inherit;
+	transition: none;
+}
+
 .store-quick-cart__items {
 	margin: 0;
 	padding: 0.75rem;
@@ -227,10 +1128,28 @@ body:has(.barr) .store-control__label {
 
 .store-quick-cart__item {
 	display: grid;
-	grid-template-columns: auto 3.5rem minmax(0, 1fr);
+	grid-template-columns: 1.6rem 3.5rem minmax(0, 1fr);
 	align-items: center;
 	gap: 0.65rem;
 	margin: 0.65rem 0;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.store-quick-cart__divider {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.store-quick-cart__divider hr {
+	margin: 0;
+	border: 0;
+	border-top: 1px solid #000;
+}
+
+body.axis-theme--dark .store-quick-cart__divider hr {
+	border-color: #fff;
 }
 
 .store-quick-cart__item a,
@@ -269,6 +1188,8 @@ body:has(.barr) .store-control__label {
 	display: grid;
 	gap: 0.15rem;
 	min-width: 0;
+	justify-self: end;
+	text-align: right;
 }
 
 .store-quick-cart__name {
@@ -318,6 +1239,158 @@ body:has(.barr) .view {
 .axis-cart-page {
 	padding-top: 5.5rem;
 	padding-bottom: 8rem;
+}
+
+/* Contact is a page layout, rather than a product grid. */
+.axis-contact-page {
+	padding: 6.5rem 1.25rem 3rem;
+}
+
+.axis-contact-page .grid {
+	max-width: 74rem;
+	margin: 0 auto;
+	overflow: visible;
+	text-align: left;
+}
+
+.axis-contact-page h2 {
+	margin: 0 0 1.5rem;
+	font-size: clamp(2rem, 5vw, 3.5rem);
+	font-weight: 400;
+}
+
+.axis-contact-page .container-contact100 {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: clamp(1.25rem, 4vw, 3rem);
+	align-items: start;
+}
+
+.axis-contact-page .contact100-form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+	box-sizing: border-box;
+	width: 100%;
+	padding: clamp(1.25rem, 3vw, 2rem);
+	border-radius: 1rem;
+	background: rgba(255, 255, 255, 0.56);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+}
+
+.axis-contact-page .wrap-input100 {
+	position: relative;
+	width: auto;
+	margin: 0;
+}
+
+.axis-contact-page .wrap-input100:nth-of-type(3),
+.axis-contact-page .container-contact100-form-btn {
+	grid-column: 1 / -1;
+}
+
+.axis-contact-page .label-input100 {
+	display: block;
+	margin-bottom: 0.45rem;
+	font-weight: 700;
+}
+
+.axis-contact-page .input100 {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 2.75rem;
+	padding: 0.7rem 0.85rem;
+	border: 1px solid currentColor;
+	border-radius: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+}
+
+.axis-contact-page textarea.input100 {
+	min-height: 9rem;
+	resize: vertical;
+}
+
+.axis-contact-page .container-contact100-form-btn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.axis-contact-page .container-contact100-form-btn .btn {
+	padding: 0.7rem 1rem;
+	border: 1px solid currentColor;
+	border-radius: 0;
+	background: transparent;
+	color: inherit;
+}
+
+.axis-contact-page iframe {
+	width: 100% !important;
+	height: clamp(22rem, 46vw, 36rem);
+	border-radius: 1rem;
+}
+
+.axis-contact-page .contact100-more {
+	grid-column: 1 / -1;
+	padding-bottom: 1rem;
+	line-height: 1.6;
+}
+
+.axis-contact-page .contact100-more a {
+	color: inherit;
+}
+
+body.axis-theme--light .axis-contact-page { color: #000; }
+body.axis-theme--dark .axis-contact-page { color: #fff; }
+
+body.axis-theme--dark .axis-contact-page .contact100-form {
+	background: rgba(18, 18, 18, 0.56);
+}
+
+/* Contact uses the same fixed menu strip and expansion point as Cart. */
+body:has(.axis-contact-page)::before {
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 5.5rem;
+	z-index: 2000;
+	pointer-events: none;
+	background: rgba(255, 255, 255, 0.18);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+}
+
+body:has(.axis-contact-page) .collapsible-menu {
+	top: 5.5rem;
+	z-index: 2001;
+}
+
+body:has(.axis-contact-page) .collapsible-menu__toggle {
+	display: inline-flex;
+	z-index: 2002;
+}
+
+body:has(.axis-contact-page) .collapsible-menu:not(.is-collapsed) {
+	padding: 0.75rem 1rem;
+	background: rgba(255, 255, 255, 0.22);
+	border-radius: 1rem;
+	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
+	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(4px);
+}
+
+@media screen and (max-width: 59.688em) {
+	.axis-contact-page { padding-top: max(calc(15vh + 1rem), calc(5.5rem + env(safe-area-inset-top))); }
+	.axis-contact-page .container-contact100 { grid-template-columns: 1fr; }
+	.axis-contact-page .contact100-form { grid-template-columns: 1fr; }
+	.axis-contact-page .wrap-input100:nth-of-type(3),
+	.axis-contact-page .container-contact100-form-btn,
+	.axis-contact-page .contact100-more { grid-column: auto; }
+	.axis-contact-page iframe { height: 20rem; }
 }
 
 /* A full-width glass strip keeps the cart page's floating Menu control legible. */
@@ -525,6 +1598,12 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 }
 
 @media screen and (max-width: 60em) {
+	/* Mobile top controls use icons only; their accessible labels remain on the buttons. */
+	body:has(.barr) .collapsible-menu__toggle-label,
+	body:has(.barr) .store-control__label {
+		display: none;
+	}
+
 	body:has(.barr) .barr {
 		/* Keep the closed mobile glass bar compact while preserving touch targets. */
 		height: max(8vh, 4.25rem);
@@ -595,6 +1674,17 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	body:has(.barr) .collapsible-menu:not(.is-collapsed) {
 		width: 100%;
 		max-width: none;
+	}
+
+	/* The storefront menu starts immediately beneath the fixed control bar.
+	 * Keep a deliberate inset inside its glass surface so the first icon row
+	 * never clips at the panel's upper edge. */
+	body:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content {
+		padding: 1.35rem 1rem 1rem;
+	}
+
+	body:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav {
+		padding: 0;
 	}
 
 	/* Keep every icon inside the expanded navigation compact on small screens. */
@@ -686,6 +1776,9 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	#cbp-spmenu-s1 {
 		top: 5.5rem;
 		height: calc(100vh - 5.5rem);
+		/* The fixed compare bar uses z-index: 1000. Keep the open filter
+		 * drawer above it so its lowest options remain clickable. */
+		z-index: 1100;
 		padding: 1rem;
 		display: flex !important;
 		flex-direction: column !important;
@@ -739,6 +1832,22 @@ body.cbp-spmenu-push-toleft #showRightPush {
 .slider.product__image .slider__item img {
 	display: block;
 	width: 100%;
+	height: 18rem;
+	object-fit: contain;
+}
+
+@media screen and (min-width: 59.689em) {
+	.grid__item .slider.product__image .slider__item img {
+		object-fit: contain;
+		object-position: center;
+	}
+
+	.compare-basket--active .action--compare {
+		background-image: none !important;
+		background-color: rgba(255, 255, 255, 0.24) !important;
+		-webkit-backdrop-filter: blur(6px);
+		backdrop-filter: blur(6px);
+	}
 }
 
 /* Compact, high-contrast controls for each product image carousel. */
@@ -768,6 +1877,76 @@ body.cbp-spmenu-push-toleft #showRightPush {
 .slider.product__image .flickity-prev-next-button:disabled {
 	display: none;
 }
+
+/* Keep product-list action icons transparent at every breakpoint. */
+.grid__item .action--compare-add,
+.grid__item .action--compare-buy {
+	background: transparent !important;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+}
+
+/* Keep every dark-theme glass surface on one consistent charcoal tint. */
+body.axis-theme--dark:has(.barr) .barr,
+body.axis-theme--dark #cbp-spmenu-s1.cbp-spmenu-open,
+body.axis-theme--dark #cbp-spmenu-s2.cbp-spmenu-open,
+body.axis-theme--dark #cbp-spmenu-s1 .filter-search__input,
+body.axis-theme--dark:has(.axis-about)::before,
+body.axis-theme--dark:has(.axis-about) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content,
+body.axis-theme--dark:has(.barr) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.barr)::before,
+body.axis-theme--dark:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-cart-page)::before,
+body.axis-theme--dark:has(.axis-contact-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-contact-page)::before,
+body.axis-theme--dark:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-checkout-page)::before,
+body.axis-theme--dark .axis-cart-table thead th,
+body.axis-theme--dark .view--compare + .compare,
+body.axis-theme--dark .view--compare + .compare .compare__item,
+body.axis-theme--dark .view--compare + .compare .compare__effect,
+body.axis-theme--dark .compare__grand-total,
+body.axis-theme--dark .bar:has(.compare-basket--active),
+body.axis-theme--dark .grid__item.product--selected,
+body.axis-theme--dark .compare__collapse,
+body.axis-theme--dark .view--compare + .compare .action--close,
+body.axis-theme--dark .compare-basket--active .action--compare {
+	background: rgba(18, 18, 18, 0.56) !important;
+}
+
+/* Cart content follows the same light/dark inversion as its glass controls. */
+body.axis-theme--light .axis-cart-page,
+body.axis-theme--light .axis-cart-page__action,
+body.axis-theme--light .axis-cart-page .action--text,
+body.axis-theme--light .axis-cart-summary,
+body.axis-theme--light .axis-cart-summary__actions a,
+body.axis-theme--light .cart-quantity-input {
+	color: #000;
+}
+
+body.axis-theme--dark .axis-cart-page,
+body.axis-theme--dark .axis-cart-page__action,
+body.axis-theme--dark .axis-cart-page .action--text,
+body.axis-theme--dark .axis-cart-summary,
+body.axis-theme--dark .axis-cart-summary__actions a,
+body.axis-theme--dark .cart-quantity-input {
+	color: #fff;
+}
+
+body.axis-theme--dark .axis-cart-page hr {
+	border-color: #fff;
+}
+
+body.axis-theme--dark .cart-quantity-input {
+	border-color: rgba(255, 255, 255, 0.6);
+	background: rgba(18, 18, 18, 0.56);
+}
+
+body.axis-theme--dark .axis-cart-page__action:hover,
+body.axis-theme--dark .axis-cart-page__action:focus-visible {
+	background: rgba(18, 18, 18, 0.56);
+}
+
 
 @media (prefers-reduced-motion: reduce) {
 	.collapsible-menu__content {

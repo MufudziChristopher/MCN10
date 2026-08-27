@@ -30,8 +30,9 @@
         <a href="{% url 'Axis:product_details' item.product.id %}" aria-label="View {{ item.product.name }}">
           <img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}">
         </a>
-        <span>{{ item.product.name }} × {{ item.quantity }} — {% local_price item.price %}</span>
+        <span>{{ item.product.name }} × {{ item.quantity }} — {% local_price item.product.price %}</span>
       </li>
+      {% if not forloop.last %}<li class="product-quick-cart__divider" aria-hidden="true"><hr></li>{% endif %}
         {% endfor %}
     </ul>
     <p class="product-quick-cart__total"><strong>Total: {% local_price order.get_cart_total %}</strong></p>

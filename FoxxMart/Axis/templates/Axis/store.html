@@ -10,15 +10,23 @@
 {% block body %}
 <!-- Bottom bar with filter and cart info -->
 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left " id="cbp-spmenu-s1">
-<button class="action filter__item filter__item--selected" data-filter="*">All</button>
+<div class="filter-search">
+    <label class="filter-search__label" for="filter-search-input">Search filters</label>
+    <input id="filter-search-input" class="filter-search__input" type="search" placeholder="Search filters" autocomplete="off" aria-controls="filter-options">
+    <button class="filter-search__clear" type="button" aria-label="Clear filter search" hidden>
+        <ion-icon name="close-circle" aria-hidden="true"></ion-icon>
+    </button>
+</div>
 
-
-
-{% for tag in taglist %}
-<button class="action filter__item " data-filter=".{{tag.slug}}">
-    <span class="action__text"> {{tag}}({{tag.total_products}})</span>
-</button>
-{% endfor %}
+<div id="filter-options" class="filter-options">
+    <button class="action filter__item filter__item--selected" data-filter="*">All</button>
+    {% for tag in taglist %}
+    <button class="action filter__item" data-filter=".{{tag.slug}}">
+        <span class="action__text"> {{tag}} ({{tag.total_products}})</span>
+    </button>
+    {% endfor %}
+</div>
+<p class="filter-search__empty" role="status" hidden>No filters found.</p>
 </nav>
 
 
@@ -26,6 +34,9 @@
     <div class="compare-basket">
         <button class="cart action-button action--compare">
             <ion-icon src="{% static 'ion-icons/git-compare-outline.svg' %}"></ion-icon><br>Compare
+        </button>
+        <button class="compare-basket__clear" type="button" aria-label="Clear comparison selection">
+            <ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon><span>Clear</span>
         </button>
     </div>
 </div>
@@ -38,12 +49,12 @@
         <button id="showtBottom"></button>
     </section>
     <section class="buttonset">
-        <button id="showLeftPush" class="carter">
+        <button id="showLeftPush" class="carter" aria-label="Filter products">
 
           <ion-icon src="{% static 'ion-icons/filter-outline.svg' %}" class="cart__icon"></ion-icon>
           <span class="store-control__label">Filter</span>
         </button>
-        <button id="showRightPush" class="cart">
+        <button id="showRightPush" class="cart" aria-label="Quick cart">
             <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" class="cart__icon"></ion-icon>
             <span class="store-control__label">Quick Cart</span>
             <span class="cart__count">{{cartItems}}</span>
@@ -81,9 +92,10 @@
             <div class="store-quick-cart__details">
                 <span class="store-quick-cart__name">{{ item.product.name }}</span>
                 <span>Quantity: {{ item.quantity }}</span>
-                <span>{% local_price item.price %}</span>
+                <span>{% local_price item.product.price %}</span>
             </div>
         </li>
+        {% if not forloop.last %}<li class="store-quick-cart__divider" aria-hidden="true"><hr></li>{% endif %}
         {% endfor %}
     </ul>
 
@@ -189,6 +201,9 @@
             <ion-icon src="{% static 'ion-icons/close-circle-outline.svg' %}" size="large"></ion-icon><span class="action__text action__text--invisible">Close comparison overlay</span>
         </button>
     </section>
+    <button class="compare__collapse" type="button" aria-label="Collapse comparison">
+        <ion-icon name="chevron-down-circle" aria-hidden="true"></ion-icon><span>Collapse</span>
+    </button>
 
 
 

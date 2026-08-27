@@ -1,18 +1,21 @@
 {% extends 'axis_base.html' %}
-
-
 {% load static %}
 
-
 {% block body %}
-
-
-
-<div class="view">
-  <section class="grid">
-
-    <h2>About Us</h2>
-<img src="{% static 'images/signature.png' %}" />
+<main class="axis-about">
+  <section class="axis-about__hero" aria-labelledby="axis-about-title">
+    <p class="axis-about__eyebrow">Axis by FoxxMart</p>
+    <h1 id="axis-about-title">Tools for making what matters.</h1>
+    <p class="axis-about__intro">Axis brings together 3D printers, materials and precision components in one practical workshop store. We focus on dependable tools that help ideas move from screen to object.</p>
   </section>
-</div>
+  <section class="axis-about__principles" aria-label="What guides Axis">
+    <article><ion-icon name="construct-outline" aria-hidden="true"></ion-icon><h2>Built for the bench</h2><p>Purposeful hardware and components for makers, studios, educators and small production teams.</p></article>
+    <article><ion-icon name="layers-outline" aria-hidden="true"></ion-icon><h2>A connected stack</h2><p>Printers, filament, hotends, motion electronics and accessories selected to work together.</p></article>
+    <article><ion-icon name="swap-horizontal-outline" aria-hidden="true"></ion-icon><h2>Compare with confidence</h2><p>Use the compare basket to weigh products side by side before choosing the right setup.</p></article>
+  </section>
+  <section class="axis-about__closing" aria-labelledby="axis-about-closing-title">
+    <div><p class="axis-about__eyebrow">Start building</p><h2 id="axis-about-closing-title">Find your next tool.</h2><p>Explore the Axis collection, compare options and build a setup that suits the way you work.</p><a class="axis-about__cta" href="{% url 'Axis:store' %}">Browse the store <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a></div>
+    <img src="{% static 'images/signature.png' %}" alt="FoxxMart signature" class="axis-about__signature">
+  </section>
+</main>
 {% endblock %}

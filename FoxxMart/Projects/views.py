@@ -36,3 +36,11 @@ def services(request):
 def contact(request):
 
     return render(request, 'Projects/contact.html', {})
+
+
+def transcendcopy(request):
+    return render(request, 'Projects/transcendcopy.html', {})
+
+
+def jay_cast(request):
+    return render(request, 'Projects/jay_cast.html', {})

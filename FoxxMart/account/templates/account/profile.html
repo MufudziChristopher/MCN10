@@ -12,11 +12,11 @@
 
     <section class="grid" id="main">
         <header>
-            <span class="avatar"><img {% if request.user.customer.profile_pic %} src="{{request.user.customer.profile_pic.url}}" {% else %} src="{% static 'images/dummy.jpg' %}" {% endif %} alt="" /></span>
+            <span class="avatar"><img src="{% static 'images/dummy.jpg' %}" alt="" /></span>
             <h3>{{user.username}}</h3>
-            <h5 style="text-decoration: underline; font-weight: 400">{{user.email}}</h5>
+            <h5 class="account-profile-email">{{user.email}}</h5>
             <ul class="icons">
-                <li><a title="Edit Profile" method="post" href="{% url 'account:edit' %}">
+                <li><a title="Edit Profile" href="{% url 'account:edit' %}?store={{ account_storefront.slug }}">
                         <ion-icon name="create-outline" size="large">Edit Information</ion-icon>
                     </a></li>
                 <li><a title="Change Password" href="{% url 'password_change'%}">
@@ -24,7 +24,7 @@
                     </a></li>
             </ul>
         </header>
-        <h2>Order History</h2><br>
+        <h2>{{ account_storefront.menu_label }} Order History</h2><br>
  <table>
             <thead>
                 <tr>

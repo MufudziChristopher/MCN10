@@ -1,0 +1,871 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <base href="{% static 'transcendcopy/' %}">
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Transcend Copy</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121132384-1"></script>
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-121132384-1');
+
+</script>
+
+<body id="top">
+
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
+
+        <nav class="header-nav">
+
+            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Mufudzi Christopher</h3>
+
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll" href="#home" title="home">Home</a></li>
+                    <li><a class="smoothscroll" href="#about" title="about">About</a></li>
+                    <li><a class="smoothscroll" href="#services" title="services">Services</a></li>
+                    <li><a class="smoothscroll" href="#pictures" title="pictures">Pictures</a></li>
+                    <li><a class="smoothscroll" href="#contact" title="contact">Contact</a></li>
+                </ul>
+
+                <p style="color: #ffffff">
+                    <a href="https://mufudzichristopher.com">mufudzichristopher.com</a> is an online portfolio showcasing what Mufudzi Christopher has to offer in a way that represents who he is and what he is capable of. I hope you have a pleasant experience.
+                </p>
+
+                <ul class="header-nav__social">
+                    <li>
+                        <a href="https://plus.google.com/u/0/+MufudziChristopher"><i class="fab fa-google-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/christopherMN21"><i class="fab fa-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/mufudzichristopher/"><i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Fudzi_Yama23"><i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=zSHH21QdiMA"><i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/mufudzi-christopher-nhamoinesu-6a5232161"><i class="fab fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.soundcloud.com/skrrrrrrrrrr/"><i class="fab fa-soundcloud"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://za.pinterest.com/mufudzichristopher/"><i class="fab fa-pinterest"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- end header-nav__content -->
+
+        </nav>
+        <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header>
+    <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="images/hero-bg.png" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
+
+        <div class="shadow-overlay"></div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+                <h1>
+                    Mufudzi Christopher
+                </h1>
+
+                <p>
+                    Disciplined. Determined.
+                    <br>
+                </p>
+
+            </div>
+            <!-- end home-content__main -->
+
+        </div>
+        <!-- end home-content -->
+
+        <ul class="home-sidelinks">
+            <li><a class="smoothscroll" href="#about">About<span>who I am</span></a></li>
+            <li><a class="smoothscroll" href="#services">Services<span>what I do</span></a></li>
+            <li><a class="smoothscroll" href="#contact">Contact<span>get in touch</span></a></li>
+            <li><a class="smoothscroll blinking10" href="#youtube">Watch Me<span>watch me</span></a></li>
+
+        </ul>
+        <!-- end home-sidelinks -->
+
+        <ul class="home-social">
+            <li class="home-social-title">Follow Me</li>
+            <li>
+                <a href="https://plus.google.com/u/0/+MufudziChristopher">
+                    <i class="fab fa-google-plus"></i>
+                    <span class="home-social-text">Google</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/christopherMN21">
+                    <i class="fab fa-facebook"></i>
+                    <span class="home-social-text">Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/mufudzichristopher/">
+                    <i class="fab fa-instagram"></i>
+                    <span class="home-social-text">Instagram</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.twitter.com/Fudzi_ Yama23/">
+                    <i class="fab fa-twitter"></i>
+                    <span class="home-social-text">Twitter</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=zSHH21QdiMA">
+                    <i class="fab fa-youtube"></i>
+                    <span class="home-social-text">Youtube</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/mufudzi-christopher-nhamoinesu-6a5232161">
+                    <i class="fab fa-linkedin"></i>
+                    <span class="home-social-text">Linkedin</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://za.pinterest.com/mufudzichristopher/">
+                    <i class="fab fa-pinterest"></i>
+                    <span class="home-social-text">Pinterest</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/MufudziChristopher">
+                    <i class="fab fa-github"></i>
+                    <span class="home-social-text">Github</span>
+                </a>
+            </li>
+        </ul>
+        <!-- end home-social -->
+
+        <a href="#about" class="home-scroll smoothscroll">
+            <span class="home-scroll__text">Scroll Down</span>
+            <span class="home-scroll__icon"></span>
+        </a>
+        <!-- end home-scroll -->
+
+    </section>
+    <!-- end s-home -->
+
+
+    <section id="youtube" style="background-image: url(images/marble.jpg)">
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/zSHH21QdiMA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </section>
+
+
+    <!-- about
+    ================================================== -->
+    <section id='about' class="s-about">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Who I Am</h3>
+                <h1 class="display-1">I am motivated and goal driven<br>
+                </h1>
+            </div>
+        </div>
+        <!-- end section-header -->
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">
+
+                </p>
+            </div>
+        </div>
+        <!-- end about-desc -->
+
+        <div class="row">
+
+            <div class="about-process process block-1-2 block-tab-full">
+
+                <div class="process__vline-left"></div>
+                <div class="process__vline-right"></div>
+
+                <div class="col-block " data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>IT Professional</h4>
+
+                        <i class="fa fa-laptop blinking1"></i>
+                        <i class="fa fa-power-off blinking2"></i>
+                        <i class="fa fa-signal blinking3"></i>
+                        <i class="fa fa-cog blinking4"></i>
+                        <i class="fa fa-home blinking5"></i>
+                        <i class="fa fa-cloud blinking6"></i>
+                        <i class="fa fa-database blinking7"></i>
+                        <i class="fa fa-terminal blinking8"></i>
+                        <img src="images/3.jpg" alt="Wow" class="testimonials__avatar">
+                        <p>
+                            <br> I have a passion for computers. I understand how they work and what to do do when they don't. The knowledge I have consumed over the years allows me to see that creativity can exist between the rigid lines of 1's and 0's. I ride the internet like a wave on a familiar beach. I understand it inside and out and monitor my usage of it like a hawk.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-block " data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Peoples Person</h4>
+                        <i class="fas fa-cross blinking1"></i>
+                        <i class="fa fa-coffee blinking2"></i>
+                        <i class="fas fa-couch blinking3"></i>
+                        <i class="fa fa-comments blinking4"></i>
+                        <i class="fa fa-handshake blinking5"></i>
+                        <i class="fas fa-address-book blinking6"></i>
+                        <i class="fas fa-users blinking7"></i>
+                        <i class="fas fa-child blinking8"></i>
+
+                        <p>
+                            <br> I am a not a nerd. Unfortunately. No, I'm actually really cool. I am empathetic and I'm always willing to lend a helping hand. I find happiness in seeing the smiles I create. I believe I am a leader, not a follower. A do-er, not a re-do-er. I am above all a son of a King, a man of God. Discipled. Determined.
+                            <img src="images/3.jpg" alt="Wow" class="testimonials__avatar">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-block " data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Life Long Learner</h4>
+                        <i class="fa fa-university blinking1"></i>
+                        <i class="fas fa-chalkboard-teacher blinking2"></i>
+                        <i class="fa fa-calculator blinking3"></i>
+                        <i class="fa fa-edit blinking4"></i>
+                        <i class="fa fa-award blinking5"></i>
+                        <i class="fa fa-book-open blinking6"></i>
+                        <i class="fa fa-graduation-cap blinking7"></i>
+                        <i class="fa fa-sync-alt blinking8"></i>
+
+                        <p>
+                            <br> I have always enjoyed reading. From a young age I learned how to lose myself in text and find myself in thought. It is equally important to put into practice what you read. There is no better way to learn than by doing. I believe in sharing information and learning from one another. I try to learn something new everyday and I try to teach someone something everyday. With so much information produced and uploaded everyday, it is important to be proactive, keep up to date and contribute to our information age.
+                            <img src="images/3.jpg" alt="Wow" class="testimonials__avatar">
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-block " data-aos="fade-up">
+                    <div class="process__text">
+                        <h4>Outdoorsman</h4>
+                        <i class="fa fa-bicycle blinking1"></i>
+                        <i class="fa fa-binoculars blinking2"></i>
+                        <i class="fa fa-blind blinking3"></i>
+                        <i class="fa fa-compass blinking4"></i>
+                        <i class="fa fa-map blinking5"></i>
+                        <i class="fa fa-camera-retro blinking6"></i>
+                        <i class="fas fa-city blinking7"></i>
+                        <i class="fa fa-train blinking8"></i>
+
+                        <p>
+                            <br> I enjoy the outdoors and keeping fit. I am blessed to live in a city surrounded by a mountain range and take advantage of its peaks and views whenever I can. I like to plan ahead and stick to the plan. I escape the confines of the city walls by finding new, interesting places to spend camping under the stars. I challenge myself not just physically but mentally and love the exhilaration that comes from hard work and a job well done. I am no stranger to hard work if it means getting the job done. I believe in working hard and working smart. Leading by doing and keeping time.
+                            <img src="images/3.jpg" alt="Wow" class="testimonials__avatar">
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end process -->
+
+        </div>
+        <!-- end about-stats -->
+
+    </section>
+    <!-- end s-about -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id='services' class="s-services light-gray">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">What I Do</h3>
+                <h1 class="display-1">
+                    I am an IT Creative.<br> I don't just make websites, I build brands.<br>
+                </h1>
+            </div>
+        </div>
+        <!-- end section-header -->
+
+        <div class="row" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">
+                    I am a coder who writes programs to make mundane and repetitive tasks less annoying. I learn new languages with ease and grasp concepts and methods quickly. I keep up-to-date with the latest technology trends and news. I have a keen interest in the internet and traverse its furthest reaches on a daily basis. <br><br> I have a sweet tooth for style and presentation which makes me a unique asset when creativity is a requirement. I understand people and what they want out of a website, what attracts them to one and keeps them coming back. I'm am innovative and not afraid to experiment.
+                    <br>
+                    <br> All of these talents give me an almost super human ability to consistently deliver a sophisticated, hand-crafted solution guaranteed to make you smile.
+                </p>
+            </div>
+        </div>
+        <!-- end about-desc -->
+
+        <div class="row services-list block-1-3 block-m-1-2 block-tab-full">
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--illustration">
+                    <i class="icon-earth"></i>
+                </div>
+
+                <div class="service-text">
+                    <h3 class="h4">Web Design</h3>
+                    <p>
+                        I started out with web design. I like the clean edges of tiles, squares and rectangles and appreciate the softness of color and fonts. I make websites that make you enjoy opening your browser and using the internet. Web design isn't just about pretty pictures and fancy words. Its about understanding the want and the need and providing a solution that satisfies both.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--illustration">
+                    <i class="fa fa-cloud"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Web Application Development</h3>
+                    <p>
+                        I learned how to build web applications in Visual Studio. This was also my first opportunity to collaborate in a team on a real world systems development project. Using C#, ASP.NET MVC 4, css, bootsrap, javascript, and the kitchen sink we built a stunning web application that was responsive and user friendly. I am always in development mode because I employ an agile approach when working on projects and tasks. I plan to develop something new and exciting the worlds never seen before. Watch this space.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class=" fa fa-database"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Data Analysis</h3>
+                    <p>
+                        <cite>Data analysis is a process of inspecting, cleansing, transforming, and modeling data with the goal of discovering useful information, informing conclusions, and supporting decision-making.</cite> <a href="https://en.wikipedia.org/wiki/Data_analysis"> - Wikipedia </a> <br> I use tools to make visually stunning representations and algorithms to find patterns and anomalies in your data. I use code to automate the reporting of these events and give you informative, visual feedback of information about information.
+                    </p>
+                </div>
+            </div>
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4"> Office 365 Support </h3>
+                    <p>
+                        I have in depth knowledge and experience with various Microsoft products, including the Office 365 Suite. I have training in the deployment and provisioning of these products. I know how they work and how to make them work for you to increase the overall efficiency and effectiveness of your team and organization. The Office 365 platform offers solutions that are hosted in the cloud or in a hybrid environment or in whichever way your business desires.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <a href="https://www.mufudzichristopher.com/idaca/index.html"><i class="fa fa-handshake"></i></a>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Associate</h3>
+                    <p><a href="https://idaca.co.za/about-us/people/">
+                            IDACA International Student Support Services </a> is a small, highly professional and personalized organization. We provide international students with all the assistance they need to locate themselves easily in Cape Town and at UCT as well as with on- going support and services throughout the semester abroad. The welfare of the students and professional service to our American partner universities and colleges is and always has been our mission.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class="fa fa-glass-martini"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4"> Mixologist</h3>
+                    <p>
+                        Getting the job done as effectively and efficiently as possible and seeing it through to the end is the mindset every bartender should have before stepping behind any bar. The same amount of focus, precision and dedication that goes into every cocktail made should also be present in his surroundings. An attractive bar, well trained passionate hands and a smile are my secret ingredients to that perfect drink.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class="fa fa-terminal"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Languages</h3>
+                    <ul class="skill-bars">
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>C#</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>Linux</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>Python</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>ASP.NET MVC 4</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>HTML5</strong>
+                        </li>
+                        <li>
+                            <div class="progress percent90"><span>90%</span></div>
+                            <strong>Java</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class="fa fa-check"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Skills</h3>
+                    <ul>
+                        <li>IT Support: Cloud Fundamentals</li>
+                        <li>IT Support: Network Essentials</li>
+                        <li>IT Support: Windows Troubleshooting</li>
+                        <li>IT Security: Cybersecurity Basics</li>
+                        <li>IT Security: Network Security Basics</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-block service-item" data-aos="fade-up">
+                <div class="service-icon  service-icon--web-design">
+                    <i class="fa fa-crosshairs"></i>
+                </div>
+                <div class="service-text">
+                    <h3 class="h4">Goals</h3>
+                    <ul>
+                        <li>Microsoft Certified Solutions Expert (MCSE) Certification</li>
+                        <li>SAP Certification</li>
+                        <li>Computer Forensics</li>
+                        <li>B.Com Information Systems </li>
+                        <ul class="skill-bars">
+                            <li>
+                                <div class="progress blinking1 percent50"><span>50%</span></div>
+                                <strong>JavaScript</strong>
+                            </li>
+                            <li>
+                                <div class="progress blinking1 percent20"><span>20%</span></div>
+                                <strong>AngularJS</strong>
+                            </li>
+                            <li>
+                                <div class="progress blinking1 percent30"><span>30%</span></div>
+                                <strong>Iconic</strong>
+                            </li>
+
+                            <li>
+                                <div class="progress blinking1 percent20"><span>20%</span></div>
+                                <strong>PHP</strong>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end services-list -->
+
+    </section>
+    <!-- end s-services -->
+
+
+    <!-- works
+    ================================================== -->
+    <section id='pictures' class="s-works">
+
+        <div class="row section-header" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">Pictures</h3>
+                <h1 class="display-1">I am Mufudzi Christopher</h1>
+            </div>
+        </div>
+        <!-- end section-header -->
+
+        <div class="row masonry-wrap" style="margin-left: auto">
+            <div class="masonry">
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/IMG_1602.jpg" class="thumb-link" title="" data-size="800x1000">
+                                <img src="images/portfolio/IMG_1602.jpg" srcset="images/portfolio/IMG_1602.jpg 1x, images/portfolio/IMG_1602.jpg 2x" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end item-folio -->
+                </div>
+                <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/IMG_1600.jpg" class="thumb-link" title="" data-size="800x1000">
+                                <img src="images/portfolio/IMG_1600.jpg" srcset="images/portfolio/IMG_1600.jpg 1x, images/portfolio/IMG_1600.jpg 2x" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end item-folio -->
+                </div>
+                <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/IMG_1601.jpg" class="thumb-link" title="" data-size="800x1000">
+                                <img src="images/portfolio/IMG_1601.jpg" srcset="images/portfolio/IMG_1601.jpg 1x, images/portfolio/IMG_1601.jpg 2x" alt="">
+                            </a>
+                        </div>
+                        <span class="item-folio__caption">
+                            <p></p>
+                        </span>
+
+                    </div>
+                    <!-- end item-folio -->
+                </div>
+                <!-- end masonry__brick -->
+
+            </div>
+        </div>
+
+
+        <!--<div class="testimonials-wrap" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-full testimonials-header">
+                    <h2 class="h1">And here is some of the work <I></I> have been a part of.</h2>
+                </div>
+            </div>
+            <div class="row testimonials">
+
+                <div class="col-full testimonials__slider">
+
+                    <div class="testimonials__slide">
+                        <a href="https://www.businessandhumanrightsspecialist.com"><img src="images/portfolio/HighCourt1.jpg" style="background-size: contain;" alt="Probe Analyst" class="testimonials__avatar"></a>
+                        <div class="testimonials__author">
+                            <a href="https://www.businessandhumanrightsspecialist.com" class="blinking1"> businessandhumanrightsspecialist.com </a>
+                        </div>
+                        <a href="https://www.probecsranalyst.org">
+                            <p style="color: #000;">- Translating Human Rights</p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end testimonials__slide ->
+
+                   
+                   
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/Josephine-Buys.jpg" alt=" Josephine Buys" class="testimonials__avatar">
+                        <p>Excepturi nam cupiditate culpa doloremque deleniti repellat. Veniam quos repellat voluptas animi adipisci.</p>
+                        <div class="testimonials__author">
+                            Josephine Buys<span>CEO, IABSA</span>
+                        </div>
+                    </div> <!-- end testimonials__slide ->
+
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/Daniel-Avinir.jpg" alt=" Daniel Avinir" class="testimonials__avatar">
+                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  </p>
+                        <div class="testimonials__author">
+                            Daniel Anivir
+                            <span>Technical Director, Solid Systems</span>
+                        </div>
+                    </div> <!-- end testimonials__slide -> 
+                    
+                    <div class="testimonials__slide">
+                        <img src="images/avatars/Micheal-Claxton.jpg" alt=" Micheal Claxton" class="testimonials__avatar">
+                        <p>Repellat dignissimos libero. Qui sed at corrupti expedita voluptas odit. Nihil ea quia nesciunt. Ducimus aut sed ipsam.  </p>
+                        <div class="testimonials__author">
+                            Micheal CLaxton
+                            <span>Technical Director, Solid Systems</span>
+                        </div>
+                    </div> <!-- end testimonials__slide ->
+                    
+                </div> <!-- end testimonials__slider ->
+
+            </div> <!-- end testimonials ->
+
+        </div> <!-- end testimonials-wrap -->
+
+    </section>
+    <!-- end s-works -->
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-home target-section" data-parallax="scroll" data-image-src="images/Contact2.png" data-natural-width=3000 data-natural-height=2000 data-position-y=top>
+
+
+        <div class="row">
+
+            <div class="target-section" data-aos="fade-up">
+                <div class="col-full">
+                    <br><br>
+                    <br><br>
+                    <h3 class="subhead subhead--light"> Contact Me</h3>
+                    <h1 class="display-1 display-1--light">
+                        Get in touch with me. <br> Lets make magic happen.</h1>
+                </div>
+            </div>
+
+            <div class="col-ten tab-full contact-email" data-aos="fade-up">
+
+                <ul class="contact-social">
+                    <br><br>
+                    <li>
+                        <a href="https://plus.google.com/u/0/+MufudziChristopher"><i class="fab fa-google-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/mufudzichristopher95"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/mufudzichristopher/"><i class="fab fa-instagram"></i> </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/Fudzi_Yama23"><i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=zSHH21QdiMA"><i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/mufudzi-christopher-nhamoinesu-6a5232161/"><i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.soundcloud.com/skrrrrrrrrrr/"><i class="fab fa-soundcloud"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://za.pinterest.com/mufudzichristopher/"><i class="fab fa-pinterest"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MufudziChristopher"><i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-skype"></i>
+                        </a>
+                    </li>
+                    <br><br><br>
+                </ul>
+                <!-- end contact-social -->
+            </div>
+            <!-- end contact-secondary -->
+
+            <div class="row col-ten tab-full contact-email" style="margin-left: 10px">
+                <p>Cape Town, South Africa.<br><br><br><br></p>
+            </div>
+            <!-- end row -->
+
+            <div class="col-full cl-copyright">
+                <span>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+            </div>
+
+            <div class="cl-go-top">
+                <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <!-- end row -->
+    </section>
+    <!-- end s-contact -->
+
+    <!-- begin wwww.htmlcommentbox.com -->
+    <div id="HCB_comment_box"><a href="#">Loading</a> please wait ...</div>
+    <link rel="stylesheet" type="text/css" href="//www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
+    <script type="text/javascript" id="hcb">
+        /*<!--*/
+        if (!window.hcb_user) {
+            hcb_user = {};
+        }(function() {
+            var s = document.createElement("script"),
+                l = hcb_user.PAGE || ("" + window.location).replace(/'/g, "%27"),
+                h = "//www.htmlcommentbox.com";
+            s.setAttribute("type", "text/javascript");
+            s.setAttribute("src", h + "/jread?page=" + encodeURIComponent(l).replace("+", "%2B") + "&mod=%241%24wq1rdBcg%24.ea5Mu6%2FL8AqZPQyszNE7%2F" + "&opts=16862&num=10&ts=1535879731066");
+            if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s);
+        })(); /*-->*/
+    </script>
+
+    <style>
+        #HCB_comment_box .h3 {
+            color: white;
+        }
+
+        #HCB_comment_box blockquote {
+            color: red;
+        }
+
+        #HCB_comment_box .submit {
+            background: none;
+            /* Clear twitter bootstrap style. */
+            background-color: white;
+            color: red;
+        }
+
+        #HCB_comment_box .hcb_file {
+            visibility: hidden;
+        }
+
+        #HCB_comment_box #hcb_form_name {}
+
+        #HCB_comment_box textarea {
+            width: 500px
+        }
+    </style>
+
+
+
+    <!--  <style>
+    #HCB_comment_box{border: 2px solid #FFFFFF; border-radius: 5px; padding: 10px; color:#FFFFFF; background: rgba(0, 0, 0, 0.5);}
+.hcb-mod b{color:#0088AF;}
+#HCB_comment_box textarea,#HCB_comment_box input.text{border-top:1px solid #e4e4e4;border-left:1px solid #e4e4e4;border-bottom:1px solid #eaeaea;border-right:1px solid #eaeaea;background-color:#f8f8f8;}
+#HCB_comment_box .hcb-wrapper-half{display:block;width:50%;float:left;}
+#HCB_comment_box .hcb-wrapper{clear:both;}
+#HCB_comment_box input.text{display:block;width:95%;}
+#HCB_comment_box input.submit{border-top:1px solid #FCB1A2;border-left:1px solid #FCB1A2;border-bottom:1px solid #BB2B0F;border-right:1px solid #BB2B0F;background-color:#F26646;color:#000;font-weight:bold;cursor:pointer;}
+#HCB_comment_box div.comment{color:#FDB3A5; background: rgba(0, 0, 0, 0.5); border:3px double #F26646 ; margin:5px; padding:2px;}
+#HCB_comment_box .comment .likes{color: #00FF00;}
+#HCB_comment_box .hcb-link{color:#0088AF;text-decoration:none;} 
+    </style> -->
+    <!-- end www.htmlcommentbox.com -->
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- end photoSwipe background -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+<script>
+    /* Keep the source site's in-page navigation inside its Django route. */
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.href = window.location.pathname + link.getAttribute('href');
+    });
+</script>
+
+</html>

@@ -34,7 +34,7 @@
 
     <!-- Flickity gallery styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'axis/css/flickity.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=58" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=136" />
 
 
     <script src="{% static 'axis/js/modernizr.custom.js' %}"></script>
@@ -121,10 +121,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
     <script src="{% static 'axis/js/isotope.pkgd.min.js' %}"></script>
     <script src="{% static 'axis/js/flickity.pkgd.min.js' %}"></script>
-    <script src="{% static 'axis/js/compare_main.js' %}"></script>
+    <script src="{% static 'axis/js/compare_main.js' %}?v=14"></script>
     <script src="{% static 'axis/js/mlpushmenu.js' %}"></script>
     <script src="{% static 'axis/js/classie.js' %}"></script>
-    <script src="{% static 'axis/js/main.js' %}?v=4"></script>
+    <script src="{% static 'axis/js/main.js' %}?v=6"></script>
     <script src="{% static 'axis/js/cart.js' %}?v=5"></script>
     <span hidden>{% csrf_token %}</span>
     <script src="{% static 'axis/js/locale.js' %}?v=3"></script>
@@ -138,6 +138,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+	<script>
+		(function () {
+			var key = 'axis-color-mode';
+			function transitionToTheme(mode) {
+				var overlay = document.querySelector('.axis-theme-transition');
+				if (!overlay || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+					applyTheme(mode);
+					return;
+				}
+				if (overlay.classList.contains('axis-theme-transition--covering')) return;
+				overlay.classList.add('axis-theme-transition--covering');
+				window.setTimeout(function () {
+					applyTheme(mode);
+					overlay.classList.remove('axis-theme-transition--covering');
+				}, 270);
+			}
+			function applyTheme(mode) {
+				document.body.classList.toggle('axis-theme--light', mode === 'light');
+				document.body.classList.toggle('axis-theme--dark', mode !== 'light');
+				var toggle = document.querySelector('.axis-theme-toggle');
+				if (toggle) {
+					var isLight = mode === 'light';
+					toggle.setAttribute('aria-pressed', String(isLight));
+					toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+				}
+				var menuGif = document.querySelector('.collapsible-menu__toggle img');
+				if (menuGif) {
+					menuGif.src = mode === 'light' ? "{% static 'images/III-light.gif' %}" : "{% static 'images/III-dark.gif' %}";
+				}
+			}
+			var themeTransition = document.createElement('div');
+			themeTransition.className = 'axis-theme-transition';
+			themeTransition.setAttribute('aria-hidden', 'true');
+			themeTransition.innerHTML = '<div class="axis-theme-transition__shutter"></div><div class="axis-theme-transition__shutter"></div>';
+			document.body.appendChild(themeTransition);
+			var savedMode = localStorage.getItem(key) || 'dark';
+			applyTheme(savedMode);
+			document.addEventListener('click', function (event) {
+				var toggle = event.target.closest('.axis-theme-toggle');
+				if (!toggle) return;
+				var nextMode = document.body.classList.contains('axis-theme--light') ? 'dark' : 'light';
+				localStorage.setItem(key, nextMode);
+				transitionToTheme(nextMode);
+			});
+		}());
+	</script>
     <script>
         new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
 
