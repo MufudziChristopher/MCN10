@@ -1,3 +1,5 @@
+from decimal import Decimal, ROUND_HALF_UP
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -28,6 +30,8 @@ class AxisCustomer(models.Model):
 
 
 class Product(models.Model):
+    # Legacy product IDs exceed PostgreSQL's 32-bit AutoField range.
+    id                 = models.BigAutoField(primary_key=True)
     name               = models.CharField(max_length=200, null=False)
     short_desc          = models.CharField(max_length=500, null=True)
     description1        = models.TextField(max_length=2000, null=True)
@@ -87,11 +91,21 @@ class Product(models.Model):
         return url
 
 class Order(models.Model):
+
+    VAT_RATE = Decimal('0.15')
+    DELIVERY_FEE = Decimal('99.00')
     STATUS = (
-        ('Pending', 'Pending'),
-        ('Payment Confirmed, Processing Order', 'Payment Confirmed, Processing Order'),
+        ('Pending', 'Awaiting payment'),
+        ('Payment confirmed', 'Payment confirmed'),
+        ('Picking items', 'Picking items'),
+        ('Packed', 'Packed and ready for dispatch'),
+        ('Awaiting courier', 'Awaiting courier collection'),
+        ('Collected by courier', 'Collected by courier'),
+        ('In transit', 'In transit'),
         ('Out for delivery', 'Out for delivery'),
         ('Delivered', 'Delivered'),
+        ('Delivery exception', 'Delivery exception'),
+        ('Cancelled', 'Cancelled'),
         )
     customer = models.ForeignKey(AxisCustomer, on_delete=models.SET_NULL, blank=True, null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
@@ -111,6 +125,18 @@ class Order(models.Model):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
+
+    @property
+    def get_vat_amount(self):
+        return ((self.get_cart_total + self.get_delivery_fee) * self.VAT_RATE).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
+
+    @property
+    def get_delivery_fee(self):
+        return self.DELIVERY_FEE
+
+    @property
+    def get_total_with_vat(self):
+        return (self.get_cart_total + self.get_delivery_fee + self.get_vat_amount).quantize(Decimal('0.01'), rounding=ROUND_HALF_UP)
 
     @property
     def get_cart_items(self):
@@ -134,12 +160,13 @@ class OrderItem(models.Model):
 
 class ShippingAddress(models.Model):
     country = models.CharField(max_length=200, null=False)
-    address1 = models.CharField(max_length=200, null=False)
-    address2 = models.CharField(max_length=200, null=True)
-    suburb = models.CharField(max_length=200, null=True)
+    address1 = models.CharField(max_length=255, null=False)
+    address2 = models.CharField(max_length=255, blank=True, default='')
+    suburb = models.CharField(max_length=200, default='')
     city = models.CharField(max_length=200, null=False)
     province = models.CharField(max_length=200, null=False)
     postal_code = models.CharField(max_length=20, null=False)
+    delivery_instructions = models.CharField(max_length=500, blank=True, default='')
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -1,73 +1,61 @@
 {% extends 'menu_base.html' %}
 
-{% load static %}
-
 {% block body %}
+<main class="account-profile-page">
+  <section class="account-profile-hero" aria-labelledby="profile-title">
+    <div class="account-profile-avatar" aria-hidden="true">{{ user.username|first|upper }}</div>
+    <div class="account-profile-identity">
+      <p class="account-profile-eyebrow">{{ account_storefront.menu_label }} account</p>
+      <h1 id="profile-title">{{ user.username }}</h1>
+      <p class="account-profile-email">{{ user.email }}</p>
+    </div>
+    <div class="account-profile-actions" aria-label="Account settings">
+      <a href="{% url 'account:edit' %}?store={{ account_storefront.slug }}"><ion-icon name="create-outline" aria-hidden="true"></ion-icon><span>Edit profile</span></a>
+      <a href="{% url 'password_change' %}?store={{ account_storefront.slug }}"><ion-icon name="lock-closed-outline" aria-hidden="true"></ion-icon><span>Password</span></a>
+    </div>
+  </section>
 
+  <section class="account-profile-summary" aria-label="Account summary">
+    <div><span>Storefront</span><strong>{{ account_storefront.menu_label }}</strong></div>
+    <div><span>Orders</span><strong>{{ orders|length }}</strong></div>
+    <div><span>Invoices</span><strong>{{ invoices|length }}</strong></div>
+  </section>
 
-<!-- Main -->
-<div class="view">
+  <section class="account-profile-section" aria-labelledby="orders-title">
+    <div class="account-profile-section__heading">
+      <div><p class="account-profile-eyebrow">Purchase history</p><h2 id="orders-title">Your orders</h2></div>
+      <a href="{% url account_storefront.store_url_name %}">Continue shopping <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></a>
+    </div>
+    {% if orders %}
+    <div class="account-profile-table-wrap"><table class="account-profile-table">
+      <thead><tr><th>Transaction</th><th>Placed</th><th>Total</th><th>Status</th></tr></thead>
+      <tbody>{% for order in orders %}<tr>
+        <td data-label="Transaction"><strong>{{ order.transaction_id|default:"Awaiting payment" }}</strong></td>
+        <td data-label="Placed">{{ order.date_ordered|date:"d M Y" }}</td>
+        <td data-label="Total">R {% if account_storefront.slug == 'axis' %}{{ order.get_total_with_vat|floatformat:2 }}{% else %}{{ order.get_cart_total|floatformat:2 }}{% endif %}</td>
+        <td data-label="Status"><span class="account-profile-status{% if order.status == 'Delivered' %} account-profile-status--delivered{% endif %}">{{ order.status|default:"Pending" }}</span></td>
+      </tr>{% endfor %}</tbody>
+    </table></div>
+    {% else %}
+    <div class="account-profile-empty"><ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon><h3>No orders yet</h3><p>Your {{ account_storefront.menu_label }} purchases will appear here.</p><a href="{% url account_storefront.store_url_name %}">Explore the store</a></div>
+    {% endif %}
+  </section>
 
-    <!-- Grid -->
-
-    <section class="grid" id="main">
-        <header>
-            <span class="avatar"><img src="{% static 'images/dummy.jpg' %}" alt="" /></span>
-            <h3>{{user.username}}</h3>
-            <h5 class="account-profile-email">{{user.email}}</h5>
-            <ul class="icons">
-                <li><a title="Edit Profile" href="{% url 'account:edit' %}?store={{ account_storefront.slug }}">
-                        <ion-icon name="create-outline" size="large">Edit Information</ion-icon>
-                    </a></li>
-                <li><a title="Change Password" href="{% url 'password_change'%}">
-                        <ion-icon name="lock-open-outline" size="large">Update Password</ion-icon>
-                    </a></li>
-            </ul>
-        </header>
-        <h2>{{ account_storefront.menu_label }} Order History</h2><br>
- <table>
-            <thead>
-                <tr>
-                    <th class="action--text">Transaction ID</th>
-                    <th class="action--text">Date Ordered</th>
-                    <th class="action--text">Order Total</th>
-                    <th class="action--text">Order Status </th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for order in orders %}
-
-                <tr >
-                    <td>
-                        <h4 class="action--text">{{order.transaction_id}}</h4>
-                    </td>
-
-                    <td>
-                        <h4 class="action--text">{{order.date_ordered}}
-                        </h4>
-                    </td>
-                    <td>
-                        <h4 class="action--text">R{{ order.get_cart_total}}</h4>
-                    </td>
-                    <td>
-                        <p class="action--text">{{ order.status}}</p>
-                    </td>
-
-                    <td class="total"><strong class="action--text">{{item.get_total}}</strong></td>
-                </tr><!-- END TR-->
-                {% endfor %}
-
-
-            </tbody>
-        </table>
-    </section>
-
-
-</div>
-<script type="text/javascript">
-    console.log("You have reached the Profile page")
-
-</script>
-
-
+  <section class="account-profile-section" aria-labelledby="invoices-title">
+    <div class="account-profile-section__heading"><div><p class="account-profile-eyebrow">Receipts</p><h2 id="invoices-title">Invoices</h2></div></div>
+    {% if invoices %}
+    <div class="account-profile-table-wrap"><table class="account-profile-table">
+      <thead><tr><th>Invoice</th><th>Issued</th><th>Total</th><th><span class="visually-hidden">Actions</span></th></tr></thead>
+      <tbody>{% for invoice in invoices %}<tr>
+        <td data-label="Invoice"><strong>INV-{{ invoice.store_slug|upper }}-{{ invoice.order_reference }}</strong></td>
+        <td data-label="Issued">{{ invoice.issued_at|date:"d M Y" }}</td>
+        <td data-label="Total">R {{ invoice.total|floatformat:2 }}</td>
+        <td class="account-profile-links" data-label="Actions"><a href="{% url 'account:invoice_view' invoice.public_id %}" target="_blank" rel="noopener">View PDF</a><a href="{% url 'account:invoice_download' invoice.public_id %}" download>Download</a>{% if invoice.return_request %}<a href="{% url 'account:return_detail' invoice.public_id %}">Return {{ invoice.return_request.get_status_display }}</a>{% else %}<details class="account-profile-return"><summary>Request return</summary><form method="post" enctype="multipart/form-data" action="{% url 'account:request_return' invoice.public_id %}">{% csrf_token %}<label>Reason<select name="reason" required><option value="" selected disabled>Select a reason</option><option>Damaged item</option><option>Incorrect item</option><option>Does not fit</option><option>Changed my mind</option><option>Other</option></select></label><label>Details <span>(optional)</span><textarea name="details" rows="2" maxlength="1000" placeholder="Tell us what happened"></textarea></label><label>Photos <span>(optional, up to 5 MB each)</span><input type="file" name="images" accept="image/*" multiple></label><button type="submit">Submit request</button></form></details>{% endif %}</td>
+      </tr>{% endfor %}</tbody>
+    </table></div>
+    {% else %}
+    <div class="account-profile-empty"><ion-icon name="document-text-outline" aria-hidden="true"></ion-icon><h3>No invoices yet</h3><p>Your invoice will be ready here after a payment is confirmed.</p></div>
+    {% endif %}
+  </section>
+</main>
 {% endblock %}

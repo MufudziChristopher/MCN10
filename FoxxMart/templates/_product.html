@@ -35,7 +35,7 @@
               <ion-icon src="{% static 'ion-icons/home-outline.svg' %}" size="large"></ion-icon><br>Home
           </a>
           <a href="{% url 'GENESIS:store' %}" title="Online Store">
-              <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon><br>Shop
+              <ion-icon name="storefront-outline" size="large"></ion-icon><br>Shop
           </a>
             {% if user.is_authenticated %}
             {% if cartItems %}

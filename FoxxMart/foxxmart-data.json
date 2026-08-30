@@ -1,0 +1,5378 @@
+[
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$GUOnRoY038PSjQtqOFcgV4$34G1OUO3fToD8c0eiySATCNcevvkyaH7PR3pHwb9gEw=",
+    "email": "mnhamoinesu@gmail.com",
+    "username": "Mufudzi Christopher",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-02T12:42:15.680Z",
+    "last_login": "2026-08-29T10:21:28.184Z",
+    "is_admin": true,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": true,
+    "is_superuser": true,
+    "phone": null
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$K75sZVLur7k4T0rrJFqj70$nxEnlOMtt4aG1CPE0T2lcgInMEd1gcWra9KKDfLBJDA=",
+    "email": "mnhamoinesu@hotmail.com",
+    "username": "mnhamoinesu",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-26T21:47:33.974Z",
+    "last_login": "2023-03-26T21:47:34.706Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "07513247236"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$24UtqMO9qnjao44E0HXFPj$YFP23s3EA47jb1VxaJECgpSOEDf3fEYw1kalj3TdcqU=",
+    "email": "mnhamoinesu+form@hotmail.com",
+    "username": "mnhamoinesu",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-26T21:49:16.027Z",
+    "last_login": "2023-03-26T21:49:16.027Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "07513247236"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$bF564FI8xfBMM3aAtjGPKM$qebvGOh9V73wvKqZOe4PMUQKpxQ+bxV8A6eZRTkySd4=",
+    "email": "mnhamoinesu+form1@hotmail.com",
+    "username": "mnhamoinesu",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-26T21:50:08.048Z",
+    "last_login": "2023-03-26T21:50:08.878Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "07513 247346"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$z0PwydyP73eY3rb3jY5ilL$lwunhBpDWkA/RWt9sJzdJsVFE5wrjztUW033uokKPok=",
+    "email": "mnhamoinesu+form2@hotmail.com",
+    "username": "mnhamoinesu",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-26T21:51:07.764Z",
+    "last_login": "2023-03-26T21:51:08.581Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$390000$EhkFL7CVL5onmXBMSV48ZL$n0GjLI54MexNqDqL2NHY2RwLPOXYMpedCxECrqPXENI=",
+    "email": "mcn10.foxx+form@gmail.com",
+    "username": "MCN10",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2023-03-27T16:54:32.058Z",
+    "last_login": "2023-03-27T16:54:32.508Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$HrUhXPSUr9qlWxhQHwRs8V$6+CssBN8hzLii1JMa4tQhIQWfx6jQ/prHUQ1A0n9DTA=",
+    "email": "mcn10.foxxchat@gmail.com",
+    "username": "MCN10 FoxxChat",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2026-08-21T17:55:02.951Z",
+    "last_login": "2026-08-21T17:55:02.951Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$T3VSbkKq5Y6ADURSnVYruN$xo1z2vcyA1r9RXqo9gxuaoMQZmKDODQ1Q94koutJccc=",
+    "email": "mcn10.foxxwork@gmail.com",
+    "username": "Foxx Work",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2026-08-21T17:59:56.474Z",
+    "last_login": "2026-08-21T17:59:57.142Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$UoAHpiBB78CCC9s4mlMzOC$omtO7zq16HoAZkLW9BCNKpTR/ShylY2c1wtWoQxH2lU=",
+    "email": "mcn10.foxxhamper@gmail.com",
+    "username": "Foxx",
+    "first_name": "",
+    "last_name": "",
+    "date_joined": "2026-08-21T19:29:00.705Z",
+    "last_login": "2026-08-26T20:08:52.784Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$pkkyrSB3A3NW9C6vWTu0rH$oCJ5EJvuUfRaTrRrWFiShk2QbnlFRWNRYJyXuVDUAkE=",
+    "email": "mnhamoinesu+webdev@gmail.com",
+    "username": "Mufudzi Christopher Nhamoinesu",
+    "first_name": "Mufudzi Christopher",
+    "last_name": "Nhamoinesu",
+    "date_joined": "2026-08-21T20:57:38.309Z",
+    "last_login": "2026-08-21T21:16:47.425Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": "0665056597"
+  }
+},
+{
+  "model": "account.account",
+  "fields": {
+    "password": "",
+    "email": "mufudzichristopher@gmail.com",
+    "username": "Mufudzi Christopher",
+    "first_name": "Mufudzi",
+    "last_name": "Christopher",
+    "date_joined": "2026-08-29T10:48:45.141Z",
+    "last_login": "2026-08-29T10:48:45.149Z",
+    "is_admin": false,
+    "is_active": true,
+    "is_axisStaff": false,
+    "is_staff": false,
+    "is_superuser": false,
+    "phone": null
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.725Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.727Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.729Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.731Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.732Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.733Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.734Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.736Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form@hotmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.737Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form@hotmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.738Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form@hotmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.740Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form@hotmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.741Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.742Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.743Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.744Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.746Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 17,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.748Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 18,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.749Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 19,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.750Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 20,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.752Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 21,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.754Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 22,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.755Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 23,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.757Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 24,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.758Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 25,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.759Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 26,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.760Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 27,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.763Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 28,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.764Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 29,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.766Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.767Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.768Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 32,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.769Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 33,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.771Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 34,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.772Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 35,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.773Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 36,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:53:38.775Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 37,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "store_slug": "axis",
+    "package": "full",
+    "created_at": "2026-08-21T20:57:38.874Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 38,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "store_slug": "exodus",
+    "package": "full",
+    "created_at": "2026-08-21T20:57:38.895Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 39,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "store_slug": "genesis",
+    "package": "full",
+    "created_at": "2026-08-21T20:57:38.902Z"
+  }
+},
+{
+  "model": "account.storeaccess",
+  "pk": 40,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "store_slug": "collective",
+    "package": "full",
+    "created_at": "2026-08-21T20:57:38.907Z"
+  }
+},
+{
+  "model": "account.googleoauthidentity",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "google_subject": "109214103063095394501",
+    "created_at": "2026-08-29T10:21:28.177Z"
+  }
+},
+{
+  "model": "account.googleoauthidentity",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mufudzichristopher@gmail.com"
+    ],
+    "google_subject": "105574269167143892142",
+    "created_at": "2026-08-29T10:48:45.143Z"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "date_created": "2023-03-02T12:43:39.163Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:47:34.560Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@hotmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:49:16.850Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+form@hotmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:50:08.665Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+form1@hotmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:51:08.336Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+form2@hotmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "date_created": "2023-03-27T16:54:32.366Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxx+form@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "date_created": "2026-08-21T17:55:03.601Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxchat@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "date_created": "2026-08-21T17:59:57.128Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxwork@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "date_created": "2026-08-21T19:29:02.145Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxhamper@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "date_created": "2026-08-21T20:57:38.879Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+webdev@gmail.com"
+  }
+},
+{
+  "model": "Axis.axiscustomer",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "mufudzichristopher@gmail.com"
+    ],
+    "date_created": "2026-08-29T10:48:45.179Z",
+    "shippingAddress": null,
+    "email": "mufudzichristopher@gmail.com"
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356362,
+  "fields": {
+    "name": "Axis Form One",
+    "short_desc": "Precision desktop resin printing in a compact amber enclosure.",
+    "description1": "A refined resin printer for detailed prototypes, presentation models and small-batch production.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-form-one/view-1.png",
+    "image2": "Axis_generated/axis-form-one/view-2.png",
+    "image3": "Axis_generated/axis-form-one/view-3.png",
+    "image4": "Axis_generated/axis-form-one/view-4.png",
+    "image5": "Axis_generated/axis-form-one/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "45999.00",
+    "stock": 5
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356363,
+  "fields": {
+    "name": "Axis Forge One",
+    "short_desc": "A versatile compact FDM printer for everyday prototyping.",
+    "description1": "A dependable desktop FDM system with a rigid frame and a practical, maker-friendly workflow.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-forge-one/view-1.png",
+    "image2": "Axis_generated/axis-forge-one/view-2.png",
+    "image3": "Axis_generated/axis-forge-one/view-3.png",
+    "image4": "Axis_generated/axis-forge-one/view-4.png",
+    "image5": "Axis_generated/axis-forge-one/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "18999.00",
+    "stock": 11
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356364,
+  "fields": {
+    "name": "Axis Forge XL",
+    "short_desc": "Large-format FDM production with an enclosed build chamber.",
+    "description1": "A spacious, controlled FDM system for functional parts, jigs and ambitious one-piece prototypes.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-forge-xl/view-1.png",
+    "image2": "Axis_generated/axis-forge-xl/view-2.png",
+    "image3": "Axis_generated/axis-forge-xl/view-3.png",
+    "image4": "Axis_generated/axis-forge-xl/view-4.png",
+    "image5": "Axis_generated/axis-forge-xl/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "54999.00",
+    "stock": 4
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356365,
+  "fields": {
+    "name": "Axis Resin Mini",
+    "short_desc": "Small-footprint resin precision for desks and studios.",
+    "description1": "A clean, compact resin platform for smooth, high-detail prototypes with minimal bench space.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-resin-mini/view-1.png",
+    "image2": "Axis_generated/axis-resin-mini/view-2.png",
+    "image3": "Axis_generated/axis-resin-mini/view-3.png",
+    "image4": "Axis_generated/axis-resin-mini/view-4.png",
+    "image5": "Axis_generated/axis-resin-mini/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "23999.00",
+    "stock": 10
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356366,
+  "fields": {
+    "name": "Axis Resin Pro",
+    "short_desc": "Professional resin printing with a controlled enclosed workflow.",
+    "description1": "A premium production-ready resin printer built for designers who value detail, repeatability and finish.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-resin-pro/view-1.png",
+    "image2": "Axis_generated/axis-resin-pro/view-2.png",
+    "image3": "Axis_generated/axis-resin-pro/view-3.png",
+    "image4": "Axis_generated/axis-resin-pro/view-4.png",
+    "image5": "Axis_generated/axis-resin-pro/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "74999.00",
+    "stock": 5
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356367,
+  "fields": {
+    "name": "Axis Resin Max",
+    "short_desc": "Large-format resin printing for ambitious detailed work.",
+    "description1": "A wide-format resin platform for presentation pieces, production parts and larger precision models.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-resin-max/view-1.png",
+    "image2": "Axis_generated/axis-resin-max/view-2.png",
+    "image3": "Axis_generated/axis-resin-max/view-3.png",
+    "image4": "Axis_generated/axis-resin-max/view-4.png",
+    "image5": "Axis_generated/axis-resin-max/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "129999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356368,
+  "fields": {
+    "name": "Axis Metal Studio",
+    "short_desc": "Office-ready metal additive manufacturing.",
+    "description1": "A compact metal printing system for engineering prototypes, tooling concepts and specialised low-volume parts.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-metal-studio/view-1.png",
+    "image2": "Axis_generated/axis-metal-studio/view-2.png",
+    "image3": "Axis_generated/axis-metal-studio/view-3.png",
+    "image4": "Axis_generated/axis-metal-studio/view-4.png",
+    "image5": "Axis_generated/axis-metal-studio/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "349999.00",
+    "stock": 1
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356369,
+  "fields": {
+    "name": "Axis Carbon CF",
+    "short_desc": "Technical FDM printing for carbon-fibre composites.",
+    "description1": "A high-performance enclosed printer engineered for strong, lightweight composite functional parts.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-carbon-cf/view-1.png",
+    "image2": "Axis_generated/axis-carbon-cf/view-2.png",
+    "image3": "Axis_generated/axis-carbon-cf/view-3.png",
+    "image4": "Axis_generated/axis-carbon-cf/view-4.png",
+    "image5": "Axis_generated/axis-carbon-cf/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "89999.00",
+    "stock": 4
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356370,
+  "fields": {
+    "name": "Axis BioPrint S",
+    "short_desc": "A precise laboratory platform for controlled experimental fabrication.",
+    "description1": "A clean research-grade printing instrument designed for educational and laboratory fabrication workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-bioprint-s/view-1.png",
+    "image2": "Axis_generated/axis-bioprint-s/view-2.png",
+    "image3": "Axis_generated/axis-bioprint-s/view-3.png",
+    "image4": "Axis_generated/axis-bioprint-s/view-4.png",
+    "image5": "Axis_generated/axis-bioprint-s/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "159999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356371,
+  "fields": {
+    "name": "Axis Dental DLP",
+    "short_desc": "Fine-detail resin output for specialised dental workflows.",
+    "description1": "A detailed DLP system that produces accurate smooth models for labs and specialist fabrication teams.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-dental-dlp/view-1.png",
+    "image2": "Axis_generated/axis-dental-dlp/view-2.png",
+    "image3": "Axis_generated/axis-dental-dlp/view-3.png",
+    "image4": "Axis_generated/axis-dental-dlp/view-4.png",
+    "image5": "Axis_generated/axis-dental-dlp/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "99999.00",
+    "stock": 4
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356372,
+  "fields": {
+    "name": "Axis Maker Lab",
+    "short_desc": "An approachable modular printer for education and making.",
+    "description1": "A durable open-frame system that helps classrooms and makerspaces turn ideas into physical prototypes.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-maker-lab/view-1.png",
+    "image2": "Axis_generated/axis-maker-lab/view-2.png",
+    "image3": "Axis_generated/axis-maker-lab/view-3.png",
+    "image4": "Axis_generated/axis-maker-lab/view-4.png",
+    "image5": "Axis_generated/axis-maker-lab/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "14999.00",
+    "stock": 16
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356373,
+  "fields": {
+    "name": "Axis SLS Compact",
+    "short_desc": "Professional nylon part production in a compact footprint.",
+    "description1": "A powder-based additive manufacturing system for robust functional components and efficient low-volume production.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-sls-compact/view-1.png",
+    "image2": "Axis_generated/axis-sls-compact/view-2.png",
+    "image3": "Axis_generated/axis-sls-compact/view-3.png",
+    "image4": "Axis_generated/axis-sls-compact/view-4.png",
+    "image5": "Axis_generated/axis-sls-compact/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "279999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356374,
+  "fields": {
+    "name": "Axis Ceramic One",
+    "short_desc": "Ceramic extrusion for expressive functional objects.",
+    "description1": "A specialised fabrication platform for studios exploring ceramic forms, small runs and material-driven work.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-ceramic-one/view-1.png",
+    "image2": "Axis_generated/axis-ceramic-one/view-2.png",
+    "image3": "Axis_generated/axis-ceramic-one/view-3.png",
+    "image4": "Axis_generated/axis-ceramic-one/view-4.png",
+    "image5": "Axis_generated/axis-ceramic-one/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "67999.00",
+    "stock": 5
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356375,
+  "fields": {
+    "name": "Axis MicroFab",
+    "short_desc": "Microscale resin precision for research and intricate parts.",
+    "description1": "A compact high-resolution instrument for miniature prototypes, research models and intricate fabrication.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-microfab/view-1.png",
+    "image2": "Axis_generated/axis-microfab/view-2.png",
+    "image3": "Axis_generated/axis-microfab/view-3.png",
+    "image4": "Axis_generated/axis-microfab/view-4.png",
+    "image5": "Axis_generated/axis-microfab/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "119999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356376,
+  "fields": {
+    "name": "Axis Hybrid X",
+    "short_desc": "FDM printing and CNC milling in one flexible workstation.",
+    "description1": "A capable hybrid fabrication unit that lets workshops print, refine and prototype within a single system.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_generated/axis-hybrid-x/view-1.png",
+    "image2": "Axis_generated/axis-hybrid-x/view-2.png",
+    "image3": "Axis_generated/axis-hybrid-x/view-3.png",
+    "image4": "Axis_generated/axis-hybrid-x/view-4.png",
+    "image5": "Axis_generated/axis-hybrid-x/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "139999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356377,
+  "fields": {
+    "name": "Axis PLA Matte Black",
+    "short_desc": "A low-gloss, reliable PLA for refined prototypes and display pieces.",
+    "description1": "A 1 kg spool of matte black PLA with smooth layer definition and an understated finish. It is an easy-printing choice for prototypes, fixtures and presentation models.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-pla-matte-black.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "495.00",
+    "stock": 47
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356378,
+  "fields": {
+    "name": "Axis PLA Signal Red",
+    "short_desc": "A saturated red PLA for visible prototypes and crisp display work.",
+    "description1": "A 1 kg spool of signal-red PLA designed for dependable everyday printing. Its strong colour and predictable flow make it ideal for concept models, labels and workshop parts.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-pla-signal-red.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "495.00",
+    "stock": 41
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356379,
+  "fields": {
+    "name": "Axis PLA Sapphire Blue",
+    "short_desc": "A vivid blue PLA that balances bold colour with easy processing.",
+    "description1": "A 1 kg spool of sapphire-blue PLA with stable extrusion and clean surface detail. Use it for visual mock-ups, educational builds and colourful functional prints.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-pla-sapphire-blue.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "495.00",
+    "stock": 39
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356380,
+  "fields": {
+    "name": "Axis PETG Smoke Clear",
+    "short_desc": "Tough, translucent PETG with a restrained smoke tint.",
+    "description1": "A 1 kg spool of smoke-clear PETG for components that need more durability than standard PLA. The translucent finish suits enclosures, guards and practical display parts.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-petg-smoke-clear.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "575.00",
+    "stock": 36
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356381,
+  "fields": {
+    "name": "Axis Nylon CF Graphite",
+    "short_desc": "Carbon-fibre nylon for rigid, lightweight engineering parts.",
+    "description1": "A 1 kg spool of graphite nylon reinforced with carbon fibre. It delivers high stiffness and a technical matte finish for brackets, tooling and performance-driven components.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-nylon-cf-graphite.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "1295.00",
+    "stock": 18
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356382,
+  "fields": {
+    "name": "Axis ASA Arctic White",
+    "short_desc": "UV-stable ASA for clean outdoor and architectural prints.",
+    "description1": "A 1 kg spool of arctic-white ASA with weather resistance for parts used in sunlight. It is suited to outdoor housings, mounts, signage and durable functional prototypes.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-asa-arctic-white.png",
+    "image2": "Axis_generated/axis-asa-arctic-white/view-2.png",
+    "image3": "Axis_generated/axis-asa-arctic-white/view-3.png",
+    "image4": "Axis_generated/axis-asa-arctic-white/view-4.png",
+    "image5": "Axis_generated/axis-asa-arctic-white/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "690.00",
+    "stock": 32
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356383,
+  "fields": {
+    "name": "Axis TPU Flex Lime",
+    "short_desc": "Bright flexible TPU for impact-resistant, soft-touch components.",
+    "description1": "A 1 kg spool of lime-green TPU formulated for controlled flexible printing. Create grips, gaskets, bumpers and protective parts with resilient, elastic performance.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-tpu-flex-lime.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "790.00",
+    "stock": 25
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356384,
+  "fields": {
+    "name": "Axis PETG Safety Orange",
+    "short_desc": "High-visibility PETG for robust workshop and safety components.",
+    "description1": "A 1 kg spool of safety-orange PETG combining strong colour with PETG durability. It is an excellent fit for guards, tools, brackets and visible operational prototypes.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-petg-safety-orange.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "575.00",
+    "stock": 30
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356385,
+  "fields": {
+    "name": "Axis PLA Marble",
+    "short_desc": "A flecked marble PLA with a natural, premium surface effect.",
+    "description1": "A 1 kg spool of white PLA with subtle charcoal flecks. It produces distinctive presentation pieces, decor, props and prototypes without requiring complex finishing.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-pla-marble.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "650.00",
+    "stock": 24
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356386,
+  "fields": {
+    "name": "Axis ABS Cobalt",
+    "short_desc": "A robust cobalt ABS for workshop-ready functional parts.",
+    "description1": "A 1 kg spool of cobalt-blue ABS engineered for parts that benefit from heat resistance and toughness. Best for enclosures, jigs and durable mechanical prototypes.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/filament/axis-abs-cobalt.png",
+    "image2": "Axis_generated/axis-abs-cobalt/view-2.png",
+    "image3": "Axis_generated/axis-abs-cobalt/view-3.png",
+    "image4": "Axis_generated/axis-abs-cobalt/view-4.png",
+    "image5": "Axis_generated/axis-abs-cobalt/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "620.00",
+    "stock": 28
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356387,
+  "fields": {
+    "name": "Axis MicroBoard Core 32",
+    "short_desc": "A compact 32-bit motion-control board for focused printer builds.",
+    "description1": "A compact controller board with responsive 32-bit motion control, practical expansion headers and a clean layout for reliable single-extruder printer projects.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/microboards/axis-microboard-core-32.png",
+    "image2": "Axis_generated/axis-microboard-core-32/view-2.png",
+    "image3": "Axis_generated/axis-microboard-core-32/view-3.png",
+    "image4": "Axis_generated/axis-microboard-core-32/view-4.png",
+    "image5": "Axis_generated/axis-microboard-core-32/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "1699.00",
+    "stock": 20
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356388,
+  "fields": {
+    "name": "Axis MicroBoard WiFi Motion",
+    "short_desc": "Network-ready controller hardware for connected printer control.",
+    "description1": "A Wi-Fi enabled 32-bit printer controller board for remote monitoring and modern connected workflows. Its compact form suits upgrades and custom desktop machines.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/microboards/axis-microboard-wifi-motion.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "2199.00",
+    "stock": 15
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356389,
+  "fields": {
+    "name": "Axis MicroBoard Duo Drive",
+    "short_desc": "A dual-extruder controller designed for more ambitious material setups.",
+    "description1": "A feature-rich 32-bit control board with extra motor and heater connections for dual-extruder systems. It supports controlled multi-material and support-material workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/microboards/axis-microboard-duo-drive.png",
+    "image2": "Axis_generated/axis-microboard-duo-drive/view-2.png",
+    "image3": "Axis_generated/axis-microboard-duo-drive/view-3.png",
+    "image4": "Axis_generated/axis-microboard-duo-drive/view-4.png",
+    "image5": "Axis_generated/axis-microboard-duo-drive/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "2799.00",
+    "stock": 10
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356390,
+  "fields": {
+    "name": "Axis MicroBoard Silent Motion",
+    "short_desc": "A quiet controller platform with integrated silent-driver cooling.",
+    "description1": "A motion-control board built around quiet stepper-driver operation and tidy thermal management. A strong choice for studio printers and low-noise desktop upgrades.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/microboards/axis-microboard-silent-motion.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "2499.00",
+    "stock": 12
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356391,
+  "fields": {
+    "name": "Axis MicroBoard CAN Pro",
+    "short_desc": "A rugged CAN-bus control board for industrial printer wiring.",
+    "description1": "An industrial-focused controller board with robust connectors and CAN-bus capability for distributed machine electronics. Designed for durable, serviceable fabrication systems.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/microboards/axis-microboard-can-pro.png",
+    "image2": "Axis_generated/axis-microboard-can-pro/view-2.png",
+    "image3": "Axis_generated/axis-microboard-can-pro/view-3.png",
+    "image4": "Axis_generated/axis-microboard-can-pro/view-4.png",
+    "image5": "Axis_generated/axis-microboard-can-pro/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "3299.00",
+    "stock": 8
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356392,
+  "fields": {
+    "name": "Axis Standard Brass Hotend",
+    "short_desc": "A precise 0.4 mm brass hotend for everyday materials.",
+    "description1": "A compact brass 0.4 mm hotend that delivers clean, predictable extrusion with common PLA, PETG and ABS filaments. A dependable replacement or upgrade component.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/extruders/axis-standard-brass-hotend.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "899.00",
+    "stock": 35
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356393,
+  "fields": {
+    "name": "Axis Hardened Steel Hotend",
+    "short_desc": "A wear-resistant hotend for abrasive and filled filaments.",
+    "description1": "A hardened-steel hotend assembly made for carbon-fibre, glow and other abrasive materials. It provides durable nozzle performance while retaining controlled detail.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/extruders/axis-hardened-steel-hotend.png",
+    "image2": "Axis_generated/axis-hardened-steel-hotend/view-2.png",
+    "image3": "Axis_generated/axis-hardened-steel-hotend/view-3.png",
+    "image4": "Axis_generated/axis-hardened-steel-hotend/view-4.png",
+    "image5": "Axis_generated/axis-hardened-steel-hotend/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "1199.00",
+    "stock": 26
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356394,
+  "fields": {
+    "name": "Axis High Flow Volcano Head",
+    "short_desc": "A long-melt-zone hotend for fast, high-volume extrusion.",
+    "description1": "A high-flow 0.6 mm volcano-style hotend that increases melt capacity for larger nozzles and faster builds. Ideal for production parts, strong perimeters and tall layers.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/extruders/axis-high-flow-volcano-head.png",
+    "image2": "Axis_generated/axis-high-flow-volcano-head/view-2.png",
+    "image3": "Axis_generated/axis-high-flow-volcano-head/view-3.png",
+    "image4": "Axis_generated/axis-high-flow-volcano-head/view-4.png",
+    "image5": "Axis_generated/axis-high-flow-volcano-head/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "1499.00",
+    "stock": 20
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356395,
+  "fields": {
+    "name": "Axis Dual Drive Extruder",
+    "short_desc": "A dual-gear extruder for confident, even filament feeding.",
+    "description1": "A direct dual-drive extruder with two drive gears for balanced filament grip. It improves consistency with flexible materials and is well suited to precision desktop machines.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/extruders/axis-dual-drive-extruder.png",
+    "image2": "Axis_generated/axis-dual-drive-extruder/view-2.png",
+    "image3": "Axis_generated/axis-dual-drive-extruder/view-3.png",
+    "image4": "Axis_generated/axis-dual-drive-extruder/view-4.png",
+    "image5": "Axis_generated/axis-dual-drive-extruder/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "1799.00",
+    "stock": 16
+  }
+},
+{
+  "model": "Axis.product",
+  "pk": 2213356396,
+  "fields": {
+    "name": "Axis Pellet Feed Extruder",
+    "short_desc": "An industrial pellet-feed extruder for high-throughput systems.",
+    "description1": "A rugged pellet-feed extruder assembly designed for large-format and industrial material handling. Its robust mechanism supports efficient high-volume extrusion workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "Axis_components/extruders/axis-pellet-feed-extruder.png",
+    "image2": "",
+    "image3": "",
+    "image4": "",
+    "image5": "",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "3999.00",
+    "stock": 6
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-02T12:43:45.289Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 2,
+  "fields": {
+    "customer": 5,
+    "date_ordered": "2023-03-27T22:25:45.473Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 3,
+  "fields": {
+    "customer": 8,
+    "date_ordered": "2026-08-21T17:59:57.154Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 4,
+  "fields": {
+    "customer": 9,
+    "date_ordered": "2026-08-21T19:29:23.513Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 5,
+  "fields": {
+    "customer": 10,
+    "date_ordered": "2026-08-21T20:57:38.927Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.order",
+  "pk": 7,
+  "fields": {
+    "customer": 12,
+    "date_ordered": "2026-08-29T10:48:47.501Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 19,
+  "fields": {
+    "product": 2213356371,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:34:14.973Z"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 20,
+  "fields": {
+    "product": 2213356377,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:34:20.081Z"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 21,
+  "fields": {
+    "product": 2213356378,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:34:22.565Z"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 22,
+  "fields": {
+    "product": 2213356379,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:34:24.365Z"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 23,
+  "fields": {
+    "product": 2213356362,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:37:56.774Z"
+  }
+},
+{
+  "model": "Axis.orderitem",
+  "pk": 24,
+  "fields": {
+    "product": 2213356363,
+    "order": 4,
+    "quantity": 1,
+    "date_added": "2026-08-26T16:39:37.403Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "email": "mnhamoinesu@gmail.com",
+    "date_created": "2023-03-25T22:20:06.231Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mnhamoinesu@hotmail.com"
+    ],
+    "email": "mnhamoinesu@hotmail.com",
+    "date_created": "2023-03-26T21:47:34.625Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "email": "mnhamoinesu+form1@hotmail.com",
+    "date_created": "2023-03-26T21:50:08.793Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "email": "mnhamoinesu+form2@hotmail.com",
+    "date_created": "2023-03-26T21:51:08.457Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "email": "mcn10.foxx+form@gmail.com",
+    "date_created": "2023-03-27T16:54:32.437Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "email": "mcn10.foxxwork@gmail.com",
+    "date_created": "2026-08-21T17:59:57.137Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "email": "mcn10.foxxhamper@gmail.com",
+    "date_created": "2026-08-21T19:29:02.164Z"
+  }
+},
+{
+  "model": "Collective.collectivecustomer",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "email": "mnhamoinesu+webdev@gmail.com",
+    "date_created": "2026-08-21T20:57:38.910Z"
+  }
+},
+{
+  "model": "Collective.collectiveproduct",
+  "pk": 4,
+  "fields": {
+    "name": "Biggie & Tupac Adidas Tee",
+    "description": "100% cotton. Premium-quality, all-day soft, built with real weight — you can feel the difference the second it lands on your shoulders. Biggie and Tupac front-and-centre, with a print made to stay sharp for years. “Stay far from timid.” — The Notorious B.I.G.",
+    "image1": "collective_product/cutouts/TBBShirt-cutout.png",
+    "image2": "collective_product/cutouts/The-Tupac-and-Biggie-Murders-Adidas-Logo-Shirt-Hoodie-cutout.png",
+    "image3": "",
+    "image4": "",
+    "category": 2,
+    "price": "650.00",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproduct",
+  "pk": 5,
+  "fields": {
+    "name": "Tupac Adidas Tee",
+    "description": "100% cotton and premium from collar to hem. This is the kind of tee that feels different: soft, solid and street-ready, with a Tupac graphic print built to ride for years. “Reality is wrong. Dreams are for real.” — Tupac Shakur.",
+    "image1": "collective_product/cutouts/TWShirt-cutout.png",
+    "image2": "collective_product/cutouts/whiteshirt-cutout.png",
+    "image3": "collective_product/cutouts/greyshirt-cutout.png",
+    "image4": "",
+    "category": 2,
+    "price": "650.00",
+    "stock": 20
+  }
+},
+{
+  "model": "Collective.collectiveproduct",
+  "pk": 6,
+  "fields": {
+    "name": "Tupac & Biggie Murders Hoodie",
+    "description": "Thick, warm and sturdy — a heavyweight hoodie for cold streets and long nights. The Tupac and Biggie graphic is printed to last for years, so the statement stays loud after the season changes. “Sky’s the limit.” — The Notorious B.I.G.",
+    "image1": "collective_product/cutouts/blackmurdershoodie-cutout.png",
+    "image2": "collective_product/cutouts/whitemurdershoodie-cutout.png",
+    "image3": "collective_product/cutouts/navymurdershoodie-cutout.png",
+    "image4": "collective_product/cutouts/Murders1-cutout.png",
+    "category": 3,
+    "price": "1100.00",
+    "stock": 25
+  }
+},
+{
+  "model": "Collective.collectiveproduct",
+  "pk": 7,
+  "fields": {
+    "name": "Tupac Adidas Hoodie",
+    "description": "A thick, warm, sturdy hoodie with a premium feel and a Tupac graphic that holds its ground. Built for the block, the studio and everywhere the temperature drops; the durable print is made to last for years. “Reality is wrong. Dreams are for real.” — Tupac Shakur.",
+    "image1": "collective_product/cutouts/blackhoodie-cutout.png",
+    "image2": "collective_product/cutouts/whitehoodie-cutout.png",
+    "image3": "collective_product/cutouts/navyhoodie-cutout.png",
+    "image4": "collective_product/cutouts/TWHoodie-cutout.png",
+    "category": 3,
+    "price": "1050.00",
+    "stock": 30
+  }
+},
+{
+  "model": "Collective.collectiveproduct",
+  "pk": 8,
+  "fields": {
+    "name": "Tupac Adidas Sweater",
+    "description": "Premium crewneck energy with a heavyweight feel, clean structure and bold Tupac artwork. Comfortable enough to live in, solid enough to keep its shape, with a long-lasting print that stays fresh for years. “Stay far from timid.” — The Notorious B.I.G.",
+    "image1": "collective_product/cutouts/blacksweater-cutout.png",
+    "image2": "collective_product/cutouts/redsweater-cutout.png",
+    "image3": "collective_product/cutouts/navysweater-cutout.png",
+    "image4": "collective_product/cutouts/TWSweater-cutout.png",
+    "category": 4,
+    "price": "900.00",
+    "stock": 30
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 1,
+  "fields": {
+    "product": 4,
+    "color": "Black",
+    "image": "collective_product/cutouts/TBBShirt-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 2,
+  "fields": {
+    "product": 5,
+    "color": "White",
+    "image": "collective_product/cutouts/TWShirt-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 3,
+  "fields": {
+    "product": 5,
+    "color": "Grey",
+    "image": "collective_product/cutouts/greyshirt-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 4,
+  "fields": {
+    "product": 6,
+    "color": "Black",
+    "image": "collective_product/cutouts/blackmurdershoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 5,
+  "fields": {
+    "product": 6,
+    "color": "White",
+    "image": "collective_product/cutouts/whitemurdershoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 6,
+  "fields": {
+    "product": 6,
+    "color": "Navy",
+    "image": "collective_product/cutouts/navymurdershoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 7,
+  "fields": {
+    "product": 7,
+    "color": "Black",
+    "image": "collective_product/cutouts/blackhoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 8,
+  "fields": {
+    "product": 7,
+    "color": "White",
+    "image": "collective_product/cutouts/whitehoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 9,
+  "fields": {
+    "product": 7,
+    "color": "Navy",
+    "image": "collective_product/cutouts/navyhoodie-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 10,
+  "fields": {
+    "product": 8,
+    "color": "Black",
+    "image": "collective_product/cutouts/blacksweater-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 11,
+  "fields": {
+    "product": 8,
+    "color": "Red",
+    "image": "collective_product/cutouts/redsweater-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveproductvariant",
+  "pk": 12,
+  "fields": {
+    "product": 8,
+    "color": "Navy",
+    "image": "collective_product/cutouts/navysweater-cutout.png",
+    "stock": 10
+  }
+},
+{
+  "model": "Collective.collectiveorder",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-25T22:20:17.074Z",
+    "status": "Pending",
+    "transaction_id": null
+  }
+},
+{
+  "model": "Collective.collectiveorder",
+  "pk": 2,
+  "fields": {
+    "customer": 8,
+    "date_ordered": "2026-08-21T20:58:01.365Z",
+    "status": "Pending",
+    "transaction_id": null
+  }
+},
+{
+  "model": "Collective.collectiveorder",
+  "pk": 3,
+  "fields": {
+    "customer": 7,
+    "date_ordered": "2026-08-22T07:59:33.442Z",
+    "status": "Pending",
+    "transaction_id": null
+  }
+},
+{
+  "model": "Collective.collectiveorderitem",
+  "pk": 6,
+  "fields": {
+    "product": 6,
+    "order": 3,
+    "size": "XL",
+    "quantity": 1,
+    "date_added": "2026-08-25T08:53:31.128Z"
+  }
+},
+{
+  "model": "Collective.collectivecategory",
+  "pk": 1,
+  "fields": {
+    "category_name": "3D Printer",
+    "slug": "3d-printer"
+  }
+},
+{
+  "model": "Collective.collectivecategory",
+  "pk": 2,
+  "fields": {
+    "category_name": "T-Shirts",
+    "slug": "t-shirts"
+  }
+},
+{
+  "model": "Collective.collectivecategory",
+  "pk": 3,
+  "fields": {
+    "category_name": "Hoodies",
+    "slug": "hoodies"
+  }
+},
+{
+  "model": "Collective.collectivecategory",
+  "pk": 4,
+  "fields": {
+    "category_name": "Sweaters",
+    "slug": "sweaters"
+  }
+},
+{
+  "model": "Marz.marzcustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "date_created": "2023-03-04T05:34:50.780Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@gmail.com"
+  }
+},
+{
+  "model": "Marz.product",
+  "pk": 2,
+  "fields": {
+    "name1": "Nike Air Force 1",
+    "name2": "Bone",
+    "description1": "Nike AirForce 1 “Bone” - Created these after @jakepolino did these and we had to make a pair - Dipped in @nescafericoffy , we are definitely bringing more of these after our “test subject” passed , different colors too , keep a lookout , peep @gregoryjames__ page for the video on how we created these..",
+    "image1": "main_product/coffee1_W63sDyy.jpg",
+    "image2": "main_product/coffee1.jpg",
+    "image3": "main_product/coffee2.jpg",
+    "image4": "main_product/coffee3.jpg",
+    "image5": "main_product/301842407_599450835013697_2258997304168165530_n_4rIV6Mj.jpg",
+    "price": "2000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "Marz.product",
+  "pk": 4,
+  "fields": {
+    "name1": "Gallery Dept.",
+    "name2": "Classic Souvenir T-shirt",
+    "description1": "Available in 2 colors (Black and Grey)",
+    "image1": "main_product/319841646_510308484402505_1139949095686045215_n.jpg",
+    "image2": "main_product/320216840_541343397616431_6769604891001473730_n.jpg",
+    "image3": "main_product/319831077_556914349216301_4437768243116777197_n.jpg",
+    "image4": "main_product/319841646_510308484402505_1139949095686045215_n_Z75PK0i.jpg",
+    "image5": "main_product/319831077_556914349216301_4437768243116777197_n_vHzXuGJ.jpg",
+    "price": "500.00",
+    "stock": 5
+  }
+},
+{
+  "model": "Marz.product",
+  "pk": 5,
+  "fields": {
+    "name1": "Gallery Dept.",
+    "name2": "Classic Souvenir T-shirt",
+    "description1": "Available in 2 colors (Black and Grey)",
+    "image1": "main_product/320169604_721024205778934_4447535600452922916_n.jpg",
+    "image2": "main_product/319897654_542994904348959_4323467638730132662_n.jpg",
+    "image3": "main_product/320226578_1190158551627251_9049008405788563038_n.jpg",
+    "image4": "main_product/320169604_721024205778934_4447535600452922916_n_NNaa6LG.jpg",
+    "image5": "main_product/319897654_542994904348959_4323467638730132662_n_cuJkei8.jpg",
+    "price": "500.00",
+    "stock": 10
+  }
+},
+{
+  "model": "Marz.order",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-04T05:35:04.525Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "COURT.yogaclass",
+  "pk": 1,
+  "fields": {
+    "name": "Sunset Flow",
+    "weekday": 0,
+    "start_time": "13:00:00",
+    "end_time": "15:00:00",
+    "location": "Camps Bay Sunset",
+    "capacity": 12,
+    "active": true
+  }
+},
+{
+  "model": "COURT.yogaclass",
+  "pk": 2,
+  "fields": {
+    "name": "Promenade Flow",
+    "weekday": 1,
+    "start_time": "13:00:00",
+    "end_time": "15:00:00",
+    "location": "Sea Point Promenade",
+    "capacity": 12,
+    "active": true
+  }
+},
+{
+  "model": "COURT.yogaclass",
+  "pk": 3,
+  "fields": {
+    "name": "Midweek Reset",
+    "weekday": 2,
+    "start_time": "13:00:00",
+    "end_time": "15:00:00",
+    "location": "Newlands Catholic Church",
+    "capacity": 12,
+    "active": true
+  }
+},
+{
+  "model": "COURT.yogaclass",
+  "pk": 4,
+  "fields": {
+    "name": "Temple Flow",
+    "weekday": 3,
+    "start_time": "13:00:00",
+    "end_time": "15:00:00",
+    "location": "Observatory Temple",
+    "capacity": 12,
+    "active": true
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "date_created": "2023-03-25T23:40:48.066Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@hotmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form1@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:50:08.751Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+form1@hotmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "mnhamoinesu+form2@hotmail.com"
+    ],
+    "date_created": "2023-03-26T21:51:08.390Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+form2@hotmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "mcn10.foxx+form@gmail.com"
+    ],
+    "date_created": "2023-03-27T16:54:32.405Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxx+form@gmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "mcn10.foxxchat@gmail.com"
+    ],
+    "date_created": "2026-08-21T17:55:03.603Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxchat@gmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "date_created": "2026-08-21T17:59:57.131Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxwork@gmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "date_created": "2026-08-21T19:29:02.154Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxhamper@gmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesiscustomer",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "date_created": "2026-08-21T20:57:38.905Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+webdev@gmail.com"
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334228,
+  "fields": {
+    "name": "Genesis Reach 6",
+    "short_desc": "Compact six-axis collaboration for precise assembly.",
+    "description1": "A flexible compact robot arm for bench automation, inspection and repeatable assembly.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-reach-6/view-1.png",
+    "image2": "GENESIS_generated/genesis-reach-6/view-2.png",
+    "image3": "GENESIS_generated/genesis-reach-6/view-3.png",
+    "image4": "GENESIS_generated/genesis-reach-6/view-4.png",
+    "image5": "GENESIS_generated/genesis-reach-6/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "189999.00",
+    "stock": 8
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334229,
+  "fields": {
+    "name": "Genesis Reach 12",
+    "short_desc": "Mid-payload precision for production cells.",
+    "description1": "A robust six-axis arm that brings smooth, accurate automation to growing production teams.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-reach-12/view-1.png",
+    "image2": "GENESIS_generated/genesis-reach-12/view-2.png",
+    "image3": "GENESIS_generated/genesis-reach-12/view-3.png",
+    "image4": "GENESIS_generated/genesis-reach-12/view-4.png",
+    "image5": "GENESIS_generated/genesis-reach-12/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "279999.00",
+    "stock": 6
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334230,
+  "fields": {
+    "name": "Genesis Reach 20",
+    "short_desc": "Heavy-payload industrial handling at scale.",
+    "description1": "A high-reach robotic arm engineered for demanding material handling and production tasks.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-reach-20/view-1.png",
+    "image2": "GENESIS_generated/genesis-reach-20/view-2.png",
+    "image3": "GENESIS_generated/genesis-reach-20/view-3.png",
+    "image4": "GENESIS_generated/genesis-reach-20/view-4.png",
+    "image5": "GENESIS_generated/genesis-reach-20/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "449999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334231,
+  "fields": {
+    "name": "Genesis Weld Arc",
+    "short_desc": "Automated arc welding with consistent repeatability.",
+    "description1": "A specialist welding arm that helps production teams create reliable, repeatable welds.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-weld-arc/view-1.png",
+    "image2": "GENESIS_generated/genesis-weld-arc/view-2.png",
+    "image3": "GENESIS_generated/genesis-weld-arc/view-3.png",
+    "image4": "GENESIS_generated/genesis-weld-arc/view-4.png",
+    "image5": "GENESIS_generated/genesis-weld-arc/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "599999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334232,
+  "fields": {
+    "name": "Genesis Pick Pro",
+    "short_desc": "Fast pick-and-place automation for modern workflows.",
+    "description1": "A rapid handling arm with vacuum tooling for organised packing and light industrial picking.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-pick-pro/view-1.png",
+    "image2": "GENESIS_generated/genesis-pick-pro/view-2.png",
+    "image3": "GENESIS_generated/genesis-pick-pro/view-3.png",
+    "image4": "GENESIS_generated/genesis-pick-pro/view-4.png",
+    "image5": "GENESIS_generated/genesis-pick-pro/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "339999.00",
+    "stock": 5
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334233,
+  "fields": {
+    "name": "Genesis Inspect Vision",
+    "short_desc": "Machine-vision inspection in a flexible automation cell.",
+    "description1": "A camera-equipped robotic arm for repeatable inspection, measurement and quality workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-inspect-vision/view-1.png",
+    "image2": "GENESIS_generated/genesis-inspect-vision/view-2.png",
+    "image3": "GENESIS_generated/genesis-inspect-vision/view-3.png",
+    "image4": "GENESIS_generated/genesis-inspect-vision/view-4.png",
+    "image5": "GENESIS_generated/genesis-inspect-vision/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "319999.00",
+    "stock": 4
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334234,
+  "fields": {
+    "name": "Genesis Pallet 30",
+    "short_desc": "High-reach palletising for heavier production loads.",
+    "description1": "A powerful robotic arm designed for efficient palletising and dependable end-of-line automation.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-pallet-30/view-1.png",
+    "image2": "GENESIS_generated/genesis-pallet-30/view-2.png",
+    "image3": "GENESIS_generated/genesis-pallet-30/view-3.png",
+    "image4": "GENESIS_generated/genesis-pallet-30/view-4.png",
+    "image5": "GENESIS_generated/genesis-pallet-30/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "749999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334235,
+  "fields": {
+    "name": "Genesis Lab Assist",
+    "short_desc": "Laboratory automation in a precise compact platform.",
+    "description1": "A careful, controlled automation arm for research, sample handling and laboratory workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-lab-assist/view-1.png",
+    "image2": "GENESIS_generated/genesis-lab-assist/view-2.png",
+    "image3": "GENESIS_generated/genesis-lab-assist/view-3.png",
+    "image4": "GENESIS_generated/genesis-lab-assist/view-4.png",
+    "image5": "GENESIS_generated/genesis-lab-assist/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "389999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334236,
+  "fields": {
+    "name": "Genesis CNC Load",
+    "short_desc": "Reliable CNC machine tending around the clock.",
+    "description1": "A rugged gripper-equipped arm that automates machine loading and repeatable part handling.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-cnc-load/view-1.png",
+    "image2": "GENESIS_generated/genesis-cnc-load/view-2.png",
+    "image3": "GENESIS_generated/genesis-cnc-load/view-3.png",
+    "image4": "GENESIS_generated/genesis-cnc-load/view-4.png",
+    "image5": "GENESIS_generated/genesis-cnc-load/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "429999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334237,
+  "fields": {
+    "name": "Genesis Cleanroom 8",
+    "short_desc": "Sealed precision automation for controlled environments.",
+    "description1": "A smooth, cleanroom-oriented robot arm built for consistent controlled-environment operation.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-cleanroom-8/view-1.png",
+    "image2": "GENESIS_generated/genesis-cleanroom-8/view-2.png",
+    "image3": "GENESIS_generated/genesis-cleanroom-8/view-3.png",
+    "image4": "GENESIS_generated/genesis-cleanroom-8/view-4.png",
+    "image5": "GENESIS_generated/genesis-cleanroom-8/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "469999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334238,
+  "fields": {
+    "name": "Genesis Forge 16",
+    "short_desc": "Machining assistance for automated fabrication cells.",
+    "description1": "A robust industrial arm with tooling designed to complement automated machining operations.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-forge-16/view-1.png",
+    "image2": "GENESIS_generated/genesis-forge-16/view-2.png",
+    "image3": "GENESIS_generated/genesis-forge-16/view-3.png",
+    "image4": "GENESIS_generated/genesis-forge-16/view-4.png",
+    "image5": "GENESIS_generated/genesis-forge-16/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "579999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334239,
+  "fields": {
+    "name": "Genesis Food Safe",
+    "short_desc": "Hygienic robotic handling for food operations.",
+    "description1": "A smooth, wash-down-friendly automation arm for hygienic handling and packaging workflows.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-food-safe/view-1.png",
+    "image2": "GENESIS_generated/genesis-food-safe/view-2.png",
+    "image3": "GENESIS_generated/genesis-food-safe/view-3.png",
+    "image4": "GENESIS_generated/genesis-food-safe/view-4.png",
+    "image5": "GENESIS_generated/genesis-food-safe/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "529999.00",
+    "stock": 3
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334240,
+  "fields": {
+    "name": "Genesis Mobile Dock",
+    "short_desc": "Flexible automation that can move between workstations.",
+    "description1": "A compact mobile robot platform that brings programmable manipulation wherever it is needed.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-mobile-dock/view-1.png",
+    "image2": "GENESIS_generated/genesis-mobile-dock/view-2.png",
+    "image3": "GENESIS_generated/genesis-mobile-dock/view-3.png",
+    "image4": "GENESIS_generated/genesis-mobile-dock/view-4.png",
+    "image5": "GENESIS_generated/genesis-mobile-dock/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "649999.00",
+    "stock": 2
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334241,
+  "fields": {
+    "name": "Genesis Micro 3",
+    "short_desc": "Microscale precision for electronics and detailed work.",
+    "description1": "A compact high-precision arm for delicate assembly, electronics and research applications.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-micro-3/view-1.png",
+    "image2": "GENESIS_generated/genesis-micro-3/view-2.png",
+    "image3": "GENESIS_generated/genesis-micro-3/view-3.png",
+    "image4": "GENESIS_generated/genesis-micro-3/view-4.png",
+    "image5": "GENESIS_generated/genesis-micro-3/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "159999.00",
+    "stock": 7
+  }
+},
+{
+  "model": "GENESIS.genesisproduct",
+  "pk": 22334242,
+  "fields": {
+    "name": "Genesis Duo Cell",
+    "short_desc": "Coordinated dual-arm automation for complex tasks.",
+    "description1": "A paired robotic workcell that enables synchronised handling, assembly and advanced automation.",
+    "description2": null,
+    "description3": null,
+    "description4": null,
+    "description5": null,
+    "description6": null,
+    "description7": null,
+    "description8": null,
+    "image1": "GENESIS_generated/genesis-duo-cell/view-1.png",
+    "image2": "GENESIS_generated/genesis-duo-cell/view-2.png",
+    "image3": "GENESIS_generated/genesis-duo-cell/view-3.png",
+    "image4": "GENESIS_generated/genesis-duo-cell/view-4.png",
+    "image5": "GENESIS_generated/genesis-duo-cell/view-5.png",
+    "image6": "",
+    "image7": "",
+    "image8": "",
+    "price": "899999.00",
+    "stock": 1
+  }
+},
+{
+  "model": "GENESIS.genesisorder",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-25T23:41:51.651Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "GENESIS.genesisorder",
+  "pk": 2,
+  "fields": {
+    "customer": 2,
+    "date_ordered": "2023-03-26T21:50:16.105Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "GENESIS.genesisorder",
+  "pk": 3,
+  "fields": {
+    "customer": 3,
+    "date_ordered": "2023-03-26T21:51:15.368Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "GENESIS.genesisorder",
+  "pk": 4,
+  "fields": {
+    "customer": 4,
+    "date_ordered": "2023-03-27T16:54:40.539Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "GENESIS.genesisorder",
+  "pk": 5,
+  "fields": {
+    "customer": 7,
+    "date_ordered": "2026-08-22T11:06:43.599Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "EXODUS.exoduscustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "date_created": "2023-03-29T00:28:47.483Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@gmail.com"
+  }
+},
+{
+  "model": "EXODUS.exoduscustomer",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "mcn10.foxxwork@gmail.com"
+    ],
+    "date_created": "2026-08-21T17:59:57.134Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxwork@gmail.com"
+  }
+},
+{
+  "model": "EXODUS.exoduscustomer",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "mcn10.foxxhamper@gmail.com"
+    ],
+    "date_created": "2026-08-21T19:29:02.160Z",
+    "shippingAddress": null,
+    "email": "mcn10.foxxhamper@gmail.com"
+  }
+},
+{
+  "model": "EXODUS.exoduscustomer",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "mnhamoinesu+webdev@gmail.com"
+    ],
+    "date_created": "2026-08-21T20:57:38.899Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu+webdev@gmail.com"
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 1,
+  "fields": {
+    "name": "Form 3+",
+    "short_desc": "Rapid, Flawless Prints, Every Time",
+    "description1": "Produce functional, high-quality prototypes and end-use parts in record time with the Form 3+, an affordable, industrial-quality resin 3D printer that reliably delivers.",
+    "description2": "The Next Generation of Industrial 3D Printing\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.​",
+    "description3": "The Form 3+ Workflow in Five Minutes\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing, to post-processing, each step of the process was designed with efficiency in mind.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.",
+    "description6": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\nCrisp, clean features: \r\nThe high-power-density laser is passed through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent printing: \r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.\r\n\r\n​\r\n\r\nFaster than ever: \r\nA high frequency galvanometer offers precise control and high speed.",
+    "description7": "Nonstop\r\n\r\nPrinting\r\n\r\nThe Form 3+ constantly monitors print performance so you can focus on bringing your most creative ideas to life. Integrated sensors help maintain ideal print conditions and send you alerts about the state of your machine.\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nHassle-free materials management: \r\nSwitch between materials in seconds with a simple cartridge system.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Unit, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description8": "Your Business\r\n​\r\nStart with one 3D printer or many, and add capacity as demand grows. Use the same tool through prototyping and into production and easily expand into new applications.\r\nIndustrial quality for all:\r\nThe Form 3+ offers industrial capabilities at a fraction of the price of traditional industrial machines.\r\n\r\n​\r\n\r\nGet started now: \r\nFormlabs 3D printers are ready to plug and print right out of the box, no specialized training required.\r\n\r\n​\r\n\r\nAvoid delays: \r\nBringing production in-house with the Form 3+ provides the fast turnaround time and flexibility you need to scale.",
+    "image1": "EXODUS_product/f3.png",
+    "image2": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image3": "EXODUS_product/form3_grow_businesspng__1354x0_q85_subsa.png",
+    "image4": "EXODUS_product/f3_WiCNiPy.png",
+    "image5": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image6": "EXODUS_product/87ccc0_21af485d2277480e8fa5b167d6646351mv2.jpg",
+    "image7": "EXODUS_product/87ccc0_24465d23b8c24d66930cff060ebacd29mv2.gif",
+    "image8": "EXODUS_product/Capture.png",
+    "price": "120001.00",
+    "stock": 10
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 7,
+  "fields": {
+    "name": "Form 3+",
+    "short_desc": "Rapid, Flawless Prints, Every Time",
+    "description1": "Produce functional, high-quality prototypes and end-use parts in record time with the Form 3+, an affordable, industrial-quality resin 3D printer that reliably delivers.",
+    "description2": "The Next Generation of Industrial 3D Printing\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.​",
+    "description3": "The Form 3+ Workflow in Five Minutes\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing, to post-processing, each step of the process was designed with efficiency in mind.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.",
+    "description6": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\nCrisp, clean features: \r\nThe high-power-density laser is passed through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent printing: \r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.\r\n\r\n​\r\n\r\nFaster than ever: \r\nA high frequency galvanometer offers precise control and high speed.",
+    "description7": "Nonstop\r\n\r\nPrinting\r\n\r\nThe Form 3+ constantly monitors print performance so you can focus on bringing your most creative ideas to life. Integrated sensors help maintain ideal print conditions and send you alerts about the state of your machine.\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nHassle-free materials management: \r\nSwitch between materials in seconds with a simple cartridge system.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Unit, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description8": "Your Business\r\n​\r\nStart with one 3D printer or many, and add capacity as demand grows. Use the same tool through prototyping and into production and easily expand into new applications.\r\nIndustrial quality for all:\r\nThe Form 3+ offers industrial capabilities at a fraction of the price of traditional industrial machines.\r\n\r\n​\r\n\r\nGet started now: \r\nFormlabs 3D printers are ready to plug and print right out of the box, no specialized training required.\r\n\r\n​\r\n\r\nAvoid delays: \r\nBringing production in-house with the Form 3+ provides the fast turnaround time and flexibility you need to scale.",
+    "image1": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png.png",
+    "image2": "EXODUS_product/87ccc0_da1debf7057c40b7abd7615c59f8703bmv2_d_1416_1502_s_2.png",
+    "image3": "EXODUS_product/form3_grow_businesspng__1354x0_q85_subsa.png",
+    "image4": "EXODUS_product/f3.png",
+    "image5": "EXODUS_product/87ccc0_21af485d2277480e8fa5b167d6646351mv2.jpg",
+    "image6": "EXODUS_product/Capture.png",
+    "image7": "EXODUS_product/87ccc0_24465d23b8c24d66930cff060ebacd29mv2.gif",
+    "image8": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png_pCIrnJs.png",
+    "price": "12000.00",
+    "stock": 10
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 8,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 9,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 10,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 73,
+  "fields": {
+    "name": "Form 3+",
+    "short_desc": "Rapid, Flawless Prints, Every Time",
+    "description1": "Produce functional, high-quality prototypes and end-use parts in record time with the Form 3+, an affordable, industrial-quality resin 3D printer that reliably delivers.",
+    "description2": "The Next Generation of Industrial 3D Printing\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.​",
+    "description3": "The Form 3+ Workflow in Five Minutes\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing, to post-processing, each step of the process was designed with efficiency in mind.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.",
+    "description6": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\nCrisp, clean features: \r\nThe high-power-density laser is passed through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent printing: \r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.\r\n\r\n​\r\n\r\nFaster than ever: \r\nA high frequency galvanometer offers precise control and high speed.",
+    "description7": "Nonstop\r\n\r\nPrinting\r\n\r\nThe Form 3+ constantly monitors print performance so you can focus on bringing your most creative ideas to life. Integrated sensors help maintain ideal print conditions and send you alerts about the state of your machine.\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nHassle-free materials management: \r\nSwitch between materials in seconds with a simple cartridge system.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Unit, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description8": "Your Business\r\n​\r\nStart with one 3D printer or many, and add capacity as demand grows. Use the same tool through prototyping and into production and easily expand into new applications.\r\nIndustrial quality for all:\r\nThe Form 3+ offers industrial capabilities at a fraction of the price of traditional industrial machines.\r\n\r\n​\r\n\r\nGet started now: \r\nFormlabs 3D printers are ready to plug and print right out of the box, no specialized training required.\r\n\r\n​\r\n\r\nAvoid delays: \r\nBringing production in-house with the Form 3+ provides the fast turnaround time and flexibility you need to scale.",
+    "image1": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png.png",
+    "image2": "EXODUS_product/87ccc0_da1debf7057c40b7abd7615c59f8703bmv2_d_1416_1502_s_2.png",
+    "image3": "EXODUS_product/form3_grow_businesspng__1354x0_q85_subsa.png",
+    "image4": "EXODUS_product/f3.png",
+    "image5": "EXODUS_product/87ccc0_21af485d2277480e8fa5b167d6646351mv2.jpg",
+    "image6": "EXODUS_product/Capture.png",
+    "image7": "EXODUS_product/87ccc0_24465d23b8c24d66930cff060ebacd29mv2.gif",
+    "image8": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png_pCIrnJs.png",
+    "price": "12000.00",
+    "stock": 10
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 329,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 2310,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 3228,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 745643,
+  "fields": {
+    "name": "Form 3+",
+    "short_desc": "Rapid, Flawless Prints, Every Time",
+    "description1": "Produce functional, high-quality prototypes and end-use parts in record time with the Form 3+, an affordable, industrial-quality resin 3D printer that reliably delivers.",
+    "description2": "The Next Generation of Industrial 3D Printing\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.​",
+    "description3": "The Form 3+ Workflow in Five Minutes\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing, to post-processing, each step of the process was designed with efficiency in mind.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.",
+    "description6": "Pinpoint\r\nPrecision\r\n​\r\nThe custom-designed Light Processing Unit (LPU) inside the printer uses a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\nCrisp, clean features: \r\nThe high-power-density laser is passed through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent printing: \r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.\r\n\r\n​\r\n\r\nFaster than ever: \r\nA high frequency galvanometer offers precise control and high speed.",
+    "description7": "Nonstop\r\n\r\nPrinting\r\n\r\nThe Form 3+ constantly monitors print performance so you can focus on bringing your most creative ideas to life. Integrated sensors help maintain ideal print conditions and send you alerts about the state of your machine.\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nHassle-free materials management: \r\nSwitch between materials in seconds with a simple cartridge system.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Unit, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description8": "Your Business\r\n​\r\nStart with one 3D printer or many, and add capacity as demand grows. Use the same tool through prototyping and into production and easily expand into new applications.\r\nIndustrial quality for all:\r\nThe Form 3+ offers industrial capabilities at a fraction of the price of traditional industrial machines.\r\n\r\n​\r\n\r\nGet started now: \r\nFormlabs 3D printers are ready to plug and print right out of the box, no specialized training required.\r\n\r\n​\r\n\r\nAvoid delays: \r\nBringing production in-house with the Form 3+ provides the fast turnaround time and flexibility you need to scale.",
+    "image1": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png.png",
+    "image2": "EXODUS_product/87ccc0_da1debf7057c40b7abd7615c59f8703bmv2_d_1416_1502_s_2.png",
+    "image3": "EXODUS_product/form3_grow_businesspng__1354x0_q85_subsa.png",
+    "image4": "EXODUS_product/f3.png",
+    "image5": "EXODUS_product/87ccc0_21af485d2277480e8fa5b167d6646351mv2.jpg",
+    "image6": "EXODUS_product/Capture.png",
+    "image7": "EXODUS_product/87ccc0_24465d23b8c24d66930cff060ebacd29mv2.gif",
+    "image8": "EXODUS_product/form-32xpng__1354x0_q85_subsampling-2png_pCIrnJs.png",
+    "price": "12000.00",
+    "stock": 10
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 2213310,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 2233429,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 3246428,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 22334228,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 32546469,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 231456450,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 22331456450,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 22334246428,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 221331456450,
+  "fields": {
+    "name": "Studio System",
+    "short_desc": "Office-friendly metal 3D printing in just 2 steps — Print. Sinter.",
+    "description1": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description2": "With easy-to-use hardware, the Studio System 2 allows you to spend less time managing equipment and more time designing and fabricating parts. Change printheads with the press of a button, and change materials quickly with a refillable cartridge system that allows users to easily load material during print jobs and store excess material safely. A fully-accessible printer and sintering volume and a configurable furnace retort allow for maximum flexibility.",
+    "description3": "Easily produce difficult-to-machine parts featuring complex geometry like undercuts and internal channels. Fabricate, the software at the heart of the Studio System, automates complicated metallurgical processes to produce high-quality parts with densities and feature accuracy similar to casting.",
+    "description4": "The Studio System 2 leverages data and feedback from thousands of prints and hundreds of customers. Designed to deliver outstanding part success and excellent surface finish, the system allows users to achieve first-time part success across a wide range of geometries. This is made possible by a fully re-engineered material platform, updated interface technology and new print profiles.",
+    "description5": "A heated build chamber and Desktop Metal-engineered print profiles produce excellent surface finish right out of the furnace, while a high strength gyroid infill now lightweights parts. With materials that meet or exceed MPIF standards and the use of high metal volume fraction media, high-pressure extrusion and vacuum sintering at temperatures of up to 1400°C, the system produces parts with densities of up to 98 percent - similar to cast parts.",
+    "description6": "The Studio System 2 allows you to tailor parts to your exact needs. Print parts with walls up to 4mm thick or fully-dense parts (with no infill) up to 5.25mm thick. Adjust shell thickness to create stronger parts or enable faster processing. Optimize prints for build speed using the standard (400µm) print head, or print fine features with the high resolution (250µm) print head.",
+    "description7": "The Studio System 2 features a two-step process that eliminates the need for solvents and uses materials that can be easily stored and handled, making it ideal for use in an office environment - no special facilities and no respiratory PPE needed. The only requirements are an internet connection, ventilation and power, making it easy to quickly start printing metal parts.²",
+    "description8": "The Studio System 2 helps you regain control of your prototyping pipeline by allowing design and engineering teams to focus on making the best possible products. The simplified, easy-to-manage process allows users to quickly iterate on designs, print parts and monitor build progress from their desk, and significantly reduces operator burden - parts go directly from the printer into the furnace, where a large retort with stackable shelving (10x the capacity of a similarly-sized tube furnace) allows for batch sintering.",
+    "image1": "EXODUS_product/Studio_System_2_-_Printer_Only.png",
+    "image2": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2.png",
+    "image3": "EXODUS_product/87ccc0_a9c88bf5853b467d879cf669714de7b6f000.jpg",
+    "image4": "EXODUS_product/87ccc0_fa9e2c8aeefe4844922dcdf706592e28mv2.png",
+    "image5": "EXODUS_product/noSpecialFacilitiesReq_640x480_2021-01-29-230622.jpg",
+    "image6": "EXODUS_product/UserFriendlyHardware_640x480.jpg",
+    "image7": "EXODUS_product/ST_F3S2_640x480.jpg",
+    "image8": "EXODUS_product/87ccc0_53f21684856f43fcbbeea9caf7d29489mv2_icq46uQ.png",
+    "price": "123000.00",
+    "stock": 6
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 223342546469,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 223554246428,
+  "fields": {
+    "name": "Form 3B+",
+    "short_desc": "An Advanced Desktop 3D Printer Designed for Healthcare",
+    "description1": "Rapidly print patient-specific parts at the point of care and bring innovative R&D and commercial production in-house with the Form 3B+, an advanced 3D printer for healthcare professionals and medical device engineers.\r\n\r\nThe Form 3B+ is compatible with our entire SLA materials library, including biocompatible, sterilizable materials.",
+    "description2": "Materials for a Wide Array of Applications\r\nAccess a library of over 30 materials compatible with the Form 3B+. Our technology has been validated in multiple FDA-cleared workflows and we develop and manufacture our own biocompatible materials in an ISO 13485 certified, FDA-registered facility. Parts can be sterilized using steam, e-beam, gamma, or EtO.",
+    "description3": "The Next Generation of Dental 3D Printing\r\nXY Resolution: \r\n25 microns\r\nAdvanced Low Force Stereolithography (LFS)™ technology uses a flexible resin tank and a custom-designed, user-replaceable Light Processing Unit (LPU) to produce consistent, accurate prints. Reduced peel forces lead to incredible surface finish and part clarity, right off the printer.",
+    "description4": "Print 2-3 times more parts in a single build compared to small build plate DLP printers to spend less time handling your printer and more time on high-value tasks. Production environments can see 55% less labor time and costs compared to DLP. A modular ecosystem allows for unmatched consistency, scalability, and redundancy.",
+    "description5": "The Form 3B+ Workflow\r\nGet more done and work more efficiently with an end-to-end 3D printing workflow. From printing to post-processing, each step of the process was designed with efficiency in mind.",
+    "description6": "Trusted by Dental Industry Leaders\r\nWith 75+ support and service staff and 150+ engineers, Formlabs backs its products with the strongest team in 3D printing.",
+    "description7": "Important Notice:\r\nAll our printers have a carry in Warranty. All repairs can only be done in Pretoria at our Head Office",
+    "description8": "A Collaborative Platform for Materials Development\r\nWe’re looking for select material partners to work together with us to bring the next generation of materials to dental 3D printing and expand access to a wide variety of indications on our powerful, versatile hardware platform.\r\n\r\n​\r\n\r\nContact us at info@buildvolume.co.za if you are a manufacturer or customer who would like to see a material on our platform.",
+    "image1": "EXODUS_product/Form_3B_No_Background.png",
+    "image2": "EXODUS_product/Optimized_For_Web_PNG-05132020_medical_sell_366_16x9.png",
+    "image3": "EXODUS_product/next_generation_3b_jpg__1354x0_q85_subsa.jpg",
+    "image4": "EXODUS_product/Website_image_3_No_background.png",
+    "image5": "EXODUS_product/87ccc0_bafa0d96fbde4c8f86cb17a1e257f8a8mv2.jpg",
+    "image6": "EXODUS_product/website_page_1_PNG.png",
+    "image7": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2.jpg",
+    "image8": "EXODUS_product/Form_3B_No_Background_8w64EI9.png",
+    "price": "42000.00",
+    "stock": 13
+  }
+},
+{
+  "model": "EXODUS.exodusproduct",
+  "pk": 2235542546469,
+  "fields": {
+    "name": "Form 3L",
+    "short_desc": "Small Details, Big Results",
+    "description1": "The Form 3L is an affordable large format 3D printer trusted by professionals for fast turnaround of industrial-quality parts.",
+    "description2": "Print Large Parts, Fast\r\n​\r\n​Form 3L offers five times the build volume and two times the laser power of the Form 3.",
+    "description3": "Perfectionism\r\nThat Scales\r\nWith advanced Low Force Stereolithography (LFS)™ technology, Formlabs has completely re-engineered resin-based 3D printing to drastically reduce the forces of the print process.",
+    "description4": "Low Force Stereolithography (LFS)™ uses a flexible tank and linear illumination to deliver groundbreaking print quality and printer reliability.",
+    "description5": "Twice the\r\nLaser Power\r\n​\r\nTwo staggered Light Processing Units (LPUs) inside the printer use a compact system of lenses and mirrors to deliver accurate, repeatable prints.\r\n25μm\r\nXY Resolution\r\n250mW\r\nLaser Power\r\nFaster printing:\r\nThe two LPUs work simultaneously along an optimized print path to efficiently blaze through parts of all sizes.\r\n\r\n​\r\n\r\nCrisp, clean features:\r\nEach high-density laser passes through a spatial filter to guarantee a clean laser spot.\r\n\r\n​\r\n\r\nConsistent precision:\r\nA parabolic mirror ensures that the laser prints perpendicular to the build plane, ensuring uniform print quality across the entire build platform.",
+    "description6": "Nonstop\r\nPrinting\r\n​\r\nIntegrated sensors help maintain ideal print conditions and send you alerts about the state of your machine. \r\nHigh material capacity:\r\nThe Form 3L can hold two easy-to-switch resin cartridges, preventing interruptions during large print jobs.\r\n\r\n​\r\n\r\nClosed-loop calibration:\r\nOptical sensors continuously correct for scale and power, and can even detect dust.\r\n\r\n​\r\n\r\nUser-replaceable components:\r\nThe Light Processing Units, resin tank, rollers, and optics window can be replaced in-house, reducing the need for replacement printer shipments.",
+    "description7": "Start scaling your prototyping and production today.",
+    "description8": "On site installation is required for the Form 3L, therefore normal shipping cost will not apply",
+    "image1": "EXODUS_product/form-3-l-hero-2-x2x_png__1354x0_q85_subs.png",
+    "image2": "EXODUS_product/87ccc0_ff734140285c4af8a507e103c34f2b57mv2.jpg",
+    "image3": "EXODUS_product/87ccc0_c9d9cdc836bc4242b5b5168fa6792f2dmv2_d_2762_1666_s_2.png",
+    "image4": "EXODUS_product/lpus_png__1184x0_q85_subsampling-2.png",
+    "image5": "EXODUS_product/87ccc0_63b0fb460374442eacaacd821f404914mv2_d_2918_1218_s_2.jpg",
+    "image6": "EXODUS_product/Capture2.png",
+    "image7": "EXODUS_product/website_page_1_PNG_18UNrd0.png",
+    "image8": "EXODUS_product/87ccc0_bdcae49e382f46c99a0d9578ddc11c8cmv2_xytDnPz.jpg",
+    "price": "50000.00",
+    "stock": 1
+  }
+},
+{
+  "model": "EXODUS.exodusorder",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-29T00:32:38.940Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "EXODUS.exodusorder",
+  "pk": 2,
+  "fields": {
+    "customer": 3,
+    "date_ordered": "2026-08-26T09:16:16.542Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "RickJames.rickjamescustomer",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "mnhamoinesu@gmail.com"
+    ],
+    "date_created": "2023-03-08T15:40:55.845Z",
+    "shippingAddress": null,
+    "email": "mnhamoinesu@gmail.com"
+  }
+},
+{
+  "model": "RickJames.rickjamesproduct",
+  "pk": 1,
+  "fields": {
+    "name1": "Souvenir Tee",
+    "name2": "Gallery Dept.",
+    "description1": "This is our new style of classic Souvenir Tee. \r\n\r\nThe shirt is meant to hit right above the belt line and has more of a boxy fit.\r\n\r\nThis shirt is not as form fitting as our older style. \r\n\r\n100% cotton and printed here in Los Angeles. \r\n\r\nModel is 6 ft 3 in wearing size XL",
+    "description2": "This product is unavailable",
+    "image1": "RickJames_product/frenchlogofrenchgold_720x_LsDRVSJ.jpg",
+    "image2": "RickJames_product/frenchlogogoldback_720x_oKQr3Yo.jpg",
+    "price": "5000.00",
+    "stock": 10
+  }
+},
+{
+  "model": "RickJames.rickjamesproduct",
+  "pk": 3,
+  "fields": {
+    "name1": "French Tee",
+    "name2": "Gallery Dept.",
+    "description1": "This is our new style of the classic French tee.\r\n\r\nThe shirt is meant to hit right above the belt line and has more of a boxy fit.\r\n\r\nThis shirt is not as form fitting as our older style. \r\n\r\n100% cotton and printed here in Los Angeles. \r\n\r\nModel is 6 ft 3 in wearing size XL",
+    "description2": "This product may have wrinkles, scars, scratches that are inherent characteristics and natural beauty of this material. This results differences and uniqueness to each piece. Please treat with care in order to extend the life of the product. Direct exposure to sunlightmay fade the color of the fabric.",
+    "image1": "RickJames_product/CREAMFRENCHLOGO_MoPYZkK.jpg",
+    "image2": "RickJames_product/creamfrenchteeback_720x_KhYG3OL.jpg",
+    "price": "5000.00",
+    "stock": 15
+  }
+},
+{
+  "model": "RickJames.rickjamesproduct",
+  "pk": 4,
+  "fields": {
+    "name1": "Dept De La Galerie L/S Pocket Tee",
+    "name2": "Dept. Gallery",
+    "description1": "This is our new style of our French Logo Pocket Tee. \r\n\r\nThe shirt is meant to hit right above the belt line and has more of a boxy fit.\r\n\r\nThis shirt is not as form fitting as our older style. \r\n\r\n100% cotton and printed here in Los Angeles. \r\n\r\nModel is 6 ft 3 in wearing size XL",
+    "description2": "This product may have wrinkles, scars, scratches that are inherent characteristics and natural beauty of this material. This results differences and uniqueness to each piece. Please treat with care in order to extend the life of the product. Direct exposure to sunlightmay fade the color of the fabric.",
+    "image1": "RickJames_product/02_Front_b7b400b7-1945-48e1-84c4-1d5b0d105a92_h2jpqTK.jpg",
+    "image2": "RickJames_product/02_Back_f12c61bc-0b46-4041-8ee1-3027ce51306a_GzTgB0T.jpg",
+    "price": "6000.00",
+    "stock": 10
+  }
+},
+{
+  "model": "RickJames.rickjamesproduct",
+  "pk": 5,
+  "fields": {
+    "name1": "Center Logo Dept Hoodie",
+    "name2": "Dept. Gallery",
+    "description1": "Reverse Weave hooded sweatshirt screen printed, hand painted, hand distressed and washed in Los Angeles, CA.\r\n\r\n100% Cotton",
+    "description2": "This product may have wrinkles, scars, scratches that are inherent characteristics and natural beauty of this material. This results differences and uniqueness to each piece. Please treat with care in order to extend the life of the product. Direct exposure to sunlightmay fade the color of the fabric.",
+    "image1": "RickJames_product/greenhoodiefront_720x.jpg",
+    "image2": "RickJames_product/14_detail.jpg",
+    "price": "10400.00",
+    "stock": 4
+  }
+},
+{
+  "model": "RickJames.rickjamesproduct",
+  "pk": 6,
+  "fields": {
+    "name1": "Riley Anorak Jacket",
+    "name2": "Dept. Gallery",
+    "description1": "This relaxed fit anorak is made in Los Angeles, CA using vintage military camo.\r\n\r\n100% Cotton",
+    "description2": "This product may have wrinkles, scars, scratches that are inherent characteristics and natural beauty of this material. This results differences and uniqueness to each piece. Please treat with care in order to extend the life of the product. Direct exposure to sunlightmay fade the color of the fabric.",
+    "image1": "RickJames_product/08_Front_2_720x.jpg",
+    "image2": "RickJames_product/08_Back_1.jpg",
+    "price": "12800.00",
+    "stock": 12
+  }
+},
+{
+  "model": "RickJames.rickjamesorder",
+  "pk": 1,
+  "fields": {
+    "customer": 1,
+    "date_ordered": "2023-03-08T15:42:14.395Z",
+    "transaction_id": null,
+    "status": "Pending"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 2,
+  "fields": {
+    "name": "Printer",
+    "slug": "printer"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 3,
+  "fields": {
+    "name": "Advanced",
+    "slug": "advanced"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 4,
+  "fields": {
+    "name": "Smaller",
+    "slug": "smaller"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 5,
+  "fields": {
+    "name": "Studio",
+    "slug": "studio"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 6,
+  "fields": {
+    "name": "FDM",
+    "slug": "fdm"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 7,
+  "fields": {
+    "name": "Professional",
+    "slug": "professional"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 8,
+  "fields": {
+    "name": "Large Format",
+    "slug": "large-format"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 9,
+  "fields": {
+    "name": "Beginner",
+    "slug": "beginner"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 10,
+  "fields": {
+    "name": "Compact",
+    "slug": "compact"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 11,
+  "fields": {
+    "name": "Production",
+    "slug": "production"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 12,
+  "fields": {
+    "name": "Precision",
+    "slug": "precision"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 13,
+  "fields": {
+    "name": "Resin",
+    "slug": "resin"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 14,
+  "fields": {
+    "name": "Medical",
+    "slug": "medical"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 15,
+  "fields": {
+    "name": "Metal",
+    "slug": "metal"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 16,
+  "fields": {
+    "name": "Multi Tool",
+    "slug": "multi-tool"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 17,
+  "fields": {
+    "name": "Fast Print",
+    "slug": "fast-print"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 18,
+  "fields": {
+    "name": "Enclosed",
+    "slug": "enclosed"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 19,
+  "fields": {
+    "name": "Multi Material",
+    "slug": "multi-material"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 20,
+  "fields": {
+    "name": "Dual Extrusion",
+    "slug": "dual-extrusion"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 21,
+  "fields": {
+    "name": "SLS",
+    "slug": "sls"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 22,
+  "fields": {
+    "name": "Carbon Fibre",
+    "slug": "carbon-fibre"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 23,
+  "fields": {
+    "name": "Desktop",
+    "slug": "desktop"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 24,
+  "fields": {
+    "name": "Composite",
+    "slug": "composite"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 25,
+  "fields": {
+    "name": "Research",
+    "slug": "research"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 26,
+  "fields": {
+    "name": "Education",
+    "slug": "education"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 27,
+  "fields": {
+    "name": "Ceramic",
+    "slug": "ceramic"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 28,
+  "fields": {
+    "name": "Hybrid",
+    "slug": "hybrid"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 29,
+  "fields": {
+    "name": "Filament",
+    "slug": "filament"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 30,
+  "fields": {
+    "name": "Black",
+    "slug": "black"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 31,
+  "fields": {
+    "name": "PLA",
+    "slug": "pla"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 32,
+  "fields": {
+    "name": "Matte",
+    "slug": "matte"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 33,
+  "fields": {
+    "name": "Red",
+    "slug": "red"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 34,
+  "fields": {
+    "name": "Blue",
+    "slug": "blue"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 35,
+  "fields": {
+    "name": "Transparent",
+    "slug": "transparent"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 36,
+  "fields": {
+    "name": "PETG",
+    "slug": "petg"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 37,
+  "fields": {
+    "name": "Nylon",
+    "slug": "nylon"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 38,
+  "fields": {
+    "name": "Engineering",
+    "slug": "engineering"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 39,
+  "fields": {
+    "name": "UV Resistant",
+    "slug": "uv-resistant"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 40,
+  "fields": {
+    "name": "White",
+    "slug": "white"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 41,
+  "fields": {
+    "name": "ASA",
+    "slug": "asa"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 42,
+  "fields": {
+    "name": "Flexible",
+    "slug": "flexible"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 43,
+  "fields": {
+    "name": "Green",
+    "slug": "green"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 44,
+  "fields": {
+    "name": "TPU",
+    "slug": "tpu"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 45,
+  "fields": {
+    "name": "Orange",
+    "slug": "orange"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 46,
+  "fields": {
+    "name": "Specialty",
+    "slug": "specialty"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 47,
+  "fields": {
+    "name": "ABS",
+    "slug": "abs"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 48,
+  "fields": {
+    "name": "Microboard",
+    "slug": "microboard"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 49,
+  "fields": {
+    "name": "Core",
+    "slug": "core"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 50,
+  "fields": {
+    "name": "32-bit",
+    "slug": "32-bit"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 51,
+  "fields": {
+    "name": "Electronics",
+    "slug": "electronics"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 52,
+  "fields": {
+    "name": "WiFi",
+    "slug": "wifi"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 53,
+  "fields": {
+    "name": "Dual Extruder",
+    "slug": "dual-extruder"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 54,
+  "fields": {
+    "name": "Silent Drivers",
+    "slug": "silent-drivers"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 55,
+  "fields": {
+    "name": "Industrial",
+    "slug": "industrial"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 56,
+  "fields": {
+    "name": "CAN Bus",
+    "slug": "can-bus"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 57,
+  "fields": {
+    "name": "Extruder",
+    "slug": "extruder"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 58,
+  "fields": {
+    "name": "0.4mm",
+    "slug": "04mm"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 59,
+  "fields": {
+    "name": "Brass",
+    "slug": "brass"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 60,
+  "fields": {
+    "name": "Hotend",
+    "slug": "hotend"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 61,
+  "fields": {
+    "name": "Hardened Steel",
+    "slug": "hardened-steel"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 62,
+  "fields": {
+    "name": "Abrasive Filament",
+    "slug": "abrasive-filament"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 63,
+  "fields": {
+    "name": "0.6mm",
+    "slug": "06mm"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 64,
+  "fields": {
+    "name": "High Flow",
+    "slug": "high-flow"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 65,
+  "fields": {
+    "name": "Dual Drive",
+    "slug": "dual-drive"
+  }
+},
+{
+  "model": "taggit.tag",
+  "pk": 66,
+  "fields": {
+    "name": "Pellet",
+    "slug": "pellet"
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 152,
+  "fields": {
+    "tag": 12,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356362
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 153,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356362
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 154,
+  "fields": {
+    "tag": 6,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356363
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 155,
+  "fields": {
+    "tag": 23,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356363
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 156,
+  "fields": {
+    "tag": 8,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356364
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 157,
+  "fields": {
+    "tag": 6,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356364
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 158,
+  "fields": {
+    "tag": 10,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356365
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 159,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356365
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 160,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356366
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 161,
+  "fields": {
+    "tag": 7,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356366
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 162,
+  "fields": {
+    "tag": 8,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356367
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 163,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356367
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 164,
+  "fields": {
+    "tag": 7,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356368
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 165,
+  "fields": {
+    "tag": 15,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356368
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 166,
+  "fields": {
+    "tag": 24,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356369
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 167,
+  "fields": {
+    "tag": 6,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356369
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 168,
+  "fields": {
+    "tag": 25,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356370
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 169,
+  "fields": {
+    "tag": 7,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356370
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 170,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356371
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 171,
+  "fields": {
+    "tag": 14,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356371
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 172,
+  "fields": {
+    "tag": 26,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356372
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 173,
+  "fields": {
+    "tag": 6,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356372
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 174,
+  "fields": {
+    "tag": 11,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356373
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 175,
+  "fields": {
+    "tag": 21,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356373
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 176,
+  "fields": {
+    "tag": 27,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356374
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 177,
+  "fields": {
+    "tag": 5,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356374
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 178,
+  "fields": {
+    "tag": 12,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356375
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 179,
+  "fields": {
+    "tag": 13,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356375
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 180,
+  "fields": {
+    "tag": 28,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356376
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 181,
+  "fields": {
+    "tag": 7,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356376
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 182,
+  "fields": {
+    "tag": 32,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356377
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 183,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356377
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 184,
+  "fields": {
+    "tag": 30,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356377
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 185,
+  "fields": {
+    "tag": 31,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356377
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 186,
+  "fields": {
+    "tag": 33,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356378
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 187,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356378
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 188,
+  "fields": {
+    "tag": 31,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356378
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 189,
+  "fields": {
+    "tag": 34,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356379
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 190,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356379
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 191,
+  "fields": {
+    "tag": 31,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356379
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 192,
+  "fields": {
+    "tag": 35,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356380
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 193,
+  "fields": {
+    "tag": 36,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356380
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 194,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356380
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 195,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356381
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 196,
+  "fields": {
+    "tag": 37,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356381
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 197,
+  "fields": {
+    "tag": 38,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356381
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 198,
+  "fields": {
+    "tag": 22,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356381
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 199,
+  "fields": {
+    "tag": 40,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356382
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 200,
+  "fields": {
+    "tag": 41,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356382
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 201,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356382
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 202,
+  "fields": {
+    "tag": 39,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356382
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 203,
+  "fields": {
+    "tag": 42,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356383
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 204,
+  "fields": {
+    "tag": 43,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356383
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 205,
+  "fields": {
+    "tag": 44,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356383
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 206,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356383
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 207,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356384
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 208,
+  "fields": {
+    "tag": 36,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356384
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 209,
+  "fields": {
+    "tag": 45,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356384
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 210,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356385
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 211,
+  "fields": {
+    "tag": 46,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356385
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 212,
+  "fields": {
+    "tag": 31,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356385
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 213,
+  "fields": {
+    "tag": 34,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356386
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 214,
+  "fields": {
+    "tag": 29,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356386
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 215,
+  "fields": {
+    "tag": 47,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356386
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 216,
+  "fields": {
+    "tag": 48,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356387
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 217,
+  "fields": {
+    "tag": 49,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356387
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 218,
+  "fields": {
+    "tag": 50,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356387
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 219,
+  "fields": {
+    "tag": 51,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356387
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 220,
+  "fields": {
+    "tag": 48,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356388
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 221,
+  "fields": {
+    "tag": 50,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356388
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 222,
+  "fields": {
+    "tag": 51,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356388
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 223,
+  "fields": {
+    "tag": 52,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356388
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 224,
+  "fields": {
+    "tag": 48,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356389
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 225,
+  "fields": {
+    "tag": 50,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356389
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 226,
+  "fields": {
+    "tag": 51,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356389
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 227,
+  "fields": {
+    "tag": 53,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356389
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 228,
+  "fields": {
+    "tag": 48,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356390
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 229,
+  "fields": {
+    "tag": 50,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356390
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 230,
+  "fields": {
+    "tag": 51,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356390
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 231,
+  "fields": {
+    "tag": 54,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356390
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 232,
+  "fields": {
+    "tag": 48,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356391
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 233,
+  "fields": {
+    "tag": 56,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356391
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 234,
+  "fields": {
+    "tag": 51,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356391
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 235,
+  "fields": {
+    "tag": 55,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356391
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 236,
+  "fields": {
+    "tag": 57,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356392
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 237,
+  "fields": {
+    "tag": 58,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356392
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 238,
+  "fields": {
+    "tag": 59,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356392
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 239,
+  "fields": {
+    "tag": 60,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356392
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 240,
+  "fields": {
+    "tag": 57,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356393
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 241,
+  "fields": {
+    "tag": 60,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356393
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 242,
+  "fields": {
+    "tag": 61,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356393
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 243,
+  "fields": {
+    "tag": 62,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356393
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 244,
+  "fields": {
+    "tag": 64,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356394
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 245,
+  "fields": {
+    "tag": 57,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356394
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 246,
+  "fields": {
+    "tag": 60,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356394
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 247,
+  "fields": {
+    "tag": 63,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356394
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 248,
+  "fields": {
+    "tag": 65,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356395
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 249,
+  "fields": {
+    "tag": 60,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356395
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 250,
+  "fields": {
+    "tag": 12,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356395
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 251,
+  "fields": {
+    "tag": 57,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356395
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 252,
+  "fields": {
+    "tag": 57,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356396
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 253,
+  "fields": {
+    "tag": 66,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356396
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 254,
+  "fields": {
+    "tag": 60,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356396
+  }
+},
+{
+  "model": "taggit.taggeditem",
+  "pk": 255,
+  "fields": {
+    "tag": 55,
+    "content_type": [
+      "Axis",
+      "product"
+    ],
+    "object_id": 2213356396
+  }
+}
+]

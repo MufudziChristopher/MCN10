@@ -15,6 +15,15 @@
 		items = [].slice.call(gridEl.querySelectorAll('.product')),
 		basket;
 
+	function collapseNavigationForCompare() {
+		var menu = document.querySelector('[data-collapsible-menu]');
+		var toggle = document.querySelector('[data-collapsible-menu-toggle]');
+		if (!menu || !toggle || menu.classList.contains('is-collapsed')) return;
+		menu.classList.add('is-collapsed');
+		document.body.classList.add('has-collapsed-menu');
+		toggle.setAttribute('aria-expanded', 'false');
+	}
+
 	// the compare basket
 	function CompareBasket() {
 		this.el = document.querySelector('.compare-basket');
@@ -54,6 +63,7 @@
 			return false;
 		}
 
+		collapseNavigationForCompare();
 		classie.add(item, 'product--selected');
 
 		// create item preview element
@@ -169,6 +179,7 @@
 
 	CompareBasket.prototype._compareItems = function() {
 		var self = this;
+		collapseNavigationForCompare();
 		var filterDrawer = document.getElementById('cbp-spmenu-s1');
 		var filterControl = document.getElementById('showLeftPush');
 

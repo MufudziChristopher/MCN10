@@ -58,19 +58,25 @@
 body.axis-theme--light .collapsible-menu__toggle-label { color: #000; }
 body.axis-theme--dark .collapsible-menu__toggle-label { color: #fff; }
 
-/* Mark the destination currently being viewed in every Axis navigation menu. */
-.collapsible-menu nav a[aria-current='page'] {
-	text-decoration: underline;
-	text-decoration-thickness: 0.14rem;
-	text-underline-offset: 0.45rem;
+.collapsible-menu__identity {
+	margin: 0;
+	padding: 0 1rem 1rem;
+	color: inherit;
+	font-size: .82rem;
+	line-height: 1.2;
+	text-align: center;
 }
+.collapsible-menu.is-collapsed .collapsible-menu__identity { display: none; }
+
+/* Current destinations are marked with their filled Ionicon in the template. */
 
 /* Keep the cart quantity in the same top-right badge position in every menu. */
 .collapsible-menu nav a[title='Cart'] {
 	position: relative;
 }
 
-.collapsible-menu nav a[title='Cart'] .cart__count {
+.collapsible-menu nav a[title='Cart'] .cart__count,
+#showRightPush .cart__count {
 	position: absolute;
 	top: 0.15rem;
 	right: 0.35rem;
@@ -85,6 +91,13 @@ body.axis-theme--dark .collapsible-menu__toggle-label { color: #fff; }
 	font-size: 0.75rem;
 	font-weight: 700;
 	line-height: 1;
+}
+
+#showRightPush {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: auto;
 }
 
 body.axis-theme--light .collapsible-menu nav a[title='Cart'] .cart__count {
@@ -120,6 +133,18 @@ body.axis-theme--dark #cbp-spmenu-s2 hr {
 	width: 2rem;
 	height: 2rem;
 	font-size: 2rem;
+}
+
+.axis-menu__storefront-icon {
+	display: inline-block;
+	background: currentColor;
+	-webkit-mask: url('/static/ion-icons/storefront-outline.svg') center / contain no-repeat;
+	mask: url('/static/ion-icons/storefront-outline.svg') center / contain no-repeat;
+}
+
+.axis-menu__storefront-icon--active {
+	-webkit-mask-image: url('/static/ion-icons/storefront-sharp.svg');
+	mask-image: url('/static/ion-icons/storefront-sharp.svg');
 }
 
 .axis-theme-toggle {
@@ -343,6 +368,25 @@ body:has(.barr) .collapsible-menu__content nav a {
 		text-align: center;
 	}
 
+	/* Every expanded mobile menu uses a transparent keypad key rather than an
+	 * icon floating directly on the glass panel. */
+	.collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav a,
+	.collapsible-menu:not(.is-collapsed) .collapsible-menu__content .axis-theme-toggle {
+		align-self: stretch;
+		justify-self: stretch;
+		padding: .45rem .25rem;
+		border: 1px solid rgba(0, 0, 0, .2);
+		border-radius: .7rem;
+		background: transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 .2rem .55rem rgba(0, 0, 0, .16);
+	}
+
+	body.axis-theme--dark .collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav a,
+	body.axis-theme--dark .collapsible-menu:not(.is-collapsed) .collapsible-menu__content .axis-theme-toggle {
+		border-color: rgba(255, 255, 255, .22);
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 .2rem .55rem rgba(0, 0, 0, .42);
+	}
+
 	.axis-theme-toggle {
 		display: flex;
 		flex-direction: column;
@@ -362,6 +406,24 @@ body:has(.barr) .collapsible-menu__content nav a {
 	.collapsible-menu__content nav a > ion-icon {
 		display: block;
 		flex: 0 0 auto;
+		width: 1.4rem;
+		height: 1.4rem;
+		font-size: 1.4rem;
+	}
+
+	.collapsible-menu__content nav .menu-icon--large,
+	.collapsible-menu__content nav .axis-theme-toggle ion-icon {
+		width: 1.4rem;
+		height: 1.4rem;
+		padding: 0;
+		font-size: 1.4rem;
+	}
+
+	/* Align the expanded Cart badge with the compact Quick Cart badge. */
+	.collapsible-menu__content nav a[title='Cart'] .cart__count {
+		top: -0.65rem;
+		left: 50%;
+		right: auto;
 	}
 
 	.collapsible-menu__content nav a > br {
@@ -453,6 +515,30 @@ body.axis-theme--dark:has(.barr) .barr ion-icon {
 body.axis-theme--dark:has(.barr) .barr ion-icon[src] {
 	filter: invert(1);
 }
+
+/* These two storefront controls use locally served SVGs, which do not inherit
+ * Ionicon's colour variables. Explicitly invert them in the dark palette. */
+body.axis-theme--dark #showLeftPush .cart__icon,
+body.axis-theme--dark #showRightPush .cart__icon {
+	color: #fff !important;
+	filter: invert(1);
+}
+
+/* The storefront Filter and Quick Cart load SVGs through Ionicon's `src`
+ * attribute. Give those hosts an explicit palette so they remain white in
+ * dark mode even when a browser does not propagate currentColor into the SVG. */
+body.axis-theme--dark #showLeftPush ion-icon[src],
+body.axis-theme--dark #showRightPush ion-icon[src] {
+	color: #fff !important;
+	filter: invert(1) brightness(2);
+}
+
+/* Theme-aware icon files already contain the right stroke colour. Do not
+ * invert them again or the dark-mode white SVGs would turn black. */
+body.axis-theme--dark #showLeftPush ion-icon[data-theme-icon-light],
+body.axis-theme--dark #showRightPush ion-icon[data-theme-icon-light] {
+	filter: none !important;
+}
 .axis-about__hero { max-width: 48rem; padding-bottom: clamp(2.5rem, 7vw, 5rem); }
 .axis-about__eyebrow { margin: 0 0 .7rem; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .axis-about h1 { max-width: 11ch; margin: 0; font-size: clamp(2.8rem, 8vw, 6.25rem); line-height: .95; letter-spacing: -.055em; }
@@ -500,6 +586,22 @@ body.axis-theme--dark:has(.barr) .barr ion-icon[src] {
 [data-collapsible-menu-toggle][aria-expanded='true'] {
 	display: inline-flex;
 	z-index: 2202;
+}
+
+/* The fixed Menu control lives in the top glass strip. When navigation is
+ * expanded, begin its panel below that strip instead of covering the button. */
+[data-collapsible-menu-toggle][aria-expanded='true'] + .collapsible-menu {
+	top: 5.5rem;
+	padding: 0.75rem 1rem;
+	border-radius: 0 0 1rem 1rem;
+	background: rgba(255, 255, 255, 0.24);
+	-webkit-backdrop-filter: blur(14px) saturate(150%);
+	backdrop-filter: blur(14px) saturate(150%);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12);
+}
+
+body.axis-theme--dark [data-collapsible-menu-toggle][aria-expanded='true'] + .collapsible-menu {
+	background: rgba(16, 19, 22, 0.6);
 }
 
 /* The Axis storefront keeps its centered Menu control visible so visitors can
@@ -1640,6 +1742,10 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 		top: max(15vh, 5.5rem);
 	}
 
+	[data-collapsible-menu-toggle][aria-expanded='true'] + .collapsible-menu {
+		top: max(15vh, 5.5rem);
+	}
+
 	body:has(.axis-checkout-page) .collapsible-menu__toggle {
 		height: max(15vh, 5.5rem);
 	}
@@ -1665,6 +1771,14 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 		top: max(8vh, 4.25rem);
 	}
 
+	/* This selector must match the expanded-menu rule's specificity. Otherwise
+	 * its desktop 5.5rem offset wins and leaves a seam above the mobile panel. */
+	body:has(.barr) [data-collapsible-menu-toggle][aria-expanded='true'] + .collapsible-menu {
+		top: max(8vh, 4.25rem);
+		margin-top: 0;
+		box-shadow: none;
+	}
+
 	/* This sits outside the expandable header in Axis, so it remains available
 	 * to close an already-open menu. */
 	.collapsible-menu__toggle {
@@ -1684,7 +1798,34 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 	}
 
 	body:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		padding: 0;
+	}
+
+	/* Match the profile menu's compact keypad treatment.  The menu panel keeps
+	 * its shared glass surface; individual destinations remain transparent and
+	 * are separated only by a subtle key border and shadow. */
+	body:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav a,
+	body:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content .axis-theme-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: .35rem;
+		min-height: 4.5rem;
+		padding: .45rem .25rem;
+		border: 1px solid rgba(0, 0, 0, .2);
+		border-radius: .7rem;
+		background: transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 .2rem .55rem rgba(0, 0, 0, .16);
+		font-size: .76rem;
+		line-height: 1;
+	}
+
+	body.axis-theme--dark:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content nav a,
+	body.axis-theme--dark:has(.barr) .collapsible-menu:not(.is-collapsed) .collapsible-menu__content .axis-theme-toggle {
+		border-color: rgba(255, 255, 255, .22);
+		background: transparent;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 .2rem .55rem rgba(0, 0, 0, .42);
 	}
 
 	/* Keep every icon inside the expanded navigation compact on small screens. */
@@ -1698,6 +1839,23 @@ body:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed) {
 		min-width: 6.75rem;
 		padding-right: 0.5rem;
 		padding-left: 0.5rem;
+	}
+
+	/* Keep the storefront controls easy to tap, but let the icons themselves
+	 * sit more quietly within the compact mobile glass strip. */
+	body:has(.barr) #showLeftPush .cart__icon,
+	body:has(.barr) #showRightPush .cart__icon {
+		width: 1.75rem;
+		height: 1.75rem;
+		font-size: 1.75rem;
+	}
+
+	/* Anchor the compact-cart count to the icon, rather than the outer touch
+	 * target, so it mirrors the Cart badge in the expanded navigation. */
+	body:has(.barr) #showRightPush .cart__count {
+		top: 0.3rem;
+		left: calc(50% + 0.3rem);
+		right: auto;
 	}
 
 	#cbp-spmenu-s1 {
@@ -1886,6 +2044,46 @@ body.cbp-spmenu-push-toleft #showRightPush {
 	backdrop-filter: none;
 }
 
+/* Shared Foxx Mart glass: every menu, drawer and comparison surface keeps the
+ * page visible beneath it and uses the same restrained 4px blur. */
+:root {
+	--foxx-glass-light: rgba(255, 255, 255, .18);
+	--foxx-glass-dark: rgba(18, 18, 18, .22);
+	--foxx-glass-blur: blur(4px);
+}
+
+body.axis-theme--light:has(.barr) .barr,
+body.axis-theme--light #cbp-spmenu-s1.cbp-spmenu-open,
+body.axis-theme--light #cbp-spmenu-s2.cbp-spmenu-open,
+body.axis-theme--light:has(.barr) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light:has(.axis-cart-page)::before,
+body.axis-theme--light:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light:has(.axis-checkout-page)::before,
+body.axis-theme--light:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light .view--compare + .compare,
+body.axis-theme--light .compare__grand-total,
+body.axis-theme--light .bar:has(.compare-basket--active) {
+	background: var(--foxx-glass-light) !important;
+	-webkit-backdrop-filter: var(--foxx-glass-blur);
+	backdrop-filter: var(--foxx-glass-blur);
+}
+
+body.axis-theme--dark:has(.barr) .barr,
+body.axis-theme--dark #cbp-spmenu-s1.cbp-spmenu-open,
+body.axis-theme--dark #cbp-spmenu-s2.cbp-spmenu-open,
+body.axis-theme--dark:has(.barr) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-cart-page)::before,
+body.axis-theme--dark:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-checkout-page)::before,
+body.axis-theme--dark:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark .view--compare + .compare,
+body.axis-theme--dark .compare__grand-total,
+body.axis-theme--dark .bar:has(.compare-basket--active) {
+	background: var(--foxx-glass-dark) !important;
+	-webkit-backdrop-filter: var(--foxx-glass-blur);
+	backdrop-filter: var(--foxx-glass-blur);
+}
+
 /* Keep every dark-theme glass surface on one consistent charcoal tint. */
 body.axis-theme--dark:has(.barr) .barr,
 body.axis-theme--dark #cbp-spmenu-s1.cbp-spmenu-open,
@@ -1945,6 +2143,41 @@ body.axis-theme--dark .cart-quantity-input {
 body.axis-theme--dark .axis-cart-page__action:hover,
 body.axis-theme--dark .axis-cart-page__action:focus-visible {
 	background: rgba(18, 18, 18, 0.56);
+}
+
+/* Keep this last: older storefront rules use the same selector specificity.
+ * The final shared-glass pass intentionally leaves every open menu/drawer
+ * translucent with a 4px blur in either colour mode. */
+body.axis-theme--light:has(.barr) .barr,
+body.axis-theme--light #cbp-spmenu-s1.cbp-spmenu-open,
+body.axis-theme--light #cbp-spmenu-s2.cbp-spmenu-open,
+body.axis-theme--light:has(.barr) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light:has(.axis-cart-page)::before,
+body.axis-theme--light:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light:has(.axis-checkout-page)::before,
+body.axis-theme--light:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--light .view--compare + .compare,
+body.axis-theme--light .compare__grand-total,
+body.axis-theme--light .bar:has(.compare-basket--active) {
+	background: var(--foxx-glass-light) !important;
+	-webkit-backdrop-filter: var(--foxx-glass-blur);
+	backdrop-filter: var(--foxx-glass-blur);
+}
+
+body.axis-theme--dark:has(.barr) .barr,
+body.axis-theme--dark #cbp-spmenu-s1.cbp-spmenu-open,
+body.axis-theme--dark #cbp-spmenu-s2.cbp-spmenu-open,
+body.axis-theme--dark:has(.barr) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-cart-page)::before,
+body.axis-theme--dark:has(.axis-cart-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark:has(.axis-checkout-page)::before,
+body.axis-theme--dark:has(.axis-checkout-page) .collapsible-menu:not(.is-collapsed),
+body.axis-theme--dark .view--compare + .compare,
+body.axis-theme--dark .compare__grand-total,
+body.axis-theme--dark .bar:has(.compare-basket--active) {
+	background: var(--foxx-glass-dark) !important;
+	-webkit-backdrop-filter: var(--foxx-glass-blur);
+	backdrop-filter: var(--foxx-glass-blur);
 }
 
 

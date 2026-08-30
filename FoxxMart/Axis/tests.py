@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.urls import reverse
 
 from account.models import Account, StoreAccess
-from .models import AxisCustomer, Order, Product
+from .models import AxisCustomer, Order, Product, ShippingAddress
 
 
 class AxisApiTests(TestCase):
@@ -63,11 +63,29 @@ class AxisApiTests(TestCase):
             'country': 'ZA', 'address1': '1 Test Street', 'address2': '', 'suburb': 'Test', 'city': 'Cape Town', 'province': 'WC', 'postal_code': '8001',
         })
 
-        self.assertRedirects(response, reverse('Axis:invoice', args=[order.id]))
+        self.assertRedirects(response, reverse('account:profile') + '?store=axis')
         order.refresh_from_db()
         self.assertEqual(order.status, 'Payment Confirmed, Processing Order')
         self.assertTrue(order.transaction_id)
-        self.assertContains(self.client.get(reverse('Axis:invoice', args=[order.id])), 'Test Invoice')
+
+    def test_checkout_saves_an_address_only_when_the_shopper_chooses_to(self):
+        self.client.force_login(self.account)
+        order = Order.objects.create(customer=self.account.axiscustomer, status='Pending')
+        from .models import OrderItem
+        OrderItem.objects.create(order=order, product=self.product, quantity=1)
+
+        response = self.client.post(reverse('Axis:complete_test_checkout'), {
+            'country': 'South Africa', 'address1': '1 Saved Street', 'address2': '',
+            'suburb': 'Test', 'city': 'Cape Town', 'province': 'Western Cape',
+            'postal_code': '8001', 'save_address': 'on',
+        })
+
+        self.assertEqual(response.status_code, 302)
+        self.account.axiscustomer.refresh_from_db()
+        self.assertEqual(self.account.axiscustomer.shippingAddress.address1, '1 Saved Street')
+        checkout = self.client.get(reverse('Axis:checkout'))
+        self.assertContains(checkout, 'value="1 Saved Street"', html=False)
+        self.assertEqual(ShippingAddress.objects.filter(address1='1 Saved Street').count(), 1)
 
     def test_checkout_does_not_include_a_browser_payment_flow(self):
         self.client.force_login(self.account)

@@ -52,11 +52,18 @@ def mall(request):
             'customer_attr': 'exoduscustomer',
             'order_model': EXODUSOrder,
         },
+        {
+            'name': 'Bomkazi Designs',
+            'tagline': 'Contemporary African fashion',
+            'url_name': 'Projects:bomkazi',
+            'image': 'Bomkazi/cover.png',
+            'accent': '#d65c82',
+        },
     ]
 
     for store in stores:
         cart_count = 0
-        if request.user.is_authenticated:
+        if request.user.is_authenticated and store.get('customer_attr'):
             customer = getattr(request.user, store['customer_attr'], None)
             if customer:
                 order = store['order_model'].objects.filter(customer=customer, status='Pending').order_by('-id').first()

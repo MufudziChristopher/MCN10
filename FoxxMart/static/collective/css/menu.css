@@ -97,7 +97,19 @@
 	pointer-events: none;
 }
 
-.collective-menu h6 { position: absolute; top: 0.25rem; left: 1rem; z-index: 2; margin: 0; }
+.collective-menu__identity {
+	position: relative;
+	z-index: 1;
+	width: min(92%, 56rem);
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0 1rem .8rem;
+	color: inherit;
+	font-size: .82rem;
+	line-height: 1.2;
+	text-align: center;
+}
+.collective-menu.is-collapsed .collective-menu__identity { display: none; }
 
 @media screen and (max-width: 40em) {
 	.collective-menu { min-height: 4.75rem; margin: 0 0 1rem -8px !important; }
@@ -118,4 +130,5 @@
 		border-radius: 0;
 	}
 	.collective-menu nav a { min-width: 3.4rem; font-size: 0.75rem; }
+	.collective-menu__identity { width: 100%; }
 }

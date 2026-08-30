@@ -11,6 +11,32 @@
     <meta name="description" content="3rd Axis" />
     <meta name="keywords" content="ecommerce, 3d printer, 3d printing" />
     <meta name="author" content="Mufudzi Christopher" />
+    <script>
+        // Set the saved theme before the first paint, preventing the light
+        // background from flashing while the rest of the page is loading.
+        (function () {
+            var mode = 'light';
+            try {
+                mode = localStorage.getItem('axis-color-mode') || 'light';
+            } catch (error) {
+                // Use the stable light default when storage is unavailable.
+            }
+            document.documentElement.setAttribute('data-axis-theme', mode);
+        }());
+    </script>
+    <style>
+        html[data-axis-theme='dark'],
+        html[data-axis-theme='dark'] body {
+            background: #151515 url('{% static "axis/static_root/images/bg001.jpg" %}') center / cover fixed !important;
+            color: #f8f8f8;
+        }
+
+        html[data-axis-theme='light'],
+        html[data-axis-theme='light'] body {
+            background: #f8f8f8 url('{% static "axis/images/bg1.jpg" %}') center / cover fixed !important;
+            color: #000;
+        }
+    </style>
     <link rel="shortcut icon" href="{% static 'images/brand.png' %}">
     <link rel="stylesheet" href="https://use.typekit.net/bml8yys.css">
     <link rel="stylesheet" href="https://use.typekit.net/vxy2fer.css">
@@ -34,7 +60,7 @@
 
     <!-- Flickity gallery styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'axis/css/flickity.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=136" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=155" />
 
 
     <script src="{% static 'axis/js/modernizr.custom.js' %}"></script>
@@ -124,11 +150,11 @@
     <script src="{% static 'axis/js/compare_main.js' %}?v=14"></script>
     <script src="{% static 'axis/js/mlpushmenu.js' %}"></script>
     <script src="{% static 'axis/js/classie.js' %}"></script>
-    <script src="{% static 'axis/js/main.js' %}?v=6"></script>
-    <script src="{% static 'axis/js/cart.js' %}?v=5"></script>
+    <script src="{% static 'axis/js/main.js' %}?v=9"></script>
+    <script src="{% static 'axis/js/cart.js' %}?v=6"></script>
     <span hidden>{% csrf_token %}</span>
     <script src="{% static 'axis/js/locale.js' %}?v=3"></script>
-    <script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
+    <script src="{% static 'shared/js/collapsible-menu.js' %}?v=7"></script>
     <script>
         $("#post-form").submit(function(e) {
             e.preventDefault();
@@ -155,6 +181,7 @@
 				}, 270);
 			}
 			function applyTheme(mode) {
+				document.documentElement.setAttribute('data-axis-theme', mode);
 				document.body.classList.toggle('axis-theme--light', mode === 'light');
 				document.body.classList.toggle('axis-theme--dark', mode !== 'light');
 				var toggle = document.querySelector('.axis-theme-toggle');
@@ -167,13 +194,16 @@
 				if (menuGif) {
 					menuGif.src = mode === 'light' ? "{% static 'images/III-light.gif' %}" : "{% static 'images/III-dark.gif' %}";
 				}
+				document.querySelectorAll('[data-theme-icon-light][data-theme-icon-dark]').forEach(function (icon) {
+					icon.setAttribute('src', mode === 'light' ? icon.dataset.themeIconLight : icon.dataset.themeIconDark);
+				});
 			}
 			var themeTransition = document.createElement('div');
 			themeTransition.className = 'axis-theme-transition';
 			themeTransition.setAttribute('aria-hidden', 'true');
 			themeTransition.innerHTML = '<div class="axis-theme-transition__shutter"></div><div class="axis-theme-transition__shutter"></div>';
 			document.body.appendChild(themeTransition);
-			var savedMode = localStorage.getItem(key) || 'dark';
+			var savedMode = localStorage.getItem(key) || 'light';
 			applyTheme(savedMode);
 			document.addEventListener('click', function (event) {
 				var toggle = event.target.closest('.axis-theme-toggle');
@@ -260,6 +290,8 @@
           showRightPush = document.getElementById('showRightPush'),
           body = document.body;
 
+      /* These legacy controls are absent on checkout and other non-store pages. */
+      if (menuLeft && menuRight && showLeft && showRight && showLeftPush && showRightPush) {
       showLeft.onclick = function() {
           classie.toggle(this, 'active');
           classie.toggle(menuLeft, 'cbp-spmenu-open');
@@ -318,6 +350,7 @@
           if (button !== 'showRightPush') {
               classie.toggle(showRightPush, 'disabled');
           }
+      }
       }
   </script>
 

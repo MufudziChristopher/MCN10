@@ -16,11 +16,16 @@ def account_storefront(request):
                 .filter(product__isnull=False)
             )
 
+    is_auth_page = (
+        request.resolver_match
+        and request.resolver_match.namespace == 'account'
+        and request.resolver_match.url_name in {'login', 'register'}
+    )
     return {
         'account_storefront': storefront,
-        # Authentication views also use menu_base. Supply the same quick cart
-        # there, rather than limiting it to the custom profile views.
-        'account_show_quick_cart': True,
+        # Login and registration stay focused on authentication.
+        'account_show_quick_cart': not is_auth_page,
+        'account_is_auth_page': is_auth_page,
         'account_quick_cart_items': items,
         'account_cart_items': sum(item.quantity or 0 for item in items),
         'account_cart_total': sum((item.get_total for item in items), 0),

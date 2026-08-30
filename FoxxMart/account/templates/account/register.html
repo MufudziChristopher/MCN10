@@ -7,104 +7,80 @@
 
 
 <section class="account-registration-page">
+  <div class="account-registration-card">
+    <header>
+      <span class="account-registration-card__icon"><ion-icon name="person-add-outline" aria-hidden="true"></ion-icon></span>
+      <p class="account-registration-card__eyebrow">Foxx Mart account</p>
+      <h1>Create your account</h1>
+      <p>One account gives you access to every Foxx Mart storefront.</p>
+    </header>
 
-<h2>Register</h2>
-{% if storefront %}
-<p>
-  Creating an account for
-  <a class="action--text" href="{{ storefront_url }}">{{ storefront.name }}</a>
-</p>
-{% endif %}
-{% if messages %}
-  {% for message in messages %}
-  <p class="registration-message" style="color: #cd0000;">{{ message }}</p>
-  {% endfor %}
-{% endif %}
-<form method="post" novalidate>
-        {% csrf_token %}
-        {% if storefront %}
-        <input type="hidden" name="store" value="{{ storefront_slug }}">
-        {% endif %}
-
-        {% for field in form %}
-          {% for error in field.errors %}
-          <p class="registration-error" style="color: #cd0000;">{{ error }}</p>
-          {% endfor %}
-        {% endfor %}
-
-        {% for error in form.non_field_errors %}
-        <p class="registration-error" style="color: #cd0000;">{{ error }}</p>
-        {% endfor %}
-
-      <div class="" data-validate="Username is required">
-        <ion-icon size="small" name="mail-outline"></ion-icon><br>Email<br>
-
-        <input type="text" style="border-radius: 5px; padding: 5px" name="email" id="id_email" autofocus placeholder="Email: ">
-      </div>
-      <br>
-      <div >
-        <ion-icon size="small" name="person-outline"></ion-icon><br>First Name<br>
-      <input type="text"  style="border-radius: 5px; padding: 5px" name="first_name" placeholder="First name" maxlength="30" required id="id_first_name">
-    </div>
-        <br>
-
-      <div>
-        <ion-icon size="small" name="person-outline"></ion-icon><br>Last Name<br>
-        <input type="text" style="border-radius: 5px; padding: 5px" name="last_name" placeholder="Last name" maxlength="30" required id="id_last_name">
-      </div>
-        <br>
-
-        <div>
-          <div>
-      <ion-icon name="phone-portrait-outline" size="small"></ion-icon><br>Phone Number<br>
-      <input type="text" style="border-radius: 5px; padding: 5px" name="phone" maxlength="200" required id="id_phone" placeholder="Phone Number:">
-    </div>
-          <br>
-
-    <fieldset>
-      <legend>Choose your mall access</legend>
-      {% for value, label in form.access_package.field.choices %}
-      <label><input type="radio" name="access_package" value="{{ value }}"{% if value == 'single' %} checked{% endif %}> {{ label }}</label><br>
+    {% if messages %}
+      {% for message in messages %}
+      <p class="account-registration-card__notice">{{ message }}</p>
       {% endfor %}
-    </fieldset>
-    <div id="store-choices">
-      <p>For multi-store access, choose your stores:</p>
-      {% for value, label in form.stores.field.choices %}
-      <label><input type="checkbox" name="stores" value="{{ value }}"> {{ label }}</label><br>
-      {% endfor %}
-    </div>
-    <br>
+    {% endif %}
 
-    <div>
-<ion-icon size="small" name="lock-open-outline"></ion-icon><br>Password<br>
-<input style="border-radius: 5px; padding: 5px"  type="password" name="password1" autocomplete="new-password" placeholder="Password:" required id="id_password1">
-    </div>
-          <br>
+    {% if form.non_field_errors %}
+      <div class="account-registration-card__errors">
+        {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+      </div>
+    {% endif %}
 
-    <div>
-<ion-icon size="small" name="lock-closed-outline"></ion-icon> <br>Confirm Password<br>
-<input style="border-radius: 5px; padding: 5px"placeholder="Password Confirmation: " type="password" name="password2" autocomplete="new-password" required id="id_password2">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="account-registration-card__field">
+        <label for="id_full_name">Full name</label>
+        <div class="account-registration-card__input">
+          <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+          <input type="text" name="full_name" id="id_full_name" value="{{ form.full_name.value|default_if_none:'' }}" autocomplete="name" maxlength="30" required autofocus>
+        </div>
+        {% for error in form.full_name.errors %}<p class="account-registration-card__error">{{ error }}</p>{% endfor %}
+      </div>
 
+      <div class="account-registration-card__field">
+        <label for="id_email">Email address</label>
+        <div class="account-registration-card__input">
+          <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+          <input type="email" name="email" id="id_email" value="{{ form.email.value|default_if_none:'' }}" autocomplete="email" required>
+        </div>
+        {% for error in form.email.errors %}<p class="account-registration-card__error">{{ error }}</p>{% endfor %}
+      </div>
 
-    </div>
-          <br>
+      <div class="account-registration-card__field">
+        <label for="id_password1">Password</label>
+        <div class="account-registration-card__input">
+          <ion-icon name="lock-open-outline" aria-hidden="true"></ion-icon>
+          <input type="password" name="password1" id="id_password1" autocomplete="new-password" required aria-describedby="password-help">
+        </div>
+        <small id="password-help">Use at least 8 characters and avoid a common password.</small>
+        {% for error in form.password1.errors %}<p class="account-registration-card__error">{{ error }}</p>{% endfor %}
+      </div>
 
-  <button class="action action--button-btn" type="submit" >Register</button>
+      <div class="account-registration-card__field">
+        <label for="id_password2">Confirm password</label>
+        <div class="account-registration-card__input">
+          <ion-icon name="lock-closed-outline" aria-hidden="true"></ion-icon>
+          <input type="password" name="password2" id="id_password2" autocomplete="new-password" required>
+        </div>
+        {% for error in form.password2.errors %}<p class="account-registration-card__error">{{ error }}</p>{% endfor %}
+      </div>
 
-</form>
+      <button class="account-registration-card__primary" type="submit">
+        Create account <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </button>
+    </form>
 
-<script>
-  (function () {
-    var choices = document.getElementById('store-choices');
-    var update = function () {
-      choices.hidden = document.querySelector('input[name="access_package"]:checked').value !== 'multi';
-    };
-    document.querySelectorAll('input[name="access_package"]').forEach(function (input) { input.addEventListener('change', update); });
-    update();
-  }());
-</script>
+    {% if google_oauth_enabled %}
+      <div class="account-registration-card__divider" role="separator"><span>or</span></div>
+      <a class="account-registration-card__google" href="{% url 'google_login' %}">
+        <ion-icon name="logo-google" aria-hidden="true"></ion-icon>
+        Continue with Google
+      </a>
+    {% endif %}
 
-
+    <p class="account-registration-card__footer">Already have an account? <a href="{% url 'account:login' %}">Log in</a></p>
+  </div>
 </section>
 
 {% endblock %}

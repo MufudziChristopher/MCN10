@@ -13,8 +13,8 @@
 		<link rel="stylesheet" href="https://use.typekit.net/lty4rfv.css">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/base.98fd6c19.css' %}">
 		<link rel="stylesheet" type="text/css" href="{% static 'css/demo2.06b37b5f.css' %}">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=136">
-		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=15">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/collapsible-menu.css' %}?v=155">
+		<link rel="stylesheet" type="text/css" href="{% static 'shared/css/axis-home-menu.css' %}?v=16">
 		<script>document.documentElement.className = "js";
 
 var supportsCssVars = function supportsCssVars() {
@@ -60,7 +60,7 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 		<script src="{% static 'axis/js/cart.js' %}"></script>
 		<span hidden>{% csrf_token %}</span>
 		<script src="{% static 'axis/js/locale.js' %}?v=3"></script>
-		<script src="{% static 'shared/js/collapsible-menu.js' %}?v=6"></script>
+		<script src="{% static 'shared/js/collapsible-menu.js' %}?v=7"></script>
 		<script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
 		<script nomodule src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
 		<script>
@@ -96,7 +96,7 @@ supportsCssVars() || alert("Please view this demo in a modern browser that suppo
 				themeTransition.setAttribute('aria-hidden', 'true');
 				themeTransition.innerHTML = '<div class="axis-theme-transition__shutter"></div><div class="axis-theme-transition__shutter"></div>';
 				document.body.appendChild(themeTransition);
-				applyTheme(localStorage.getItem(key) || 'dark');
+				applyTheme(localStorage.getItem(key) || 'light');
 				document.addEventListener('click', function (event) {
 					var toggle = event.target.closest('.axis-theme-toggle');
 					if (!toggle) return;

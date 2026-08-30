@@ -7,64 +7,65 @@
 
 
 <section class="account-login-page">
+  <div class="account-login-card">
+    <header>
+      <span class="account-login-card__icon"><ion-icon name="log-in-outline" aria-hidden="true"></ion-icon></span>
+      <p class="account-login-card__eyebrow">Welcome back</p>
+      <h1>Sign in to Foxx Mart</h1>
+      <p>Access your profile, orders, and every storefront from one account.</p>
+    </header>
 
-    <h2>Login</h2>
-<br>
-    <form class="login100-form validate-form" method="POST" novalidate>
-      {% csrf_token %}
-	  <input type="hidden" name="next" value="{{ request.GET.next }}">
-      {% if messages %}
+    {% if messages %}
       {% for message in messages %}
-      <div class="alert alert-warning alert-dismissable" role="alert">
-        <button class="close" data-dismiss="alert"><small><sup>x</sup></small></button>
-        {{ message }}
-      </div>
+      <p class="account-login-card__notice">{{ message }}</p>
       {% endfor %}
-      {% endif %}
+    {% endif %}
 
-
-
-      <div class="" data-validate="Username is required">
-        <ion-icon src="{% static 'ion-icons/people-circle-outline.svg' %}" size="large"></ion-icon>
-
-        <input type="text" style="border-radius: 5px; padding: 10px" name="email" id="id_email" placeholder="Email: ">
+    {% if login_form.non_field_errors %}
+      <div class="account-login-card__errors">
+        {% for error in login_form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
       </div>
-      <br>
-      <div class="" data-validate="Password is required">
-        <ion-icon src="{% static 'ion-icons/lock-closed-outline.svg' %}" size="large"></ion-icon>
+    {% endif %}
 
-        <input class="" style="border-radius: 5px; padding: 10px" type="password" id="id_password" name="password" placeholder="Password: ">
-      </div>
-        {% for field in login_form %}
-    {% for error in field.errors %}
-      <p class="login-error" style="color: red;">{{error}}</p>
-    {% endfor %}
-  {% endfor %}
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ request.GET.next }}">
 
-  {% if login_form.non_field_errors %}
-    <div class="login-error" style="color:red;">
-      <p>{{login_form.non_field_errors}}</p>
-    </div>
-  {% endif %}
-      <br>
-      <div>
-        <button class=" action action--button-btn" id="full_path" name="full_path" value="{{ request.get_full_path }}">
-          Login
-        </button>
+      <div class="account-login-card__field">
+        <label for="id_email">Email address</label>
+        <div class="account-login-card__input">
+          <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+          <input type="email" name="email" id="id_email" value="{{ login_form.email.value|default_if_none:'' }}" autocomplete="email" required autofocus>
+        </div>
+        {% for error in login_form.email.errors %}<p class="account-login-card__error">{{ error }}</p>{% endfor %}
       </div>
-      <br>
-      <div class="text-center w-full p-t-25 p-b-230">
-        <a href="{% url 'reset_password' %}" class="action--text">
-          Forgot Username / Password?
-        </a>
+
+      <div class="account-login-card__field">
+        <div class="account-login-card__label-row">
+          <label for="id_password">Password</label>
+          <a href="{% url 'reset_password' %}">Forgot password?</a>
+        </div>
+        <div class="account-login-card__input">
+          <ion-icon name="lock-closed-outline" aria-hidden="true"></ion-icon>
+          <input type="password" name="password" id="id_password" autocomplete="current-password" required>
+        </div>
+        {% for error in login_form.password.errors %}<p class="account-login-card__error">{{ error }}</p>{% endfor %}
       </div>
-<br>
-      <div class="text-center w-full">
-        <a class="action--text" href="{% url 'account:register' %}">
-          Create new account
-          <ion-icon size="large" src="{% static 'ion-icons/return-up-forward-outline.svg' %}"></ion-icon>        </a>
-      </div>
-      <p>Google sign-in will be available once the mall's Google OAuth credentials are configured.</p>
+
+      <button class="account-login-card__primary" type="submit">
+        Sign in <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+      </button>
     </form>
+
+    {% if google_oauth_enabled %}
+      <div class="account-login-card__divider" role="separator"><span>or</span></div>
+      <a class="account-login-card__google" href="{% url 'google_login' %}{% if request.GET.next %}?next={{ request.GET.next|urlencode }}{% endif %}">
+        <ion-icon name="logo-google" aria-hidden="true"></ion-icon>
+        Continue with Google
+      </a>
+    {% endif %}
+
+    <p class="account-login-card__footer">New to Foxx Mart? <a href="{% url 'account:register' %}">Create an account</a></p>
+  </div>
 </section>
 {% endblock %}

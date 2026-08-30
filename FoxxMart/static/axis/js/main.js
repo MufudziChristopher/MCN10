@@ -74,13 +74,38 @@
         cartItems = cart.querySelector('.cart__count');
 
     function init() {
-        // preload images
-        imagesLoaded(grid, function () {
+        var hasInitialized = false;
+
+        function initializeStorefront() {
+            if (hasInitialized) return;
+            hasInitialized = true;
+
             initFlickity();
             initIsotope();
             initEvents();
-            classie.remove(grid, 'grid--loading');
-        });
+
+            window.requestAnimationFrame(function () {
+                window.requestAnimationFrame(function () {
+                    classie.remove(grid, 'grid--loading');
+                    grid.setAttribute('aria-busy', 'false');
+                });
+            });
+
+            // The other gallery images can load after the product grid is visible.
+            imagesLoaded(grid, function () {
+                recalcFlickities();
+                iso.layout();
+            });
+        }
+
+        // Flickity needs an image dimension to initialise correctly, but it
+        // does not need every image in every five-image gallery. Waiting for
+        // the first view of each product is substantially faster and stable.
+        var primaryImages = grid.querySelectorAll('.slider__item:first-child img');
+        imagesLoaded(primaryImages, initializeStorefront);
+
+        // A broken or slow image must never leave the catalogue hidden.
+        window.setTimeout(initializeStorefront, 2200);
     }
 
     function initFlickity() {
@@ -179,7 +204,12 @@
 
         // add to cart
 		[].slice.call(grid.querySelectorAll('.grid__item')).forEach(function (item) {
-            item.querySelector('.action--buy').addEventListener('click', addToCart);
+            var buyButton = item.querySelector('.action--buy');
+            // Out-of-stock cards intentionally have no purchase control.
+            // Do not let that prevent the rest of the catalogue from loading.
+            if (buyButton) {
+                buyButton.addEventListener('click', addToCart);
+            }
         });
     }
 

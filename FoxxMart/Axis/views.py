@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.conf import settings
 from django.db import transaction
 from django.db.models import Count
+from django.urls import reverse
 from taggit.models import Tag
 
 import json
@@ -22,6 +23,7 @@ from .utils import cartData
 from .models import *
 from .filters import *
 from account.access import store_access_required
+from account.invoices import create_invoice_for_order, notify_admin_of_order
 
 # Create your views here.
 def about(request):
@@ -36,6 +38,7 @@ def home(request):
     return render(request, 'home_base.html', {})
 
 
+@store_access_required('axis')
 def store(request, category_slug=None):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -59,7 +62,12 @@ def cart(request):
     order = data['order']
     items = data['items']
 
-    context = {'items':items, 'order':order, 'cartItems':cartItems}
+    context = {
+        'items': items,
+        'order': order,
+        'cartItems': cartItems,
+        'saved_address': request.user.axiscustomer.shippingAddress,
+    }
     return render(request, 'Axis/cart.html', context)
 
 def product_details(request, pk):
@@ -216,14 +224,19 @@ def complete_test_checkout(request):
             city=request.POST['city'].strip(),
             province=request.POST['province'].strip(),
             postal_code=request.POST['postal_code'].strip(),
+            delivery_instructions=request.POST.get('delivery_instructions', '').strip(),
         )
-        customer.shippingAddress = shipping_address
-        customer.save(update_fields=['shippingAddress'])
+        # Keep an address only after the shopper explicitly opts in.
+        if request.POST.get('save_address') == 'on':
+            customer.shippingAddress = shipping_address
+            customer.save(update_fields=['shippingAddress'])
         order.transaction_id = f'TEST-{uuid.uuid4().hex[:12].upper()}'
-        order.status = 'Payment Confirmed, Processing Order'
+        order.status = 'Payment confirmed'
         order.save(update_fields=['transaction_id', 'status'])
+        order_invoice = create_invoice_for_order(user=request.user, store_slug='axis', order=order)
+        transaction.on_commit(lambda: notify_admin_of_order(order_invoice))
     messages.success(request, 'Test payment recorded. Your invoice is ready.')
-    return redirect('Axis:invoice', pk=order.pk)
+    return redirect(f"{reverse('account:profile')}?store=axis")
 
 
 @store_access_required('axis')

@@ -139,7 +139,9 @@ body.axis-theme--light.product-page .axis-theme-toggle { color: #000; }
 body.axis-theme--dark.product-page::before,
 body.axis-theme--dark.product-page .bp-header nav,
 body.axis-theme--dark.product-page .product-quick-cart[open] {
-	background: rgba(18, 18, 18, 0.56);
+	background: var(--foxx-glass-dark, rgba(18, 18, 18, .22));
+	-webkit-backdrop-filter: var(--foxx-glass-blur, blur(4px));
+	backdrop-filter: var(--foxx-glass-blur, blur(4px));
 }
 
 body.axis-theme--dark.product-page .bp-header,

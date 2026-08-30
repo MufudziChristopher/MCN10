@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from account import views as account_views
 
 
 
@@ -25,6 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
     path('account/', include('account.urls', namespace='account')),
+    path('accounts/google/login/', account_views.google_login, name='google_login'),
+    path('accounts/google/login/callback/', account_views.google_callback, name='google_callback'),
     path('Marz/', include('Marz.urls', namespace='Marz')),
     path('RMC/', include('RMC.urls', namespace='RMC')),
     path('RMC2/', include('RMC2.urls', namespace='RMC2')),

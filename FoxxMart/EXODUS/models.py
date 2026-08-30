@@ -119,10 +119,17 @@ class EXODUSProduct(models.Model):
 
 class EXODUSOrder(models.Model):
     STATUS = (
-        ('Pending', 'Pending'),
-        ('Payment Confirmed, Processing Order', 'Payment Confirmed, Processing Order'),
+        ('Pending', 'Awaiting payment'),
+        ('Payment confirmed', 'Payment confirmed'),
+        ('Picking items', 'Picking items'),
+        ('Packed', 'Packed and ready for dispatch'),
+        ('Awaiting courier', 'Awaiting courier collection'),
+        ('Collected by courier', 'Collected by courier'),
+        ('In transit', 'In transit'),
         ('Out for delivery', 'Out for delivery'),
         ('Delivered', 'Delivered'),
+        ('Delivery exception', 'Delivery exception'),
+        ('Cancelled', 'Cancelled'),
         )
     customer = models.ForeignKey(EXODUSCustomer, on_delete=models.SET_NULL, blank=True, null=True)
     date_ordered = models.DateTimeField(auto_now_add=True)

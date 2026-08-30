@@ -2,47 +2,29 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
-from account.models import Account, StoreAccess
+from account.models import Account
 
 
 class RegistrationForm(UserCreationForm):
 	email = forms.EmailField(max_length=60, help_text='Required. Add a valid email address')
-	first_name = forms.CharField(max_length=30)
-	last_name = forms.CharField(max_length=30)
-	access_package = forms.ChoiceField(
-		choices=StoreAccess.Package.choices,
-		widget=forms.RadioSelect,
-		initial='single',
-	)
-	stores = forms.MultipleChoiceField(required=False, choices=(), widget=forms.CheckboxSelectMultiple)
+	full_name = forms.CharField(max_length=30, label='Full name')
 
-	def __init__(self, *args, storefront_slug='', storefront_choices=(), **kwargs):
-		super().__init__(*args, **kwargs)
-		self.storefront_slug = storefront_slug
-		self.fields['stores'].choices = storefront_choices
-
-	def clean(self):
-		cleaned = super().clean()
-		package = cleaned.get('access_package')
-		stores = cleaned.get('stores') or []
-		if package == 'single' and not self.storefront_slug:
-			self.add_error('access_package', 'Start registration from a store to choose single-store access.')
-		if package == 'multi' and not stores:
-			self.add_error('stores', 'Choose at least one store for multi-store access.')
-		return cleaned
+	def clean_email(self):
+		email = self.cleaned_data['email'].strip().lower()
+		if Account.objects.filter(email__iexact=email).exists():
+			raise forms.ValidationError('An account with this email address already exists. Please sign in instead.')
+		return email
 
 	def save(self, commit=True):
 		user = super().save(commit=False)
-		user.first_name = self.cleaned_data['first_name']
-		user.last_name = self.cleaned_data['last_name']
-		user.username = f"{user.first_name} {user.last_name}".strip()
+		user.username = self.cleaned_data['full_name'].strip()
 		if commit:
 			user.save()
 		return user
 
 	class Meta:
 		model = Account
-		fields = ("first_name", "last_name", "email", 'phone', "password1", "password2")
+		fields = ("full_name", "email", "password1", "password2")
 
 
 class AccountAuthenticationForm(forms.ModelForm):

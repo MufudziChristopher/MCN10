@@ -25,13 +25,6 @@
                     <div class="form-field">
                         {% if user.is_authenticated %}<input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="email" name="email" placeholder="{{ user.email }}" value="{{ user.email }}" readonly> {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="email" name="email" placeholder="Email..">{% endif %}
                     </div>
-                <div class="form-field">
-                        {% if user.is_authenticated and not user.phone%}
-                         <input style="border-radius: 5px; padding: 10px; " required class="form-control" type="text" name="phone" placeholder="Phone Number ..." "  >
-                        {% elif user.is_authenticated and user.phone %}
-                        <input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="text" name="phone" placeholder="{{ user.phone }}" value="{{ user.phone }}" readonly >
-                        {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="text" name="phone" placeholder="Phone Number..">{% endif %}
-                    </div>
                 </div>
 
                 <div id="shipping-info" >
@@ -176,7 +169,6 @@ function btn(){
         var userFormData = {
             'name': null,
             'email': null,
-            'phone': null,
             'total': total,
         }
         console.log('User Form Created')
@@ -204,7 +196,6 @@ function btn(){
 
         userFormData.name = form.name.value
         userFormData.email = form.email.value
-        userFormData.phone = form.phone.value
 
         console.log('Checks passed')
         console.log('User Form Data', userFormData)

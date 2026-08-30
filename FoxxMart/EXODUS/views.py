@@ -15,6 +15,7 @@ from .forms import *
 from .utils import cookieCart, cartData, guestOrder
 from .filters import *
 from account.access import store_access_required
+from account.invoices import create_invoice_for_order
 
 # Create your views here.
 def about(request):
@@ -22,6 +23,7 @@ def about(request):
     return render(request, 'EXODUS/about.html', {})
 
 
+@store_access_required('exodus')
 def store(request, category_slug=None):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -123,23 +125,22 @@ def updateItem(request):
 
     return JsonResponse('Item was added', safe=False)
 
+@store_access_required('exodus')
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
 
-    if request.user.is_authenticated:
-        customer = request.user.customer
-        order, created = EXODUSOrder.objects.get_or_create(customer=customer, status="Pending")
-    else:
-        customer, order = guestOrder(request, data)
+    customer = request.user.exoduscustomer
+    order, created = EXODUSOrder.objects.get_or_create(customer=customer, status="Pending")
 
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
 
     if total == order.get_cart_total:
         print("Order total is correct")
-        order.status = "Payment Confirmed, Processing Order"
+        order.status = "Payment confirmed"
         order.save()
+        create_invoice_for_order(user=request.user, store_slug='exodus', order=order)
 
     else:
         print("Order total is incorrect")

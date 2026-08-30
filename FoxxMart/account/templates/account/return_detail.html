@@ -1,0 +1,12 @@
+{% extends 'menu_base.html' %}
+
+{% block body %}
+<main class="account-profile-page">
+  <section class="account-profile-section" aria-labelledby="return-title">
+    <div class="account-profile-section__heading"><div><p class="account-profile-eyebrow">{{ account_storefront.menu_label }} order</p><h1 id="return-title">Return request</h1></div><a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}">Back to profile</a></div>
+    <dl class="account-return-details"><div><dt>Status</dt><dd>{{ return_request.get_status_display }}</dd></div><div><dt>Reason</dt><dd>{{ return_request.reason }}</dd></div><div><dt>Requested</dt><dd>{{ return_request.created_at|date:"d M Y, H:i" }}</dd></div><div><dt>Details</dt><dd>{{ return_request.details|default:"No additional details provided." }}</dd></div></dl>
+    {% if return_request.attachments %}<h2>Attached photos</h2><div class="account-return-images">{% for attachment in return_request.attachments.all %}<a href="{{ attachment.image.url }}" target="_blank" rel="noopener"><img src="{{ attachment.image.url }}" alt="Return evidence photo"></a>{% endfor %}</div>{% endif %}
+    {% if return_request.status == 'requested' %}<form method="post" action="{% url 'account:cancel_return' return_request.invoice.public_id %}">{% csrf_token %}<button class="account-return-cancel" type="submit">Cancel return request</button></form>{% endif %}
+  </section>
+</main>
+{% endblock %}

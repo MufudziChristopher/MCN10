@@ -100,31 +100,50 @@ function showQuantityWarnings() {
   }
 }
 
-for (i = 0; i < quantityInputs.length; i++) {
-  quantityInputs[i].addEventListener('change', function(){
-    var quantity = parseInt(this.value, 10)
-    var maximum = parseInt(this.max, 10)
+function commitQuantityInput(input) {
+    var quantity = parseInt(input.value, 10)
+    var maximum = parseInt(input.max, 10)
 
     if (Number.isNaN(quantity)) {
-      this.value = this.defaultValue
+      input.value = input.defaultValue
       return
     }
 
     if (quantity > maximum) {
-      saveQuantityWarning(this.dataset.product, 'Only ' + maximum + ' left.')
+      saveQuantityWarning(input.dataset.product, 'Only ' + maximum + ' left.')
     }
 
     quantity = Math.max(0, Math.min(quantity, maximum))
-    this.value = quantity
+    input.value = quantity
 
     if (user == 'AnonymousUser'){
-      addCookieItem(this.dataset.product, 'set', quantity)
+      addCookieItem(input.dataset.product, 'set', quantity)
     } else {
-      updateUserOrder(this.dataset.product, 'set', quantity)
+      updateUserOrder(input.dataset.product, 'set', quantity)
     }
+}
+
+for (var quantityInputIndex = 0; quantityInputIndex < quantityInputs.length; quantityInputIndex++) {
+  var quantityInput = quantityInputs[quantityInputIndex]
+
+  // Number-input spinner arrows emit an input event. Debouncing means that a
+  // quick series of clicks sends only the final quantity to the cart endpoint.
+  quantityInput.addEventListener('input', function(){
+    var input = this
+    window.clearTimeout(input.quantityUpdateTimer)
+    input.quantityUpdateTimer = window.setTimeout(function () {
+      commitQuantityInput(input)
+    }, 250)
   })
 
-  quantityInputs[i].addEventListener('keydown', function(event){
+  // Keep keyboard entry and browser implementations that only fire change
+  // working, while avoiding a duplicate request after an arrow click.
+  quantityInput.addEventListener('change', function(){
+    window.clearTimeout(this.quantityUpdateTimer)
+    commitQuantityInput(this)
+  })
+
+  quantityInput.addEventListener('keydown', function(event){
     if (event.key === 'Enter') {
       event.preventDefault()
       this.blur()

@@ -51,13 +51,13 @@
     <section class="buttonset">
         <button id="showLeftPush" class="carter" aria-label="Filter products">
 
-          <ion-icon src="{% static 'ion-icons/filter-outline.svg' %}" class="cart__icon"></ion-icon>
+          <ion-icon src="{% static 'ion-icons/filter-outline.svg' %}" data-theme-icon-light="{% static 'ion-icons/filter-outline.svg' %}" data-theme-icon-dark="{% static 'ion-icons/filter-outline-white.svg' %}" class="cart__icon"></ion-icon>
           <span class="store-control__label">Filter</span>
         </button>
         <button id="showRightPush" class="cart" aria-label="Quick cart">
-            <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" class="cart__icon"></ion-icon>
+            <ion-icon src="{% static 'ion-icons/cart-outline.svg' %}" data-theme-icon-light="{% static 'ion-icons/cart-outline.svg' %}" data-theme-icon-dark="{% static 'ion-icons/cart-outline-white.svg' %}" class="cart__icon"></ion-icon>
             <span class="store-control__label">Quick Cart</span>
-            <span class="cart__count">{{cartItems}}</span>
+            <span class="cart__count" data-testid="cart-item-count" aria-label="{{ cartItems }} items in cart">{{cartItems}}</span>
         </button>
 
     </section>
@@ -125,7 +125,7 @@
     <div class="view ">
 
         <!-- Grid -->
-        <section class="grid grid--loader" id="store">
+        <section class="grid grid--loading" id="store" aria-busy="true">
             <!-- The cursor elements -->
             <div class="cursor cursor--small"></div>
             <canvas class="cursor cursor--canvas" resize></canvas>
@@ -137,7 +137,7 @@
 
             {% for product in products %}
             {% if product.tags %}
-            <div class="grid__item{% for tag in product.tags.all %} {{tag.slug}}{% endfor %} product">
+            <div class="grid__item{% for tag in product.tags.all %} {{tag.slug}}{% endfor %} product" data-testid="product-card" data-product-name="{{ product.name }}">
                 {% endif %}
                 <div class="slider product__image">
                     <div class="slider__item"><a href="{% url 'Axis:product_details'  product.id %}"><img src="{{product.imageURL1}}" /></a></div>
@@ -178,11 +178,11 @@
                 </label>
                 {% if product.stock >= 1 %}
 
-                <button data-product={{product.id}} data-action="add" class="action action--button action--compare-buy action--buy update-cart">
+                <button data-product={{product.id}} data-action="add" class="action action--button action--compare-buy action--buy update-cart" aria-label="Add {{ product.name }} to cart">
                     <ion-icon size="large" color="black" src="{% static 'ion-icons/cart-outline.svg' %}"></ion-icon><span class="action__text--invisible">Add to cart</span>
                 </button>
                 {% else %}
-                <button title="Out of Stock!" class="no-stock action action--button action--compare-buy action--compare-buy-no-stock">
+                <button title="Out of Stock!" aria-label="{{ product.name }} is out of stock" class="no-stock action action--button action--compare-buy action--compare-buy-no-stock">
                     <ion-icon size="large" color="black" src="{% static 'ion-icons/alert-circle-outline.svg' %}"></ion-icon><span class="action__text--invisible">Out of Stock</span>
                 </button>
                 {% endif %}

@@ -18,7 +18,7 @@
     <link id="africa_stylesheet" rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'more/css/component.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/account-menu.css' %}?v=27" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/account-menu.css' %}?v=45" />
     <script src="{% static 'more/js/modernizr-custom.js' %}"></script>
         <script src="{% static 'js/cart.js' %}"></script>
 
@@ -28,48 +28,55 @@
     <!-- Main container -->
     <div class="container">
         <!-- Blueprint header -->
-        <header class="bp-header account-menu is-collapsed" data-account-menu>
-            <button class="account-menu__toggle" type="button" aria-controls="account-navigation" aria-expanded="false">
+        <header class="bp-header account-menu" data-account-menu>
+            <button class="account-menu__toggle" type="button" aria-controls="account-navigation" aria-expanded="true">
               <span class="account-menu__brand" aria-label="Open {{ account_storefront.menu_label|default:'3rd Axis' }} menu">
                 <img data-account-menu-gif src="{% static 'images/III-light.gif' %}" alt="">
               </span>
             </button>
             <nav id="account-navigation" aria-label="Account navigation">
                 <a href="{% url 'home:home' %}" title="Portfolio">
-                  <ion-icon name="apps-outline" size="large"></ion-icon>Portfolio
+                  <ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'home' %}apps{% else %}apps-outline{% endif %}" size="large"></ion-icon>Portfolio
                 </a>
                 <a href="{% url 'home:mall' %}" title="FoxxMart Mall">
-                  <ion-icon name="grid-outline" size="large"></ion-icon>FoxxMart
+                  <ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %}grid{% else %}grid-outline{% endif %}" size="large"></ion-icon>FoxxMart
                 </a>
-                <a href="{% url account_storefront.store_url_name %}" title="{{ account_storefront.name }}">
-                  <img class="account-menu__icon" src="{% static 'ion-icons/storefront-outline.svg' %}" alt="">Shop
+                {% if request.resolver_match.namespace != 'account' or request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
+                <a href="{% url account_storefront.store_url_name %}" title="{{ account_storefront.name }}"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} aria-current="page"{% endif %}>
+                  <i class="account-menu__icon{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} account-menu__icon--active{% endif %}" aria-hidden="true"></i>Shop
                 </a>
+                {% endif %}
+                {% if not account_is_auth_page %}
                 <a href="{% url account_storefront.cart_url_name %}" title="Cart">
-                  {% if account_cart_items %}
-                  <span class="account-menu__cart-icon"><ion-icon name="cart" size="large"></ion-icon><b>{{ account_cart_items }}</b></span>Cart
-                  {% else %}
-                  <ion-icon name="cart-outline" size="large"></ion-icon>Cart
-                  {% endif %}
+                  <span class="account-menu__cart-icon"><ion-icon name="{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %}cart{% else %}cart-outline{% endif %}" size="large"></ion-icon>{% if account_cart_items %}<b>{{ account_cart_items }}</b>{% endif %}</span>Cart
                 </a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}" title="My Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}>
+                  <ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %}person{% else %}person-outline{% endif %}" size="large"></ion-icon>Profile
+                </a>
+                <a href="{% url 'account:logout' %}" title="Log out">
+                  <ion-icon name="log-out-outline" size="large"></ion-icon>Logout
+                </a>
+                {% else %}
+                <a href="{% url 'account:register' %}" title="Create Account"{% if request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}>
+                  <ion-icon name="{% if request.resolver_match.url_name == 'register' %}person-add{% else %}person-add-outline{% endif %}" size="large"></ion-icon>Register
+                </a>
+                <a href="{% url 'account:login' %}?store={{ account_storefront.slug }}&amp;next={{ request.path|urlencode }}" title="Log in"{% if request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}>
+                  <ion-icon name="{% if request.resolver_match.url_name == 'login' %}log-in{% else %}log-in-outline{% endif %}" size="large"></ion-icon>Login
+                </a>
+                {% endif %}
+                {% if request.resolver_match.namespace != 'account' or request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
                 <a href="{% url account_storefront.contact_url_name %}" title="Contact">
                   <ion-icon name="mail-outline" size="large"></ion-icon>Contact
                 </a>
                 <a href="{% url account_storefront.about_url_name %}" title="About {{ account_storefront.menu_label }}">
                   <ion-icon name="information-circle-outline" size="large"></ion-icon>About
                 </a>
-                {% if user.is_authenticated %}
-                <a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}" title="My Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}>
-                  <ion-icon name="person-outline" size="large"></ion-icon>Profile
-                </a>
-                <a href="{% url 'account:logout' %}" title="Log out">
-                  <ion-icon name="log-out-outline" size="large"></ion-icon>Logout
-                </a>
-                {% else %}
-                <a href="{% url 'account:register' %}?store={{ account_storefront.slug }}" title="Create Account"{% if request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}>
-                  <ion-icon name="person-add-outline" size="large"></ion-icon>Register
-                </a>
-                <a href="{% url 'account:login' %}?store={{ account_storefront.slug }}&amp;next={{ request.path|urlencode }}" title="Log in"{% if request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}>
-                  <ion-icon name="log-in-outline" size="large"></ion-icon>Login
+                {% endif %}
+                {% if user.is_superuser %}
+                <a href="{% url 'account:admin_dashboard' %}" title="Admin"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_dashboard' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_order_detail' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_return_detail' %} aria-current="page"{% endif %}>
+                  <ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_dashboard' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_order_detail' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_return_detail' %}settings{% else %}settings-outline{% endif %}" size="large"></ion-icon>Admin
                 </a>
                 {% endif %}
                 <button class="account-theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
@@ -77,7 +84,9 @@
                   <ion-icon class="account-theme-toggle__light" name="toggle-outline" aria-hidden="true"></ion-icon>
                   <span>Theme</span>
                 </button>
-
+                {% if user.is_authenticated %}
+                <p class="account-menu__identity">Logged in as: {{ user.username }}</p>
+                {% endif %}
             </nav>
         </header>
 
@@ -85,7 +94,7 @@
         <details class="account-quick-cart">
           <summary aria-label="Open quick cart">
             <span class="account-menu__cart-icon">
-              <ion-icon name="{% if account_cart_items %}cart{% else %}cart-outline{% endif %}" aria-hidden="true"></ion-icon>
+              <ion-icon name="cart-outline" aria-hidden="true"></ion-icon>
               {% if account_cart_items %}<b>{{ account_cart_items }}</b>{% endif %}
             </span>
             <span>Quick Cart</span>
@@ -128,8 +137,30 @@
             var setOpen = function (open) {
               menu.classList.toggle('is-collapsed', !open);
               toggle.setAttribute('aria-expanded', String(open));
+              var isMobileProfile = window.matchMedia('(max-width: 460px)').matches && document.querySelector('.account-profile-page');
+              document.body.classList.toggle('account-menu-expanded', Boolean(open && isMobileProfile));
+              if (open && isMobileProfile) {
+                var updateProfileOffset = function () {
+                  document.documentElement.style.setProperty('--account-menu-expanded-height', menu.offsetHeight + 'px');
+                };
+                window.requestAnimationFrame(updateProfileOffset);
+                // The menu's max-height transition changes its final rendered
+                // height after the next frame, so measure once more when done.
+                window.setTimeout(updateProfileOffset, 300);
+              }
             };
+            // Account menus begin compact on phones, where the expanded panel
+            // would otherwise take over the first viewport.
+            setOpen(!window.matchMedia('(max-width: 460px)').matches);
             toggle.addEventListener('click', function () { setOpen(menu.classList.contains('is-collapsed')); });
+            window.addEventListener('scroll', function () {
+              if (window.scrollY > 96 && !menu.classList.contains('is-collapsed')) setOpen(false);
+            }, { passive: true });
+            window.addEventListener('resize', function () {
+              if (document.body.classList.contains('account-menu-expanded')) {
+                document.documentElement.style.setProperty('--account-menu-expanded-height', menu.offsetHeight + 'px');
+              }
+            });
             document.addEventListener('keydown', function (event) {
               if (event.key === 'Escape') setOpen(false);
             });
@@ -323,7 +354,7 @@
 		  themeTransition.setAttribute('aria-hidden', 'true');
 		  themeTransition.innerHTML = '<div class="account-theme-transition__shutter"></div><div class="account-theme-transition__shutter"></div>';
 		  document.body.appendChild(themeTransition);
-		  applyMode(localStorage.getItem(key) || 'dark');
+		  applyMode(localStorage.getItem(key) || 'light');
         document.addEventListener('click', function (event) {
           if (!event.target.closest('.account-theme-toggle')) return;
 			var nextMode = document.body.classList.contains('axis-theme--light') ? 'dark' : 'light';

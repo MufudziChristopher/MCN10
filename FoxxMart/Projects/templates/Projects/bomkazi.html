@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Bomkazi Designs</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="shortcut icon" href="{% static 'bomkazi/images/logo.jpg' %}">
+  <link rel="stylesheet" href="{% static 'bomkazi/assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'bomkazi/assets/css/fontawesome-all.min.css' %}">
+  <script src="{% static 'bomkazi/js/modernizr.js' %}"></script>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <header class="nav">
+      <div class="navbar">
+        <div class="logo"><a href="{% url 'Projects:bomkazi' %}">Bomkazi Designs</a></div>
+        <ul class="links">
+          <li><a href="{% url 'Projects:bomkazi' %}"><strong>Home</strong></a></li>
+          <li><a href="#first"><strong>Our Mission</strong></a></li>
+          <li><a href="#collection"><strong>Collection</strong></a></li>
+        </ul>
+        <a class="action_btn" href="{% url 'home:mall' %}">Foxx Mart</a>
+        <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
+      </div>
+      <div class="dropdown_menu">
+        <li><a href="{% url 'Projects:bomkazi' %}">Home</a></li>
+        <li><a href="#first">Our Mission</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="{% url 'home:mall' %}" class="action_btn">Foxx Mart</a></li>
+      </div>
+    </header>
+
+    <section class="intro">
+      <header>
+        <h1>Bomkazi Designs</h1>
+        <p>Fashion designer<br>Art enthusiast<br>Based in <a>Cape Town</a></p>
+        <ul class="actions"><li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li></ul>
+      </header>
+      <div class="content"><span class="image fill" data-position="center"><img src="{% static 'bomkazi/images/cover.png' %}" alt="Bomkazi Designs collection"></span></div>
+    </section>
+
+    <section id="first">
+      <header><h2><strong class="highlight">Our Mission</strong></h2></header>
+      <div class="content"><p>Our mission is to empower individuals to express their unique identity and cultural pride through fashion. Bomkazi Designs celebrates the rich tapestry of African cultures with high-quality garments that embrace diversity, inclusivity and the confidence of being proudly African.</p></div>
+    </section>
+
+    {% for design in designs %}
+    <section id="{% if forloop.first %}collection{% endif %}">
+      <header><h2>{{ design.name }}</h2><p class="righty">{{ design.description }}</p></header>
+      <div class="content"><div class="gallery"><a href="{% static design.image %}" class="landscape"><img src="{% static design.image %}" alt="{{ design.name }} by Bomkazi Designs" loading="lazy"></a></div></div>
+    </section>
+    {% endfor %}
+
+    <section>
+      <header><h2>Shipping and Delivery</h2></header>
+      <div class="content"><p class="righty">Bomkazi Designs delivers Xhosa-inspired fashion across South Africa, bringing cultural celebration and self-expression directly to you.</p></div>
+    </section>
+    <div class="copyright">&copy; Bomkazi Designs. Design: <a href="https://html5up.net">HTML5 UP</a>.</div>
+  </div>
+  <script src="{% static 'bomkazi/assets/js/jquery.min.js' %}"></script>
+  <script src="{% static 'bomkazi/assets/js/jquery.scrolly.min.js' %}"></script>
+  <script src="{% static 'bomkazi/assets/js/browser.min.js' %}"></script>
+  <script src="{% static 'bomkazi/assets/js/breakpoints.min.js' %}"></script>
+  <script src="{% static 'bomkazi/assets/js/util.js' %}"></script>
+  <script src="{% static 'bomkazi/assets/js/main.js' %}"></script>
+  <script>
+    const toggleBtn = document.querySelector('.toggle_btn');
+    const menu = document.querySelector('.dropdown_menu');
+    if (toggleBtn && menu) toggleBtn.addEventListener('click', () => menu.classList.toggle('open'));
+  </script>
+</body>
+</html>

@@ -12,6 +12,8 @@ from Collective.models import CollectiveCustomer
 from EXODUS.models import EXODUSCustomer, EXODUSOrder
 from GENESIS.models import GENESISCustomer
 from account.models import Account, StoreAccess
+from account.models import Invoice
+from account.invoices import create_invoice_for_order
 
 
 class RegistrationViewTests(TestCase):
@@ -20,25 +22,34 @@ class RegistrationViewTests(TestCase):
 
         self.assertRedirects(response, reverse('home:mall'))
 
-    def test_registration_page_links_back_to_the_originating_storefront(self):
+    def test_registration_page_is_a_mall_wide_flow_without_cart_controls(self):
         response = self.client.get(f"{reverse('account:register')}?store=axis")
 
-        self.assertContains(response, '3rd Axis Storefront')
-        self.assertContains(response, reverse('Axis:store'))
-        self.assertContains(response, 'name="store" value="axis"', html=False)
+        self.assertContains(response, 'One account gives you access to every Foxx Mart storefront.')
+        self.assertContains(response, 'Create your account')
+        self.assertContains(response, 'Full name')
+        self.assertNotContains(response, 'Quick Cart')
+        self.assertNotContains(response, 'title="Cart"', html=False)
+        self.assertNotContains(response, 'Phone Number')
+
+    @override_settings(
+        GOOGLE_OAUTH_CLIENT_ID='test-google-client-id',
+        GOOGLE_OAUTH_CLIENT_SECRET='test-google-client-secret',
+    )
+    def test_registration_page_offers_google_sign_in(self):
+        response = self.client.get(reverse('account:register'))
+
+        self.assertContains(response, 'Continue with Google')
+        self.assertContains(response, 'name="logo-google"', html=False)
 
     def test_successful_registration_returns_to_mall_and_creates_profiles(self):
         response = self.client.post(
-            f"{reverse('account:register')}?store=exodus",
+            reverse('account:register'),
             {
                 'email': 'registration-test@example.com',
-                'first_name': 'Registration',
-                'last_name': 'Test',
-                'phone': '0123456789',
+                'full_name': 'Registration Test',
                 'password1': 'SafeRegistrationPass123!',
                 'password2': 'SafeRegistrationPass123!',
-                'store': 'exodus',
-                'access_package': 'full',
             },
         )
 
@@ -48,17 +59,17 @@ class RegistrationViewTests(TestCase):
         self.assertTrue(EXODUSCustomer.objects.filter(user=account).exists())
         self.assertTrue(GENESISCustomer.objects.filter(user=account).exists())
         self.assertTrue(CollectiveCustomer.objects.filter(user=account).exists())
+        self.assertEqual(account.username, 'Registration Test')
+        self.assertEqual(StoreAccess.objects.filter(user=account).count(), 4)
 
     def test_invalid_registration_shows_view_and_form_error_messages(self):
         response = self.client.post(
-            f"{reverse('account:register')}?store=axis",
+            reverse('account:register'),
             {
                 'email': '',
-                'username': '',
-                'phone': '',
+                'full_name': '',
                 'password1': '',
                 'password2': '',
-                'store': 'axis',
             },
         )
 
@@ -66,8 +77,99 @@ class RegistrationViewTests(TestCase):
         self.assertContains(response, 'Please correct the errors below and try again.')
         self.assertContains(response, 'This field is required')
 
+    def test_registration_rejects_an_email_already_used_by_google_regardless_of_case(self):
+        Account.objects.create_user(
+            email='google-user@example.com', username='Google User', password='SafePass123!'
+        )
+
+        response = self.client.post(
+            reverse('account:register'),
+            {
+                'email': 'Google-User@Example.com',
+                'full_name': 'Duplicate User',
+                'password1': 'SafeRegistrationPass123!',
+                'password2': 'SafeRegistrationPass123!',
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'An account with this email address already exists.')
+        self.assertEqual(Account.objects.filter(email__iexact='google-user@example.com').count(), 1)
+
 
 class AccountProfileTests(TestCase):
+    def test_storefronts_redirect_anonymous_shoppers_to_login(self):
+        for url_name in ('Axis:store', 'EXODUS:store', 'GENESIS:store', 'Collective:store'):
+            with self.subTest(url_name=url_name):
+                response = self.client.get(reverse(url_name))
+                self.assertRedirects(
+                    response,
+                    f"{reverse('account:login')}?next={reverse(url_name)}",
+                )
+
+    def test_checkout_endpoints_reject_anonymous_shoppers(self):
+        for url_name in (
+            'Axis:checkout', 'Axis:complete_test_checkout', 'EXODUS:checkout',
+            'EXODUS:process_order', 'GENESIS:checkout', 'GENESIS:process_order',
+            'Collective:checkout', 'Collective:process_order',
+        ):
+            with self.subTest(url_name=url_name):
+                url = reverse(url_name)
+                response = self.client.post(url, data='{}', content_type='application/json')
+                self.assertRedirects(response, f"{reverse('account:login')}?next={url}")
+
+    def test_login_menu_omits_storefront_specific_links(self):
+        response = self.client.get(reverse('account:login') + '?store=axis')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, '>Shop<', html=False)
+        self.assertNotContains(response, '>Contact<', html=False)
+        self.assertNotContains(response, '>About<', html=False)
+        self.assertNotContains(response, 'Quick Cart')
+        self.assertNotContains(response, 'title="Cart"', html=False)
+        self.assertContains(response, 'Sign in to Foxx Mart')
+        self.assertContains(response, 'Forgot password?')
+
+    @override_settings(
+        GOOGLE_OAUTH_CLIENT_ID='test-google-client-id',
+        GOOGLE_OAUTH_CLIENT_SECRET='test-google-client-secret',
+    )
+    def test_login_page_offers_google_sign_in_when_configured(self):
+        response = self.client.get(reverse('account:login'))
+
+        self.assertContains(response, 'Continue with Google')
+        self.assertContains(response, reverse('google_login'))
+
+    @override_settings(
+        GOOGLE_OAUTH_CLIENT_ID='test-google-client-id',
+        GOOGLE_OAUTH_CLIENT_SECRET='test-google-client-secret',
+    )
+    def test_google_login_starts_a_state_protected_authorization_request(self):
+        response = self.client.get(reverse('google_login') + '?next=/mall/')
+
+        self.assertRedirects(response, response.url, fetch_redirect_response=False)
+        self.assertTrue(response.url.startswith('https://accounts.google.com/o/oauth2/v2/auth?'))
+        self.assertIn('google_oauth_state', self.client.session)
+        self.assertEqual(self.client.session['google_oauth_next'], '/mall/')
+
+    def test_google_callback_rejects_a_missing_or_invalid_state(self):
+        response = self.client.get(reverse('google_callback') + '?code=example&state=wrong')
+
+        self.assertRedirects(response, reverse('account:login'))
+
+    def test_change_password_page_uses_the_profile_shell(self):
+        account = Account.objects.create_user(
+            email='change-password@example.com', username='Change Password', password='SafePass123!'
+        )
+        self.client.force_login(account)
+
+        response = self.client.get(reverse('password_change') + '?store=axis')
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Profile security')
+        self.assertContains(response, 'Quick Cart')
+        self.assertContains(response, 'Update password')
+
     def test_password_reset_uses_the_account_menu_and_quick_cart(self):
         response = self.client.get(reverse('reset_password') + '?store=axis')
 
@@ -88,6 +190,7 @@ class AccountProfileTests(TestCase):
         self.assertTrue(AxisCustomer.objects.filter(user=account).exists())
         self.assertContains(response, 'Profile')
         self.assertContains(response, 'Logout')
+        self.assertContains(response, 'Logged in as: Legacy Account')
         self.assertNotContains(response, '>Register<', html=False)
         self.assertNotContains(response, '>Login<', html=False)
 
@@ -103,7 +206,7 @@ class AccountProfileTests(TestCase):
 
         response = self.client.get(reverse('account:profile') + '?store=axis')
 
-        self.assertContains(response, 'name="cart"', html=False)
+        self.assertContains(response, 'name="cart-outline"', html=False)
         self.assertContains(response, '<b>2</b>', html=False)
         self.assertContains(response, 'Quick Cart')
         self.assertContains(response, 'Profile cart product')
@@ -157,6 +260,31 @@ class AccountProfileTests(TestCase):
         self.assertContains(response, 'EXODUS Order History')
         self.assertNotContains(response, axis_order.transaction_id)
 
+    def test_confirmed_order_invoice_appears_in_its_store_profile_and_downloads_as_pdf(self):
+        account = Account.objects.create_user(
+            email='invoice-profile@example.com', username='Invoice Profile', password='SafePass123!'
+        )
+        customer = AxisCustomer.objects.create(user=account, email=account.email)
+        product = Product.objects.create(name='Invoice-ready product', price='125.00', stock=1)
+        order = Order.objects.create(
+            customer=customer,
+            transaction_id='INVOICE-TEST-001',
+            status='Payment Confirmed, Processing Order',
+        )
+        OrderItem.objects.create(order=order, product=product, quantity=2)
+        invoice = create_invoice_for_order(user=account, store_slug='axis', order=order)
+        self.client.force_login(account)
+
+        response = self.client.get(reverse('account:profile') + '?store=axis')
+
+        self.assertContains(response, 'View PDF')
+        self.assertContains(response, reverse('account:invoice_download', args=[invoice.public_id]))
+        pdf_response = self.client.get(reverse('account:invoice_view', args=[invoice.public_id]))
+        self.assertEqual(pdf_response.status_code, 200)
+        self.assertEqual(pdf_response['Content-Type'], 'application/pdf')
+        self.assertTrue(pdf_response.content.startswith(b'%PDF'))
+        self.assertEqual(Invoice.objects.filter(user=account, store_slug='axis').count(), 1)
+
 
 @override_settings(EMAIL_BACKEND='django.core.mail.backends.locmem.EmailBackend')
 class CartLifecycleTests(TestCase):
@@ -170,7 +298,7 @@ class CartLifecycleTests(TestCase):
         self.client.cookies['cart'] = '{"%s":{"quantity":2}}' % self.product.id
         response = self.client.post(reverse('account:login') + '?next=/3rdAxis/cart/', {'email': self.account.email, 'password': 'SafePass123!'})
 
-        self.assertRedirects(response, '/3rdAxis/cart/')
+        self.assertRedirects(response, reverse('home:mall'))
         item = OrderItem.objects.get(order__customer=self.customer, product=self.product)
         self.assertEqual(item.quantity, 2)
         self.product.refresh_from_db()

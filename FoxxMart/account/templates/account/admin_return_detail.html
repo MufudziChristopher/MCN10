@@ -1,0 +1,11 @@
+{% extends 'menu_base.html' %}
+
+{% block body %}
+<main class="account-profile-page ops-dashboard">
+  <section class="account-profile-section"><div class="account-profile-section__heading"><div><p class="account-profile-eyebrow">Customer care</p><h1>Return request</h1></div><div class="ops-dashboard__actions"><a href="{% url 'account:admin_dashboard' %}">Back to dashboard</a><a href="{% url 'account:invoice_view' return_request.invoice.public_id %}" target="_blank" rel="noopener">View invoice</a></div></div>
+    <dl class="account-return-details"><div><dt>Invoice</dt><dd>{{ return_request.invoice }}</dd></div><div><dt>Customer</dt><dd>{{ return_request.user.email }}</dd></div><div><dt>Status</dt><dd>{{ return_request.get_status_display }}</dd></div><div><dt>Submitted</dt><dd>{{ return_request.created_at|date:"d M Y, H:i" }}</dd></div><div><dt>Reason</dt><dd>{{ return_request.reason }}</dd></div><div><dt>Details</dt><dd>{{ return_request.details|default:"No additional details provided." }}</dd></div></dl>
+    <section class="ops-dashboard__status-update"><h2>Return status</h2><p>Record the stage of this return as it is reviewed, received, and refunded.</p><form method="post" action="{% url 'account:admin_update_return' return_request.pk %}">{% csrf_token %}<input type="hidden" name="next" value="{{ request.path }}"><label for="return-status">Current stage</label><select id="return-status" name="status">{% for value, label in return_statuses %}<option value="{{ value }}"{% if return_request.status == value %} selected{% endif %}>{{ label }}</option>{% endfor %}</select><button type="submit">Update return status</button></form></section>
+    <h2>Evidence</h2>{% if return_request.attachments.all %}<div class="account-return-images">{% for attachment in return_request.attachments.all %}<a href="{{ attachment.image.url }}" target="_blank" rel="noopener"><img src="{{ attachment.image.url }}" alt="Return evidence photo"></a>{% endfor %}</div>{% else %}<p>No images were attached to this request.</p>{% endif %}
+  </section>
+</main>
+{% endblock %}

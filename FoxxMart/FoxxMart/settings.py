@@ -12,8 +12,17 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+import environ
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# OAuth credentials remain local to each deployment.  The .env file is ignored
+# by Git, so client secrets never become part of the repository.
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+GOOGLE_OAUTH_CLIENT_ID = env.str('GOOGLE_OAUTH_CLIENT_ID', default='')
+GOOGLE_OAUTH_CLIENT_SECRET = env.str('GOOGLE_OAUTH_CLIENT_SECRET', default='')
 
 
 # Quick-start development settings - unsuitable for production
@@ -66,6 +75,9 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'account.Account'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+LOGIN_REDIRECT_URL = 'home:mall'
+ADMIN_NOTIFICATION_EMAIL = env.str('ADMIN_NOTIFICATION_EMAIL', default='mnhamoinesu+foxx@gmail.com')
+DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL', default='no-reply@foxxmart.local')
 
 
 MIDDLEWARE = [
@@ -108,9 +120,18 @@ WSGI_APPLICATION = 'FoxxMart.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env.str('POSTGRES_DB'),
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': env.str('POSTGRES_PASSWORD'),
+        'HOST': env.str('POSTGRES_HOST', default="127.0.0.1"),
+        'PORT': env.str('POSTGRES_PORT', default='5432'),
+        'CONN_MAX_AGE': 60,
     }
 }
 

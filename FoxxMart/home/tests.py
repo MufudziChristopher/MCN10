@@ -32,10 +32,18 @@ class MallFrontTests(TestCase):
         self.assertContains(response, 'The Collective')
         self.assertContains(response, 'Genesis')
         self.assertContains(response, 'Exodus')
+        self.assertContains(response, 'Bomkazi Designs')
         self.assertContains(response, reverse('Axis:store'))
         self.assertContains(response, reverse('Collective:store'))
         self.assertContains(response, reverse('GENESIS:store'))
         self.assertContains(response, reverse('EXODUS:store'))
+        self.assertContains(response, reverse('Projects:bomkazi'))
+
+    def test_bomkazi_boutique_is_available_from_the_mall(self):
+        response = self.client.get(reverse('Projects:bomkazi'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Bomkazi Designs')
 
     def test_mall_only_shows_a_store_badge_when_that_store_has_cart_items(self):
         shopper = Account.objects.create_user(

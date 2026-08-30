@@ -11,7 +11,8 @@
 		let lastScrollY = window.scrollY;
 		let suppressScrollUntil = 0;
 		const collapseAfter = Number(menu.dataset.collapseAfter || 96);
-		const startsCollapsed = menu.dataset.startCollapsed === 'true';
+		const startsCollapsed = menu.dataset.startCollapsed === 'true' ||
+			(menu.dataset.startCollapsed === 'mobile' && window.matchMedia('(max-width: 60em)').matches);
 
 		const setCollapsed = (collapsed) => {
 			menu.classList.toggle('is-collapsed', collapsed);
@@ -33,12 +34,11 @@
 			/* Keep the menu collapsed throughout the page instead of repeatedly
 			 * crossing the threshold as the sticky header changes height. */
 			if (currentScrollY <= 4) {
-				if (startsCollapsed && !openedManually) {
-					setCollapsed(true);
-				} else {
-					setCollapsed(false);
-				}
-			} else if (currentScrollY > collapseAfter && !openedManually) {
+				/* The menu is a page-level orientation aid: reveal it again when
+				 * the visitor returns to the top, even on mobile. */
+				setCollapsed(false);
+			} else if (currentScrollY > collapseAfter) {
+				openedManually = false;
 				setCollapsed(true);
 			} else if (moved) {
 				openedManually = false;

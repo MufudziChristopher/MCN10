@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Foxx Mart API &amp; SQL Testing — Practical QA Workbook</title>
+  <style>
+    :root { --ink:#14202b; --muted:#536170; --paper:#fff; --page:#edf2f5; --accent:#0e6b82; --code:#10202b; --line:#cfdae0; }
+    * { box-sizing:border-box; } body { margin:0; background:var(--page); color:var(--ink); font:16px/1.6 Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+    main { width:min(100% - 2rem, 980px); margin:2rem auto 5rem; } header, section { background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:clamp(1.25rem, 4vw, 2.5rem); margin:1rem 0; box-shadow:0 8px 24px rgba(18,35,45,.06); }
+    header { background:linear-gradient(135deg,#10202b,#0e6b82); color:#fff; } h1 { font-size:clamp(2rem,6vw,3.75rem); line-height:1.05; margin:0 0 .75rem; } h2 { font-size:1.55rem; line-height:1.2; margin:0 0 .9rem; } h3 { margin-top:1.75rem; } p, li { max-width:76ch; } .eyebrow { font-size:.8rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; opacity:.82; } .lead { font-size:1.15rem; max-width:65ch; }
+    nav { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.25rem; } nav a { padding:.35rem .65rem; border:1px solid rgba(255,255,255,.45); border-radius:999px; color:#fff; text-decoration:none; font-size:.9rem; }
+    code { padding:.12rem .32rem; border-radius:.3rem; background:#e8eef1; font-family:"SFMono-Regular",Consolas,monospace; font-size:.9em; } pre { overflow:auto; padding:1rem; border-radius:10px; background:var(--code); color:#e9f6fb; line-height:1.5; } pre code { padding:0; background:transparent; color:inherit; } .callout { padding:1rem 1.1rem; border-left:4px solid var(--accent); background:#edf8fa; } .warn { border-left-color:#a15b00; background:#fff6e7; } .steps { counter-reset:step; list-style:none; padding:0; } .steps > li { position:relative; padding:0 0 1rem 3.1rem; } .steps > li::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:0; display:grid; width:2rem; height:2rem; place-items:center; border-radius:50%; background:var(--accent); color:#fff; font-weight:800; } table { width:100%; border-collapse:collapse; } th, td { padding:.75rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#f5f8f9; } kbd { padding:.1rem .35rem; border:1px solid #9eabb3; border-bottom-width:2px; border-radius:.25rem; font-family:inherit; font-size:.85em; } @media print { body{background:#fff} main{width:100%;margin:0} section,header{box-shadow:none;break-inside:avoid} nav{display:none} }
+    .lab { border:1px solid #b9d5df; border-radius:12px; padding:1rem 1.15rem; margin:1rem 0; background:#f6fcfe; } .lab h3 { margin:.1rem 0 .45rem; } .checklist { display:grid; gap:.55rem; padding:0; list-style:none; } .checklist label { display:flex; gap:.6rem; align-items:flex-start; cursor:pointer; } .checklist input { margin-top:.35rem; accent-color:var(--accent); } .answer { margin-top:.75rem; } .answer summary { cursor:pointer; font-weight:700; } .answer > div { margin-top:.5rem; padding:.8rem; border-left:3px solid var(--accent); background:#eef7fa; } .metric { display:inline-block; padding:.15rem .45rem; border-radius:999px; background:#dff2f7; color:#07546a; font-size:.8rem; font-weight:800; } @media print { body{background:#fff} main{width:100%;margin:0} section,header{box-shadow:none;break-inside:avoid} nav{display:none} }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p class="eyebrow">Foxx Mart practical workbook</p>
+    <h1>API &amp; SQL testing workbook</h1>
+    <p class="lead">Build from the Foxx Mart login journey into invoice, order, total, stock, and return testing—the kind of backend quality story that is useful in a QA Engineer interview.</p>
+    <nav><a href="#setup">Setup</a><a href="#first-test">UI baseline</a><a href="#api">API contracts</a><a href="#sql">SQL checks</a><a href="#invoice-lab">Invoice lab</a><a href="#status-lab">Order states</a><a href="#flake">Reliability</a><a href="#interview">Interview</a></nav>
+  </header>
+
+  <section>
+    <h2>What you will test</h2>
+    <p>The login URL is <code>http://127.0.0.1:8000/account/login/</code>. The practical backend scope is the 3rd Axis store’s versioned API, cart behaviour, test checkout, invoice snapshot, PDF endpoints, order lifecycle, returns, stock, and totals. Login remains the safe entry point for authenticated API work.</p>
+    <div class="callout"><strong>Testing boundary:</strong> use a dedicated local/test account. Never put a real password, OAuth secret, or production customer data in a test file, trace, screenshot, or report.</div>
+  </section>
+
+  <section id="setup">
+    <h2>1. Install and initialise Playwright</h2>
+    <ol class="steps">
+      <li>Open a terminal in the project folder: <code>/Users/foxx/Documents/MCN10/FoxxMart</code>.</li>
+      <li>Keep Django running in one terminal: <code>./.venv/bin/python manage.py runserver 127.0.0.1:8000</code>.</li>
+      <li>In a second terminal, initialise Playwright. Choose TypeScript, a <code>tests</code> folder, and GitHub Actions only if you want the optional workflow.</li>
+    </ol>
+    <pre><code>npm init playwright@latest
+npx playwright install
+npx playwright test --ui</code></pre>
+    <p>The UI runner is excellent for learning: it shows each assertion, lets you replay a test, inspect selectors, and open traces. The command-line runner is better for continuous integration.</p>
+    <h3>Recommended configuration</h3>
+    <pre><code>// playwright.config.ts
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: './tests',
+  timeout: 30_000,
+  expect: { timeout: 5_000 },
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  reporter: [['html', { open: 'never' }], ['list']],
+  use: {
+    baseURL: 'http://127.0.0.1:8000',
+    trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+  },
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    { name: 'mobile-chrome', use: { ...devices['Pixel 5'] } },
+  ],
+});</code></pre>
+    <p><strong>Why this matters:</strong> <code>baseURL</code> keeps tests readable, separate projects exercise desktop and mobile behavior, and traces/screenshots retain evidence only when needed.</p>
+  </section>
+
+  <section id="first-test">
+    <h2>2. Write your first login-page test</h2>
+    <p>Create <code>tests/login.spec.ts</code>. Start with visible user outcomes—not implementation details such as CSS class names.</p>
+    <pre><code>import { test, expect } from '@playwright/test';
+
+test.describe('Foxx Mart login', () =&gt; {
+  test('shows a focused, cart-free login experience', async ({ page }) =&gt; {
+    await page.goto('/account/login/');
+
+    await expect(page.getByRole('heading', { name: 'Sign in to Foxx Mart' })).toBeVisible();
+    await expect(page.getByLabel('Email address')).toBeVisible();
+    await expect(page.getByLabel('Password')).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Forgot password?' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Sign in' })).toBeVisible();
+
+    await expect(page.getByText('Quick Cart')).toHaveCount(0);
+    await expect(page.getByTitle('Cart')).toHaveCount(0);
+  });
+});</code></pre>
+    <p>Run it with <code>npx playwright test tests/login.spec.ts</code>. The <code>page</code> object is a browser tab supplied by Playwright’s built-in fixture; <code>expect</code> waits automatically for the assertion’s condition.</p>
+    <h3>Use resilient locators</h3>
+    <table><thead><tr><th>Prefer</th><th>Avoid</th><th>Reason</th></tr></thead><tbody>
+      <tr><td><code>getByRole('button', { name: 'Sign in' })</code></td><td><code>button:nth-child(4)</code></td><td>Matches how a user finds the control.</td></tr>
+      <tr><td><code>getByLabel('Email address')</code></td><td><code>#id_email</code></td><td>Survives implementation/ID changes and checks accessibility.</td></tr>
+      <tr><td><code>getByTestId('order-row')</code></td><td><code>.card &gt; div &gt; span</code></td><td>Use an explicit test ID only when role/text is ambiguous.</td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <h2>3. Exercise the important login paths</h2>
+    <h3>Invalid password: assert the outcome</h3>
+    <pre><code>test('rejects an invalid password', async ({ page }) =&gt; {
+  await page.goto('/account/login/');
+  await page.getByLabel('Email address').fill('qa-user@example.test');
+  await page.getByLabel('Password').fill('not-the-password');
+  await page.getByRole('button', { name: 'Sign in' }).click();
+
+  await expect(page.getByText(/didn't work|invalid login/i)).toBeVisible();
+  await expect(page).toHaveURL(/\/account\/login\//);
+});</code></pre>
+    <h3>Valid login: create test data deliberately</h3>
+    <p>For a real valid-login test, create a known test account before the suite (via a Django factory, a management command, or a test-only seed). Do not depend on a manually created account that can be edited or deleted.</p>
+    <pre><code>test('signs in and takes the shopper to the mall', async ({ page }) =&gt; {
+  await page.goto('/account/login/');
+  await page.getByLabel('Email address').fill(process.env.E2E_EMAIL!);
+  await page.getByLabel('Password').fill(process.env.E2E_PASSWORD!);
+  await page.getByRole('button', { name: 'Sign in' }).click();
+
+  await expect(page).toHaveURL(/\/mall\//);
+});</code></pre>
+    <div class="callout warn"><strong>Do not commit <code>.env</code>.</strong> Use a local <code>.env.test</code>, a CI secret store, or a test database reset. The non-null <code>!</code> is TypeScript syntax that tells the compiler you have supplied the variable; it does not make the value safe.</div>
+    <h3>Google: verify the hand-off, not Google itself</h3>
+    <p>OAuth is a third-party boundary. In an end-to-end smoke test, assert the link exists and points to Foxx Mart’s own OAuth-start URL. Keep the real Google consent screen out of ordinary automated tests.</p>
+    <pre><code>test('starts the Google sign-in hand-off', async ({ page }) =&gt; {
+  await page.goto('/account/login/');
+  const google = page.getByRole('link', { name: 'Continue with Google' });
+  await expect(google).toHaveAttribute('href', '/accounts/google/login/');
+});</code></pre>
+  </section>
+
+  <section id="fixtures">
+    <h2>4. Understand fixtures and test suites</h2>
+    <p>A <strong>fixture</strong> is reusable setup and cleanup supplied to a test. Playwright gives you <code>page</code>, <code>browser</code>, and <code>context</code>. You can extend them with an authenticated page or an API client.</p>
+    <pre><code>// tests/fixtures.ts
+import { test as base, expect } from '@playwright/test';
+
+type Fixtures = { loginPage: import('@playwright/test').Page };
+
+export const test = base.extend&lt;Fixtures&gt;({
+  loginPage: async ({ page }, use) =&gt; {
+    await page.goto('/account/login/');
+    await expect(page.getByRole('heading', { name: 'Sign in to Foxx Mart' })).toBeVisible();
+    await use(page); // hand the prepared page to the test
+    // optional cleanup belongs after use()
+  },
+});
+export { expect };</code></pre>
+    <pre><code>// tests/login.spec.ts
+import { test, expect } from './fixtures';
+
+test.describe('Foxx Mart login', () =&gt; {
+  test('has a password-recovery route', async ({ loginPage }) =&gt; {
+    await loginPage.getByRole('link', { name: 'Forgot password?' }).click();
+    await expect(loginPage).toHaveURL(/\/reset_password\//);
+  });
+});</code></pre>
+    <p><code>test.describe</code> groups related scenarios for reporting and shared hooks. Use <code>test.beforeEach</code> for cheap, isolated setup; use <code>beforeAll</code> only for safe, read-only or globally managed setup. Tests should be able to run alone, in any order, and in parallel.</p>
+  </section>
+
+  <section id="async">
+    <h2>5. Explain <code>async</code> and <code>await</code> confidently</h2>
+    <p>Browser actions take time: navigation, clicks, rendering, and network calls are asynchronous. An <code>async</code> test returns a Promise. <code>await</code> pauses that test until the action completes, without blocking other tests or the Node.js event loop.</p>
+    <pre><code>// Correct: complete each important action before relying on its result.
+await page.getByRole('button', { name: 'Sign in' }).click();
+await expect(page).toHaveURL(/\/mall\//);
+
+// Risky: the assertion may run before a navigation caused by the click.
+page.getByRole('button', { name: 'Sign in' }).click();
+await expect(page).toHaveURL(/\/mall\//);</code></pre>
+    <p>Playwright assertions retry automatically until their timeout. This is different from adding a blind <code>waitForTimeout(2000)</code>, which only makes a slow test slower and a very slow test still flaky.</p>
+  </section>
+
+  <section>
+    <h2>6. Test responsive menu collapse</h2>
+    <p>The menu is expanded at page load and should collapse after a vertical scroll of more than 96px on desktop and mobile. The behavior is an ideal interview-quality UI test because it tests a user-visible state transition.</p>
+    <pre><code>test('collapses the login menu after scrolling', async ({ page }) =&gt; {
+  await page.goto('/account/login/');
+  const menu = page.locator('[data-account-menu]');
+
+  await expect(menu).not.toHaveClass(/is-collapsed/);
+  await page.evaluate(() =&gt; window.scrollTo(0, 120));
+  await expect(menu).toHaveClass(/is-collapsed/);
+});</code></pre>
+    <p>Run this in both configured projects: <code>npx playwright test --project=chromium</code> and <code>npx playwright test --project=mobile-chrome</code>. If the login page is too short to scroll in a chosen viewport, test this rule on a longer account/store page, or add purposeful test-only content—not arbitrary waits.</p>
+  </section>
+
+  <section id="api">
+    <h2>7. API testing: turn browser risk into contract checks</h2>
+    <p>Use the UI for the few journeys a shopper sees; use the API for fast, precise coverage of rules and edge cases. 3rd Axis exposes <code>GET /3rdAxis/api/v1/products/</code>, <code>GET /3rdAxis/api/v1/products/:id/</code>, <code>GET /3rdAxis/api/v1/cart/</code>, and <code>POST /3rdAxis/api/v1/cart/items/</code>. The cart endpoints require an authenticated user with Axis access.</p>
+    <table><thead><tr><th>Risk</th><th>Best level</th><th>Useful assertion</th></tr></thead><tbody>
+      <tr><td>Product data shape changes</td><td>API contract</td><td>Every product has ID, name, two-decimal price, numeric stock, and currency semantics.</td></tr>
+      <tr><td>Out-of-stock product is oversold</td><td>API + SQL</td><td>POST returns <code>409</code>; stock and cart rows do not change.</td></tr>
+      <tr><td>Cart total is wrong</td><td>API + SQL</td><td>API line totals, cart total, and database calculation agree.</td></tr>
+      <tr><td>Payment creates duplicate invoice</td><td>UI/API + SQL</td><td>One invoice exists per user, store, and order reference.</td></tr>
+      <tr><td>Customer sees another customer’s invoice</td><td>Authenticated API/UI</td><td>Owner receives PDF; different shopper receives 404/forbidden outcome.</td></tr>
+    </tbody></table>
+    <h3>First public API contract test</h3>
+    <pre><code>import { test, expect } from '@playwright/test';
+
+test('products contract exposes safe, typed fields', async ({ request }) =&gt; {
+  const response = await request.get('/3rdAxis/api/v1/products/');
+  await expect(response).toBeOK();
+
+  const body = await response.json();
+  expect(Array.isArray(body.products)).toBeTruthy();
+  expect(body.products.length).toBeGreaterThan(0);
+
+  for (const product of body.products) {
+    expect(product).toMatchObject({
+      id: expect.any(Number),
+      name: expect.any(String),
+      stock: expect.any(Number),
+    });
+    expect(product.price).toMatch(/^\d+\.\d{2}$/);
+    expect(product.stock).toBeGreaterThanOrEqual(0);
+    expect(product).not.toHaveProperty('cost_price'); // a useful data-leak check
+  }
+});</code></pre>
+    <p><strong>Interview language:</strong> this is not merely a status-code test. It verifies the contract that a UI or partner integration depends on, checks data quality, and guards against accidental exposure of internal fields.</p>
+    <h3>Authenticated API fixture without secrets in test code</h3>
+    <pre><code>// tests/auth.setup.ts — run once to create a reusable, local storage state
+import { test as setup, expect } from '@playwright/test';
+
+setup('authenticate QA shopper', async ({ page }) =&gt; {
+  await page.goto('/account/login/');
+  await page.getByLabel('Email address').fill(process.env.E2E_EMAIL!);
+  await page.getByLabel('Password').fill(process.env.E2E_PASSWORD!);
+  await page.getByRole('button', { name: 'Sign in' }).click();
+  await expect(page).toHaveURL(/\/mall\//);
+  await page.context().storageState({ path: 'playwright/.auth/shopper.json' });
+});
+
+// In playwright.config.ts, make API/UI projects depend on this setup project.
+// Add playwright/.auth/ and .env.test to .gitignore.</code></pre>
+    <pre><code>// tests/cart-api.spec.ts
+import { test, expect } from '@playwright/test';
+
+test.use({ storageState: 'playwright/.auth/shopper.json' });
+
+test('rejects an attempt to add an out-of-stock item', async ({ page }) =&gt; {
+  // BrowserContext.request shares the authenticated browser context's cookies.
+  const api = page.context().request;
+  const products = await (await api.get('/3rdAxis/api/v1/products/')).json();
+  const outOfStock = products.products.find((product: { stock: number }) =&gt; product.stock === 0);
+  test.skip(!outOfStock, 'Seed an out-of-stock product before running this test.');
+
+  const before = await api.get('/3rdAxis/api/v1/cart/');
+  const beforeBody = await before.json();
+  const response = await api.post('/3rdAxis/api/v1/cart/items/', {
+    data: { productId: outOfStock.id, action: 'add' },
+  });
+
+  expect(response.status()).toBe(409);
+  expect(await response.json()).toEqual({ error: 'This item is out of stock.' });
+  expect(await (await api.get('/3rdAxis/api/v1/cart/')).json()).toEqual(beforeBody);
+});</code></pre>
+    <div class="callout warn"><strong>Important:</strong> do not use a shared cart when tests run in parallel. Give every worker a distinct test user, or clean/reseed the data before every test. A test that changes stock must restore it in teardown or, better, run in a disposable database.</div>
+    <div class="lab"><h3>Practice task <span class="metric">20 min</span></h3><p>Write tests for malformed JSON, missing <code>productId</code>, unsupported <code>action</code>, a non-existent product, remove from an empty cart, and <code>set</code> quantity zero. For each one, state the expected status, response body, and database outcome before you run it.</p><ul class="checklist"><li><label><input type="checkbox">I used status + body + state assertions, not status alone.</label></li><li><label><input type="checkbox">I can explain why <code>409 Conflict</code> fits an out-of-stock add.</label></li></ul></div>
+  </section>
+
+  <section id="sql">
+    <h2>8. SQL testing: independently verify the ledger</h2>
+    <p>SQL is a powerful QA diagnostic and reconciliation tool. It should run only against a local or dedicated test PostgreSQL database, using least-privilege read access where possible. It is not a substitute for testing business behaviour through supported interfaces.</p>
+    <h3>Connect safely</h3>
+    <pre><code># Your local/test connection string only; never paste a production password into a workbook.
+psql "$DATABASE_URL"
+
+# Inspect tables rather than guessing their names.
+\dt axis_*
+\dt account_*
+\d axis_order
+\d account_invoice</code></pre>
+    <h3>Reconcile an Axis order subtotal</h3>
+    <pre><code>-- Replace :order_id with the order you created in the test environment.
+SELECT
+  o.id AS order_id,
+  o.status,
+  COALESCE(SUM(oi.quantity * p.price), 0)::numeric(12,2) AS calculated_subtotal,
+  COUNT(oi.id) AS distinct_lines,
+  COALESCE(SUM(oi.quantity), 0) AS item_count
+FROM axis_order AS o
+LEFT JOIN axis_orderitem AS oi ON oi.order_id = o.id
+LEFT JOIN axis_product AS p ON p.id = oi.product_id
+WHERE o.id = :order_id
+GROUP BY o.id, o.status;</code></pre>
+    <p>Compare <code>calculated_subtotal</code> with the API’s <code>total</code> while the cart is pending. The Axis pricing rule is: <code>grand total = subtotal + R99.00 delivery + 15% VAT on (subtotal + delivery)</code>, rounded to two decimal places. Always clarify the tax base with product before treating this as a defect.</p>
+    <h3>Reconcile invoice snapshots</h3>
+    <pre><code>SELECT
+  i.id, i.store_slug, i.order_reference, i.status,
+  i.subtotal, i.delivery_fee, i.vat_amount, i.total,
+  (i.subtotal + i.delivery_fee + i.vat_amount)::numeric(12,2) AS recomputed_total,
+  i.issued_at
+FROM account_invoice AS i
+WHERE i.store_slug = 'axis'
+  AND i.order_reference = :order_id;
+
+-- This should return zero rows. If it returns data, the idempotency invariant is broken.
+SELECT user_id, store_slug, order_reference, COUNT(*)
+FROM account_invoice
+GROUP BY user_id, store_slug, order_reference
+HAVING COUNT(*) &gt; 1;</code></pre>
+    <h3>Find suspicious state</h3>
+    <pre><code>-- No product should have negative stock.
+SELECT id, name, stock FROM axis_product WHERE stock &lt; 0;
+
+-- Confirm line totals are never based on a null product.
+SELECT oi.id, oi.order_id
+FROM axis_orderitem AS oi
+WHERE oi.product_id IS NULL;
+
+-- Confirm a completed/payment-confirmed Axis order has exactly one invoice.
+SELECT o.id, o.status, COUNT(i.id) AS invoices
+FROM axis_order AS o
+LEFT JOIN account_invoice AS i
+  ON i.store_slug = 'axis' AND i.order_reference = o.id::text
+WHERE o.status = 'Payment confirmed'
+GROUP BY o.id, o.status
+HAVING COUNT(i.id) &lt;&gt; 1;</code></pre>
+    <details class="answer"><summary>How to describe SQL testing in an interview</summary><div>“I use SQL to validate persistence and cross-check financial invariants after exercising the public interface. I make the query deterministic, scope it to seeded data, and clean up afterward. I do not couple every UI test to the database; I reserve it for high-risk flows such as money, stock, state transitions, and data migration.”</div></details>
+  </section>
+
+  <section id="invoice-lab">
+    <h2>9. Invoice and total lab</h2>
+    <p>Foxx Mart creates an invoice snapshot after a confirmed checkout. It records the store, order reference, transaction ID, status, subtotal, VAT, delivery fee, total, and JSON item snapshot. The profile page exposes view/download invoice endpoints using a public UUID owned by the logged-in customer.</p>
+    <ol class="steps"><li>Create a test order with two different products and a quantity greater than one.</li><li>Record the cart API response before checkout: line items, count, and subtotal.</li><li>Complete the local test checkout with a valid shipping address and choose whether to save it.</li><li>Assert redirect to <code>/account/?store=axis</code>, then locate the new invoice link.</li><li>Open the view and download URLs. Assert <code>Content-Type: application/pdf</code> and a useful filename.</li><li>Use the SQL reconciliation query to verify exactly one invoice and the calculated total.</li></ol>
+    <pre><code>test('confirmed checkout produces one owned PDF invoice', async ({ page }) =&gt; {
+  // Precondition: a dedicated QA user has a pending cart with seeded items.
+  await page.goto('/3rdAxis/checkout/');
+  await page.getByLabel('Country').selectOption({ label: 'South Africa' });
+  await page.getByLabel('Street address and number').fill('1 Test Lane');
+  await page.getByLabel('Suburb / area').fill('QA Park');
+  await page.getByLabel('City / town').fill('Cape Town');
+  await page.getByLabel('Province').selectOption({ label: 'Western Cape' });
+  await page.getByLabel('Postal code').fill('8001');
+  await page.getByRole('button', { name: /confirm test order/i }).click();
+  await expect(page).toHaveURL(/\/account\/\?store=axis/);
+
+  const invoice = page.getByRole('link', { name: 'View PDF' }).first();
+  await expect(invoice).toBeVisible();
+  const pdf = await page.context().request.get(await invoice.getAttribute('href')!);
+  expect(pdf.headers()['content-type']).toContain('application/pdf');
+  expect(pdf.headers()['content-disposition']).toContain('foxx-mart-invoice-');
+});</code></pre>
+    <div class="lab"><h3>Defect-hunting checklist <span class="metric">30 min</span></h3><ul class="checklist"><li><label><input type="checkbox">Refresh or re-submit after checkout: no duplicate invoice should appear.</label></li><li><label><input type="checkbox">Change product price after checkout: existing invoice snapshot must not change.</label></li><li><label><input type="checkbox">Use a second QA customer: they cannot retrieve the first user’s invoice UUID.</label></li><li><label><input type="checkbox">Check rounding with values that create fractional cents.</label></li><li><label><input type="checkbox">Check that a failed/missing shipping field does not confirm payment or create an invoice.</label></li></ul></div>
+  </section>
+
+  <section id="status-lab">
+    <h2>10. Admin and order-state lab</h2>
+    <p>The Axis order lifecycle includes Pending, Payment confirmed, Picking items, Packed, Awaiting courier, Collected by courier, In transit, Out for delivery, Delivered, Delivery exception, and Cancelled. Test the operations interface or Django Admin with a designated test administrator—not your everyday shopper session.</p>
+    <table><thead><tr><th>Transition to challenge</th><th>Why it matters</th><th>Evidence to collect</th></tr></thead><tbody>
+      <tr><td>Pending → Payment confirmed</td><td>Payment event should create one invoice and stable transaction ID.</td><td>UI message, order row, invoice, SQL reconciliation.</td></tr>
+      <tr><td>Payment confirmed → Picking → Packed</td><td>Operations visibility and correct customer-facing label.</td><td>Admin update, profile status, audit/time evidence if implemented.</td></tr>
+      <tr><td>Delivered → Cancelled</td><td>Likely invalid business transition; clarify rules before automating.</td><td>Expected validation or documented accepted behaviour.</td></tr>
+      <tr><td>Return requested → approved/declined/received/refunded/cancelled</td><td>One return per invoice; customer cannot cancel after processing.</td><td>Return record, status, attachment access, correct permissions.</td></tr>
+    </tbody></table>
+    <pre><code>// A service/API test is ideal if an order-status endpoint exists.
+// Until then, use the operations UI and assert observable outcomes.
+test('operations user can mark a confirmed order as picking', async ({ page }) =&gt; {
+  await page.goto('/account/admin-dashboard/');
+  const order = page.getByRole('row', { name: /TEST-/ }).first();
+  await order.getByLabel('Status').selectOption({ label: 'Picking items' });
+  await order.getByRole('button', { name: /save|update/i }).click();
+  await expect(order).toContainText('Picking items');
+});</code></pre>
+    <p>For a QA interview, call out the distinction: an administrator changing a status is not proof that downstream actions happened. Identify the expected events—notification, stock reservation/release, invoice immutability, courier integration—and test each at the right layer.</p>
+  </section>
+
+  <section id="flake">
+    <h2>7. Prevent and investigate flaky tests</h2>
+    <table><thead><tr><th>Flaky symptom</th><th>Likely cause</th><th>Better approach</th></tr></thead><tbody>
+      <tr><td>Click sometimes misses</td><td>Element is covered or still animating</td><td>Use a role locator and let Playwright’s actionability checks wait. Investigate overlays rather than using <code>force: true</code>.</td></tr>
+      <tr><td>URL assertion races navigation</td><td>Missing <code>await</code></td><td>Await the click, then use <code>await expect(page).toHaveURL(...)</code>.</td></tr>
+      <tr><td>Passes locally, fails in CI</td><td>Shared state, timezone, network, or viewport dependence</td><td>Create isolated data, freeze/mask external services, run the mobile project locally, and use traces.</td></tr>
+      <tr><td>Selector breaks after a redesign</td><td>CSS/DOM-coupled locator</td><td>Use role, label, text, or an intentional <code>data-testid</code>.</td></tr>
+      <tr><td>Test is “fixed” with sleep</td><td>Timing is hidden instead of synchronized</td><td>Wait for a meaningful visible state, response, URL, or assertion.</td></tr>
+    </tbody></table>
+    <pre><code># Re-run only failures with artifacts
+npx playwright test --retries=2
+npx playwright show-report
+npx playwright show-trace test-results/**/trace.zip</code></pre>
+    <p>A retry is a signal, not a cure. In an interview say: “I allow limited CI retries to reduce noise, but I inspect the trace and remove the underlying source of nondeterminism.”</p>
+  </section>
+
+  <section id="interview">
+    <h2>11. QA Engineer interview rehearsal</h2>
+    <h3>Tell this testing story</h3>
+    <p>“I start with risk and the money flow. In Foxx Mart I would cover login as the authenticated entry point, then test API contracts for products and carts, out-of-stock protection, pricing calculations, checkout idempotency, invoice generation, ownership controls, and order/return state changes. I use Playwright fixtures and isolated QA data, assert response plus persisted state for high-risk flows, and use SQL to reconcile totals and investigate defects. I use retries only to surface instability, then inspect traces and remove the cause.”</p>
+    <h3>Questions to practise</h3>
+    <ul>
+      <li>How do you choose whether a risk belongs in a unit, API, UI, or database test?</li>
+      <li>How would you test a checkout flow without touching a real payment provider?</li>
+      <li>What makes an invoice idempotent, and how would you prove it?</li>
+      <li>How do you verify a total without duplicating all the application’s implementation in a test?</li>
+      <li>How would you test API authentication, authorization, validation, and rate/error handling?</li>
+      <li>How do Playwright API contexts, browser storage state, fixtures, and <code>async/await</code> work together?</li>
+      <li>How would you investigate a test that fails only in CI or only under parallel execution?</li>
+    </ul>
+    <h3>60-minute practice plan</h3>
+    <ol>
+      <li>Run the product contract test and deliberately break one expectation in a branch; read the report.</li>
+      <li>Build one negative cart API test and explain the status code, payload, and state invariant.</li>
+      <li>Create a two-line order, calculate expected subtotal/VAT/total on paper, then reconcile it with SQL.</li>
+      <li>Run the invoice workflow. Refresh/retry the last action and prove there is only one invoice.</li>
+      <li>Open trace/report artifacts and give the testing story above as a two-minute answer.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Completion checklist</h2>
+    <ul>
+      <li>I can initialise Playwright and run tests headlessly or in UI mode.</li>
+      <li>I can explain <code>test</code>, <code>expect</code>, <code>page</code>, <code>request</code>, <code>async</code>, and <code>await</code>.</li>
+      <li>I can write API contract, validation, and authorization tests with isolated data.</li>
+      <li>I can reconcile an order, cart, inventory value, and invoice total using safe SQL.</li>
+      <li>I can explain idempotency, eventual consistency, state transitions, and test data ownership.</li>
+      <li>I can use traces, screenshots, SQL evidence, and retries to diagnose—not hide—flakiness.</li>
+      <li>I can present a risk-based testing strategy for a financial/order workflow in plain language.</li>
+    </ul>
+  </section>
+</main>
+<script>
+  // Keep practice checkboxes local to this browser; no learner progress leaves the device.
+  document.querySelectorAll('.checklist input').forEach((input, index) => {
+    const key = `foxx-mart-api-sql-workbook-${index}`;
+    input.checked = localStorage.getItem(key) === 'true';
+    input.addEventListener('change', () => localStorage.setItem(key, String(input.checked)));
+  });
+</script>
+</body>
+</html>

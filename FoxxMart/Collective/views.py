@@ -15,6 +15,7 @@ from .forms import *
 from .utils import cookieCart, cartData, guestOrder
 from .filters import *
 from account.access import store_access_required
+from account.invoices import create_invoice_for_order
 
 # Create your views here.
 def about(request):
@@ -22,6 +23,7 @@ def about(request):
     return render(request, 'Collective/about.html', {})
 
 
+@store_access_required('collective')
 def store(request, category_slug=None):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -155,8 +157,9 @@ def processOrder(request):
 
     if total == order.get_cart_total:
         print("Order total is correct")
-        order.status = "Payment Confirmed, Processing Order"
+        order.status = "Payment confirmed"
         order.save()
+        create_invoice_for_order(user=request.user, store_slug='collective', order=order)
 
     else:
         print("Order total is incorrect")

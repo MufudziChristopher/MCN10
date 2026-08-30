@@ -1,0 +1,77 @@
+/* Foxx Mart checkout palette: monochrome only. */
+.checkout,
+.checkout__back,
+.checkout-summary__continue,
+.checkout__eyebrow,
+.checkout__header > p:last-child,
+.checkout-form__heading p,
+.checkout-form label,
+.checkout-form label span,
+.checkout-summary__item span,
+.checkout-summary dt,
+.checkout-summary__total dt,
+.checkout-summary__total dd { color: #000; }
+
+.checkout-card {
+  background: var(--foxx-glass-light, rgba(255, 255, 255, .18));
+  border-color: rgba(0, 0, 0, .35);
+  box-shadow: 0 .7rem 2rem rgba(0, 0, 0, .12);
+  -webkit-backdrop-filter: var(--foxx-glass-blur, blur(4px));
+  backdrop-filter: var(--foxx-glass-blur, blur(4px));
+}
+
+.checkout-form section + section,
+.checkout-summary dl,
+.checkout-summary__total,
+.checkout-form__save-address { border-color: rgba(0, 0, 0, .35); }
+
+.checkout-form__heading > span,
+.checkout-form__submit { background: #000; color: #fff; }
+
+.checkout-form__submit:hover,
+.checkout-form__submit:focus-visible { background: #fff; color: #000; box-shadow: inset 0 0 0 1px #000; }
+
+.checkout-form input,
+.checkout-form select,
+.checkout-form textarea,
+.checkout-form input[readonly],
+.checkout-form__save-address { background: rgba(255, 255, 255, .18); border-color: rgba(0, 0, 0, .45); color: #000; }
+
+.checkout-form input:focus,
+.checkout-form select:focus,
+.checkout-form textarea:focus { outline-color: rgba(0, 0, 0, .28); border-color: #000; }
+.checkout-form__save-address input { accent-color: #000; }
+
+body.axis-theme--dark .checkout,
+body.axis-theme--dark .checkout__back,
+body.axis-theme--dark .checkout-summary__continue,
+body.axis-theme--dark .checkout__eyebrow,
+body.axis-theme--dark .checkout__header > p:last-child,
+body.axis-theme--dark .checkout-form__heading p,
+body.axis-theme--dark .checkout-form label,
+body.axis-theme--dark .checkout-form label span,
+body.axis-theme--dark .checkout-summary__item span,
+body.axis-theme--dark .checkout-summary dt,
+body.axis-theme--dark .checkout-summary__total dt,
+body.axis-theme--dark .checkout-summary__total dd,
+body.axis-theme--dark .checkout-form__save-address span { color: #fff; }
+
+body.axis-theme--dark .checkout-card { background: var(--foxx-glass-dark, rgba(18, 18, 18, .22)); border-color: rgba(255, 255, 255, .35); }
+body.axis-theme--dark .checkout-form section + section,
+body.axis-theme--dark .checkout-summary dl,
+body.axis-theme--dark .checkout-summary__total,
+body.axis-theme--dark .checkout-form__save-address { border-color: rgba(255, 255, 255, .35); }
+body.axis-theme--dark .checkout-form input,
+body.axis-theme--dark .checkout-form select,
+body.axis-theme--dark .checkout-form textarea,
+body.axis-theme--dark .checkout-form input[readonly],
+body.axis-theme--dark .checkout-form__save-address { background: rgba(18, 18, 18, .18); border-color: rgba(255, 255, 255, .45); color: #fff; }
+body.axis-theme--dark .checkout-form select option { background: #000; color: #fff; }
+body.axis-theme--dark .checkout-form__heading > span,
+body.axis-theme--dark .checkout-form__submit { background: #fff; color: #000; }
+body.axis-theme--dark .checkout-form__submit:hover,
+body.axis-theme--dark .checkout-form__submit:focus-visible { background: #000; color: #fff; box-shadow: inset 0 0 0 1px #fff; }
+body.axis-theme--dark .checkout-form input:focus,
+body.axis-theme--dark .checkout-form select:focus,
+body.axis-theme--dark .checkout-form textarea:focus { outline-color: rgba(255, 255, 255, .28); border-color: #fff; }
+body.axis-theme--dark .checkout-form__save-address input { accent-color: #fff; }

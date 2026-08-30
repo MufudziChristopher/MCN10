@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.conf import settings
 from Axis.models import Product
+import uuid
 
 
 
@@ -47,9 +48,6 @@ class Account(AbstractBaseUser):
 	is_axisStaff			= models.BooleanField(default=False)
 	is_staff				= models.BooleanField(default=False)
 	is_superuser			= models.BooleanField(default=False)
-	phone           		= models.CharField(verbose_name='Phone Number', max_length=200, null=True)
-
-
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username']
 
@@ -83,3 +81,75 @@ class StoreAccess(models.Model):
 
 	def __str__(self):
 		return f'{self.user.email} — {self.store_slug}'
+
+
+class GoogleOAuthIdentity(models.Model):
+	"""The stable Google subject connected to a Foxx Mart account."""
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='google_identity')
+	google_subject = models.CharField(max_length=255, unique=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.user.email
+
+
+class Invoice(models.Model):
+	"""An immutable order invoice snapshot owned by a Foxx Mart account."""
+	public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='invoices')
+	store_slug = models.CharField(max_length=40)
+	store_name = models.CharField(max_length=100)
+	order_reference = models.CharField(max_length=100)
+	transaction_id = models.CharField(max_length=200, blank=True)
+	status = models.CharField(max_length=200, blank=True)
+	total = models.DecimalField(max_digits=12, decimal_places=2)
+	subtotal = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+	vat_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+	delivery_fee = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+	items = models.JSONField(default=list)
+	issued_at = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		ordering = ('-issued_at',)
+		constraints = [
+			models.UniqueConstraint(
+				fields=('user', 'store_slug', 'order_reference'),
+				name='unique_user_store_order_invoice',
+			),
+		]
+
+	def __str__(self):
+		return f'INV-{self.store_slug.upper()}-{self.order_reference}'
+
+
+class ReturnRequest(models.Model):
+	class Status(models.TextChoices):
+		REQUESTED = 'requested', 'Requested'
+		APPROVED = 'approved', 'Approved'
+		DECLINED = 'declined', 'Declined'
+		RECEIVED = 'received', 'Received'
+		REFUNDED = 'refunded', 'Refunded'
+		CANCELLED = 'cancelled', 'Cancelled'
+
+	invoice = models.OneToOneField(Invoice, on_delete=models.CASCADE, related_name='return_request')
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='return_requests')
+	reason = models.CharField(max_length=100)
+	details = models.TextField(blank=True)
+	status = models.CharField(max_length=20, choices=Status.choices, default=Status.REQUESTED)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ('-created_at',)
+
+	def __str__(self):
+		return f'Return for {self.invoice} ({self.get_status_display()})'
+
+
+class ReturnAttachment(models.Model):
+	return_request = models.ForeignKey(ReturnRequest, on_delete=models.CASCADE, related_name='attachments')
+	image = models.ImageField(upload_to='return_requests/%Y/%m/%d/')
+	uploaded_at = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return f'Attachment for return {self.return_request_id}'

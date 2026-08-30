@@ -1,109 +1,27 @@
 {% extends 'axis_base.html' %}
 {% load local_pricing %}
-
-
 {% load static %}
 
 {% block body %}
-<!-- Bottom bar with filter and cart info -->
-<div class="view axis-checkout-page">
-
-    <!-- Grid -->
-
-    <section class="grid grid--loader">
-        <hr>
-        <h3 class="billing-heading mb-4 action--text">Order Summary</h3>
-        <p class="billing-heading mb-4 action--text">Number of Items : <strong>{{ order.get_cart_items}}</strong></p>
-        <hr>
-        <p class="billing-heading mb-4 action--text">Grand Total : <strong>{% local_price order.get_cart_total %}</strong></p>
-        <hr>
-        <span> {% for item in items %} <a href="{% url 'Axis:product_details' item.product.id %}"><img src={{item.product.imageURL1}} class="slider" style="width:100px; height:120px" /></a> X {{item.quantity}}&nbsp;{% endfor %}</span>
-        <hr>
-        <div style="padding:auto; " id="form-wrapper">
-            <form id="form" method="post" action="{% url 'Axis:complete_test_checkout' %}">
-                {% csrf_token %}
-                <div id="user-informaton">
-                    <br>
-                    <h4>Customer Information</h4>
-                    <div class="form-field">
-                        {% if user.is_authenticated %}<input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="text" name="name" placeholder="{{ user.username }}" value="{{ user.username }}" readonly> {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="text" name="name" placeholder="Name..">{% endif %}
-                    </div>
-                    <div class="form-field">
-                        {% if user.is_authenticated %}<input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="email" name="email" placeholder="{{ user.email }}" value="{{ user.email }}" readonly> {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="email" name="email" placeholder="Email..">{% endif %}
-                    </div>
-                <div class="form-field">
-                        {% if user.is_authenticated and not user.phone%}
-                         <input style="border-radius: 5px; padding: 10px; " required class="form-control" type="text" name="phone" placeholder="Phone Number ..." "  >
-                        {% elif user.is_authenticated and user.phone %}
-                        <input style="border-radius: 5px; padding: 10px; color: #000;" required class="form-control" type="text" name="phone" placeholder="{{ user.phone }}" value="{{ user.phone }}" readonly >
-                        {% else %} <input style="border-radius: 5px; padding: 10px" required class="form-control" type="text" name="phone" placeholder="Phone Number..">{% endif %}
-                    </div>
-                </div>
-
-                <div id="shipping-info" >
-                    <br>
-                    <h4>Shipping Information</h4>
-                    <div class="form-field" >
-                        <input id="textbox_id"  class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="country" placeholder="Country">
-                    </div>
-                    <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="address1" placeholder="Address line 1..">
-                    </div>
-                    <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" type="text" name="address2" placeholder="Address line 2 (Optional)..">
-                    </div>
-                    <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="suburb" placeholder="Suburb..">
-                    </div>
-                      <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="city" placeholder="City..">
-                    </div>
-                    <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="province" placeholder="Province..">
-                    </div>
-                    <div class="form-field">
-                        <input id="textbox_id" class="form-control" style="border-radius: 5px; padding: 10px" required type="text" name="postal_code" placeholder="Postal code..">
-                    </div>
-
-                </div>
-
-                <br>
-                <input id="form-button" class="btn btn-success btn-block" type="submit" value="Record test payment">
-            </form>
-        </div>
-        <div class=" p-3 p-md-4">
-
-
-            <div class="box-element hidden" id="payment-info">
-
-                <br>
-                <div style="padding-right: 30%;padding-left: 30%">
-                    <hr>
-                    <p>Billing Details:</p>
-                    <hr>
-                    <p><small>Test mode only — no payment is collected.</small></p>
-
-                </div>
-
-            </div>
-            <br>
-            <hr>
-
-            <p class="action--text"><a href="{% url 'Axis:cart' %}" class="btn action--button-btn">Return to Cart</a>
-                <a href="{% url 'Axis:store' %}" class="btn action--button-btn">Continue Shopping</a></p>
-
-                <hr>
-
-        </div>
-    </section>
-</div>
-
-<script>
-function btn(){
-    //alert("test");
-    $('#textbox_id').css("opacity", "1");
-}
-
-</script>
-
+<link rel="stylesheet" href="{% static 'axis/css/checkout.css' %}?v=2">
+<link rel="stylesheet" href="{% static 'axis/css/checkout-monochrome.css' %}?v=1">
+<main class="checkout" aria-labelledby="checkout-title">
+  <header class="checkout__header"><a class="checkout__back" href="{% url 'Axis:cart' %}">← Back to cart</a><p class="checkout__eyebrow">Secure checkout</p><h1 id="checkout-title">Delivery details</h1><p>Review your order and tell us exactly where to deliver it.</p></header>
+  <div class="checkout__layout">
+    <form class="checkout-card checkout-form" method="post" action="{% url 'Axis:complete_test_checkout' %}">{% csrf_token %}
+      <section aria-labelledby="contact-title"><div class="checkout-form__heading"><span>1</span><div><h2 id="contact-title">Contact</h2><p>Your receipt will be sent to this email address.</p></div></div><div class="checkout-form__grid checkout-form__grid--one"><label>Full name<input type="text" value="{{ user.username }}" readonly></label><label>Email address<input type="email" value="{{ user.email }}" readonly></label></div></section>
+      <section aria-labelledby="address-title"><div class="checkout-form__heading"><span>2</span><div><h2 id="address-title">Delivery address</h2><p>Use a physical street address so the courier can find you.</p></div></div><div class="checkout-form__grid">
+        <label>Country<select name="country" required autocomplete="country-name"><option value="South Africa"{% if saved_address.country == 'South Africa' or not saved_address %} selected{% endif %}>South Africa</option></select></label>
+        <label>Province<select name="province" required autocomplete="address-level1"><option value="" disabled{% if not saved_address %} selected{% endif %}>Select province</option><option{% if saved_address.province == 'Eastern Cape' %} selected{% endif %}>Eastern Cape</option><option{% if saved_address.province == 'Free State' %} selected{% endif %}>Free State</option><option{% if saved_address.province == 'Gauteng' %} selected{% endif %}>Gauteng</option><option{% if saved_address.province == 'KwaZulu-Natal' %} selected{% endif %}>KwaZulu-Natal</option><option{% if saved_address.province == 'Limpopo' %} selected{% endif %}>Limpopo</option><option{% if saved_address.province == 'Mpumalanga' %} selected{% endif %}>Mpumalanga</option><option{% if saved_address.province == 'North West' %} selected{% endif %}>North West</option><option{% if saved_address.province == 'Northern Cape' %} selected{% endif %}>Northern Cape</option><option{% if saved_address.province == 'Western Cape' %} selected{% endif %}>Western Cape</option></select></label>
+        <label class="checkout-form__full">Street address and number<input name="address1" required autocomplete="address-line1" maxlength="255" placeholder="e.g. 12 Long Street" value="{{ saved_address.address1|default:'' }}"></label>
+        <label class="checkout-form__full">Apartment, suite, building or estate <span>(optional)</span><input name="address2" autocomplete="address-line2" maxlength="255" placeholder="e.g. Apartment 4B, The Gardens" value="{{ saved_address.address2|default:'' }}"></label>
+        <label>Suburb / area<input name="suburb" required autocomplete="address-level2" maxlength="200" placeholder="e.g. Cape Town City Centre" value="{{ saved_address.suburb|default:'' }}"></label><label>City / town<input name="city" required autocomplete="address-level2" maxlength="200" placeholder="e.g. Cape Town" value="{{ saved_address.city|default:'' }}"></label>
+        <label>Postal code<input name="postal_code" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="e.g. 8001" title="Enter a four-digit South African postal code" value="{{ saved_address.postal_code|default:'' }}"></label>
+        <label class="checkout-form__full">Delivery instructions <span>(optional)</span><textarea name="delivery_instructions" rows="3" maxlength="500" placeholder="Gate code, reception desk, preferred delivery time, or other useful directions"></textarea></label>
+      </div><label class="checkout-form__save-address"><input type="checkbox" name="save_address"> <span>Save this address for future 3rd Axis purchases</span></label></section>
+      <button class="checkout-form__submit" type="submit">Confirm test order <span>→</span></button><p class="checkout-form__note">Test mode only — no payment will be collected.</p>
+    </form>
+    <aside class="checkout-card checkout-summary" aria-label="Order summary"><h2>Order summary</h2><div class="checkout-summary__items">{% for item in items %}<div class="checkout-summary__item"><img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}"><div><strong>{{ item.product.name }}</strong><span>Quantity {{ item.quantity }}</span></div></div>{% endfor %}</div><dl><div><dt>Items</dt><dd>{{ order.get_cart_items }}</dd></div><div><dt>Subtotal</dt><dd>{% local_price order.get_cart_total %}</dd></div><div><dt>Delivery</dt><dd>{% local_price order.get_delivery_fee %}</dd></div><div><dt>VAT (15%)</dt><dd>{% local_price order.get_vat_amount %}</dd></div><div class="checkout-summary__total"><dt>Total incl. VAT</dt><dd>{% local_price order.get_total_with_vat %}</dd></div></dl><a class="checkout-summary__continue" href="{% url 'Axis:store' %}">Continue shopping</a></aside>
+  </div>
+</main>
 {% endblock %}

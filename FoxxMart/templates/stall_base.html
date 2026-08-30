@@ -18,7 +18,7 @@
     <!-- General demo styles & header -->
     <link id="collective_stylesheet" rel="stylesheet" type="text/css" href="{% static 'collective/css/demo.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'collective/css/quick-cart.css' %}?v=51" />
-    <link rel="stylesheet" type="text/css" href="{% static 'collective/css/menu.css' %}?v=7" />
+        <link rel="stylesheet" type="text/css" href="{% static 'collective/css/menu.css' %}?v=8" />
     <!-- Component styles -->
 
     <script src="{% static 'collective/js/modernizr.custom.js' %}"></script>
@@ -77,14 +77,11 @@
     <!-- Main container -->
     <div class="container">
         <!-- Blueprint header -->
-        <header class="bp-header collective-menu is-collapsed" data-collective-menu>
+        <header class="bp-header collective-menu" data-collective-menu>
 
-          <button class="collective-menu__toggle" type="button" aria-controls="collective-navigation" aria-expanded="false">
+          <button class="collective-menu__toggle" type="button" aria-controls="collective-navigation" aria-expanded="true">
             <span>T H E C O</span><img id="collective_spinner" src="{% static 'collective/images/II-light.gif' %}" alt="" height="30" /><span>E C T I V E</span>
           </button>
-          {% if user.is_authenticated %}
-          <h6>Logged in as: {{user.username}}</h6>
-          {% endif %}
             <nav id="collective-navigation">
 
                 <a href="{% url 'home:home' %}" title="Portfolio">
@@ -94,11 +91,26 @@
                   <ion-icon name="grid-outline" size="large"></ion-icon><br>FoxxMart
                 </a>
                 <a href="{% url 'Collective:store' %}" title="Online Store">
-                  <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" size="large"></ion-icon><br>Shop
+                  <ion-icon name="storefront-outline" size="large"></ion-icon><br>Shop
                 </a>
                 <a href="{% url 'Collective:cart' %}" tile="My Cart" data-info="">
                   <ion-icon src="{% static 'ion-icons/cart-sharp.svg' %}" class="cart__icon" size="large"></ion-icon><br>Cart
                 </a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'account:profile' %}?store=collective" title="My Profile">
+                  <ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br>Profile
+                </a>
+                <a href="{% url 'account:logout' %}" title="Log Out">
+                  <ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon><br>Logout
+                </a>
+                {% else %}
+                <a href="{% url 'account:register' %}" title="Create Account">
+                  <ion-icon src="{% static 'ion-icons/person-add-outline.svg' %}" size="large"></ion-icon><br>Register
+                </a>
+                <a href="{% url 'account:login' %}" title="Log in">
+                  <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Login
+                </a>
+                {% endif %}
                 <a href="{% url 'Collective:contact' %}" title="Contact">
                   <ion-icon src="{% static 'ion-icons/mail-outline.svg' %}" size="large"></ion-icon>Contact
                 </a>
@@ -110,19 +122,13 @@
                   <ion-icon src="{% static 'ion-icons/options-outline.svg' %}" size="large"></ion-icon>Studio
                 </a>
                 {% endif %}
-                {% if user.is_authenticated %}
-                <a href="{% url 'account:logout' %}" title="Log Out">
-                  <ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon><br>Logout
-                </a>
-                {% else %}
-                <a href="{% url 'account:login' %}" title="Log in">
-                  <ion-icon src="{% static 'ion-icons/log-in-outline.svg' %}" size="large"></ion-icon><br>Login
-                </a>
-                {% endif %}
                 <!-- <a onclick="lightMode()">
                     <ion-icon title="Light Mode" size="small" name="sunny-outline"></ion-icon>
                 </a> -->
             </nav>
+            {% if user.is_authenticated %}
+            <p class="collective-menu__identity">Logged in as: {{ user.username }}</p>
+            {% endif %}
         </header>
 
                 {% if messages %}
@@ -165,6 +171,10 @@
         var setMenuOffset = function () {
           document.body.style.setProperty('--collective-menu-height', menu.getBoundingClientRect().height + 'px');
         };
+        if (window.matchMedia('(max-width: 40em)').matches) {
+          menu.classList.add('is-collapsed');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
         toggle.addEventListener('click', function () {
           var collapsed = menu.classList.toggle('is-collapsed');
           toggle.setAttribute('aria-expanded', String(!collapsed));
@@ -191,6 +201,13 @@
             if (!quickCart.contains(event.target)) quickCart.removeAttribute('open');
           });
         });
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 96 && !menu.classList.contains('is-collapsed')) {
+            menu.classList.add('is-collapsed');
+            toggle.setAttribute('aria-expanded', 'false');
+            window.requestAnimationFrame(setMenuOffset);
+          }
+        }, { passive: true });
         window.addEventListener('resize', setMenuOffset);
         setMenuOffset();
       }());
