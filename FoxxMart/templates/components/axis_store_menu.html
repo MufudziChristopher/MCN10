@@ -1,0 +1,31 @@
+{% load static %}
+<div class="storefront-menu__top-glass" aria-hidden="true"></div>
+<button class="collapsible-menu__toggle storefront-menu__toggle" type="button" data-collapsible-menu-toggle aria-controls="axis-store-menu" aria-label="Open navigation menu" aria-expanded="false">
+  <img src="{% static 'images/III-light.gif' %}" alt="" />
+  <span class="collapsible-menu__toggle-label">Menu</span>
+</button>
+
+<header class="bp-header storefront-menu collapsible-menu is-collapsed" data-collapsible-menu data-collapse-after="96" data-start-collapsed="true">
+  <div class="collapsible-menu__content" id="axis-store-menu">
+    <nav aria-label="3rd Axis navigation">
+      <a href="{% url 'home:home' %}" title="Portfolio"><ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'home' %}apps{% else %}apps-outline{% endif %}" size="large"></ion-icon><br>Portfolio</a>
+      <a href="{% url 'home:mall' %}" title="FoxxMart Mall"{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %}grid{% else %}grid-outline{% endif %}" size="large"></ion-icon><br>FoxxMart</a>
+      <a href="{% url 'Axis:store' %}" title="Online Store"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} aria-current="page"{% endif %}><i class="menu-icon--large axis-menu__storefront-icon{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} axis-menu__storefront-icon--active{% endif %}" aria-hidden="true"></i><br>Shop</a>
+      {% if user.is_authenticated %}
+      <a href="{% url 'account:notifications' %}?store=axis" title="Notifications"><ion-icon name="notifications-outline" size="large"></ion-icon>Notifications{% if notification_count %}<span class="notification__count">{{ notification_count }}</span>{% endif %}</a>
+      <a href="{% url 'Axis:cart' %}" title="Cart" data-info=""{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %}cart{% else %}cart-outline{% endif %}" class="cart__icon" size="large"></ion-icon><br>Cart{% if cartItems %}<span class="cart__count">{{ cartItems }}</span>{% endif %}</a>
+      <a href="{% url 'account:profile' %}?store=axis" title="My Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %}person{% else %}person-outline{% endif %}" size="large"></ion-icon><strong>Account</strong></a>
+      <a href="{% url 'account:logout' %}" title="Log Out"><ion-icon class="menu-icon--large" name="log-out-outline" size="large"></ion-icon>Logout</a>
+      {% else %}
+      <a href="{% url 'account:login' %}" title="Cart"><ion-icon name="cart-outline" size="large"></ion-icon><br>Cart</a>
+      <a href="{% url 'account:register' %}" title="Create Account"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'register' %}person-add{% else %}person-add-outline{% endif %}" size="large"></ion-icon>Register</a>
+      <a href="{% url 'account:login' %}" title="Log in"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'login' %}log-in{% else %}log-in-outline{% endif %}" size="large"></ion-icon><br>Log in</a>
+      {% endif %}
+      <a href="{% url 'Axis:contact' %}" title="Contact"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'contact' %} aria-current="page"{% endif %}><ion-icon class="menu-icon--large" name="{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'contact' %}mail{% else %}mail-outline{% endif %}" size="large"></ion-icon>Contact</a>
+      <a href="{% url 'Axis:about' %}" title="About Us"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'about' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'about' %}information-circle{% else %}information-circle-outline{% endif %}" size="large"></ion-icon>About</a>
+      {% if user.is_superuser %}<a href="{% url 'account:admin_dashboard' %}" title="Admin"><ion-icon name="settings-outline" size="large"></ion-icon>Admin</a>{% endif %}
+      <button class="axis-theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode"><ion-icon class="axis-theme-toggle__dark" name="toggle" aria-hidden="true"></ion-icon><ion-icon class="axis-theme-toggle__light" name="toggle-outline" aria-hidden="true"></ion-icon><br><span>Theme</span></button>
+    </nav>
+  </div>
+  {% if user.is_authenticated %}<p class="collapsible-menu__identity">Logged in as: {{ user.username }}</p>{% endif %}
+</header>

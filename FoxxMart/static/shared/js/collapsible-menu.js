@@ -33,11 +33,7 @@
 
 			/* Keep the menu collapsed throughout the page instead of repeatedly
 			 * crossing the threshold as the sticky header changes height. */
-			if (currentScrollY <= 4) {
-				/* The menu is a page-level orientation aid: reveal it again when
-				 * the visitor returns to the top, even on mobile. */
-				setCollapsed(false);
-			} else if (currentScrollY > collapseAfter) {
+			if (currentScrollY > collapseAfter) {
 				openedManually = false;
 				setCollapsed(true);
 			} else if (moved) {
@@ -94,6 +90,8 @@
 				if (touchStartY - endY > 8) collapseForVirtualScroll();
 			}, { passive: true });
 		}
+		/* Honour the template's initial state before responding to scroll events. */
+		setCollapsed(startsCollapsed);
 		onScroll();
 	});
 })();

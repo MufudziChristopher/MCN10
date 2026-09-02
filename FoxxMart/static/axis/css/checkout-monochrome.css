@@ -1,4 +1,23 @@
 /* Foxx Mart checkout palette: monochrome only. */
+/* demo.css uses .checkout for its old green cart-button treatment. The page
+   itself has that class too, so explicitly neutralise every inherited value. */
+.axis-checkout-page.checkout,
+.axis-checkout-page.checkout:hover {
+  float: none;
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #000;
+}
+
+body.axis-theme--dark .axis-checkout-page.checkout,
+body.axis-theme--dark .axis-checkout-page.checkout:hover {
+  background: transparent;
+  color: #fff;
+}
+
 .checkout,
 .checkout__back,
 .checkout-summary__continue,
@@ -16,8 +35,8 @@
   background: var(--foxx-glass-light, rgba(255, 255, 255, .18));
   border-color: rgba(0, 0, 0, .35);
   box-shadow: 0 .7rem 2rem rgba(0, 0, 0, .12);
-  -webkit-backdrop-filter: var(--foxx-glass-blur, blur(4px));
-  backdrop-filter: var(--foxx-glass-blur, blur(4px));
+  -webkit-backdrop-filter: var(--foxx-glass-blur, blur(6px));
+  backdrop-filter: var(--foxx-glass-blur, blur(6px));
 }
 
 .checkout-form section + section,
@@ -75,3 +94,20 @@ body.axis-theme--dark .checkout-form input:focus,
 body.axis-theme--dark .checkout-form select:focus,
 body.axis-theme--dark .checkout-form textarea:focus { outline-color: rgba(255, 255, 255, .28); border-color: #fff; }
 body.axis-theme--dark .checkout-form__save-address input { accent-color: #fff; }
+
+@media (max-width: 760px) {
+  /* The checkout shares the fixed Menu control with cart pages. Reserve its
+     full height before the content so the first heading cannot sit under it. */
+  .axis-checkout-page.checkout { padding: calc(var(--axis-checkout-menu-height, 4.5rem) + 2rem) 1rem 2.5rem; }
+  .checkout__header { margin-bottom: 1.5rem; }
+  .checkout__eyebrow { margin-top: 0; }
+  .checkout-card { border-radius: 1rem; }
+  .checkout-form { padding: 1.15rem 1rem; }
+  .checkout-summary { padding: 1.15rem 1rem; }
+  .checkout-summary__item { grid-template-columns: 3rem minmax(0, 1fr); }
+  .checkout-summary__item img { width: 3rem; height: 3.5rem; }
+  .checkout-form section + section { margin-top: 1.75rem; padding-top: 1.75rem; }
+  .checkout-form__submit { min-height: 3.25rem; margin-top: 1.5rem; }
+  .checkout-form__save-address { align-items: flex-start; }
+  .checkout-form__save-address input { margin-top: .2rem; }
+}

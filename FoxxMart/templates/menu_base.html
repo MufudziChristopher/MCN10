@@ -18,7 +18,7 @@
     <link id="africa_stylesheet" rel="stylesheet" type="text/css" href="{% static 'css/demo.css' %}" />
     <!-- menu styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'more/css/component.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/account-menu.css' %}?v=45" />
+    <link rel="stylesheet" type="text/css" href="{% static 'shared/css/account-menu.css' %}?v=50" />
     <script src="{% static 'more/js/modernizr-custom.js' %}"></script>
         <script src="{% static 'js/cart.js' %}"></script>
 
@@ -27,6 +27,9 @@
 <body class="axis-theme--dark">
     <!-- Main container -->
     <div class="container">
+        {% include 'components/account_menu.html' %}
+        {# Legacy inline menu kept out of rendering while the component is adopted. #}
+        {% comment %}
         <!-- Blueprint header -->
         <header class="bp-header account-menu" data-account-menu>
             <button class="account-menu__toggle" type="button" aria-controls="account-navigation" aria-expanded="true">
@@ -52,8 +55,11 @@
                 </a>
                 {% endif %}
                 {% if user.is_authenticated %}
+                <a href="{% url 'account:notifications' %}?store={{ account_storefront.slug }}" title="Notifications"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'notifications' %} aria-current="page"{% endif %}>
+                  <ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'notifications' %}notifications{% else %}notifications-outline{% endif %}" size="large"></ion-icon>Notifications{% if notification_count %}<b class="account-menu__notification-count">{{ notification_count }}</b>{% endif %}
+                </a>
                 <a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}" title="My Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}>
-                  <ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %}person{% else %}person-outline{% endif %}" size="large"></ion-icon>Profile
+                  <ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %}person{% else %}person-outline{% endif %}" size="large"></ion-icon>Account
                 </a>
                 <a href="{% url 'account:logout' %}" title="Log out">
                   <ion-icon name="log-out-outline" size="large"></ion-icon>Logout
@@ -129,6 +135,7 @@
         </details>
         {% endif %}
 
+        {% endcomment %}
         <script>
           (function () {
             var menu = document.querySelector('[data-account-menu]');
@@ -137,9 +144,9 @@
             var setOpen = function (open) {
               menu.classList.toggle('is-collapsed', !open);
               toggle.setAttribute('aria-expanded', String(open));
-              var isMobileProfile = window.matchMedia('(max-width: 460px)').matches && document.querySelector('.account-profile-page');
-              document.body.classList.toggle('account-menu-expanded', Boolean(open && isMobileProfile));
-              if (open && isMobileProfile) {
+              var isProfilePage = document.querySelector('.account-profile-page');
+              document.body.classList.toggle('account-menu-expanded', Boolean(open && isProfilePage));
+              if (open && isProfilePage) {
                 var updateProfileOffset = function () {
                   document.documentElement.style.setProperty('--account-menu-expanded-height', menu.offsetHeight + 'px');
                 };
@@ -149,9 +156,8 @@
                 window.setTimeout(updateProfileOffset, 300);
               }
             };
-            // Account menus begin compact on phones, where the expanded panel
-            // would otherwise take over the first viewport.
-            setOpen(!window.matchMedia('(max-width: 460px)').matches);
+            // Start compact everywhere; the fixed control keeps navigation in reach.
+            setOpen(false);
             toggle.addEventListener('click', function () { setOpen(menu.classList.contains('is-collapsed')); });
             window.addEventListener('scroll', function () {
               if (window.scrollY > 96 && !menu.classList.contains('is-collapsed')) setOpen(false);

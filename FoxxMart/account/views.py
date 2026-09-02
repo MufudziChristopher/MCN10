@@ -13,12 +13,15 @@ from django.http import JsonResponse, Http404
 from django.core.exceptions import PermissionDenied
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.db import transaction
+from django.utils import timezone
 from django.views.decorators.http import require_POST
 from account.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
-from account.models import Account, GoogleOAuthIdentity, StoreAccess, Invoice, ReturnRequest, ReturnAttachment
+from account.models import Account, GoogleOAuthIdentity, StoreAccess, Invoice, ReturnRequest, ReturnAttachment, Notification
+from account.notifications import notify_order_status, sync_customer_notifications
 from account.invoices import invoice_pdf_response
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.forms import modelform_factory
 from .cart_lifecycle import clear_guest_cart, merge_guest_cart, storefront_from_request
 from .customer_profiles import get_store_customer
 from .storefronts import STOREFRONTS, get_profile_storefront
@@ -98,6 +101,16 @@ def get_account_cart_context(orders, storefront):
 		'account_cart_total': sum((item.get_total for item in items), 0),
 		'account_show_quick_cart': True,
 	}
+
+
+def get_shipping_address_form(customer, data=None):
+	"""Return a form for the storefront-specific address model attached to customer."""
+	address_field = customer._meta.get_field('shippingAddress')
+	address_model = address_field.remote_field.model
+	field_names = ('country', 'address1', 'address2', 'suburb', 'city', 'province', 'postal_code', 'delivery_instructions')
+	available_fields = tuple(name for name in field_names if any(field.name == name for field in address_model._meta.fields))
+	address_form_class = modelform_factory(address_model, fields=available_fields)
+	return address_form_class(data, instance=customer.shippingAddress)
 
 
 @require_POST
@@ -313,6 +326,8 @@ def account_view(request):
 	storefront = get_profile_storefront(request)
 	customer = get_store_customer(request.user, storefront['customer_model'])
 	orders = getattr(customer, storefront['orders_accessor']).all()
+	saved_address = getattr(customer, 'shippingAddress', None)
+	address_form = get_shipping_address_form(customer)
 	invoices = Invoice.objects.filter(user=request.user, store_slug=storefront['slug'])
 	return_requests = ReturnRequest.objects.filter(user=request.user, invoice__store_slug=storefront['slug'])
 	form = AccountUpdateForm(
@@ -325,11 +340,59 @@ def account_view(request):
 		'orders': orders,
 		'account_form': form,
 		'account_storefront': storefront,
+		'saved_address': saved_address,
+		'address_form': address_form,
 		'invoices': invoices,
 		'return_requests': return_requests,
 	}
 	context.update(get_account_cart_context(orders, storefront))
 	return render(request, 'account/profile.html', context)
+
+
+@require_POST
+def update_address(request):
+	"""Save the signed-in shopper's delivery address for the selected storefront."""
+	if not request.user.is_authenticated:
+		return redirect('account:login')
+
+	storefront = STOREFRONTS.get(request.POST.get('store'))
+	if not storefront:
+		return redirect('account:profile')
+
+	customer = get_store_customer(request.user, storefront['customer_model'])
+	address_form = get_shipping_address_form(customer, request.POST)
+	if address_form.is_valid():
+		address = address_form.save()
+		if customer.shippingAddress_id != address.pk:
+			customer.shippingAddress = address
+			customer.save(update_fields=['shippingAddress'])
+		messages.success(request, 'Your delivery address has been saved.')
+	else:
+		messages.error(request, 'Please check the address details and try again.')
+	return redirect(f"{reverse('account:profile')}?store={storefront['slug']}")
+
+
+def notifications_view(request):
+	if not request.user.is_authenticated:
+		return redirect('account:login')
+	storefront = get_profile_storefront(request)
+	sync_customer_notifications(request.user, storefront['slug'])
+	notifications = Notification.objects.filter(user=request.user, store_slug=storefront['slug'])
+	return render(request, 'account/notifications.html', {
+		'notifications': notifications,
+		'account_storefront': storefront,
+	})
+
+
+@require_POST
+def mark_notifications_read(request):
+	if request.user.is_authenticated:
+		storefront = STOREFRONTS.get(request.POST.get('store'))
+		queryset = Notification.objects.filter(user=request.user, read_at__isnull=True)
+		if storefront:
+			queryset = queryset.filter(store_slug=storefront['slug'])
+		queryset.update(read_at=timezone.now())
+	return redirect(f"{reverse('account:notifications')}?store={request.POST.get('store', 'axis')}")
 
 
 def _owned_invoice(request, public_id):
@@ -430,6 +493,8 @@ def admin_update_order(request, store_slug, order_id):
 	if status in allowed:
 		order.status = status
 		order.save(update_fields=['status'])
+		if order.customer and order.customer.user_id:
+			notify_order_status(user=order.customer.user, storefront=storefront, order=order)
 		messages.success(request, 'Order status updated.')
 	next_url = request.POST.get('next', '')
 	if next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()}):

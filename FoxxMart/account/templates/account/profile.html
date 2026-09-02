@@ -15,10 +15,40 @@
     </div>
   </section>
 
-  <section class="account-profile-summary" aria-label="Account summary">
-    <div><span>Storefront</span><strong>{{ account_storefront.menu_label }}</strong></div>
-    <div><span>Orders</span><strong>{{ orders|length }}</strong></div>
-    <div><span>Invoices</span><strong>{{ invoices|length }}</strong></div>
+  <section class="account-profile-section account-profile-preferences" aria-labelledby="address-title">
+    <div class="account-profile-section__heading">
+      <div><p class="account-profile-eyebrow">Delivery</p><h2 id="address-title">Address details</h2></div>
+      <a href="#address-editor">{% if saved_address %}Edit address{% else %}Add address{% endif %} <ion-icon name="create-outline" aria-hidden="true"></ion-icon></a>
+    </div>
+    {% if saved_address %}
+    <address class="account-profile-address">
+      <strong>{{ user.username }}</strong>
+      <span>{{ saved_address.address1 }}</span>
+      {% if saved_address.address2 %}<span>{{ saved_address.address2 }}</span>{% endif %}
+      <span>{% if saved_address.suburb %}{{ saved_address.suburb }}, {% endif %}{{ saved_address.city }}</span>
+      <span>{{ saved_address.province }} {{ saved_address.postal_code }}</span>
+      <span>{{ saved_address.country }}</span>
+      {% if saved_address.delivery_instructions %}<small>Delivery notes: {{ saved_address.delivery_instructions }}</small>{% endif %}
+    </address>
+    {% else %}
+    <div class="account-profile-empty account-profile-empty--compact"><ion-icon name="location-outline" aria-hidden="true"></ion-icon><h3>No saved address</h3><p>Add your delivery address here to make future purchases faster.</p></div>
+    {% endif %}
+    <details id="address-editor" class="account-profile-address-editor"{% if not saved_address %} open{% endif %}>
+      <summary>{% if saved_address %}Update delivery address{% else %}Add delivery address{% endif %}</summary>
+      <form method="post" action="{% url 'account:update_address' %}">
+        {% csrf_token %}
+        <input type="hidden" name="store" value="{{ account_storefront.slug }}">
+        {% for field in address_form %}
+        <label{% if field.name == 'address1' or field.name == 'address2' or field.name == 'delivery_instructions' %} class="account-profile-address-editor__wide"{% endif %}>{{ field.label }}{{ field }}{% if field.errors %}<small>{{ field.errors|striptags }}</small>{% endif %}</label>
+        {% endfor %}
+        <button type="submit">Save address</button>
+      </form>
+    </details>
+  </section>
+
+  <section class="account-profile-section account-profile-preferences" aria-labelledby="payment-title">
+    <div class="account-profile-section__heading"><div><p class="account-profile-eyebrow">Payments</p><h2 id="payment-title">Payment methods</h2></div></div>
+    <div class="account-profile-empty account-profile-empty--compact"><ion-icon name="card-outline" aria-hidden="true"></ion-icon><h3>No saved payment methods</h3><p>For your security, payment details are never stored in your Foxx Mart account.</p></div>
   </section>
 
   <section class="account-profile-section" aria-labelledby="orders-title">

@@ -12,6 +12,8 @@ import json
 import uuid
 
 from django.contrib import messages
+from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
 from django.core.mail import send_mail
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.http import require_POST
@@ -24,6 +26,7 @@ from .models import *
 from .filters import *
 from account.access import store_access_required
 from account.invoices import create_invoice_for_order, notify_admin_of_order
+from account.notifications import notify_order_status
 
 # Create your views here.
 def about(request):
@@ -177,24 +180,33 @@ def contact(request):
     cartItems = data['cartItems']
     order = data['order']
     items = data['items']
-    context = {'cartItems': cartItems, 'items': items, 'order': order,}
+    context = {'cartItems': cartItems, 'items': items, 'order': order, 'contact_values': {}}
 
     if request.method == 'POST':
-        message = request.POST['message']
+        message = request.POST.get('message', '').strip()
+        name = request.user.username if request.user.is_authenticated else request.POST.get('name', '').strip()
+        email = request.user.email if request.user.is_authenticated else request.POST.get('email', '').strip()
+        context['contact_values'] = {'name': name, 'email': email, 'message': message}
 
-        if request.user.is_authenticated:
-            name = request.user.username
-            email = request.user.email
-            message = name + "\n" + email + "\n"+ message
-            send_mail('Contact Form', message, settings.EMAIL_HOST_USER, ['christopher@3rdaxis.co.za', 'mcn10.foxx@gmail.com'], fail_silently="false" )
-            messages.success(request, ("Your message has been sent successfully..."))
+        if not name or not email or not message:
+            context['contact_error'] = 'Please complete your name, email address, and message.'
         else:
-            name = request.POST['name']
-            email = request.POST['email']
-            message = name + "\n" + email + "\n"+ message
-            send_mail('Contact Form', message, settings.EMAIL_HOST_USER, ['christopher@3rdaxis.co.za', 'mcn10.foxx@gmail.com'], fail_silently="false" )
-            messages.success(request, ("Your message has been sent successfully..."))
-        return redirect('Axis:store')
+            try:
+                validate_email(email)
+            except ValidationError:
+                context['contact_error'] = 'Enter a valid email address so we can reply.'
+            else:
+                email_message = f'{name}\n{email}\n\n{message}'
+                try:
+                    send_mail(
+                        '3rd Axis contact form', email_message, settings.EMAIL_HOST_USER,
+                        ['christopher@3rdaxis.co.za', 'mcn10.foxx@gmail.com'], fail_silently=False,
+                    )
+                except Exception:
+                    context['contact_error'] = 'We could not send your message right now. Please use the email link below.'
+                else:
+                    messages.success(request, 'Thanks — your message has been sent. We will get back to you soon.')
+                    return redirect('Axis:contact')
     return render(request, 'Axis/contact.html', context)
 
 @require_POST
@@ -233,6 +245,7 @@ def complete_test_checkout(request):
         order.transaction_id = f'TEST-{uuid.uuid4().hex[:12].upper()}'
         order.status = 'Payment confirmed'
         order.save(update_fields=['transaction_id', 'status'])
+        notify_order_status(user=request.user, storefront={'slug': 'axis'}, order=order)
         order_invoice = create_invoice_for_order(user=request.user, store_slug='axis', order=order)
         transaction.on_commit(lambda: notify_admin_of_order(order_invoice))
     messages.success(request, 'Test payment recorded. Your invoice is ready.')

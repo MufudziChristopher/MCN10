@@ -13,6 +13,14 @@ class AccountAdmin(UserAdmin):
 	fieldsets = ()
 
 admin.site.register(Account, AccountAdmin)
+
+
+@admin.register(Notification)
+class NotificationAdmin(admin.ModelAdmin):
+	list_display = ('title', 'user', 'store_slug', 'kind', 'read_at', 'created_at')
+	list_filter = ('store_slug', 'kind', 'read_at')
+	search_fields = ('title', 'body', 'user__email')
+	readonly_fields = ('created_at', 'updated_at')
 class ReturnAttachmentInline(admin.TabularInline):
 	model = ReturnAttachment
 	extra = 0

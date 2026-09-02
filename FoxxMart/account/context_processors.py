@@ -1,4 +1,6 @@
 from .customer_profiles import get_store_customer
+from .models import Notification
+from .notifications import sync_customer_notifications
 from .storefronts import get_profile_storefront
 
 
@@ -15,6 +17,9 @@ def account_storefront(request):
                 .select_related('product')
                 .filter(product__isnull=False)
             )
+        # Keep menu alerts current without requiring a background worker during
+        # local development. Production can run this same helper in a task.
+        sync_customer_notifications(request.user)
 
     is_auth_page = (
         request.resolver_match
@@ -29,4 +34,5 @@ def account_storefront(request):
         'account_quick_cart_items': items,
         'account_cart_items': sum(item.quantity or 0 for item in items),
         'account_cart_total': sum((item.get_total for item in items), 0),
+        'notification_count': Notification.objects.filter(user=request.user, read_at__isnull=True).count() if request.user.is_authenticated else 0,
     }

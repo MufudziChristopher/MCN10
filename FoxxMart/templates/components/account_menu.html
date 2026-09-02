@@ -1,0 +1,46 @@
+{% load static %}
+<header class="bp-header account-menu" data-account-menu>
+  <button class="account-menu__toggle" type="button" aria-controls="account-navigation" aria-expanded="true">
+    <span class="account-menu__brand" aria-label="Open {{ account_storefront.menu_label|default:'3rd Axis' }} menu">
+      <img data-account-menu-gif src="{% static 'images/III-light.gif' %}" alt="">
+    </span>
+  </button>
+  <nav id="account-navigation" aria-label="Account navigation">
+    <a href="{% url 'home:home' %}" title="Portfolio"><ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'home' %}apps{% else %}apps-outline{% endif %}" size="large"></ion-icon>Portfolio</a>
+    <a href="{% url 'home:mall' %}" title="FoxxMart Mall"><ion-icon name="{% if request.resolver_match.namespace == 'home' and request.resolver_match.url_name == 'mall' %}grid{% else %}grid-outline{% endif %}" size="large"></ion-icon>FoxxMart</a>
+    {% if request.resolver_match.namespace != 'account' or request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
+    <a href="{% url account_storefront.store_url_name %}" title="{{ account_storefront.name }}"{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} aria-current="page"{% endif %}><i class="account-menu__icon{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'store' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'product_details' %} account-menu__icon--active{% endif %}" aria-hidden="true"></i>Shop</a>
+    {% endif %}
+    {% if not account_is_auth_page %}
+    <a href="{% url account_storefront.cart_url_name %}" title="Cart"><span class="account-menu__cart-icon"><ion-icon name="{% if request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'cart' or request.resolver_match.namespace == 'Axis' and request.resolver_match.url_name == 'checkout' %}cart{% else %}cart-outline{% endif %}" size="large"></ion-icon>{% if account_cart_items %}<b>{{ account_cart_items }}</b>{% endif %}</span>Cart</a>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'account:notifications' %}?store={{ account_storefront.slug }}" title="Notifications"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'notifications' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'notifications' %}notifications{% else %}notifications-outline{% endif %}" size="large"></ion-icon>Notifications{% if notification_count %}<b class="account-menu__notification-count">{{ notification_count }}</b>{% endif %}</a>
+    <a href="{% url 'account:profile' %}?store={{ account_storefront.slug }}" title="My Profile"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'profile' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'edit' %}person{% else %}person-outline{% endif %}" size="large"></ion-icon>Account</a>
+    <a href="{% url 'account:logout' %}" title="Log out"><ion-icon name="log-out-outline" size="large"></ion-icon>Logout</a>
+    {% else %}
+    <a href="{% url 'account:register' %}" title="Create Account"{% if request.resolver_match.url_name == 'register' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.url_name == 'register' %}person-add{% else %}person-add-outline{% endif %}" size="large"></ion-icon>Register</a>
+    <a href="{% url 'account:login' %}?store={{ account_storefront.slug }}&amp;next={{ request.path|urlencode }}" title="Log in"{% if request.resolver_match.url_name == 'login' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.url_name == 'login' %}log-in{% else %}log-in-outline{% endif %}" size="large"></ion-icon>Login</a>
+    {% endif %}
+    {% if request.resolver_match.namespace != 'account' or request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'register' %}
+    <a href="{% url account_storefront.contact_url_name %}" title="Contact"><ion-icon name="mail-outline" size="large"></ion-icon>Contact</a>
+    <a href="{% url account_storefront.about_url_name %}" title="About {{ account_storefront.menu_label }}"><ion-icon name="information-circle-outline" size="large"></ion-icon>About</a>
+    {% endif %}
+    {% if user.is_superuser %}
+    <a href="{% url 'account:admin_dashboard' %}" title="Admin"{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_dashboard' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_order_detail' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_return_detail' %} aria-current="page"{% endif %}><ion-icon name="{% if request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_dashboard' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_order_detail' or request.resolver_match.namespace == 'account' and request.resolver_match.url_name == 'admin_return_detail' %}settings{% else %}settings-outline{% endif %}" size="large"></ion-icon>Admin</a>
+    {% endif %}
+    <button class="account-theme-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode"><ion-icon class="account-theme-toggle__dark" name="toggle" aria-hidden="true"></ion-icon><ion-icon class="account-theme-toggle__light" name="toggle-outline" aria-hidden="true"></ion-icon><span>Theme</span></button>
+    {% if user.is_authenticated %}<p class="account-menu__identity">Logged in as: {{ user.username }}</p>{% endif %}
+  </nav>
+</header>
+
+{% if account_show_quick_cart %}
+<details class="account-quick-cart">
+  <summary aria-label="Open quick cart"><span class="account-menu__cart-icon"><ion-icon name="cart-outline" aria-hidden="true"></ion-icon>{% if account_cart_items %}<b>{{ account_cart_items }}</b>{% endif %}</span><span>Quick Cart</span></summary>
+  <div class="account-quick-cart__panel">
+    <h2>Quick Cart</h2>
+    {% if account_quick_cart_items %}<ul>{% for item in account_quick_cart_items %}<li><form method="post" action="{% url 'account:remove_cart_item' %}">{% csrf_token %}<input type="hidden" name="store" value="{{ account_storefront.slug }}"><input type="hidden" name="item_id" value="{{ item.id }}"><button type="submit" aria-label="Remove {{ item.product.name }} from cart"><ion-icon name="close-circle-outline" aria-hidden="true"></ion-icon></button></form><img src="{{ item.product.imageURL1 }}" alt="{{ item.product.name }}"><span>{{ item.product.name }}<small>Qty {{ item.quantity }} · R {{ item.get_total|floatformat:2 }}</small></span></li>{% if not forloop.last %}<li class="account-quick-cart__divider" aria-hidden="true"><hr></li>{% endif %}{% endfor %}</ul><p class="account-quick-cart__total">Total <strong>R {{ account_cart_total|floatformat:2 }}</strong></p>{% else %}<p>Your cart is empty.</p>{% endif %}
+    <div class="account-quick-cart__actions"><a href="{% url account_storefront.cart_url_name %}">View cart</a>{% if account_quick_cart_items %}<a href="{% url account_storefront.checkout_url_name %}">Checkout</a>{% endif %}</div>
+  </div>
+</details>
+{% endif %}

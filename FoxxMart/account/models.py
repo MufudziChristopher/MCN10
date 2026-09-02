@@ -93,6 +93,34 @@ class GoogleOAuthIdentity(models.Model):
 		return self.user.email
 
 
+class Notification(models.Model):
+	"""A customer-facing event generated from an order or an active cart."""
+	class Kind(models.TextChoices):
+		ORDER_STATUS = 'order_status', 'Order status'
+		LOW_STOCK = 'low_stock', 'Low stock'
+		PRICE_ALERT = 'price_alert', 'Price alert'
+
+	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='notifications')
+	store_slug = models.CharField(max_length=40)
+	kind = models.CharField(max_length=20, choices=Kind.choices)
+	event_key = models.CharField(max_length=160)
+	title = models.CharField(max_length=160)
+	body = models.TextField()
+	url = models.CharField(max_length=500, blank=True)
+	read_at = models.DateTimeField(null=True, blank=True)
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ('-created_at',)
+		constraints = [
+			models.UniqueConstraint(fields=('user', 'store_slug', 'event_key'), name='unique_customer_notification_event'),
+		]
+
+	def __str__(self):
+		return f'{self.user.email}: {self.title}'
+
+
 class Invoice(models.Model):
 	"""An immutable order invoice snapshot owned by a Foxx Mart account."""
 	public_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)

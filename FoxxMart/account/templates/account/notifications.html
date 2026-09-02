@@ -1,0 +1,23 @@
+{% extends 'menu_base.html' %}
+
+{% block body %}
+<main class="account-notifications-page" aria-labelledby="notifications-title">
+  <header class="account-notifications-header">
+    <div><p class="account-profile-eyebrow">{{ account_storefront.menu_label }} account</p><h1 id="notifications-title">Notifications</h1><p>Order progress and availability updates for this store.</p></div>
+    {% if notifications %}<form method="post" action="{% url 'account:mark_notifications_read' %}">{% csrf_token %}<input type="hidden" name="store" value="{{ account_storefront.slug }}"><button type="submit">Mark all read</button></form>{% endif %}
+  </header>
+  {% if notifications %}
+  <ol class="account-notifications-list">
+    {% for notification in notifications %}
+    <li class="account-notification{% if not notification.read_at %} account-notification--unread{% endif %}">
+      <ion-icon name="{% if notification.kind == 'low_stock' %}warning-outline{% elif notification.kind == 'price_alert' %}pricetag-outline{% else %}cube-outline{% endif %}" aria-hidden="true"></ion-icon>
+      <div><h2>{{ notification.title }}</h2><p>{{ notification.body }}</p><time datetime="{{ notification.created_at|date:'c' }}">{{ notification.created_at|date:"d M Y, H:i" }}</time></div>
+      {% if notification.url %}<a href="{{ notification.url }}" aria-label="Open {{ notification.title }}"><ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon></a>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+  {% else %}
+  <section class="account-notifications-empty"><ion-icon name="notifications-off-outline" aria-hidden="true"></ion-icon><h2>You’re all caught up</h2><p>Order progress and low-stock alerts for cart items will appear here.</p></section>
+  {% endif %}
+</main>
+{% endblock %}

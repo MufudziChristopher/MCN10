@@ -1,14 +1,14 @@
 :root {
   --foxx-glass-light: rgba(255, 255, 255, .18);
   --foxx-glass-dark: rgba(18, 18, 18, .22);
-  --foxx-glass-blur: blur(4px);
+  --foxx-glass-blur: blur(6px);
 }
 
 .account-menu {
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 2100;
+  z-index: 2200;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,8 @@
 
 .account-menu__toggle {
   position: relative;
-  z-index: 2;
+  /* The trigger must remain above the account glass strip at all times. */
+  z-index: 2202;
   display: grid;
   place-items: center;
   min-height: 5.25rem;
@@ -509,6 +510,10 @@ body.axis-theme--dark .account-quick-cart__divider hr { border-color: #fff; }
   line-height: 1;
 }
 
+.account-menu nav a[title='Notifications'] { position: relative; }
+.account-menu__notification-count { position: absolute; top: -.35rem; right: .1rem; display: grid; width: 1.15rem; height: 1.15rem; margin: 0; place-items: center; border-radius: 50%; background: #111; color: #fff; font-size: .7rem; line-height: 1; }
+body.axis-theme--dark .account-menu__notification-count { background: #fff; color: #111; }
+
 body.axis-theme--dark .account-menu__cart-icon b {
   background: #fff;
   color: #000;
@@ -763,6 +768,9 @@ body.axis-theme--dark .account-registration-card__primary ion-icon {
    menu within reach while a shopper scrolls through their history. */
 body:has(.account-profile-page) .account-menu { position: fixed; top: 0; left: 0; }
 .container > .view:has(.account-profile-page) { padding: 12.5rem 1rem 3rem; }
+/* The fixed account menu must reserve its actual expanded height so it never
+   covers the profile dashboard. */
+body.account-menu-expanded:has(.account-profile-page) .container > .view:has(.account-profile-page) { padding-top: calc(var(--account-menu-expanded-height, 12.5rem) + 1rem); }
 .container > .view:has(.account-profile-page) > .grid { width: 100%; max-width: none; padding: 0; }
 .account-profile-page { width: min(100%, 70rem); margin: 0 auto; color: #111; text-align: left; }
 .account-profile-hero, .account-profile-summary, .account-profile-section { border: 1px solid rgba(0, 0, 0, .26); background: var(--foxx-glass-light); box-shadow: 0 .7rem 2rem rgba(0, 0, 0, .1); -webkit-backdrop-filter: var(--foxx-glass-blur); backdrop-filter: var(--foxx-glass-blur); }
@@ -803,8 +811,33 @@ body:has(.account-profile-page) .account-menu { position: fixed; top: 0; left: 0
 .account-profile-empty ion-icon { width: 2.5rem; height: 2.5rem; }
 .account-profile-empty h3 { margin: .7rem 0 .35rem; color: inherit; font-size: 1.2rem; }
 .account-profile-empty p { margin: 0 auto 1.15rem; max-width: 30rem; line-height: 1.55; }
+.account-profile-preferences { display: block; }
+.account-profile-address { display: grid; gap: .3rem; font-style: normal; line-height: 1.45; }
+.account-profile-address strong { margin-bottom: .15rem; font-size: 1.05rem; }
+.account-profile-address small { margin-top: .55rem; opacity: .72; }
+.account-profile-empty--compact { padding: .35rem 0 .15rem; text-align: left; }
+.account-profile-empty--compact ion-icon { width: 1.75rem; height: 1.75rem; }
+.account-profile-empty--compact h3 { margin: .35rem 0; font-size: 1rem; }
+.account-profile-empty--compact p { margin: 0; }
+.account-notifications-page { width: min(100%, 70rem); margin: 0 auto; color: #111; text-align: left; }.account-notifications-header { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }.account-notifications-header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); }.account-notifications-header p { margin: .55rem 0 0; }.account-notifications-header form { margin: 0; }.account-notifications-header button { min-height: 2.7rem; border: 1px solid #111; border-radius: .55rem; background: #111; color: #fff; padding: .55rem .8rem; font: inherit; font-weight: 700; cursor: pointer; }.account-notifications-list { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }.account-notification { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .85rem; align-items: center; border: 1px solid rgba(0, 0, 0, .25); border-radius: .85rem; background: var(--foxx-glass-light); padding: 1rem; -webkit-backdrop-filter: var(--foxx-glass-blur); backdrop-filter: var(--foxx-glass-blur); }.account-notification--unread { border-width: 2px; }.account-notification > ion-icon { width: 1.55rem; height: 1.55rem; }.account-notification h2 { margin: 0; font-size: 1rem; }.account-notification p { margin: .25rem 0; line-height: 1.45; }.account-notification time { font-size: .75rem; opacity: .7; }.account-notification > a { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border: 1px solid currentColor; border-radius: 50%; color: inherit; }.account-notification > a ion-icon { width: 1.2rem; height: 1.2rem; }.account-notifications-empty { padding: 3rem 1rem; border: 1px solid rgba(0, 0, 0, .25); border-radius: 1rem; background: var(--foxx-glass-light); text-align: center; -webkit-backdrop-filter: var(--foxx-glass-blur); backdrop-filter: var(--foxx-glass-blur); }.account-notifications-empty ion-icon { width: 2.5rem; height: 2.5rem; }.account-notifications-empty h2 { margin: .75rem 0 .35rem; }.account-notifications-empty p { margin: 0; }
+.account-profile-address-editor { margin-top: 1.15rem; border-top: 1px solid rgba(0, 0, 0, .25); padding-top: 1rem; }
+.account-profile-address-editor summary { cursor: pointer; font-size: .88rem; font-weight: 700; }
+.account-profile-address-editor form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem; margin-top: 1rem; }
+.account-profile-address-editor label { display: grid; gap: .35rem; min-width: 0; font-size: .78rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.account-profile-address-editor__wide { grid-column: 1 / -1; }
+.account-profile-address-editor input, .account-profile-address-editor textarea { width: 100%; min-height: 2.65rem; border: 1px solid rgba(0, 0, 0, .4); border-radius: .55rem; background: rgba(255, 255, 255, .14); color: inherit; padding: .6rem .7rem; font: inherit; letter-spacing: normal; text-transform: none; }
+.account-profile-address-editor textarea { min-height: 5rem; resize: vertical; }
+.account-profile-address-editor button { grid-column: 1 / -1; justify-self: start; min-height: 2.7rem; border: 1px solid #111; border-radius: .55rem; background: #111; color: #fff; padding: .6rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
+.account-profile-address-editor small { color: #8f1616; font-size: .74rem; letter-spacing: normal; text-transform: none; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 body.axis-theme--dark .account-profile-page { color: #fff; }
+body.axis-theme--dark .account-notifications-page { color: #fff; }body.axis-theme--dark .account-notifications-header button { border-color: #fff; background: #fff; color: #111; }body.axis-theme--dark .account-notification, body.axis-theme--dark .account-notifications-empty { border-color: rgba(255, 255, 255, .3); background: var(--foxx-glass-dark); }
+/* The notifications screen keeps its account navigation deliberately compact. */
+body:has(.account-notifications-page) .account-menu nav ion-icon,
+body:has(.account-notifications-page) .account-menu__icon,
+body:has(.account-notifications-page) .account-menu__cart-icon,
+body:has(.account-notifications-page) .account-menu__cart-icon ion-icon,
+body:has(.account-notifications-page) .account-theme-toggle ion-icon { width: 1.15rem; height: 1.15rem; font-size: 1.15rem; }
 body.axis-theme--dark .account-profile-hero, body.axis-theme--dark .account-profile-summary, body.axis-theme--dark .account-profile-section { border-color: rgba(255, 255, 255, .3); background: var(--foxx-glass-dark); }
 body.axis-theme--dark .account-profile-avatar { background: #fff; color: #111; }
 body.axis-theme--dark .account-profile-summary div { background: rgba(255, 255, 255, .05); }
@@ -812,6 +845,9 @@ body.axis-theme--dark .account-profile-table th, body.axis-theme--dark .account-
 body.axis-theme--dark .account-profile-status--delivered { background: #fff; color: #111; }
 body.axis-theme--dark .account-return-details div { border-color: rgba(255, 255, 255, .25); }
 body.axis-theme--dark .account-profile-return form { background: var(--foxx-glass-dark); } body.axis-theme--dark .account-profile-return select, body.axis-theme--dark .account-profile-return textarea { border-color: rgba(255, 255, 255, .4); background: rgba(255, 255, 255, .08); color: #fff; } body.axis-theme--dark .account-profile-return button { background: #fff; color: #111; }
+body.axis-theme--dark .account-profile-address-editor { border-color: rgba(255, 255, 255, .3); }
+body.axis-theme--dark .account-profile-address-editor input, body.axis-theme--dark .account-profile-address-editor textarea { border-color: rgba(255, 255, 255, .42); background: rgba(18, 18, 18, .14); color: #fff; }
+body.axis-theme--dark .account-profile-address-editor button { border-color: #fff; background: #fff; color: #111; }
 body.axis-theme--dark .account-profile-page ion-icon { --ion-color-base: #fff !important; --ion-color-contrast: #fff !important; color: #fff !important; }
 
 @media (max-width: 700px) {
@@ -825,6 +861,9 @@ body.axis-theme--dark .account-profile-page ion-icon { --ion-color-base: #fff !i
   .account-profile-summary div { min-width: 0; padding: .85rem .5rem; }
   .account-profile-summary strong { display: block; overflow-wrap: anywhere; font-size: 1.05rem; }
   .account-profile-section { padding: 1.15rem .9rem; border-radius: 1rem; }
+  .account-notifications-header { align-items: flex-start; flex-direction: column; }.account-notification { grid-template-columns: auto minmax(0, 1fr); }.account-notification > a { grid-column: 2; justify-self: end; }
+  .account-profile-address-editor form { grid-template-columns: 1fr; }
+  .account-profile-address-editor__wide, .account-profile-address-editor button { grid-column: auto; }
   .account-profile-table thead { display: none; }
   .account-profile-table, .account-profile-table tbody, .account-profile-table tr, .account-profile-table td { display: block; width: 100%; }
   .account-profile-table tr { padding: .35rem 0; border-bottom: 1px solid rgba(0, 0, 0, .22); }

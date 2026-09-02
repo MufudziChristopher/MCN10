@@ -1,0 +1,88 @@
+/* Shared shell for the reusable 3rd Axis storefront navigation component. */
+body { --storefront-menu-height: 5.5rem; }
+
+.storefront-menu__top-glass {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: var(--storefront-menu-height);
+	z-index: 2100;
+	pointer-events: none;
+	background: var(--foxx-glass-light, rgba(255, 255, 255, .18));
+	-webkit-backdrop-filter: var(--foxx-glass-blur, blur(6px));
+	backdrop-filter: var(--foxx-glass-blur, blur(6px));
+}
+
+body.axis-theme--dark .storefront-menu__top-glass {
+	background: var(--foxx-glass-dark, rgba(18, 18, 18, .22));
+}
+
+.storefront-menu.collapsible-menu {
+	position: fixed;
+	top: var(--storefront-menu-height);
+	right: 0;
+	left: 0;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	box-sizing: border-box;
+	z-index: 2101;
+	text-align: center;
+}
+
+/* Keep the control above both the fixed glass strip and the expanded panel. */
+.storefront-menu__toggle {
+	position: fixed;
+	display: inline-flex;
+	/* Legacy page selectors are more specific; this is the component's
+	 * non-negotiable layering contract. */
+	z-index: 2202 !important;
+}
+
+/* Store controls share the top layer with the menu trigger.  Their parent
+ * needs the elevation too; a child cannot out-rank a sibling stacking layer. */
+body:has(.barr) .barr {
+	z-index: 2201;
+}
+
+body:has(.barr) #showLeftPush,
+body:has(.barr) #showRightPush {
+	position: fixed;
+	top: 0;
+	z-index: 2202;
+}
+
+body:has(.barr) #showLeftPush { left: 0; right: auto; }
+body:has(.barr) #showRightPush { right: 0; left: auto; }
+
+.storefront-menu.collapsible-menu:not(.is-collapsed) {
+	padding: .75rem 1rem;
+	border-radius: 0 0 1rem 1rem;
+	background: var(--foxx-glass-light, rgba(255, 255, 255, .18)) !important;
+	box-shadow: 0 .35rem .8rem rgba(0, 0, 0, .08);
+	-webkit-backdrop-filter: var(--foxx-glass-blur, blur(6px));
+	backdrop-filter: var(--foxx-glass-blur, blur(6px));
+}
+
+body.axis-theme--dark .storefront-menu.collapsible-menu:not(.is-collapsed) {
+	background: var(--foxx-glass-dark, rgba(18, 18, 18, .22)) !important;
+}
+
+/* The component owns this top strip, so page-specific legacy strips cannot
+ * overlap it on Cart, Contact or Checkout. */
+body:has(.axis-cart-page)::before,
+body:has(.axis-contact-page)::before,
+body:has(.axis-checkout-page)::before { display: none; }
+
+@media screen and (max-width: 59.688em) {
+	body { --storefront-menu-height: calc(4.5rem + env(safe-area-inset-top)); }
+	.storefront-menu.collapsible-menu:not(.is-collapsed) { padding: .65rem .75rem .9rem; }
+	.storefront-menu .collapsible-menu__content nav { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .55rem; padding: 0; }
+	.storefront-menu .collapsible-menu__content nav a,
+	.storefront-menu .collapsible-menu__content .axis-theme-toggle { min-height: 4.25rem; font-size: .76rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.storefront-menu .collapsible-menu__content { transition: none; }
+}

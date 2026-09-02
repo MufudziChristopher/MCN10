@@ -5,13 +5,9 @@
 {% load local_pricing %}
 {% block title %}3rd Axis | Store | {{ product.name }}{% endblock %}
 
-{% block nav %}{% include 'axis_navbar.html' %}{% endblock %}
+{% block nav %}{% include 'components/axis_store_menu.html' %}{% endblock %}
 
 {% block quick_cart %}
-<a class="product-store-link" href="{% url 'Axis:store' %}">
-  <ion-icon src="{% static 'ion-icons/storefront-outline.svg' %}" aria-hidden="true"></ion-icon>
-  <span>Continue Shopping</span>
-</a>
 <details class="product-quick-cart">
   <summary>
     <span class="product-quick-cart__icon-wrap">

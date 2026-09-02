@@ -98,7 +98,7 @@
                 </a>
                 {% if user.is_authenticated %}
                 <a href="{% url 'account:profile' %}?store=collective" title="My Profile">
-                  <ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br>Profile
+                  <ion-icon src="{% static 'ion-icons/person-outline.svg' %}" size="large"></ion-icon><br>Account
                 </a>
                 <a href="{% url 'account:logout' %}" title="Log Out">
                   <ion-icon src="{% static 'ion-icons/log-out-outline.svg' %}" size="large"></ion-icon><br>Logout

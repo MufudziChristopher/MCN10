@@ -34,7 +34,9 @@ SECRET_KEY = 'mm%qn!$c(8q5oodz^p(j-wo8-)132o&29q5fk$d39#=z5#@dia'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+# Development hosts only. Add a LAN address through DJANGO_ALLOWED_HOSTS when
+# testing from another device; never accept arbitrary Host headers.
+ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['127.0.0.1', 'localhost', '192.168.1.4'])
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 

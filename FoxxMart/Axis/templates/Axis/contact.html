@@ -1,142 +1,48 @@
 {% extends 'axis_base.html' %}
 
-
-{% load static %}
-
-
 {% block body %}
-<div class="view axis-contact-page">
+<main class="axis-contact-page" aria-labelledby="contact-title">
+  <div class="axis-contact-shell">
+    <header class="axis-contact-hero">
+      <p class="axis-contact-eyebrow">3rd Axis support</p>
+      <h1 id="contact-title">How can we help?</h1>
+      <p>Tell us what you need and the team will respond as soon as possible.</p>
+    </header>
 
-  <!-- Grid -->
+    <div class="axis-contact-layout">
+      <section class="axis-contact-card axis-contact-form-card" aria-labelledby="message-title">
+        <div class="axis-contact-section-heading">
+          <ion-icon name="chatbubble-ellipses-outline" aria-hidden="true"></ion-icon>
+          <div><h2 id="message-title">Send a message</h2><p>Fields marked required help us reply without delay.</p></div>
+        </div>
+        {% if contact_error %}<p class="axis-contact-error" role="alert">{{ contact_error }}</p>{% endif %}
+        <form class="axis-contact-form" method="post" novalidate>
+          {% csrf_token %}
+          {% if user.is_authenticated %}
+          <div class="axis-contact-signed-in"><ion-icon name="person-circle-outline" aria-hidden="true"></ion-icon><span>Sending as <strong>{{ user.username }}</strong><small>{{ user.email }}</small></span></div>
+          {% else %}
+          <label>Your name<input type="text" name="name" value="{{ contact_values.name }}" autocomplete="name" required></label>
+          <label>Email address<input type="email" name="email" value="{{ contact_values.email }}" autocomplete="email" required></label>
+          {% endif %}
+          <label class="axis-contact-form__wide">Your message<textarea name="message" rows="7" required aria-describedby="message-help" placeholder="Include your product, order number, or question…">{{ contact_values.message }}</textarea><small id="message-help">Please do not include payment-card details.</small></label>
+          <button type="submit"><span>Send message</span><ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon></button>
+        </form>
+      </section>
 
-  <section class="grid grid--loader">
-
-    <h2> Contact Us </h2>
-
-<div class="container-contact100">
-
-    <form class="contact100-form validate-form" method="post">
-
-      {% csrf_token %}
-
-      <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
-        <span class="label-input100">Your Name</span>
-{% if user.is_authenticated %}<p> {{ user.username}} </p> {% else %} <input class="input100" type="text" name="name"  placeholder="Enter your name">{% endif %}
-
-
-        <span class="focus-input100"></span>
-      </div>
-
-      <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-        <span class="label-input100">Email</span>
-        {% if user.is_authenticated %}<p> {{ user.email}}</p> {% else %}  <input class="input100" type="text" name="email" placeholder="Enter your email addess">{% endif %}
-
-        <span class="focus-input100"></span>
-      </div>
-
-      <div class="wrap-input100 validate-input" data-validate = "Message is required">
-        <span class="label-input100">Message</span>
-        <textarea class="input100" name="message" ></textarea>
-        <span class="focus-input100"></span>
-      </div>
-
-      <div class="container-contact100-form-btn">
-        <button class="btn action--button-btn action">
-          <span >
-            Submit
-            <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-          </span>
-        </button>
-      </div>
-    </form>
-<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13239.924200121699!2d18.46322555!3d-33.941615500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sza!4v1610229670521!5m2!1sen!2sza" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    <span class="contact100-more">
-      For any question contact our 24/7 call center: <span class="contact100-more-highlight"><a class="contact100-more-highlight"  href="tel:+27122035522" target="_blank">+27 21 203 5522</a></span>
-      or email <span class="contact100-more-highlight"><a  class="contact100-more-highlight" href="mailto:sales@3rdaxis.co.za" >sales@3rdaxis.co.za </a></span>
-    </span>
-</div>
-</section>
-</div>
-
-<script type="text/javascript">
-
-  (function ($) {
-      "use strict";
-
-      /*==================================================================
-      [ Focus Contact2 ]*/
-      $('.input100').each(function(){
-          $(this).on('blur', function(){
-              if($(this).val().trim() != "") {
-                  $(this).addClass('has-val');
-              }
-              else {
-                  $(this).removeClass('has-val');
-              }
-          })
-      })
-
-      /*==================================================================
-      [ Validate ]*/
-      var input = $('.validate-input .input100');
-
-      $('.validate-form').on('submit',function(){
-          var check = true;
-
-          for(var i=0; i<input.length; i++) {
-              if(validate(input[i]) == false){
-                  showValidate(input[i]);
-                  check=false;
-              }
-          }
-
-          return check;
-      });
-
-
-      $('.validate-form .input100').each(function(){
-          $(this).focus(function(){
-             hideValidate(this);
-          });
-      });
-
-      function validate (input) {
-          if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-              if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                  return false;
-              }
-          }
-          else {
-              if($(input).val().trim() == ''){
-                  return false;
-              }
-          }
-      }
-
-      function showValidate(input) {
-          var thisAlert = $(input).parent();
-
-          $(thisAlert).addClass('alert-validate');
-      }
-
-      function hideValidate(input) {
-          var thisAlert = $(input).parent();
-
-          $(thisAlert).removeClass('alert-validate');
-      }
-
-
-      /*==================================================================
-      [ Show / hide Form ]*/
-
-      $('.contact100-btn-hide').on('click', function(){
-          $('.wrap-contact100').fadeOut(400);
-      })
-
-      $('.contact100-btn-show').on('click', function(){
-          $('.wrap-contact100').fadeIn(400);
-      })
-
-  });
-  </script>
+      <aside class="axis-contact-support" aria-label="Other ways to contact 3rd Axis">
+        <section class="axis-contact-card">
+          <div class="axis-contact-section-heading"><ion-icon name="headset-outline" aria-hidden="true"></ion-icon><div><h2>Contact options</h2><p>Choose the channel that suits you.</p></div></div>
+          <div class="axis-contact-options">
+            <a href="tel:+27212035522"><ion-icon name="call-outline" aria-hidden="true"></ion-icon><span><strong>Call us</strong><small>+27 21 203 5522</small></span><ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon></a>
+            <a href="mailto:sales@3rdaxis.co.za"><ion-icon name="mail-outline" aria-hidden="true"></ion-icon><span><strong>Email support</strong><small>sales@3rdaxis.co.za</small></span><ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon></a>
+          </div>
+        </section>
+        <section class="axis-contact-card axis-contact-map-card">
+          <div class="axis-contact-section-heading"><ion-icon name="location-outline" aria-hidden="true"></ion-icon><div><h2>Find us</h2><p>View our Cape Town location.</p></div></div>
+          <iframe title="3rd Axis location in Cape Town" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13239.924200121699!2d18.46322555!3d-33.941615500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sza!4v1610229670521!5m2!1sen!2sza" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
 {% endblock %}

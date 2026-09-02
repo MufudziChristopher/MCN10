@@ -6,13 +6,6 @@
 
 
 {% block body %}
-<nav class="axis-cart-page__actions" aria-label="Cart actions">
-    <a class="axis-cart-page__action axis-cart-page__action--continue" href="{% url 'Axis:store' %}">Continue Shopping</a>
-    {% if order.get_cart_total %}
-    <a class="axis-cart-page__action axis-cart-page__action--checkout" href="{% url 'Axis:checkout' %}">Checkout</a>
-    {% endif %}
-</nav>
-
 <div class="view axis-cart-page">
 
     <!-- Grid -->

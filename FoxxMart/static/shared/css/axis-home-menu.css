@@ -9,8 +9,8 @@
 	z-index: 2000;
 	pointer-events: none;
 	background: rgba(255, 255, 255, 0.18);
-	-webkit-backdrop-filter: blur(4px);
-	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 }
 
 .product-page .bp-header {
@@ -48,8 +48,8 @@
 	max-height: calc(100vh - 1.5rem);
 	overflow-y: auto;
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(4px);
-	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 	border-radius: 0.75rem;
 	box-shadow: 0 0.25rem 0.7rem rgba(0, 0, 0, 0.1);
 }
@@ -85,8 +85,8 @@
 	gap: 0.4rem;
 	flex-wrap: wrap;
 	background: rgba(255, 255, 255, 0.22);
-	-webkit-backdrop-filter: blur(4px);
-	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 	border-radius: 1rem;
 	box-shadow: 0 0.35rem 0.8rem rgba(0, 0, 0, 0.08);
 }
@@ -140,8 +140,8 @@ body.axis-theme--dark.product-page::before,
 body.axis-theme--dark.product-page .bp-header nav,
 body.axis-theme--dark.product-page .product-quick-cart[open] {
 	background: var(--foxx-glass-dark, rgba(18, 18, 18, .22));
-	-webkit-backdrop-filter: var(--foxx-glass-blur, blur(4px));
-	backdrop-filter: var(--foxx-glass-blur, blur(4px));
+	-webkit-backdrop-filter: var(--foxx-glass-blur, blur(6px));
+	backdrop-filter: var(--foxx-glass-blur, blur(6px));
 }
 
 body.axis-theme--dark.product-page .bp-header,
@@ -442,6 +442,114 @@ body.axis-theme--dark.product-page .product-quick-cart hr {
 	line-height: 1;
 }
 
+/* Product details consumes the shared storefront menu component. Keep its
+ * expanded panel directly below the fixed top glass, rather than letting the
+ * legacy product-header padding create a second, empty strip. */
+.product-page::before { display: none; }
+
+.product-page .storefront-menu.collapsible-menu {
+	position: fixed;
+	top: var(--storefront-menu-height);
+	right: 0;
+	left: 0;
+	width: auto;
+	max-width: none;
+	margin: 0;
+	padding: 0;
+}
+
+.product-page .storefront-menu.collapsible-menu:not(.is-collapsed) {
+	padding: .75rem 1rem;
+	border-radius: 0 0 1rem 1rem;
+}
+
+/* Give the expanded product menu the same side inset as the storefront glass
+ * surface, instead of stretching its panel edge-to-edge. */
+.product-page .storefront-menu.collapsible-menu:not(.is-collapsed) {
+	right: 1rem;
+	left: 1rem;
+	width: auto;
+	border-radius: 1rem;
+}
+
+/* Match the storefront panel's icon-grid inset. */
+.product-page .storefront-menu.collapsible-menu:not(.is-collapsed) .collapsible-menu__content {
+	padding: 1.35rem 1rem 1rem;
+}
+
+.product-page .storefront-menu .collapsible-menu__content nav {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	width: min(100%, 40rem);
+	max-width: 40rem;
+	margin: 0;
+	padding: 0;
+	gap: .55rem;
+	background: transparent;
+	-webkit-backdrop-filter: none;
+	backdrop-filter: none;
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.product-page .storefront-menu .collapsible-menu__content nav a,
+.product-page .storefront-menu .collapsible-menu__content .axis-theme-toggle {
+	width: auto;
+	min-width: 0;
+	min-height: 4.5rem;
+	padding: .45rem .25rem;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: .7rem;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .28), 0 .2rem .55rem rgba(0, 0, 0, .16);
+	font-size: .76rem;
+}
+
+body.axis-theme--dark.product-page .storefront-menu .collapsible-menu__content nav a,
+body.axis-theme--dark.product-page .storefront-menu .collapsible-menu__content .axis-theme-toggle {
+	border-color: rgba(255, 255, 255, .22);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 .2rem .55rem rgba(0, 0, 0, .42);
+}
+
+@media screen and (max-width: 34em) {
+	.product-page .storefront-menu .collapsible-menu__content nav {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+/* The product top panel has one compact action: Quick Cart. */
+.product-page .product-quick-cart {
+	top: .7rem;
+	right: .85rem;
+}
+
+.product-page .product-quick-cart summary {
+	gap: .1rem;
+	font-size: .75rem;
+}
+
+.product-page .product-quick-cart summary ion-icon {
+	width: 1.4rem;
+	height: 1.4rem;
+}
+
+.product-page .product-quick-cart__label { font-size: .75rem; }
+
+.product-page .product-quick-cart__count {
+	top: -.35rem;
+	right: -.5rem;
+	width: 1rem;
+	height: 1rem;
+	font-size: .68rem;
+}
+
+/* Product names remain the visual anchor of the detail page. */
+.product-page .content__title {
+	max-width: 42rem;
+	font-size: clamp(2.25rem, 6vw, 4rem);
+	font-weight: 500;
+	line-height: 1.08;
+}
+
 body.axis-theme--light.product-page .product-quick-cart__count {
 	background: #000;
 	color: #fff;
@@ -543,4 +651,13 @@ body.axis-theme--dark.product-page .product-quick-cart__divider hr {
 
 .product-page .product-quick-cart__divider {
 	margin: 0.75rem 0 0.5rem;
+}
+
+/* Gallery captions need a readable hierarchy on phones. */
+@media screen and (max-width: 60em) {
+	.product-page .gallery__item-title {
+		font-size: 1.2rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
 }
